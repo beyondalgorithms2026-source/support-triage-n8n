@@ -1,11 +1,14 @@
 # Current handoff
-Task: T4-00 architecture session (plan only). No application code written.
-Branch: main (git init is an owner step; see RUN_OVERNIGHT.md checklist)
-Last commit: none yet — owner commits the plan as `T4-00: plan`
-Done: ARCHITECTURE, HARNESS_SPEC, SECURITY_CONTROLS, ADR-001…007, GOALS (G1–G14), HANDOFF, STATUS, README (plan only),
-OPEN_QUESTIONS, RUN_OVERNIGHT, scripts (preflight, overnight, accept, guard, status, morning_report, init_env).
-Next task: G1 (T4-01) Harness skeleton, normalisers, static checks.
-Read first: HANDOFF.md, AGENTS.md, GOALS.md § G1, ../rescue-diagnostic-t2/src/checks/static_checks.py (read-only).
-Do not change: frozen formats in docs/HARNESS_SPEC.md; scripts/ (protected); GOALS.md; .ai/STATUS.md table by hand.
-Tests run / result: `bash scripts/accept.sh plan` — see the architecture session summary. No unit tests exist yet.
-Open questions: OPEN_QUESTIONS.md Q-1…Q-18 (owner answers pending; none blocks G1–G6).
+Task: T4-01 (G1) Harness skeleton, normalisers, static checks. Attempt 1 (overnight, unattended).
+Branch: main
+Last commit: 2deeb3d T4-00: plan (this run did not commit; the loop commits)
+Done: package skeleton (src/, src/common/, src/checks/, tests/); src/common/norm.py (text_norm, email_norm,
+dedupe_key, content_sha256); src/checks/static_checks.py (T2 port + allowed-host prefixes, no $env, Jira create
+retryOnFail false, Jira/Slack path report, --allowed-hosts); tests/test_norm.py; tests/test_static_checks.py.
+Next task: G2 (T4-02) Golden set — if the loop's accept.sh G1 + guard.sh pass. If they fail, G1 attempt 2 fixes them.
+Read first: OPEN_QUESTIONS.md Q-19…Q-21; tests/test_norm.py vectors (JS twin contract for G7).
+Do not change: norm.WHITESPACE and the preimage format without a G2 gold regeneration; frozen formats in
+docs/HARNESS_SPEC.md; scripts/ (protected).
+Tests run / result: none. The Bash tool was denied in this run, so unittest, compileall, accept.sh G1 and guard.sh
+were not run, and git status was not checked.
+Open questions: Q-19 (normaliser details), Q-20 (static checker scope), Q-21 (no shell in this run).
