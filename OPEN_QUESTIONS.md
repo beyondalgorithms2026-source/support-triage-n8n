@@ -277,3 +277,32 @@ Why: smallest choices that meet GOALS G4 and keep the Python and JS outputs equa
 Reverse: edit both twins and `tests/vectors/*.json` together, then rerun `bash scripts/accept.sh G4`. For (2), the
 owner can write fresh test-split injection tickets before G11 (regenerate gold: cost H after G9).
 Owner answer:
+
+## Q-29 Sink and sandbox contract details GOALS G5 / ARCHITECTURE §7 leave open — L now, M after G8
+Date: 2026-10-13. Goal: G5 (T4-05).
+Decision:
+(1) A wrong or missing credential is 403 in all three route groups (T2 used 401). Real Jira answers 401; real Slack
+answers HTTP 200 `{"ok":false,"error":"invalid_auth"}`. Under `/rest/` and `/api/`, any other method or path is 403.
+In the sink group an unknown path is 404.
+(2) New route `POST /_replay/llm_input` (sink token, body `{"llm_input": "…"}`) writes the "LLM-input mirror row"
+GOALS G5 names: a `requests.jsonl` row with `target: "llm"` and the body kept. The runner (G6) may use it; the
+trace `llm_input` record (Q-25) stays the main source. ADR-003 asks for an entry per new endpoint: this is it.
+(3) Faults: body `{"target", "mode"}` in the gold form (`jira`/`slack`/`sink:jira_links`; `503`/`commit_then_504`/
+`search_lag`), optional `pass` (fire only in that pass) and `times` (fire N times). Without `times` a fault stays on for
+the active ticket. `/_replay/active` and `{"clear": true}` remove it. `jira:503` applies to create only, not search.
+(4) `search_lag` hides an issue created fewer than `lag_requests` sink requests ago (all routes count; default 100,
+a fault setting, not a tuned value). Issues read from disk at start count as old.
+(5) `/lookup/<table>` works on the five sink tables only; a value `a|b` matches either (C-18 `status=auto_routed|review`).
+The sandbox tables cannot be written through `/append`. `/ledger/sum` returns `{usd, count}`; `/ledger/count?since_s=`
+counts ledger rows of all runs (C-8 rpm gate).
+(6) Jira create accepts only `project`, `issuetype`, `summary` (one line, ≤ 255), `description` (ADF), `labels` (no
+spaces), `priority` (`Highest|High|Medium|Low`). Other project or issue type → 403; any other field → 400 (as Jira
+does for a field that is not on the screen). Issue id = 10000 + `created_seq`.
+(7) Slack channels must be `SLACK_CHANNEL_TRIAGE` or `SLACK_CHANNEL_REVIEW` (403 `not_in_channel`); if both are
+unset, any channel is accepted.
+(8) `requests.jsonl` rows add `seq`, `ts`, `target` (always), and `fault` / `lag_requests` when a fault fired. Query
+strings and all headers are not written. `--host` default `0.0.0.0` and `--port` default `SINK_PORT` or 8790 (T2 form).
+Why: smallest choices that make every GOALS G5 fault and 403 path testable and keep the Q-25 run-file contract.
+Reverse: edit `src/sink/server.py` and `tests/test_sink.py` (no run exists yet). After G8, the workflow error branches
+may depend on the status codes in (1) and (6): re-run smoke.
+Owner answer:

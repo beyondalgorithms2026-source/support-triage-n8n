@@ -1,17 +1,21 @@
 # Current handoff
-Task: T4-04 (G4) PII redaction and injection scan (Python reference + JS twin). Attempt 1 (overnight, unattended).
+Task: T4-05 (G5) Sink with Jira and Slack sandbox. Attempt 1 (overnight, unattended).
 Branch: main
-Last commit: d1483c0 T4-03: Scorer, threshold tuner, run checker, report generator (on STUB data) (this run did not
-commit; the loop commits)
-Done: src/common/redact.py (C-5; `redact_ticket`, `--audit`), src/common/inject.py (C-6, C-7; `scan`, `model_text`,
-`scan_and_cap`, `--audit --split`), src/js/redact.js (`redactTicket`) and src/js/inject.js (`scanAndCap`): plain ES2019,
-ASCII only, no require/exports. tests/test_redact.py and tests/test_inject.py: vectors, gold audits, node parity on all
-200 gold tickets. tests/vectors/{redact,inject}_vectors.json are the shared contract.
-Next task: G5 (T4-05) Sink with Jira and Slack sandbox. G6 is also unblocked. G7 pastes src/js/*.js into H3 and H4.
-Read first: OPEN_QUESTIONS.md Q-28 (signal names, model_text format, cap on body only, test-split exposure), Q-25 (run-file
-contract for G5/G6).
-Do not change: the vector files by hand without changing both twins; norm.WHITESPACE (inject.js copies it as escapes);
+Last commit: d853ee7 T4-04: PII redaction and injection scan (Python reference + JS twin) (this run did not commit;
+the loop commits)
+Done: src/sink/server.py: `make_server(state_dir, sink_token, jira_email, jira_token, slack_token, host, port,
+project_key, channels)` and `main` (`python3 -m src.sink.server --state-dir <run>/sink`, env names only, exit 2 when a
+secret is unset). Sink routes `/append/<table>`, `/lookup/<table>?col=a|b`, `/ledger/sum?day=|run_id=`,
+`/ledger/count?since_s=`, `/_replay/active`, `/_replay/fault`, `/_replay/llm_input`, `/_health`. Jira
+`GET /rest/api/3/search/jql`, `POST /rest/api/3/issue`; Slack `POST /api/chat.postMessage`. Tables `sink/<table>.csv`
+with stamps `sink_seq, sink_ts, replay_input_id, replay_pass`; `requests.jsonl` (no headers). tests/test_sink.py: 26
+tests, incl. a check that `src.score.score.Run` reads the sink folder (Q-25).
+Next task: G6 (T4-06) Replay runner. Start the sink with `make_server(..., port=SINK_PORT)` per run; call
+`/_replay/active` before each ticket, then `/_replay/fault` with the gold `fault` (`target`, `mode`, `pass`).
+Read first: OPEN_QUESTIONS.md Q-29 (sink contract choices: 403 codes, fault lifetime, search_lag, llm_input route),
+Q-25 (run-file contract).
+Do not change: `SINK_COLUMNS` / `SANDBOX_COLUMNS` / `STAMPS` in src/sink/server.py (ARCHITECTURE §6.3, frozen);
 SCORECARD_HEADER and FAILURE_CODES in src/score/score.py; scripts/.
-Tests run / result: `bash scripts/accept.sh G4` → ACCEPT PASS [G4]; `bash scripts/guard.sh` → guard clean;
-`python3 -m unittest discover -s tests -t .` → 138 tests OK.
-Open questions: Q-28 (new). Q-22…Q-27 are still open.
+Tests run / result: `bash scripts/accept.sh G5` → ACCEPT PASS [G5]; `bash scripts/guard.sh` → guard clean;
+`python3 -m unittest discover -s tests -t .` → 164 tests OK.
+Open questions: Q-29 (new). Q-22…Q-28 are still open.
