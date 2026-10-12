@@ -306,3 +306,32 @@ Why: smallest choices that make every GOALS G5 fault and 403 path testable and k
 Reverse: edit `src/sink/server.py` and `tests/test_sink.py` (no run exists yet). After G8, the workflow error branches
 may depend on the status codes in (1) and (6): re-run smoke.
 Owner answer:
+
+## Q-30 Replay runner choices GOALS G6 leaves open — L now, M after G7
+Date: 2026-10-13. Goal: G6 (T4-06).
+Decision:
+(1) Credential types: `t4-llm`, `t4-webhook-auth`, `t4-sink-auth`, `t4-slack` are `httpHeaderAuth`
+(`Authorization: Bearer …`, `X-T4-Token`, `X-Sink-Token`); `t4-jira` is `httpBasicAuth` (`user`, `password`). G7 HTTP
+nodes must use generic auth `httpHeaderAuth` for Slack, not n8n's `httpBearerAuth`. Ids are fixed in
+`CREDENTIAL_IDS`; `run` binds ids by credential name from n8n SQLite (refuses if `setup` was not run).
+(2) No separate `replay` command and no T2 `--replay-of`: the replay is pass B in the same run (`--passes AB`, same
+sandbox). Phase sets the default split and passes (slice/dev A on dev, smoke AB on dev, test AB on test, attack A on
+both); a split that differs from the phase's split is refused (I-9).
+(3) The sink runs in-process on a thread (`make_server`, host `0.0.0.0`, port `SINK_PORT`), not as a child process.
+(4) Before any side effect: static checks on the committed workflow (violations refuse the run; report saved as
+`static_checks.json`); committed `0. Config` `run_usd_cap` / `daily_usd_cap` / prices must equal `.env`;
+`--config-override key=value` edits only the in-memory copy, unknown keys are an error, and the overrides are listed
+in `summary.json`.
+(5) Run spend = max(H6 usage × Config prices from the trace, sink `ledger` usd for the run_id). The cap is checked
+before each ticket; each skipped ticket-pass gets a trace row `error: "runner_cap"`.
+(6) `llm_input` = `model_text` of the item that fed H6 (execution `source.previousNode`); without `model_text`, that
+item's JSON with every `headers` key dropped. G7 must keep `model_text` on the item that enters H6. The runner also
+posts it to `/_replay/llm_input` (Q-29 (2)). Every trace string is scrubbed of the `.env` secret values.
+(7) Webhook HTTP 401/403/404 aborts the run (wrong token or path). Other statuses are kept as a `runner` trace row with
+`http_status`. An aborted run still writes trace, `summary.json` (`aborted`) and its cost-ledger row, then re-raises.
+(8) `--force-fault id:target:mode[:A|B]` (default pass A) replaces the gold fault of that ticket.
+(9) `prompt_sha256` = sha256 of the committed H6 node `parameters` (sorted JSON). `usd_per_1k_tickets` = run usd ÷
+selected tickets × 1,000.
+Why: smallest choices that meet GOALS G6, the Q-25 run-file contract and the Q-29 sink contract.
+Reverse: edit `src/replay/run.py` and `tests/test_replay.py`. After G7, (1) and (6) also need workflow node edits.
+Not verified: the docker and SQLite paths ran only against fakes here; G7 is their first live use.
