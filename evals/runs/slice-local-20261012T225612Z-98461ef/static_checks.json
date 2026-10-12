@@ -1,0 +1,76 @@
+{
+  "file": "/Users/Work/Projects/Non RAG Repos/support-triage-t4/workflows/t4-triage.json",
+  "nodes": [
+    {
+      "host": "https://api.openai.com",
+      "maxTries": 2,
+      "method": "POST",
+      "name": "H6 LLM Classify",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 30000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "POST",
+      "name": "H7 Ledger Append",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__JIRA_BASE_URL__",
+      "maxTries": null,
+      "method": "POST",
+      "name": "H12 Jira Create",
+      "onError": "continueErrorOutput",
+      "retry": false,
+      "timeout": 15000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "POST",
+      "name": "H13 Link Record",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "POST",
+      "name": "E Append Error",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "POST",
+      "name": "H16 Audit Append",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    }
+  ],
+  "paths": [
+    {
+      "method": "POST",
+      "node": "H12 Jira Create",
+      "path": "/rest/api/3/issue",
+      "target": "jira"
+    }
+  ],
+  "secrets": [],
+  "sha256": "1fb42c432fe25674f057334f6528eeb3d1fe5937f5a2c4e0504b63c839e8899b",
+  "violations": []
+}

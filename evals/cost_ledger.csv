@@ -1,0 +1,2 @@
+run_id,run_phase,target,started_utc,ended_utc,model,llm_calls,tokens_in,tokens_out,usd,run_usd_cap,capped_inputs,tickets,usd_per_1k_tickets
+slice-local-20261012T225612Z-98461ef,slice,local,2026-10-12T22:56:12Z,2026-10-12T22:56:58Z,gpt-4o-mini-2024-07-18,10,6983,142,0.00113265,0.25,0,10,0.113265

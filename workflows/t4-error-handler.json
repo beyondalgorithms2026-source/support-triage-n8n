@@ -1,0 +1,122 @@
+{
+  "name": "T4 triage — error handler",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a96e354c-946d-5c6a-88b1-3e48e7b42551",
+      "name": "EH Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// C-25: any unhandled error of t4-triage becomes one errors row. No ticket text is copied.\nconst item = $input.first().json;\nconst execution = item.execution || {};\nconst workflow = item.workflow || {};\nconst message = (execution.error && execution.error.message) || 'unhandled workflow error';\nreturn [{ json: { run_id: '', input_ref: '', stage: 'record',\n  node: String(execution.lastNodeExecuted || workflow.name || 'workflow'), code: 'error:unhandled',\n  message: String(message).slice(0, 300) } }];\n"
+      },
+      "id": "3e890881-a8e4-56ad-8c66-f25592392b4c",
+      "name": "EH Shape Error",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SINK_BASE_URL__/append/errors",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "4ced2edd-3a29-5fa6-a7c6-da36d49a8f3d",
+      "name": "EH Append Error",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpHeaderAuth": {
+          "name": "t4-sink-auth"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 1000,
+      "position": [
+        440,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all();"
+      },
+      "id": "bf724218-fe7c-521b-8aa0-2082100ecf19",
+      "name": "EH Stop",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "EH Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "EH Shape Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EH Shape Error": {
+      "main": [
+        [
+          {
+            "node": "EH Append Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EH Append Error": {
+      "main": [
+        [
+          {
+            "node": "EH Stop",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "EH Stop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "versionId": "a343f36b-1408-5f4e-aba3-4f01b6bb440b",
+  "tags": [],
+  "id": "t4ErrorHandler01"
+}

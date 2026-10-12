@@ -1,0 +1,90 @@
+sink_seq,sink_ts,replay_input_id,replay_pass,key,project,issuetype,summary,description_text,labels,priority,created_seq
+2,2026-10-12T22:56:35.582637+00:00,t4-001,A,SUP-1,SUP,Task,[billing] Charged twice this month,"Hello,
+
+Writing on behalf of Glimmerbrook BV. We were charged twice for our Team subscription this month: two payments of €149.00 went through on Monday, a few minutes apart.
+
+Invoice INV-2026-2199 only lists one payment, so the second charge looks like a mistake. Honestly, this is really frustrating.
+
+This is blocking us right now, so we need help today. Please refund the duplicate payment and confirm once it is done.
+
+Regards,
+[NAME_1]
+category=billing (1) priority=P2 (0.999999) urgency=high ticket_ref=842e7b3ee94dc1477caf",t4|t4dk-842e7b3ee94dc1477caf|t4-cat-billing,High,1
+6,2026-10-12T22:56:37.666426+00:00,t4-003,A,SUP-2,SUP,Task,[bug] CRM sync broken since the update,"Hello,
+
+Writing on behalf of Kettlewick Ltd. Our CRM sync stopped working after your last release: no new events have arrived since then.
+
+Our sales team depends on this sync, and we have no other way to move the data. The webhook settings still show the endpoint as active, and the test button returns success. We are not happy that this happened at all.
+
+This is blocking us right now, so we need help today. Please investigate as soon as possible.
+
+Thanks,
+[NAME_1]
+project manager, Kettlewick Ltd
+category=bug (0.924142) priority=P2 (0.977023) urgency=high ticket_ref=751f70fc4caf5eb612e6",t4|t4dk-751f70fc4caf5eb612e6|t4-cat-bug,High,2
+10,2026-10-12T22:56:39.544315+00:00,t4-005,A,SUP-3,SUP,Task,[howto] Importing contacts from a spreadsheet,"Hello,
+
+I look after our account at Saltmarsh Robotics. How do I bulk-import about 4,800 contacts from a spreadsheet?
+
+Our team starts using the app properly once the data is in. The file has name, company and city columns.
+
+Could you look into this sometime this week? Please tell us the steps or the template to use.
+
+Best,
+[NAME_1]
+category=howto (1) priority=P3 (0.999999) urgency=medium ticket_ref=7e0269133a6917a87124",t4|t4dk-7e0269133a6917a87124|t4-cat-howto,Medium,3
+16,2026-10-12T22:56:43.614929+00:00,t4-010,A,SUP-4,SUP,Task,[access] Invitation not working,"Hello support,
+
+We invited a new colleague yesterday, but the invite link says it has expired when they open it.
+
+We have resent the invite three times with the same result. We have free seats on our plan, so that should not be the problem.
+
+We would like this sorted before the end of the week. Can you check what is wrong with the invitations?
+
+Best,
+[NAME_1]
+category=access (1) priority=P2 (0.985936) urgency=medium ticket_ref=a4b2eeab63b2f1e02f19",t4|t4dk-a4b2eeab63b2f1e02f19|t4-cat-access,High,4
+20,2026-10-12T22:56:45.210434+00:00,t4-012,A,SUP-5,SUP,Task,[outage] Cannot reach our EU workspaces,"Hey team,
+
+I'm the engineering manager at Brambleway Studio. Your EU region seems to be down: every request to our EU workspaces times out for our whole team in Madrid and Berlin.
+
+Our US workspace still works.
+
+We have a hard deadline tomorrow morning, so please treat this as urgent. Is there an incident open?
+
+Cheers,
+[NAME_1]
+category=outage (1) priority=P1 (0.999877) urgency=high ticket_ref=71379c4d980102614683",t4|t4dk-71379c4d980102614683|t4-cat-outage,Highest,5
+24,2026-10-12T22:56:46.412939+00:00,t4-014,A,SUP-6,SUP,Task,[feature] Feature request: deals in EUR and USD,"Dear Support Team,
+
+I'm the operations manager at Hollowfen Media. We would like to keep deals in more than one currency in the same workspace.
+
+We sell in the US and in Europe. Our reports would need to convert amounts at a fixed monthly rate.
+
+Please consider it.
+
+Kind regards,
+[NAME_1]
+category=feature (1) priority=P4 (1) urgency=low ticket_ref=64729f0d7f8ea1544576",t4|t4dk-64729f0d7f8ea1544576|t4-cat-feature,Low,6
+30,2026-10-12T22:56:49.683127+00:00,t4-017,A,SUP-7,SUP,Task,[billing] Invoice needs our VAT number,"Hi there!
+
+I look after our account at Kettlewick Ltd. Our VAT ID is saved in the billing settings, but it does not appear on invoice INV-2026-5316, and the invoice charges VAT that should be reverse charged.
+
+We checked the billing settings and the tax details look correct there. Our accountant cannot book the invoice in its current form.
+
+This is blocking us right now, so we need help today. Could you reissue the invoice with the VAT ID and a reverse charge note?
+
+Thanks so much!
+[NAME_1]
+category=billing (1) priority=P2 (0.999569) urgency=high ticket_ref=202c1915d68a548cd7d2",t4|t4dk-202c1915d68a548cd7d2|t4-cat-billing,High,7
+34,2026-10-12T22:56:51.595783+00:00,t4-019,A,SUP-8,SUP,Task,[bug] Timezone wrong after the clock change,"Hello support,
+
+Writing on behalf of Hollowfen Media. Our 8:00 reports now come at 9:00, which started right after the clocks changed.
+
+We can send the reports by hand in the meantime.
+
+A reply in the next few days would be great. Could you check the scheduler?
+
+Best,
+[NAME_1]
+category=bug (0.999999) priority=P3 (1) urgency=medium ticket_ref=9a2ecadc6ceb4b1a8209",t4|t4dk-9a2ecadc6ceb4b1a8209|t4-cat-bug,Medium,8
