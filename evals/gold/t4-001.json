@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-001",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-001@mail.example.com>",
+    "from_name": "Hanna Quintero",
+    "from_email": "hanna.quintero@glimmerbrook.example.org",
+    "subject": "Charged twice this month",
+    "body_text": "Hello,\n\nWriting on behalf of Glimmerbrook BV. We were charged twice for our Team subscription this month: two payments of €149.00 went through on Monday, a few minutes apart.\n\nInvoice INV-2026-2199 only lists one payment, so the second charge looks like a mistake. Honestly, this is really frustrating.\n\nThis is blocking us right now, so we need help today. Please refund the duplicate payment and confirm once it is done.\n\nRegards,\nHanna",
+    "received_at": "2026-09-01T08:35:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "842e7b3ee94dc1477caf",
+  "content_sha256": "4e489399382cf1ad5b966a4d3b2dc40017a871543aeabbaed93744906d630309",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean billing (billing-double-charge): a double charge is P2 in the guide; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-double-charge",
+    "version": "1.0"
+  }
+}

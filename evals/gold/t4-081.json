@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-081",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-081@mail.example.com>",
+    "from_name": "Hanna Brandt",
+    "from_email": "hanna.brandt@ottervale.example.com",
+    "subject": "Downgrade not reflected on our bill",
+    "body_text": "Good morning,\n\nAfter switching down to the Starter plan, we expected a prorated credit, but invoice INV-2026-9635 shows the old Business plan price.\n\nThe plan page in the settings shows the new plan correctly. Your pricing page says plan changes are prorated.\n\nA reply in the next few days would be great. Can you apply the prorated credit to our next invoice?\n\nBest regards,\nHanna Brandt\naccount manager, Ottervale Software",
+    "received_at": "2026-09-12T08:05:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "8619ca982b380c527a43",
+  "content_sha256": "f95d3bfc598e2dcf0e32e7b712200c77dc8acc115b810020855d7da349d3221f",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean billing (billing-downgrade-credit): a billing error with no work blocked is P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-downgrade-credit",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-097",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-097@mail.example.com>",
+    "from_name": "Darius Tanabe",
+    "from_email": "darius.tanabe@tidewell.example.com",
+    "subject": "Payment failed for Starter renewal",
+    "body_text": "Hello,\n\nThe card payment for our Starter renewal was declined, and we got a warning that access will be suspended.\n\nOur bank says it never saw the payment attempt, so we think the problem is on the payment side. We already updated the card details once and the retry failed again. We are not happy that this happened at all.\n\nIt is affecting our work as we speak, so please look at it today. Can you send a payment link or let us pay by bank transfer instead?\n\nRegards,\nDarius",
+    "received_at": "2026-09-14T11:56:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "7e9ae5e59754815ed632",
+  "content_sha256": "bd61b2a533a2da5666cd683510db23146398f2f8c53f5f9aaab02baf33d418a3",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean billing (billing-card-declined): a failed renewal with suspension pending blocks the whole account with no workaround, so P2; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-card-declined",
+    "version": "1.0"
+  }
+}

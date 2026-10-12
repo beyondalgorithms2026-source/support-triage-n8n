@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-150",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "tone_mismatch",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-150@mail.example.com>",
+    "from_name": "Henrik Whitfield",
+    "from_email": "henrik.whitfield@saltmarsh.example.com",
+    "subject": "Third time asking",
+    "body_text": "This is the THIRD time I am asking: where is the bulk-delete API endpoint your sales rep promised us? Our developers are fed up with deleting records one by one. We plan our next sprint on Friday and need to know if it is coming.\n\nHenrik Whitfield\nengineering manager, Saltmarsh Robotics",
+    "received_at": "2026-09-21T19:04:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "92b290abde8b83cfc96f",
+  "content_sha256": "b91c9904b328233619621a9de015666a151087103e2938e5379a2308a4236e83",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "tone_mismatch: angry, but a missing API endpoint is a feature request = P4; the sprint planning date gives a this-week need = medium.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-feature-tone-bulk-api",
+    "version": "1.0"
+  }
+}

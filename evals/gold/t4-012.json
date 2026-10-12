@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-012",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-012@mail.example.com>",
+    "from_name": "Freya Moreau",
+    "from_email": "freya.moreau@brambleway.example.net",
+    "subject": "Cannot reach our EU workspaces",
+    "body_text": "Hey team,\n\nI'm the engineering manager at Brambleway Studio. Your EU region seems to be down: every request to our EU workspaces times out for our whole team in Madrid and Berlin.\n\nOur US workspace still works.\n\nWe have a hard deadline tomorrow morning, so please treat this as urgent. Is there an incident open?\n\nCheers,\nFreya",
+    "received_at": "2026-09-02T20:45:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "71379c4d980102614683",
+  "content_sha256": "62afbe05216ca1e1ba9ef3b0bafb72fe1fbebc4b9175ad6deef621c758dd1a68",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean outage (outage-eu-region): a whole region is unreachable, so outage P1; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "outage-eu-region",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-029",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-029@mail.example.com>",
+    "from_name": "Zoe Novak",
+    "from_email": "zoe.novak@velloran.example.net",
+    "subject": "Emailing reports automatically",
+    "body_text": "Hello,\n\nI'm the account manager at Velloran SAS. Is there a way to send the activity report automatically by email each week?\n\nI found the Reports page but not the schedule option. We are on the Scale plan, if that matters.\n\nThanks for any pointers.\n\nRegards,\nZoe",
+    "received_at": "2026-09-05T04:43:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "736bc999ee8b00f52415",
+  "content_sha256": "9ab8fa36f9045b7e063d95e69059a78a74e455eded041e8d7d54ff2a5740b788",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean howto (howto-schedule-report): a how-to question that does not block work is P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "howto-schedule-report",
+    "version": "1.0"
+  }
+}

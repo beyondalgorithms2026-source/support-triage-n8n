@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-062",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-062@mail.example.com>",
+    "from_name": "Leila Varga",
+    "from_email": "leila.varga@quillmoor.example.org",
+    "subject": "Two-way calendar sync",
+    "body_text": "Hello,\n\nI look after our account at Quillmoor GmbH. Please add two-way sync with Outlook calendars; today only Google Calendar is supported.\n\nWe are deciding whether to roll the app out to more teams this quarter. People currently copy meetings by hand.\n\nWe would like this sorted before the end of the week. Please let us know if it is planned.\n\nThanks,\nLeila",
+    "received_at": "2026-09-09T17:43:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "4c4e2ddb6241a352ce69",
+  "content_sha256": "74b80c9f50b2cc97eef3f6043f724c0b05cac4f877ebca501a45bb5d86ea4e35",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean feature (feature-outlook-sync): a request for something the product does not do is P4; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "feature-outlook-sync",
+    "version": "1.0"
+  }
+}

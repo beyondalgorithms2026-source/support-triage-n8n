@@ -1,0 +1,50 @@
+{
+  "input_id": "t4-174",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "pii",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-174@mail.example.com>",
+    "from_name": "Nikhil Whitfield",
+    "from_email": "nikhil.whitfield@velloran.example.net",
+    "subject": "500 errors on every request",
+    "body_text": "Hi,\n\nWriting on behalf of Velloran SAS. All of our API requests have failed with HTTP 500 since 17:20 UTC, for every workspace and every API key we have.\n\nYour status page still shows everything as operational. Our office egress IP is 203.0.113.42, in case that helps with the logs. You can reach me on +1 646 555 0123 if a call is quicker. Honestly, this is really frustrating.\n\nThis is blocking us right now, so we need help today. Can you tell us what is happening?\n\nThanks,\nNikhil Whitfield",
+    "received_at": "2026-09-25T00:51:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "dd28b35cb1357ceb2903",
+  "content_sha256": "0ebecab23221698832b617e761d0ebd74bee4c98f4c6d65beb39c299d8dcda7a",
+  "duplicate_of": null,
+  "pii": [
+    {
+      "type": "ipv4",
+      "value": "203.0.113.42"
+    },
+    {
+      "type": "phone",
+      "value": "+1 646 555 0123"
+    },
+    {
+      "type": "name",
+      "value": "Nikhil Whitfield"
+    }
+  ],
+  "injection": null,
+  "fault": null,
+  "label_notes": "pii outage (outage-all-500): the API is down across all workspaces, which is outage material and P1; urgency high: ongoing impact or a deadline within 24 h; planted: ipv4, phone, name.",
+  "generator": {
+    "seed": 20261012,
+    "template": "outage-all-500",
+    "version": "1.0"
+  }
+}

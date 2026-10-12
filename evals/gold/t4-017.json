@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-017",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-017",
+    "from_name": "Hanna Delacroix",
+    "from_email": "hanna.delacroix@kettlewick.example.net",
+    "subject": "Invoice needs our VAT number",
+    "body_text": "Hi there!\n\nI look after our account at Kettlewick Ltd. Our VAT ID is saved in the billing settings, but it does not appear on invoice INV-2026-5316, and the invoice charges VAT that should be reverse charged.\n\nWe checked the billing settings and the tax details look correct there. Our accountant cannot book the invoice in its current form.\n\nThis is blocking us right now, so we need help today. Could you reissue the invoice with the VAT ID and a reverse charge note?\n\nThanks so much!\nHanna",
+    "received_at": "2026-09-03T13:52:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P3",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "202c1915d68a548cd7d2",
+  "content_sha256": "902a068f1b0276b7d93b2662571a9de3f589758a316d759cf961f4f2152267bf",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean billing (billing-vat-missing): a single invoice error is P3; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-vat-missing",
+    "version": "1.0"
+  }
+}

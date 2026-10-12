@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-135",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "short",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-135@mail.example.com>",
+    "from_name": "Leila Lindqvist",
+    "from_email": "leila.lindqvist@tidewell.example.com",
+    "subject": "data",
+    "body_text": "delete my data please",
+    "received_at": "2026-09-19T16:26:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "bc69737610e6f31b8411",
+  "content_sha256": "32d51d21357cf06b0cb80401a89a876cd678b4e44aa40bcc5b2a30e1a5d44d07",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "short: an erasure request = privacy P3; no time pressure stated = low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-privacy-short",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-191",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "duplicate",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-191@mail.example.com>",
+    "from_name": "Freya Marchetti",
+    "from_email": "freya.marchetti@kettlewick.example.net",
+    "subject": "MORE GRANULAR ROLES",
+    "body_text": "Hi team,\r\n\r\nWriting on behalf of Kettlewick Ltd. Please add custom roles with permissions we can choose ourselves.\r\n\r\nOur contractors currently see more than they need. Other apps we use let us copy a role and change a few settings.\r\n\r\nPlease consider it for a future release.\r\n\r\nRegards,\r\nFreya Marchetti",
+    "received_at": "2026-09-27T09:03:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "duplicate_skip",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "4c9dae1d059ea64628ae",
+  "content_sha256": "c5b235890de62dd7b7c05bdc6c2df0224237f8d8fcc07b71fea74b046239f9ff",
+  "duplicate_of": "t4-102",
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "duplicate: same sender, subject and body as t4-102 with a new message id.",
+  "generator": {
+    "seed": 20261012,
+    "template": "duplicate-content:t4-102",
+    "version": "1.0"
+  }
+}

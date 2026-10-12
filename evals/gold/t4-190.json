@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-190",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "duplicate",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-190@mail.example.com>",
+    "from_name": "Henrik Brandt",
+    "from_email": "henrik.brandt@tidewell.example.com",
+    "subject": "Slack notifications setup",
+    "body_text": "Hi folks,\n\nHow do we set up Slack notifications for new tasks in one project?\n\nI saw a Slack option under Integrations, but it asks for settings I do not understand.\n\nNo rush on this, whenever you have a moment. Could you explain the steps?\n\nThanks so much!\nHenrik Brandt",
+    "received_at": "2026-09-27T05:55:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "duplicate_skip",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "c772eb67f2888a151115",
+  "content_sha256": "09ec2644780f1ce262b0d0001077797e0cc510e9b3e14b25308700470e3593c6",
+  "duplicate_of": "t4-077",
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "duplicate: same sender, subject and body as t4-077 with a new message id.",
+  "generator": {
+    "seed": 20261012,
+    "template": "duplicate-content:t4-077",
+    "version": "1.0"
+  }
+}

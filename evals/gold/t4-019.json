@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-019",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-019@mail.example.com>",
+    "from_name": "Freya Ferreira",
+    "from_email": "freya.ferreira@hollowfen.example.com",
+    "subject": "Timezone wrong after the clock change",
+    "body_text": "Hello support,\n\nWriting on behalf of Hollowfen Media. Our 8:00 reports now come at 9:00, which started right after the clocks changed.\n\nWe can send the reports by hand in the meantime.\n\nA reply in the next few days would be great. Could you check the scheduler?\n\nBest,\nFreya",
+    "received_at": "2026-09-03T19:37:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "9a2ecadc6ceb4b1a8209",
+  "content_sha256": "16ab57821cf31190cdea63d78b23eb534128011bb272d73b34e2702b5a643001",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean bug (bug-timezone): impaired with a workaround is P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "bug-timezone",
+    "version": "1.0"
+  }
+}

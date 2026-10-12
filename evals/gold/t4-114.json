@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-114",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "multi_issue",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-114@mail.example.com>",
+    "from_name": "Jonas Quintero",
+    "from_email": "jonas.quintero@saltmarsh.example.com",
+    "subject": "2FA code rejected on new laptop + timezone",
+    "body_text": "Hi team,\n\nI cannot log in on my new laptop: the 2FA code from my authenticator is rejected every time. I can still get in on my phone, so I am not fully stuck, but I need the laptop working this week.\n\nAlso, unrelated: the mobile app shows all my due dates in the wrong timezone.\n\nCheers,\nJonas",
+    "received_at": "2026-09-16T19:22:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "e34e451cf88443070c24",
+  "content_sha256": "0c1ef3063a28cf8810f37803d60f045d3b71bb7c6091148c32122f7f8e16dd35",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "multi_issue: the 2FA failure blocks the customer most (access, workaround on phone = P3, this week = medium). Second issue: wrong timezone in the mobile app (bug).",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-access-multi-2fa-timezone",
+    "version": "1.0"
+  }
+}

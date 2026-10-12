@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-090",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-090@mail.example.com>",
+    "from_name": "Dana Kowalczyk",
+    "from_email": "dana.kowalczyk@quillmoor.example.org",
+    "subject": "Suspicious sign-in and new API key",
+    "body_text": "Hello,\n\nI'm the head of finance at Quillmoor GmbH. Someone signed in to our admin account overnight from an unknown location and created two API keys we do not recognise.\n\nThe audit log shows the new keys were used a few minutes later. This has already cost us a morning of work.\n\nIt is affecting our work as we speak, so please look at it today. Please help us revoke all sessions and keys and check what was accessed.\n\nRegards,\nDana",
+    "received_at": "2026-09-13T13:16:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "2d2e193893c8b12f1b1a",
+  "content_sha256": "834cffc0532bccec7285576318e6a5608a2d6132930acf20a0c9325143cb16a9",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean access (access-suspicious-login): a suspected security incident is P1 in the guide; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "access-suspicious-login",
+    "version": "1.0"
+  }
+}

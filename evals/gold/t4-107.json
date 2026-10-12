@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-107",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "ambiguous",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-107@mail.example.com>",
+    "from_name": "Dana Albright",
+    "from_email": "dana.albright@fennimore.example.com",
+    "subject": "Projects page fails to load",
+    "body_text": "Hello,\n\nOne of our workspaces shows 'failed to load' on the Projects page since this morning. Our other two workspaces are fine, and a contact at another company says it works for them. The design team lives in that workspace and cannot plan any work today.\n\nThanks,\nDana",
+    "received_at": "2026-09-15T20:32:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "bac90be249ecf2b2eddd",
+  "content_sha256": "6f6ea8f24e6c9fdafe83fbf11012f5d68c88a3ea41d8182f2b462869f76659da",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "bug vs outage: it looks like a failure, but only one workspace of one customer is affected, so bug; core workflow broken with no workaround = P2; blocked today = high.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-bug-ambiguous-one-workspace",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "input_id": "t4-100",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-100",
+    "from_name": "Mei Delacroix",
+    "from_email": "mei.delacroix@saltmarsh.example.com",
+    "subject": "App not loading for anyone",
+    "body_text": "Hello,\n\nWriting on behalf of Saltmarsh Robotics. Since 14:35 UTC, nobody in our Boston and Portland offices can load the dashboard.\n\nContacts at two other companies tell us they see the same thing. Honestly, this is really frustrating.\n\nWe have a hard deadline tomorrow morning, so please treat this as urgent. Is there an incident on your side?\n\nThanks,\nMei Delacroix\nfounder, Saltmarsh Robotics",
+    "received_at": "2026-09-14T21:31:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "094564785c795f740909",
+  "content_sha256": "11bc89da4d5a7bfad8c9a683604767123a8fde84bb96924b3207666471d1a87f",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": {
+    "target": "sink:jira_links",
+    "mode": "503",
+    "pass": "A"
+  },
+  "label_notes": "clean outage (outage-app-blank): the app is down for many users at several companies, so outage P1; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "outage-app-blank",
+    "version": "1.0"
+  }
+}

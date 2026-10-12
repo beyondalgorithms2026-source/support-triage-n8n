@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-120",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "auto_reply",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-120@mail.example.com>",
+    "from_name": "Ingrid Ferreira",
+    "from_email": "ingrid.ferreira@ottervale.example.com",
+    "subject": "Undeliverable: Re: Your ticket #48213 has been updated",
+    "body_text": "Delivery has failed to these recipients or groups:\n\nops-team@ottervale.example.com\nThe email address you entered could not be found. Please check the recipient's address and try to send the message again.\n\nDiagnostic information for administrators:\nRemote server returned '550 5.1.1 RESOLVER.ADR.RecipNotFound; not found'",
+    "received_at": "2026-09-17T15:18:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "1c988a05682341fcde35",
+  "content_sha256": "37a5fa7097796cae97f92d47ec8529c0b331f3ca8e0de5265cc3fb0350685ad9",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "auto_reply: a mail server bounce = other P4 low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-other-autoreply-bounce",
+    "version": "1.0"
+  }
+}

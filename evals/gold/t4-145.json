@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-145",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "ambiguous",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-145@mail.example.com>",
+    "from_name": "Sofia Pemberton",
+    "from_email": "sofia.pemberton@nimbleford.example.org",
+    "subject": "Nonprofit pricing?",
+    "body_text": "Hi there,\n\nDo you offer a nonprofit discount? We are a registered charity with 30 staff, and the Team plan is a stretch for our budget. Happy to send proof of our status.\n\nKind regards,\nSofia Pemberton\nNimbleford Dental",
+    "received_at": "2026-09-21T02:08:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "4504262ffc34de7bbb8b",
+  "content_sha256": "666f773a3ad67a31a5f1f878ca521b081e2446d8a9bdc229955e008e3368ebe3",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "billing vs other/howto: a pricing question about the plan the customer pays for is billing; no impact and no deadline, so P4 low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-billing-ambiguous-discount",
+    "version": "1.0"
+  }
+}

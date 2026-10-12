@@ -1,0 +1,41 @@
+{
+  "input_id": "t4-075",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-075",
+    "from_name": "Tomasz Achterberg",
+    "from_email": "tomasz.achterberg@glimmerbrook.example.org",
+    "subject": "Scheduled reports arrive an hour late",
+    "body_text": "Good morning,\n\nWriting on behalf of Glimmerbrook BV. Since the daylight saving change, our scheduled reports arrive an hour later than the time we set.\n\nWe can send the reports by hand in the meantime.\n\nCould you look into this sometime this week? Please let us know if we need to change anything.\n\nYours sincerely,\nTomasz",
+    "received_at": "2026-09-11T12:38:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "b0fbf3779b69a517389f",
+  "content_sha256": "a4587ae1dfef02f9c356f7a2a2283ad95bb2f90f19f4c03e9f6ac596389cb97d",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": {
+    "target": "sink:jira_links",
+    "mode": "503",
+    "pass": "A"
+  },
+  "label_notes": "clean bug (bug-timezone): impaired with a workaround is P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "bug-timezone",
+    "version": "1.0"
+  }
+}

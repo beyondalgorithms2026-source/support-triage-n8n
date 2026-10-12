@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-074",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-074@mail.example.com>",
+    "from_name": "Darius Okonkwo",
+    "from_email": "darius.okonkwo@wrenfield.example.com",
+    "subject": "Role does not give access to Reports",
+    "body_text": "Hey team,\n\nWe gave one of our team leads the Manager role, and they still get a 'no permission' message when opening Reports.\n\nWe tried removing and adding the role again.\n\nCould you look into this sometime this week? Please tell us what we are missing.\n\nThanks so much!\nDarius Okonkwo\ncustomer success lead, Wrenfield Partners",
+    "received_at": "2026-09-11T07:59:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "603b5514fad63d24ab3a",
+  "content_sha256": "2eb7a1b0e735fc8b18ee8b3e1f25922b927de5f9f7d75989c4e2a055af3bcf41",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean access (access-role-permission): a role problem for one user with others unaffected is P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "access-role-permission",
+    "version": "1.0"
+  }
+}

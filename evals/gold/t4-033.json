@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-033",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-033",
+    "from_name": "Bruno Albright",
+    "from_email": "bruno.albright@wrenfield.example.com",
+    "subject": "Cancel our subscription",
+    "body_text": "Dear support,\n\nI'm the founder at Wrenfield Partners. Please cancel the Wrenfield Partners subscription when the current term ends; we are consolidating our software.\n\nWe will export our projects ourselves before the end date.\n\nCould you confirm the last charge we should expect?\n\nYours sincerely,\nBruno Albright\nfounder, Wrenfield Partners",
+    "received_at": "2026-09-05T18:43:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P3",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "7818fb17985408f891f6",
+  "content_sha256": "6a3f8f80c420a7a788f75f60b86e6b2e73a3b7e9b332c875e311f29b252a71b1",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean billing (billing-cancel): cancellation intent is billing; nothing is broken, so P3; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-cancel",
+    "version": "1.0"
+  }
+}

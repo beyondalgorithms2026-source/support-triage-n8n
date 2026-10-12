@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-127",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "tone_mismatch",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-127@mail.example.com>",
+    "from_name": "Ingrid Oyelaran",
+    "from_email": "ingrid.oyelaran@ottervale.example.com",
+    "subject": "HOW DID YOU GET MY ADDRESS",
+    "body_text": "I NEVER signed up for your newsletter. How did you even get my email address?! I want to know exactly what data you have about me and where you got it. TODAY.\n\nIngrid",
+    "received_at": "2026-09-18T14:42:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "high"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "1e00f653c448cc689232",
+  "content_sha256": "495492a333f9d94a55e1fcc0819561d8f305500c644589b690fb8bb618a753da",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "tone_mismatch: very angry; it is a data access request, so privacy; priority stays P3 (no incident); 'today' = urgency high.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-privacy-tone-newsletter",
+    "version": "1.0"
+  }
+}

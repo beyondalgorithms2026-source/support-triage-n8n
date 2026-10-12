@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-030",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-030@mail.example.com>",
+    "from_name": "Mateo Brandt",
+    "from_email": "mateo.brandt@kettlewick.example.net",
+    "subject": "Feature idea: Gantt charts",
+    "body_text": "Dear support,\n\nI look after our account at Kettlewick Ltd. Please consider adding a Gantt chart view; we plan long projects with many steps.\n\nRight now we export to a spreadsheet to see the timeline.\n\nA reply in the next few days would be great. Is this on your roadmap?\n\nBest regards,\nMateo",
+    "received_at": "2026-09-05T08:18:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "c23e9079fb3f13275c2a",
+  "content_sha256": "e2fc7d81b4eedea43f4afb9fcc696edfe5acb43e162a5badf0b8a0e28d27a8f6",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean feature (feature-gantt): a request for something the product does not do is P4; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "feature-gantt",
+    "version": "1.0"
+  }
+}

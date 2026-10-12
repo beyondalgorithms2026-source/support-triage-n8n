@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-098",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-098@mail.example.com>",
+    "from_name": "Nikhil Iversen",
+    "from_email": "nikhil.iversen@tidewell.example.com",
+    "subject": "'Seat limit reached' when adding a user",
+    "body_text": "Hi folks,\n\nThe admin page says we have 39 seats, yet inviting anyone new shows a seat limit error.\n\nWe have 28 people in the workspace right now. The purchase shows on our invoice.\n\nA reply in the next few days would be great. Can you refresh our seat count?\n\nThanks so much!\nNikhil Iversen",
+    "received_at": "2026-09-14T16:12:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "9824cbe510efa3f44a24",
+  "content_sha256": "2f8595ca8f6ed6e5428875e436cb237e7443c6f4c72d3ec454944e88abaa5e7f",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean access (access-seat-limit): a seat problem that blocks one new user is P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "access-seat-limit",
+    "version": "1.0"
+  }
+}

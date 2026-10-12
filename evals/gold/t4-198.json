@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-198",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "malformed",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-198@mail.example.com>",
+    "from_name": "Ingrid Novak",
+    "from_email": "ingrid.novak@amberlow.example.org",
+    "subject": "API 503 on all workspaces",
+    "body_text": "Hi,\n\nThe API returns 503 for every request across all our workspaces. Output from our health check:\n\n\u001b[31mERROR\u001b[0m GET /v2/projects -> 503 Service Unavailable\u0000\n\u001b[31mERROR\u001b[0m GET /v2/tasks -> 503 Service Unavailable\u0007\n\u001b[31mERROR\u001b[0m POST /v2/events -> 503 Service Unavailable\b\n\nThis has been going on since 10:05 UTC. Please fix it now.\n\nIngrid",
+    "received_at": "2026-09-28T08:48:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "c6da49b591d607d91753",
+  "content_sha256": "1d987abdd2cc489dec37a01f5d0b47e35d42b42d619b5ee1619ada131616bf1a",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "malformed control_characters: terminal escape and NUL/BEL/BS/DEL characters in the body; intake must not crash, the ticket goes through as labelled (outage P1 high).",
+  "generator": {
+    "seed": 20261012,
+    "template": "malformed-as-label",
+    "version": "1.0"
+  }
+}

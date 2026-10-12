@@ -1,0 +1,54 @@
+{
+  "input_id": "t4-180",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "pii",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-180@mail.example.com>",
+    "from_name": "Henrik Esposito",
+    "from_email": "henrik.esposito@velloran.example.net",
+    "subject": "Card declined, account at risk of suspension",
+    "body_text": "Hi folks,\n\nWriting on behalf of Velloran SAS. The card payment for our Scale renewal was declined, and we got a warning that access will be suspended.\n\nWe already updated the card details once and the retry failed again. For reference, the payment was made with card 5555-5555-5555-4444. Our W-9 lists the SSN 987-65-4325, as I am a sole proprietor. If a refund is easier by bank transfer, our IBAN is GB82 WEST 1234 5698 7654 32.\n\nWe have a hard deadline tomorrow morning, so please treat this as urgent. Can you send a payment link or let us pay by bank transfer instead?\n\nCheers,\nHenrik Esposito",
+    "received_at": "2026-09-25T19:46:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "c969133aa220435dc285",
+  "content_sha256": "d15f102c6cb6f28862c8232d60bcbeae7808c5e1495dc0c4fc15949128c06f02",
+  "duplicate_of": null,
+  "pii": [
+    {
+      "type": "card",
+      "value": "5555-5555-5555-4444"
+    },
+    {
+      "type": "ssn",
+      "value": "987-65-4325"
+    },
+    {
+      "type": "iban",
+      "value": "GB82 WEST 1234 5698 7654 32"
+    },
+    {
+      "type": "name",
+      "value": "Henrik Esposito"
+    }
+  ],
+  "injection": null,
+  "fault": null,
+  "label_notes": "pii billing (billing-card-declined): a failed renewal with suspension pending blocks the whole account with no workaround, so P2; urgency high: ongoing impact or a deadline within 24 h; planted: card, ssn, iban, name.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-card-declined",
+    "version": "1.0"
+  }
+}

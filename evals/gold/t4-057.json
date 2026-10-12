@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-057",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-057@mail.example.com>",
+    "from_name": "Yara Moreau",
+    "from_email": "yara.moreau@tidewell.example.com",
+    "subject": "Duplicate payment for invoice INV-2026-4634",
+    "body_text": "Hi,\n\nWriting on behalf of Tidewell Logistics. We were charged twice for our Scale subscription this month: two payments of $2,490.00 went through on Friday, a few minutes apart.\n\nThe second charge has pushed our company card close to its monthly limit.\n\nCould you look into this sometime this week? Could you reverse the second charge and send a corrected receipt?\n\nBest,\nYara",
+    "received_at": "2026-09-09T00:21:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P2",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "2fd77c1eb03e84f9220a",
+  "content_sha256": "b959ea927362fecb515b16e06c20981de04a35bae11a4861d2a364c853d124bf",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean billing (billing-double-charge): a double charge is P2 in the guide; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-double-charge",
+    "version": "1.0"
+  }
+}

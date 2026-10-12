@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-143",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "thread_quoted",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-143@mail.example.com>",
+    "from_name": "Owen Marchetti",
+    "from_email": "owen.marchetti@nimbleford.example.org",
+    "subject": "Re: Request for a copy of my personal data",
+    "body_text": "Hello,\n\nFollowing up: it has now been 25 days since my access request, and I have not received anything. The legal deadline is in 5 days.\n\nOwen Marchetti\n\nOn Thu, 27 Aug 2026 at 18:32, Sam Ortega (Support) wrote:\n> This is an automatic confirmation. We have received your request and will\n> reply as soon as possible. Your reference is REQ-2213.\n\n> On Wed, 26 Aug 2026 at 17:25, Owen Marchetti wrote:\n>> Under GDPR Article 15 I request a copy of all personal data you hold about\n>> me, the purposes of the processing, and the recipients you have shared it\n>> with. Please reply to this address.",
+    "received_at": "2026-09-20T19:39:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P2",
+    "urgency": "medium"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "46356df719f5729791e5",
+  "content_sha256": "8d711c695bb1e1d625ea56830eb54a53777a23ac2144c4635e605fc19b2a1687",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "thread_quoted: an overdue data access request with the legal deadline at risk = privacy P2; 5 days left = medium.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-privacy-thread-deadline",
+    "version": "1.0"
+  }
+}

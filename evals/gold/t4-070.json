@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-070",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-070@mail.example.com>",
+    "from_name": "Dana Okonkwo",
+    "from_email": "dana.okonkwo@kettlewick.example.net",
+    "subject": "Multi-currency support",
+    "body_text": "Dear support,\n\nCould you support several currencies per workspace?\n\nWe sell in the US and in Europe. Our reports would need to convert amounts at a fixed monthly rate. Right now we keep two separate workspaces.\n\nPlease consider it.\n\nKind regards,\nDana",
+    "received_at": "2026-09-10T19:55:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "2a43323a252b82efaaf3",
+  "content_sha256": "3a4b7ef3bfe0662fb2891dc5149b0a5ede1cd54ee2eafcd4e28772d8b821b354",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean feature (feature-multi-currency): a request for something the product does not do is P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "feature-multi-currency",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-086",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-086@mail.example.com>",
+    "from_name": "Sofia Okonkwo",
+    "from_email": "sofia.okonkwo@nimbleford.example.org",
+    "subject": "Feature idea: Gantt charts",
+    "body_text": "Hi folks,\n\nWriting on behalf of Nimbleford Dental. Please consider adding a Gantt chart view; we plan long projects with many steps.\n\nRight now we export to a spreadsheet to see the timeline. Most of our projects run for six months or more.\n\nPlease pass this on to your product team.\n\nCheers,\nSofia Okonkwo",
+    "received_at": "2026-09-13T00:55:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "a984b985c24344573198",
+  "content_sha256": "dd6b2d1a752bd1d974a0fc740e75478994b7386faf7c5cfc98ab6c0bff21f5ee",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean feature (feature-gantt): a request for something the product does not do is P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "feature-gantt",
+    "version": "1.0"
+  }
+}

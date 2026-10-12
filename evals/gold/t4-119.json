@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-119",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "multi_issue",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-119@mail.example.com>",
+    "from_name": "Nikhil Pemberton",
+    "from_email": "nikhil.pemberton@ottervale.example.com",
+    "subject": "VAT rate and a former employee",
+    "body_text": "Hi,\n\nOur last invoice has the wrong VAT rate, can you check it?\n\nAlso, a former employee has asked us for a copy of all the personal data about them in your app. How do we handle that? We want to answer within the month.\n\nBest regards,\nNikhil Pemberton\nengineering manager, Ottervale Software",
+    "received_at": "2026-09-17T12:51:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "69ddc8fc33ff45b7fa9f",
+  "content_sha256": "adac262a8d23a4ea7022236064400dce53b3b9dbdf948b9eaf7e9ab6e3705ffb",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "multi_issue: a data access request is present, and privacy beats every other category (P3 medium). Second issue: wrong VAT rate on an invoice (billing).",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-privacy-multi-vat-employee",
+    "version": "1.0"
+  }
+}

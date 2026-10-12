@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-027",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-027@mail.example.com>",
+    "from_name": "Jonas Pemberton",
+    "from_email": "jonas.pemberton@velloran.example.net",
+    "subject": "PDF upload fails at 99%",
+    "body_text": "Hello,\n\nWriting on behalf of Velloran SAS. Any PDF above roughly 10 MB stops at 99% and then shows an upload error.\n\nYour docs say the limit is 50 MB on our plan. Smaller files upload fine, so we split the large ones for now.\n\nCould you look into this sometime this week? Is there a fix planned?\n\nThanks,\nJonas",
+    "received_at": "2026-09-04T23:12:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "186d3144a79733e002cb",
+  "content_sha256": "e10e33978f7c791a97c5ebd6ad8335e80efb80082b4bf19f66ff15a2cde31afb",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean bug (bug-upload-large): impaired with a workaround is P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "bug-upload-large",
+    "version": "1.0"
+  }
+}

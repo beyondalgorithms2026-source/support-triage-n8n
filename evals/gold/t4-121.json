@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-121",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "tone_mismatch",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-121@mail.example.com>",
+    "from_name": "Tomasz Quintero",
+    "from_email": "tomasz.quintero@amberlow.example.org",
+    "subject": "Seriously??",
+    "body_text": "I am SO tired of getting a separate invoice email every single month. Twelve emails a year for the same thing!!! Is there really no way to pay once a year and get ONE invoice instead?? Honestly.\n\nTomasz",
+    "received_at": "2026-09-17T19:01:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "52b67c100d8604351a43",
+  "content_sha256": "11bd99c454de405a925cad7292e5a219e5758769b716379457431b77ed2fdf03",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "tone_mismatch: angry tone, but it is a general question about switching to annual billing with no impact and no deadline, so billing P4 low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-billing-tone-annual",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-010",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-010@mail.example.com>",
+    "from_name": "Freya Oyelaran",
+    "from_email": "freya.oyelaran@saltmarsh.example.com",
+    "subject": "Invitation not working",
+    "body_text": "Hello support,\n\nWe invited a new colleague yesterday, but the invite link says it has expired when they open it.\n\nWe have resent the invite three times with the same result. We have free seats on our plan, so that should not be the problem.\n\nWe would like this sorted before the end of the week. Can you check what is wrong with the invitations?\n\nBest,\nFreya",
+    "received_at": "2026-09-02T14:12:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "a4b2eeab63b2f1e02f19",
+  "content_sha256": "f8761a53719a6dd452bee58b336aa56ffe6641f5352ed07f9143236118e2add7",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean access (access-invite-expired): an invitation problem for one new user is P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "access-invite-expired",
+    "version": "1.0"
+  }
+}

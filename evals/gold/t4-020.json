@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-020",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-020@mail.example.com>",
+    "from_name": "Jonas Szabo",
+    "from_email": "jonas.szabo@saltmarsh.example.com",
+    "subject": "Search returns nothing for everyone",
+    "body_text": "Hi team,\n\nI look after our account at Saltmarsh Robotics. Global search stopped working for all our users at 11:10 UTC; every query returns zero results.\n\nClearing caches did not help.\n\nThis is blocking us right now, so we need help today. Is this a known incident?\n\nBest,\nJonas",
+    "received_at": "2026-09-04T00:05:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "8ecace9d30c58d3e850c",
+  "content_sha256": "2d6b3fefedfccd1937a06ed08dfd0a7df789d9e4140585fa5c87bb18a1050ba2",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean outage (outage-search-down): a core feature is down for many customers while the rest of the app works, so P2; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "outage-search-down",
+    "version": "1.0"
+  }
+}

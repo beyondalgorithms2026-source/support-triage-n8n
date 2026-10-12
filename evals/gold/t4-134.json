@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-134",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "short",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-134@mail.example.com>",
+    "from_name": "Darius Achterberg",
+    "from_email": "darius.achterberg@velloran.example.net",
+    "subject": "outlook",
+    "body_text": "please add Outlook calendar sync",
+    "received_at": "2026-09-19T14:19:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "82fefdb92ff5e0171b37",
+  "content_sha256": "4ea19d7f59d3feea59df80ae2609f97ce5c914ec487481651ece9350f23c74bc",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "short: a feature request = P4 low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-feature-short",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-130",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "short",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-130@mail.example.com>",
+    "from_name": "Mateo Tanabe",
+    "from_email": "mateo.tanabe@hollowfen.example.com",
+    "subject": "LOCKED OUT",
+    "body_text": "locked out. only admin. need in NOW",
+    "received_at": "2026-09-19T00:39:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "f667767cdea3b1401f1d",
+  "content_sha256": "74b747184f5c8be1ee5385f3f6614d4838aa95753b6a4c6153748b270910ae1f",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "short: locked-out admin is P2 in the guide; 'need in now' = ongoing impact, urgency high.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-access-short-admin",
+    "version": "1.0"
+  }
+}

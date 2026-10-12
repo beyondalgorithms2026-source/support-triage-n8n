@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-092",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-092@mail.example.com>",
+    "from_name": "Sofia Tanabe",
+    "from_email": "sofia.tanabe@kettlewick.example.net",
+    "subject": "500 errors on every request",
+    "body_text": "Hi,\n\nI look after our account at Kettlewick Ltd. All of our API requests have failed with HTTP 500 since 09:50 UTC, for every workspace and every API key we have.\n\nOur integrations and the customer-facing parts of our product are down because of this. Honestly, this is really frustrating.\n\nThis is blocking us right now, so we need help today. Please confirm you are aware and give us an estimate.\n\nThanks,\nSofia",
+    "received_at": "2026-09-13T20:46:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "dec22701b080b2bf4c6b",
+  "content_sha256": "816c633bed21f5e17b66033f20642c9f809f0a455dd3c7aa57b8a100c8ba8655",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean outage (outage-all-500): the API is down across all workspaces, which is outage material and P1; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "outage-all-500",
+    "version": "1.0"
+  }
+}

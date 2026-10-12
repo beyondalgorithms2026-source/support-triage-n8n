@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-043",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-043@mail.example.com>",
+    "from_name": "Darius Iversen",
+    "from_email": "darius.iversen@nimbleford.example.org",
+    "subject": "Contacts export incomplete",
+    "body_text": "Dear support,\n\nOur contacts CSV export is cut off at 1,000 rows every time.\n\nWe can work around it by exporting in smaller filtered batches, but it takes a long time. This started after last week's release; it worked before.\n\nA reply in the next few days would be great. Could you look into it?\n\nBest regards,\nDarius",
+    "received_at": "2026-09-07T03:08:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "1c0302ead2beebddc21c",
+  "content_sha256": "e6f07e4b6a86bf8d444232565838d3c89b58a81e228e004b154f75360288917c",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean bug (bug-export-csv): impaired with a workaround is P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "bug-export-csv",
+    "version": "1.0"
+  }
+}

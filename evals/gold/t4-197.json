@@ -1,0 +1,43 @@
+{
+  "input_id": "t4-197",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "malformed",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-197@mail.example.com>",
+    "from_name": "Mei Brandt",
+    "from_email": "mei.brandt@brambleway.example.net",
+    "subject": "Desktop client installer",
+    "body_text": "Hi,\n\nHow do I install the desktop sync client? I attached the installer I downloaded; is it the right one for Windows?\n\nThanks,\nMei",
+    "received_at": "2026-09-28T04:02:00Z",
+    "attachments": [
+      {
+        "name": "SyncSetup-2.4.exe",
+        "type": "application/x-msdownload",
+        "bytes": 48203776
+      }
+    ]
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "rejected",
+  "must_review": true,
+  "review_reason": "malformed:attachment_type",
+  "dedupe_key": "847f0babe153dbc74411",
+  "content_sha256": "96cc465dea6793aa596ea0ce01fb672f3386f17d745d41f9bdeb7bac74f39af7",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "malformed attachment_type: an .exe attachment, outside the allowed types, rejected at intake (C-2); labels describe the visible request (howto P4 low).",
+  "generator": {
+    "seed": 20261012,
+    "template": "malformed-attachment_type",
+    "version": "1.0"
+  }
+}

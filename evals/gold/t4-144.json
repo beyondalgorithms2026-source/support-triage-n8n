@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-144",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "short",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-144@mail.example.com>",
+    "from_name": "Amara Kowalczyk",
+    "from_email": "amara.kowalczyk@tidewell.example.com",
+    "subject": "Re: Your ticket was solved",
+    "body_text": "thanks!!",
+    "received_at": "2026-09-20T23:13:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "2e532ed630f0190daa9f",
+  "content_sha256": "cf86c40edf9615e42a3df0711f4cabf920c3da7c7a95515dfa3cf05b3f01286f",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "short: a thank-you note = other P4 low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-other-short-thanks",
+    "version": "1.0"
+  }
+}

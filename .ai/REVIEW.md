@@ -1,20 +1,22 @@
-# REVIEW — T4-01 (G1) attempt 1
+# REVIEW — T4-02 (G2) attempt 1
 
-- Changed: src/__init__.py, src/common/__init__.py, src/common/norm.py, src/checks/__init__.py, src/checks/static_checks.py, tests/__init__.py, tests/test_norm.py, tests/test_static_checks.py, OPEN_QUESTIONS.md (Q-19, Q-20, Q-21).
-- Did: G1. norm.py has text_norm, email_norm, dedupe_key, content_sha256. static_checks.py is the T2 port plus allowed hosts, no $env, Jira create without retry, and a Jira/Slack path report.
-- Did-not: evals/, workflows/, scripts/, GOALS.md, .ai/STATUS.md. Goals G2–G14.
-- Check: none. The Bash tool was denied in this run. I did not run unittest, compileall, accept.sh G1 or guard.sh. I did not run git status.
-- Risk: the tests have not run. The loop's accept.sh G1 and guard.sh run decide DONE (OPEN_QUESTIONS Q-21).
-- Next: G2 (T4-02).
+- Changed: src/fixtures/__init__.py, src/fixtures/make_tickets.py, src/fixtures/hard_cases.json, evals/gold/t4-001…t4-200.json, evals/inputs/manifest.csv, evals/README.md, tests/test_fixtures.py, OPEN_QUESTIONS.md (Q-22, Q-23, Q-24).
+- Did: G2. The generator writes 200 gold files from seed 20261012. Gold comes first and the ticket text comes from gold. A rebuild is byte-identical.
+- Did-not: workflows/, scripts/, GOALS.md, .ai/STATUS.md, src/common/. Goals G3–G14.
+- Check: `bash scripts/accept.sh G2` gives ACCEPT PASS [G2]. `bash scripts/guard.sh` gives guard clean. `python3 -m unittest discover -s tests -t .` runs 57 tests, OK.
+- Risk: the labels are not reviewed by a person. The owner must spot-check 30 gold files before publication (HARNESS_SPEC §1.4). Q-22 and Q-23 need an owner answer.
+- Next: G3 (T4-03).
 
 ```mermaid
 flowchart LR
-  T["ticket fields"] --> N["norm.text_norm / email_norm"]
-  N --> C["content_sha256"]
-  T --> D["dedupe_key (raw source|id)"]
-  W["workflow JSON"] --> S["static_checks.audit_workflow"]
-  W --> X["scan_secrets"]
-  S --> R["report: nodes, paths, violations"]
-  X --> R
-  R --> E["--strict exit code"]
+  H["hard_cases.json<br/>48 hard + 16 injection"] --> B["make_tickets.build()"]
+  P["phrase banks<br/>clean, pii, dup, malformed"] --> B
+  B --> L["gold labels, split, outcome, fault"]
+  L --> R["render ticket text"]
+  R --> K["norm.dedupe_key / content_sha256"]
+  K --> G["evals/gold/*.json"]
+  K --> M["evals/inputs/manifest.csv"]
+  K --> S["evals/README.md label stats"]
+  G --> C["--check: temp-dir rebuild + diff"]
+  G --> X["scripts/checks.py gold"]
 ```

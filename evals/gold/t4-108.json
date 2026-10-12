@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-108",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "ambiguous",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-108@mail.example.com>",
+    "from_name": "Fatima Kowalczyk",
+    "from_email": "fatima.kowalczyk@wrenfield.example.com",
+    "subject": "Nobody can log in",
+    "body_text": "Hello,\n\nNobody at Wrenfield Partners can log in: the login page returns '503 Service Unavailable'. Our partners at two other companies tell us they get the same error.\n\nPlease help, we are all stuck.\n\nFatima Kowalczyk",
+    "received_at": "2026-09-16T00:22:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "dee623cc3373dfee6ae6",
+  "content_sha256": "642be3392dc069c39ba5a3bb2ef6edd6e65a98c4509d08500f2231ecb662fd26",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "outage vs access: the symptom is 'cannot sign in', but many users at several companies get 5xx errors, so outage beats access; P1, high.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-outage-ambiguous-login-503",
+    "version": "1.0"
+  }
+}

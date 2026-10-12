@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-048",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-048@mail.example.com>",
+    "from_name": "Yara Pemberton",
+    "from_email": "yara.pemberton@ottervale.example.com",
+    "subject": "Join our panel next month",
+    "body_text": "Hi folks,\n\nWe are hosting a webinar on customer operations next month and would love someone from your team on the panel.\n\nThe session is 45 minutes and fully online. We expect a few hundred people from operations and support teams to attend.\n\nWho could I talk to about this?\n\nMany thanks,\nYara Pemberton",
+    "received_at": "2026-09-07T19:35:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "f66736a02a0bd8f46ed7",
+  "content_sha256": "cfdd8e7fd90f48bd92ed1faa3d947fc005178e826072750e925ad91159498d99",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean other (other-webinar-invite): an event invitation is other P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "other-webinar-invite",
+    "version": "1.0"
+  }
+}

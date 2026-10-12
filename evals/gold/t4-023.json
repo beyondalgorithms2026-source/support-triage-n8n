@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-023",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-023@mail.example.com>",
+    "from_name": "Elliot Delacroix",
+    "from_email": "elliot.delacroix@nimbleford.example.org",
+    "subject": "Account and data deletion",
+    "body_text": "Good morning,\n\nI ask you to erase all personal data about me under Article 17 GDPR.\n\nMy account was under the Nimbleford Dental workspace.\n\nWe would like this sorted before the end of the week. Thank you.\n\nKind regards,\nElliot",
+    "received_at": "2026-09-04T10:06:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "3bebcf059ea638ae5c6c",
+  "content_sha256": "e5d34ac45b525e288e5167dca80338ff6c09262d85e8d9623ef82aac8171b092",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean privacy (privacy-deletion): an erasure request is privacy; no deadline at risk, so P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "privacy-deletion",
+    "version": "1.0"
+  }
+}

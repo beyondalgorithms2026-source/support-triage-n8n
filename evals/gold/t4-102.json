@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-102",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-102@mail.example.com>",
+    "from_name": "Freya Marchetti",
+    "from_email": "freya.marchetti@kettlewick.example.net",
+    "subject": "More granular roles",
+    "body_text": "Hi team,\n\nWriting on behalf of Kettlewick Ltd. Please add custom roles with permissions we can choose ourselves.\n\nOur contractors currently see more than they need. Other apps we use let us copy a role and change a few settings.\n\nPlease consider it for a future release.\n\nRegards,\nFreya Marchetti",
+    "received_at": "2026-09-15T04:16:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "07eb9b8d2e9c510a3302",
+  "content_sha256": "c5b235890de62dd7b7c05bdc6c2df0224237f8d8fcc07b71fea74b046239f9ff",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean feature (feature-granular-roles): a request for something the product does not do is P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "feature-granular-roles",
+    "version": "1.0"
+  }
+}

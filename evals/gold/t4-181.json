@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-181",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "duplicate",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-037",
+    "from_name": "Mateo Szabo",
+    "from_email": "mateo.szabo@brambleway.example.net",
+    "subject": "API rate limits on our plan",
+    "body_text": "Hi there!\n\nOur nightly sync job is hitting 429 responses, and I need to know the API rate limits for the Business plan so we can pace the requests.\n\nI could not find the limits in the API reference. The job is blocked until we know how to pace it.\n\nCould you look into this sometime this week? Please point me to the right page.\n\nThanks so much!\nMateo",
+    "received_at": "2026-09-06T08:06:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "duplicate_skip",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "e9eb265f778fda8f88ee",
+  "content_sha256": "3bf93bab64ec28290bd327be5b29aa072232e7ca83f2fa0997651c68072129cb",
+  "duplicate_of": "t4-037",
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "duplicate: resend of t4-037 with the same source_message_id (webhook retry / re-delivery).",
+  "generator": {
+    "seed": 20261012,
+    "template": "duplicate-resend:t4-037",
+    "version": "1.0"
+  }
+}

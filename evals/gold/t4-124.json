@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-124",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "tone_mismatch",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-124@mail.example.com>",
+    "from_name": "Chloe Albright",
+    "from_email": "chloe.albright@hollowfen.example.com",
+    "subject": "Heads-up",
+    "body_text": "Hello,\n\nJust a heads-up whenever you get a chance: all of our API calls have returned 500 for the last 40 minutes, across every workspace we have. No rush from our side, our nightly jobs can wait a bit.\n\nBest,\nChloe",
+    "received_at": "2026-09-18T05:17:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "638244dbbceaadbe4641",
+  "content_sha256": "5ac741ef8142743b156220195132665047bf1aeccd3716935e214c0ff382741d",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "tone_mismatch: calm, but every API call failing across all workspaces is an outage = P1; the impact is ongoing now, so urgency high despite 'no rush'.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-outage-tone-calm-500",
+    "version": "1.0"
+  }
+}

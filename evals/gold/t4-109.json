@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-109",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "ambiguous",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-109@mail.example.com>",
+    "from_name": "Henrik Esposito",
+    "from_email": "henrik.esposito@hollowfen.example.com",
+    "subject": "Export a project as PDF?",
+    "body_text": "Hi,\n\nCan you add a way to export a single project as a PDF? We would use it for client reports.\n\nThanks,\nHenrik",
+    "received_at": "2026-09-16T02:41:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "ff2f283f632a9f65561b",
+  "content_sha256": "1df06e7c440c6877e7b4ee488f5a246970d9eefd804e881ab1ac9b0c041a4fc8",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "howto vs feature: written as a request, but project PDF export already exists (Project > Share > Export PDF), and howto beats feature when the feature exists; no impact = P4 low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-howto-ambiguous-pdf",
+    "version": "1.0"
+  }
+}

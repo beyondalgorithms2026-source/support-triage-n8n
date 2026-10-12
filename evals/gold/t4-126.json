@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-126",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "tone_mismatch",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-126@mail.example.com>",
+    "from_name": "Fatima Esposito",
+    "from_email": "fatima.esposito@quillmoor.example.org",
+    "subject": "DARK MODE",
+    "body_text": "It is ABSURD that in 2026 your product still has no dark mode. My eyes hurt every single evening. Add it. Now.\n\nFatima",
+    "received_at": "2026-09-18T10:33:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "78a9e70882c077260d15",
+  "content_sha256": "b4f75f0eb9b05d2b2f17903804e21d162edf0a4d838613e3d04a2ff181ec42aa",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "tone_mismatch: angry and demanding 'now', but a feature request is P4; the demand is tone, not a deadline, so urgency low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-feature-tone-dark-mode",
+    "version": "1.0"
+  }
+}

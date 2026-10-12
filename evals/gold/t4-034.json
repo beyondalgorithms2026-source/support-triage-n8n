@@ -1,0 +1,41 @@
+{
+  "input_id": "t4-034",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-034@mail.example.com>",
+    "from_name": "Nikhil Okonkwo",
+    "from_email": "nikhil.okonkwo@glimmerbrook.example.org",
+    "subject": "Suspicious sign-in and new API key",
+    "body_text": "Hi folks,\n\nWriting on behalf of Glimmerbrook BV. We got sign-in alerts from a country where nobody at Glimmerbrook BV works, and a new API key was created on our admin account that none of us made.\n\nWe have changed the admin password, but we are not sure the other sessions were ended. The audit log shows the new keys were used a few minutes later.\n\nIt is affecting our work as we speak, so please look at it today. Can your team investigate and lock this down with us?\n\nMany thanks,\nNikhil Okonkwo\nsupport lead, Glimmerbrook BV",
+    "received_at": "2026-09-05T22:00:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "ef206daa79ad6fd0d7f4",
+  "content_sha256": "0930e9c5c1a54512fde2aed136a7f962cfff571850797f9244325fcc48e92d91",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": {
+    "target": "jira",
+    "mode": "commit_then_504",
+    "pass": "A"
+  },
+  "label_notes": "clean access (access-suspicious-login): a suspected security incident is P1 in the guide; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "access-suspicious-login",
+    "version": "1.0"
+  }
+}

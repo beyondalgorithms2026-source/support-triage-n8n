@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-096",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-096@mail.example.com>",
+    "from_name": "Sofia Brandt",
+    "from_email": "sofia.brandt@glimmerbrook.example.org",
+    "subject": "Guest post opportunity",
+    "body_text": "Dear support,\n\nWe are offering free, high-quality articles for your blog in return for one link back to Glimmerbrook BV.\n\nAll articles are original and written by people with industry experience. Our writers cover productivity and remote work.\n\nLet me know if you are interested.\n\nYours sincerely,\nSofia",
+    "received_at": "2026-09-14T09:33:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "977b68e15349830690cb",
+  "content_sha256": "178ec8155b7dcd29b84def674a13d72c62b42f99d3515ac5935c0e1e56b408d4",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean other (other-guest-post): a link-building pitch is other P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "other-guest-post",
+    "version": "1.0"
+  }
+}

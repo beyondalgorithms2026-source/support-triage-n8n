@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-053",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-053@mail.example.com>",
+    "from_name": "Dana Moreau",
+    "from_email": "dana.moreau@larkspurlabs.example.com",
+    "subject": "Which attribute for email in SAML",
+    "body_text": "Good morning,\n\nI look after our account at Larkspur Labs. We are setting up SAML single sign-on with our identity provider. Which attribute should carry the user's email address?\n\nNothing is broken; we just want to get the setup right the first time. We want to switch everyone over before the end of the month.\n\nA reply in the next few days would be great. A setup guide would help.\n\nKind regards,\nDana Moreau",
+    "received_at": "2026-09-08T11:24:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "f8e46ed9710526cb064f",
+  "content_sha256": "df397141421620331466b505341fb610bb9ac0e3ac6400a70134630e9de3d649",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean howto (howto-sso-setup): a configuration question that blocks a planned rollout is P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "howto-sso-setup",
+    "version": "1.0"
+  }
+}

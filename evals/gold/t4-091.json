@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-091",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-091@mail.example.com>",
+    "from_name": "Chloe Ferreira",
+    "from_email": "chloe.ferreira@tidewell.example.com",
+    "subject": "Mobile app crash",
+    "body_text": "Good morning,\n\nOn my iPhone, the app closes straight away when I tap Inbox.\n\nOur field technicians only use the iOS app, so they cannot see their new jobs. We reinstalled the app and restarted the phones.\n\nWe would like this sorted before the end of the week. Let me know if you need logs.\n\nKind regards,\nChloe Ferreira",
+    "received_at": "2026-09-13T17:17:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P2",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "4aa708d0bd8b52357bf0",
+  "content_sha256": "17f11e14349b7e6b26fa7463798a10fcd48f8e32501bfd87ed35d521fba4043e",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean bug (bug-ios-crash): a core workflow is broken for one customer with no workaround (field staff use only the iOS app), so P2; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "bug-ios-crash",
+    "version": "1.0"
+  }
+}

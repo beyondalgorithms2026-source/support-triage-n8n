@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-110",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "ambiguous",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-110@mail.example.com>",
+    "from_name": "Fatima Ferreira",
+    "from_email": "fatima.ferreira@kettlewick.example.net",
+    "subject": "Working hours per person?",
+    "body_text": "Hello,\n\nIs it possible to set different working hours for each team member? I looked through the settings and could not find it.\n\nThanks,\nFatima",
+    "received_at": "2026-09-16T06:09:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "61d19525a7a1719920ac",
+  "content_sha256": "a519b170c10f4a14471ee365a05fe3cb135ef876a1707c5d1862799dea015328",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "feature vs howto: phrased as a question, but per-person working hours do not exist in the product, so feature; P4 low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-feature-ambiguous-hours",
+    "version": "1.0"
+  }
+}

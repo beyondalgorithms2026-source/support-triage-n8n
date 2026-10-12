@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-025",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-025@mail.example.com>",
+    "from_name": "Leila Marchetti",
+    "from_email": "leila.marchetti@brambleway.example.net",
+    "subject": "Prorated refund for plan change",
+    "body_text": "Hi folks,\n\nWriting on behalf of Brambleway Studio. After switching down to the Starter plan, we expected a prorated credit, but invoice INV-2026-3903 shows the old Business plan price.\n\nThe plan page in the settings shows the new plan correctly.\n\nCan you apply the prorated credit to our next invoice?\n\nMany thanks,\nLeila",
+    "received_at": "2026-09-04T16:43:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P3",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "2efce2f3871b391b8ba3",
+  "content_sha256": "9c761b831c05d645001c99f0334ee2d4c1554699a3f0c463367f4f66fddde97b",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean billing (billing-downgrade-credit): a billing error with no work blocked is P3; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-downgrade-credit",
+    "version": "1.0"
+  }
+}

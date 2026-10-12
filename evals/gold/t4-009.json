@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-009",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-009@mail.example.com>",
+    "from_name": "Fatima Albright",
+    "from_email": "fatima.albright@hollowfen.example.com",
+    "subject": "Invoice INV-2026-8095 has the wrong seat count",
+    "body_text": "Hi there!\n\nWriting on behalf of Hollowfen Media. Our September invoice charges for 12 seats although we removed several users last month and now have 8.\n\nThe members page in the admin area also shows 8 users. We paid the invoice already so our books stay clean, but we expect a credit for the difference.\n\nNot urgent at all. Please send a corrected invoice or a credit note.\n\nCheers,\nFatima",
+    "received_at": "2026-09-02T11:14:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P3",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "424ee02bcff0af7cd8ba",
+  "content_sha256": "73965a7dccc0266c95c380fb3d514e3baf1c8f69977d5eee324dd5277ab0539c",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean billing (billing-invoice-seats): a single invoice error is P3; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-invoice-seats",
+    "version": "1.0"
+  }
+}

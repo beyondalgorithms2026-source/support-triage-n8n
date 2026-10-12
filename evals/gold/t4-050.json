@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-050",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-050@mail.example.com>",
+    "from_name": "Lars Szabo",
+    "from_email": "lars.szabo@kettlewick.example.net",
+    "subject": "Locked out of admin account",
+    "body_text": "Hi folks,\n\nI am the only admin on our workspace and I am locked out after too many failed two-factor codes.\n\nThe account recovery page sends me in a loop back to the 2FA screen.\n\nIt is affecting our work as we speak, so please look at it today. Can you help me get back in?\n\nMany thanks,\nLars Szabo\nsupport lead, Kettlewick Ltd",
+    "received_at": "2026-09-08T02:01:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "75dba4bf869f3a806a18",
+  "content_sha256": "2bd2d5caf31df2fe3195841d908e32e290796bbe8ce34e995a4d75a426ccd1d2",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean access (access-locked-admin): a locked-out admin is P2 in the guide; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "access-locked-admin",
+    "version": "1.0"
+  }
+}

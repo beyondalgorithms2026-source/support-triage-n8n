@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-076",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-076@mail.example.com>",
+    "from_name": "Owen Delacroix",
+    "from_email": "owen.delacroix@larkspurlabs.example.com",
+    "subject": "Global search down",
+    "body_text": "Dear support,\n\nSearch has returned no results for everyone in our account since 06:40 UTC, and a contact at another company sees the same.\n\nClearing caches did not help. Everything else in the app works, so we can still browse by hand.\n\nThis is blocking us right now, so we need help today. Please let us know when it will be fixed.\n\nKind regards,\nOwen Delacroix",
+    "received_at": "2026-09-11T16:13:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "5abfbd0096e90818351d",
+  "content_sha256": "4faa45b7be1f2a4a3596caf98cee42236394edc66e34d0fb94d05cf230c34070",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean outage (outage-search-down): a core feature is down for many customers while the rest of the app works, so P2; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "outage-search-down",
+    "version": "1.0"
+  }
+}

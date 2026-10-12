@@ -1,0 +1,41 @@
+{
+  "input_id": "t4-006",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-006@mail.example.com>",
+    "from_name": "Jonas Kowalczyk",
+    "from_email": "jonas.kowalczyk@velloran.example.net",
+    "subject": "Two-way calendar sync",
+    "body_text": "Hi there!\n\nI'm the founder at Velloran SAS. Please add two-way sync with Outlook calendars; today only Google Calendar is supported.\n\nWe are deciding whether to roll the app out to more teams this quarter. Meetings that are moved in Outlook are often missed in the app.\n\nWe would like this sorted before the end of the week. Is this on the roadmap?\n\nCheers,\nJonas Kowalczyk",
+    "received_at": "2026-09-02T00:58:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "43a0f8fb5a15a8d0f9a3",
+  "content_sha256": "b0639fc8b50eeb858dc3bae0620f392165b6ec81822acabc1ee03dd94e482714",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": {
+    "target": "jira",
+    "mode": "commit_then_504",
+    "pass": "A"
+  },
+  "label_notes": "clean feature (feature-outlook-sync): a request for something the product does not do is P4; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "feature-outlook-sync",
+    "version": "1.0"
+  }
+}

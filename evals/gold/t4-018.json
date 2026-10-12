@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-018",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-018@mail.example.com>",
+    "from_name": "Fatima Moreau",
+    "from_email": "fatima.moreau@kettlewick.example.net",
+    "subject": "Permission problem for a team lead",
+    "body_text": "Hello,\n\nI'm the IT lead at Kettlewick Ltd. We gave one of our team leads the Manager role, and they still get a 'no permission' message when opening Reports.\n\nWe tried removing and adding the role again.\n\nNot urgent at all. Please tell us what we are missing.\n\nRegards,\nFatima",
+    "received_at": "2026-09-03T17:38:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P3",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "f8a9609bc478937b11b5",
+  "content_sha256": "0e1a14c1c855762101d04342b69267d256ce2d9e9ecab2da31a1c6bf4460aba0",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean access (access-role-permission): a role problem for one user with others unaffected is P3; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "access-role-permission",
+    "version": "1.0"
+  }
+}

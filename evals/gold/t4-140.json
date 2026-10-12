@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-140",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "thread_quoted",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-140@mail.example.com>",
+    "from_name": "Rafael Brandt",
+    "from_email": "rafael.brandt@larkspurlabs.example.com",
+    "subject": "Re: Incident: workspaces unreachable",
+    "body_text": "Hi Sam Ortega,\n\nIt is down again: the same 503 on all our workspaces since 13:05. Our customers cannot reach their portals.\n\nRafael\n\nOn Sun, 20 Sep 2026 at 07:22, Sam Ortega (Support) wrote:\n> Update: the incident is resolved. All workspaces should be reachable again.\n> We are monitoring closely and will publish a summary on the status page.\n\n> On Sun, 20 Sep 2026 at 06:15, Rafael Brandt wrote:\n>> All of our workspaces return 503 since 09:30. Your status page shows a\n>> partial outage in the EU region. Please keep us posted, our customer portals\n>> depend on it.\n\n>> On Sun, 20 Sep 2026 at 05:08, Sam Ortega (Support) wrote:\n>>> Thanks for the report. We are aware of an issue in the EU region and our\n>>> engineers are working on it.",
+    "received_at": "2026-09-20T08:29:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "e81c4e4781502a3544df",
+  "content_sha256": "0119c720ee434a239e17352e366dbe1ac5b6999b209233f9882c54c543826850",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "thread_quoted: a recurring outage for all workspaces; P1, high.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-outage-thread-down-again",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-200",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "malformed",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-200@mail.example.com>",
+    "from_name": "Zoe Quintero",
+    "from_email": "zoe.quintero@velloran.example.net",
+    "subject": "Reporting wish list",
+    "body_text": "Hi team,\n\nWe have used your reporting module for a year, and our managers asked me to collect everything we miss in one place. Here is the full list, in order of importance:\n\n1. Saved report views: let us save a filtered report with its columns and sort order, and share it with the team.\n2. Scheduled exports: send a saved view as a file to a list of people every week, on a day we choose.\n3. Cross-workspace reports: we run three workspaces and today we merge their numbers by hand every month.\n4. Custom date ranges: the fixed ranges (7, 30 and 90 days) do not match our fiscal quarters, which start in February.\n5. Goal lines on charts: a target line on the weekly chart would make the dashboard much easier to read in meetings.\n6. Drill-down: clicking a bar in a chart should open the list of records behind that number.\n7. Annotations: we would like to add a short note to a day on a chart, for example 'pricing change' or 'campaign start'.\n8. Report permissions: some reports should be visible to managers only, while others can be shared with the whole team.\n9. Comparisons: show this period next to the same period last year, with the difference in percent.\n10. Embeds: a read-only link to a single chart that we can place on our internal wiki page.\n11. Better CSV: keep number formats and add the report name and date range to the top of every export.\n12. Templates: a few ready-made report templates for common questions would help new team members start faster.\n13. Saved report views: let us save a filtered report with its columns and sort order, and share it with the team.\n14. Scheduled exports: send a saved view as a file to a list of people every week, on a day we choose.\n15. Cross-workspace reports: we run three workspaces and today we merge their numbers by hand every month.\n16. Custom date ranges: the fixed ranges (7, 30 and 90 days) do not match our fiscal quarters, which start in February.\n17. Goal lines on charts: a target line on the weekly chart would make the dashboard much easier to read in meetings.\n18. Drill-down: clicking a bar in a chart should open the list of records behind that number.\n19. Annotations: we would like to add a short note to a day on a chart, for example 'pricing change' or 'campaign start'.\n20. Report permissions: some reports should be visible to managers only, while others can be shared with the whole team.\n21. Comparisons: show this period next to the same period last year, with the difference in percent.\n22. Embeds: a read-only link to a single chart that we can place on our internal wiki page.\n23. Better CSV: keep number formats and add the report name and date range to the top of every export.\n24. Templates: a few ready-made report templates for common questions would help new team members start faster.\n25. Saved report views: let us save a filtered report with its columns and sort order, and share it with the team.\n26. Scheduled exports: send a saved view as a file to a list of people every week, on a day we choose.\n27. Cross-workspace reports: we run three workspaces and today we merge their numbers by hand every month.\n28. Custom date ranges: the fixed ranges (7, 30 and 90 days) do not match our fiscal quarters, which start in February.\n29. Goal lines on charts: a target line on the weekly chart would make the dashboard much easier to read in meetings.\n30. Drill-down: clicking a bar in a chart should open the list of records behind that number.\n31. Annotations: we would like to add a short note to a day on a chart, for example 'pricing change' or 'campaign start'.\n32. Report permissions: some reports should be visible to managers only, while others can be shared with the whole team.\n33. Comparisons: show this period next to the same period last year, with the difference in percent.\n34. Embeds: a read-only link to a single chart that we can place on our internal wiki page.\n35. Better CSV: keep number formats and add the report name and date range to the top of every export.\n36. Templates: a few ready-made report templates for common questions would help new team members start faster.\n37. Saved report views: let us save a filtered report with its columns and sort order, and share it with the team.\n38. Scheduled exports: send a saved view as a file to a list of people every week, on a day we choose.\n39. Cross-workspace reports: we run three workspaces and today we merge their numbers by hand every month.\n40. Custom date ranges: the fixed ranges (7, 30 and 90 days) do not match our fiscal quarters, which start in February.\n41. Goal lines on charts: a target line on the weekly chart would make the dashboard much easier to read in meetings.\n42. Drill-down: clicking a bar in a chart should open the list of records behind that number.\n43. Annotations: we would like to add a short note to a day on a chart, for example 'pricing change' or 'campaign start'.\n44. Report permissions: some reports should be visible to managers only, while others can be shared with the whole team.\n45. Comparisons: show this period next to the same period last year, with the difference in percent.\n46. Embeds: a read-only link to a single chart that we can place on our internal wiki page.\n47. Better CSV: keep number formats and add the report name and date range to the top of every export.\n48. Templates: a few ready-made report templates for common questions would help new team members start faster.\n49. Saved report views: let us save a filtered report with its columns and sort order, and share it with the team.\n50. Scheduled exports: send a saved view as a file to a list of people every week, on a day we choose.\n51. Cross-workspace reports: we run three workspaces and today we merge their numbers by hand every month.\n52. Custom date ranges: the fixed ranges (7, 30 and 90 days) do not match our fiscal quarters, which start in February.\n\nNone of this is urgent, but together these changes would make the reports far more useful.....................\n\nThanks for reading all of this.\nZoe Quintero",
+    "received_at": "2026-09-28T14:58:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "20c2eabef81ee1a9b17e",
+  "content_sha256": "b6da116102c3ac33b5a755184fa1eae342134266a420acd6b7de9a0979f171f6",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "malformed body_at_model_cap: body is exactly 6,000 chars (= max_model_chars), not truncated; goes through as labelled (feature P4 low).",
+  "generator": {
+    "seed": 20261012,
+    "template": "malformed-as-label",
+    "version": "1.0"
+  }
+}

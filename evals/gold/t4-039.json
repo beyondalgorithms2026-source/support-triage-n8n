@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-039",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-039@mail.example.com>",
+    "from_name": "Elliot Iversen",
+    "from_email": "elliot.iversen@fennimore.example.com",
+    "subject": "Need a signed DPA before renewal",
+    "body_text": "Hi,\n\nWriting on behalf of Fennimore Freight. Before our renewal, we need your DPA and details on where our data is stored and which sub-processors you use.\n\nWe are an EU company, so the transfer terms matter to us. Our renewal is in three weeks.\n\nWe would like this sorted before the end of the week. Please send the documents or a link.\n\nThanks,\nElliot Iversen\nIT lead, Fennimore Freight",
+    "received_at": "2026-09-06T13:16:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "171883f5b77125dc35ae",
+  "content_sha256": "ff7253a436e23840665733c170f0355e2c83b180b6959d5970e77731f0d2fb4f",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean privacy (privacy-dpa): a DPA question is privacy; renewal is weeks away, so P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "privacy-dpa",
+    "version": "1.0"
+  }
+}

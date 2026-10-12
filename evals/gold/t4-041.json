@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-041",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-041@mail.example.com>",
+    "from_name": "Kenji Brandt",
+    "from_email": "kenji.brandt@saltmarsh.example.com",
+    "subject": "Payment failed for Scale renewal",
+    "body_text": "Hello,\n\nWriting on behalf of Saltmarsh Robotics. The card payment for our Scale renewal was declined, and we got a warning that access will be suspended.\n\nOur bank says it never saw the payment attempt, so we think the problem is on the payment side. We already updated the card details once and the retry failed again. This has already cost us a morning of work.\n\nIt is affecting our work as we speak, so please look at it today. Please stop the suspension while we sort out the payment.\n\nThanks,\nKenji",
+    "received_at": "2026-09-06T19:40:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "db00389c8aa6f669b18e",
+  "content_sha256": "71df4ee32ae58d6d406a23170c743626a8286f1222fdc3db6599a36b7cab2833",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean billing (billing-card-declined): a failed renewal with suspension pending blocks the whole account with no workaround, so P2; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-card-declined",
+    "version": "1.0"
+  }
+}

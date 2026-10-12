@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-026",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-026@mail.example.com>",
+    "from_name": "Nikhil Quintero",
+    "from_email": "nikhil.quintero@kettlewick.example.net",
+    "subject": "New phone, cannot log in",
+    "body_text": "Good morning,\n\nI replaced my phone over the weekend and lost my authenticator app, so I cannot sign in anymore.\n\nI am our on-call engineer this week, and I cannot see any alerts without signing in.\n\nIt is affecting our work as we speak, so please look at it today. Please help me verify my identity and get back in.\n\nKind regards,\nNikhil",
+    "received_at": "2026-09-04T20:01:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "50c45969e5b09788afeb",
+  "content_sha256": "872ea06a007111ef8e2836a97bdb587a2857002f1ff8a42a91dd0ad3b6c4f579",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean access (access-new-phone): the on-call engineer cannot sign in and has no other way to see alerts, so P2; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "access-new-phone",
+    "version": "1.0"
+  }
+}

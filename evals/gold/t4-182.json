@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-182",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "duplicate",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-044@mail.example.com>",
+    "from_name": "Henrik Castellano",
+    "from_email": "henrik.castellano@brambleway.example.net",
+    "subject": "App not loading for anyone",
+    "body_text": "Hi,\n\nThe app does not load for anyone at Brambleway Studio: we get a blank page and a spinner that never ends.\n\nWe tried different networks and browsers. Contacts at two other companies tell us they see the same thing.\n\nIt is affecting our work as we speak, so please look at it today. Is there an incident on your side?\n\nBest,\nHenrik Castellano\noperations manager, Brambleway Studio",
+    "received_at": "2026-09-07T06:43:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "duplicate_skip",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "ced240072edd2c20e66f",
+  "content_sha256": "21d7abc9e510abded031e4efa85426de6a0d377c2f16a6c37a6c123ed94b4f4e",
+  "duplicate_of": "t4-044",
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "duplicate: resend of t4-044 with the same source_message_id (webhook retry / re-delivery).",
+  "generator": {
+    "seed": 20261012,
+    "template": "duplicate-resend:t4-044",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-005",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-005@mail.example.com>",
+    "from_name": "Ingrid Brandt",
+    "from_email": "ingrid.brandt@saltmarsh.example.com",
+    "subject": "Importing contacts from a spreadsheet",
+    "body_text": "Hello,\n\nI look after our account at Saltmarsh Robotics. How do I bulk-import about 4,800 contacts from a spreadsheet?\n\nOur team starts using the app properly once the data is in. The file has name, company and city columns.\n\nCould you look into this sometime this week? Please tell us the steps or the template to use.\n\nBest,\nIngrid",
+    "received_at": "2026-09-01T21:46:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "7e0269133a6917a87124",
+  "content_sha256": "78b42add371ace2a5c4a7d1967161da4a5fb07d6bd234d646c066d11465660ee",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean howto (howto-bulk-import): a how-to that blocks the start of work is P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "howto-bulk-import",
+    "version": "1.0"
+  }
+}

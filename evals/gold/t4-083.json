@@ -1,0 +1,43 @@
+{
+  "input_id": "t4-083",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-083@mail.example.com>",
+    "from_name": "Yara Halloran",
+    "from_email": "yara.halloran@tidewell.example.com",
+    "subject": "Cannot upload files over 10 MB",
+    "body_text": "Hi there!\n\nI look after our account at Tidewell Logistics. Uploading PDF files larger than about 10 MB fails at 99% with 'upload error'.\n\nSmaller files upload fine, so we split the large ones for now. Your docs say the limit is 50 MB on our plan.\n\nA reply in the next few days would be great. Is there a fix planned?\n\nThanks so much!\nYara",
+    "received_at": "2026-09-12T14:52:00Z",
+    "attachments": [
+      {
+        "name": "screenshot.png",
+        "type": "image/png",
+        "bytes": 56148
+      }
+    ]
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "ebd26e680f2c86a68c01",
+  "content_sha256": "39fc70da65bb0344fafe1511549df90c66a41928cba88234dcc29b19db522b71",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean bug (bug-upload-large): impaired with a workaround is P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "bug-upload-large",
+    "version": "1.0"
+  }
+}

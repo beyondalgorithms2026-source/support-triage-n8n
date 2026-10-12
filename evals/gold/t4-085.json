@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-085",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-085",
+    "from_name": "Chloe Whitfield",
+    "from_email": "chloe.whitfield@larkspurlabs.example.com",
+    "subject": "How to schedule a weekly report",
+    "body_text": "Hi there!\n\nI look after our account at Larkspur Labs. How do I schedule a weekly report so that it is emailed to my manager every Monday?\n\nWe are on the Scale plan, if that matters.\n\nNot urgent at all. Thanks for any pointers.\n\nThanks so much!\nChloe",
+    "received_at": "2026-09-12T20:23:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "bd7586031ce34bcc01c0",
+  "content_sha256": "429a3033c0dc07a8dd829e078ead45a2b1fcf92abbcd80e02724516b99301cb1",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean howto (howto-schedule-report): a how-to question that does not block work is P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "howto-schedule-report",
+    "version": "1.0"
+  }
+}

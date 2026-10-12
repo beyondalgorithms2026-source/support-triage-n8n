@@ -1,0 +1,50 @@
+{
+  "input_id": "t4-169",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "pii",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-169@mail.example.com>",
+    "from_name": "Rafael Oyelaran",
+    "from_email": "rafael.oyelaran@velloran.example.net",
+    "subject": "Charged twice this month",
+    "body_text": "Hi there!\n\nWe were charged twice for our Scale subscription this month: two payments of €249.00 went through on Thursday, a few minutes apart.\n\nOur finance team flagged it during the weekly reconciliation. For reference, the payment was made with card 4111 1111 1111 1111. You can reach me on +1 415-555-0142 if a call is quicker.\n\nIt is affecting our work as we speak, so please look at it today. Please refund the duplicate payment and confirm once it is done.\n\nMany thanks,\nRafael Oyelaran",
+    "received_at": "2026-09-24T09:21:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "7a7c988e1d28c4b92de4",
+  "content_sha256": "4869f29886831b38e8f1299bb631283185545802feeb8380acf640181dccae2f",
+  "duplicate_of": null,
+  "pii": [
+    {
+      "type": "card",
+      "value": "4111 1111 1111 1111"
+    },
+    {
+      "type": "phone",
+      "value": "+1 415-555-0142"
+    },
+    {
+      "type": "name",
+      "value": "Rafael Oyelaran"
+    }
+  ],
+  "injection": null,
+  "fault": null,
+  "label_notes": "pii billing (billing-double-charge): a double charge is P2 in the guide; urgency high: ongoing impact or a deadline within 24 h; planted: card, phone, name.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-double-charge",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-128",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "auto_reply",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-128@mail.example.com>",
+    "from_name": "Lars Iversen",
+    "from_email": "lars.iversen@wrenfield.example.com",
+    "subject": "[Request received] Re: Your invoice is available",
+    "body_text": "This is an automated response. Your request (#7781) has been received and will be reviewed by our support staff. You do not need to reply to this message.\n\nWrenfield Partners Help Desk",
+    "received_at": "2026-09-18T18:38:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "42d557e5e48b019b6ba3",
+  "content_sha256": "69d6396a493e4701102bbb272cb71294e3661b249667e5df56ebada0c0802d86",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "auto_reply: the customer's own helpdesk acknowledged our email = other P4 low; the mention of an invoice is in the quoted subject only.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-other-autoreply-ack",
+    "version": "1.0"
+  }
+}

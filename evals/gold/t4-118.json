@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-118",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "multi_issue",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-118@mail.example.com>",
+    "from_name": "Amara Achterberg",
+    "from_email": "amara.achterberg@glimmerbrook.example.org",
+    "subject": "Kanban view + renaming boards",
+    "body_text": "Hi team,\n\nWe would love a Kanban view. It is the main thing stopping us from moving our design team over this month.\n\nSmall thing too: how do I rename a board?\n\nThanks,\nAmara Achterberg\nhead of finance, Glimmerbrook BV",
+    "received_at": "2026-09-17T09:14:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "605cc0a40909ade04f4e",
+  "content_sha256": "71092002ab4b92c43281f2e828b9b18e7fafeea8ed90e99388ca4e586498e016",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "multi_issue: the Kanban request matters most (feature = P4; adoption decision this month = medium). Second issue: how to rename a board (howto).",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-feature-multi-kanban",
+    "version": "1.0"
+  }
+}

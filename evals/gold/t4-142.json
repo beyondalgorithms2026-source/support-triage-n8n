@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-142",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "thread_quoted",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-142@mail.example.com>",
+    "from_name": "Fatima Varga",
+    "from_email": "fatima.varga@nimbleford.example.org",
+    "subject": "Re: SAML group sync",
+    "body_text": "Hi Sam Ortega,\n\n+1 to this from our side as well. Any update on the roadmap?\n\nFatima\n\nOn Mon, 31 Aug 2026 at 14:14, Sam Ortega (Support) wrote:\n> Thanks for the suggestion. Syncing groups from your identity provider into\n> teams is on our roadmap, but we do not have a date yet. I have added your\n> company to the request so you will hear when it ships.\n\n> On Sun, 30 Aug 2026 at 13:07, Fatima Varga wrote:\n>> We manage all our users in groups at our identity provider. It would save us\n>> a lot of time if those groups could create and update teams in your app\n>> automatically, instead of us doing it by hand every time someone joins.",
+    "received_at": "2026-09-20T15:21:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "f2cd241e2fec6b262a47",
+  "content_sha256": "49e4ab535c427282f90382798287e7ad0a599a615f0f308c9c05ec34d1330994",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "thread_quoted: a follow-up on a feature request = feature P4 low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-feature-thread-roadmap",
+    "version": "1.0"
+  }
+}

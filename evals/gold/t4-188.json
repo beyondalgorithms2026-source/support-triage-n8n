@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-188",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "duplicate",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-061@mail.example.com>",
+    "from_name": "Priya Kowalczyk",
+    "from_email": "priya.kowalczyk@wrenfield.example.com",
+    "subject": "Importing contacts from a spreadsheet",
+    "body_text": "Hello support,\n\nHow do I bulk-import about 12,000 contacts from a spreadsheet?\n\nThe file has name, company and city columns.\n\nWe would like this sorted before the end of the week. Please tell us the steps or the template to use.\n\nBest,\nPriya Kowalczyk",
+    "received_at": "2026-09-09T14:21:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "duplicate_skip",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "5775060f86b9694a99d5",
+  "content_sha256": "e9bda3ab52864dc08c49084972e4cdc1b6b9a156bb1707b3484c6ede53bd68e6",
+  "duplicate_of": "t4-061",
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "duplicate: resend of t4-061 with the same source_message_id (webhook retry / re-delivery).",
+  "generator": {
+    "seed": 20261012,
+    "template": "duplicate-resend:t4-061",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-049",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-049@mail.example.com>",
+    "from_name": "Freya Brandt",
+    "from_email": "freya.brandt@velloran.example.net",
+    "subject": "Monthly to yearly billing",
+    "body_text": "Hi folks,\n\nI'm the operations manager at Velloran SAS. We are on monthly billing for the Team plan and would like to switch to annual billing at the next renewal.\n\nWe have 17 users and do not expect that to change much. Nothing is wrong, we are just planning next year's budget.\n\nNot urgent at all. Please let us know the steps.\n\nThanks so much!\nFreya Brandt\noperations manager, Velloran SAS",
+    "received_at": "2026-09-07T22:21:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "d0edf6f8d1e12a3c1aad",
+  "content_sha256": "1620e5d3a6f3a49d56ea224b559c49ffe341fb12e276d6ed2c32c9a98d93feb5",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean billing (billing-annual-question): a general billing question with no impact is P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-annual-question",
+    "version": "1.0"
+  }
+}

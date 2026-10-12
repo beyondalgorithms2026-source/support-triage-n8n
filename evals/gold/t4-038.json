@@ -1,0 +1,41 @@
+{
+  "input_id": "t4-038",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-038@mail.example.com>",
+    "from_name": "Fatima Whitfield",
+    "from_email": "fatima.whitfield@tidewell.example.com",
+    "subject": "Bulk operations in the API",
+    "body_text": "Hello support,\n\nI look after our account at Tidewell Logistics. Your API lets us delete records one at a time, but we need a bulk delete endpoint for cleanup jobs.\n\nDeleting 5,000 records one by one takes hours. Our developers would use it every month.\n\nWe would like this sorted before the end of the week. Please let us know if this is planned.\n\nThanks,\nFatima",
+    "received_at": "2026-09-06T09:46:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "930d4bc27509c2f961a8",
+  "content_sha256": "42ec02e54dfbb1a48990933b53115ce665028b4306c5d3c9f85924b1df752fb5",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": {
+    "target": "jira",
+    "mode": "503",
+    "pass": "A"
+  },
+  "label_notes": "clean feature (feature-bulk-delete-api): a request for something the product does not do is P4; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "feature-bulk-delete-api",
+    "version": "1.0"
+  }
+}

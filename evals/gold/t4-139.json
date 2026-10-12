@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-139",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "thread_quoted",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-139@mail.example.com>",
+    "from_name": "Leila Oyelaran",
+    "from_email": "leila.oyelaran@brambleway.example.net",
+    "subject": "Re: Contact sync creating duplicates",
+    "body_text": "Hi Sam Ortega,\n\nSame problem again after your fix. The sync ran at 06:00 and duplicated every contact again; we now have each contact three times. Our sales team cannot work with this list today.\n\nLeila\n\nOn Fri, 18 Sep 2026 at 04:20, Sam Ortega (Support) wrote:\n> Good news: our engineers deployed a fix for the duplicate contacts created\n> by the nightly sync. You can merge the existing duplicates with the 'Merge\n> duplicates' action in Contacts. Please let us know if you see new duplicates\n> after tonight's sync.\n\n> On Thu, 17 Sep 2026 at 03:13, Leila Oyelaran wrote:\n>> Since Monday, the nightly sync with our CRM creates a second copy of every\n>> contact. We have about 4,000 contacts, so this is now 8,000. We did not\n>> change anything in the sync settings.\n\n>> On Thu, 17 Sep 2026 at 02:06, Sam Ortega (Support) wrote:\n>>> Thanks for reporting this. We can see the extra contacts in your workspace\n>>> and have passed it to our engineers. We will update you as soon as we know\n>>> more.",
+    "received_at": "2026-09-20T05:27:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "2874b74c321ca8e5a334",
+  "content_sha256": "a69a1adbf678be666d5117dd9483c6cf8e5079755548545aa59a45be01fe1a91",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "thread_quoted: a reopened defect for one customer; the sales list is unusable with no workaround = P2; blocked today = high.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-bug-thread-sync-again",
+    "version": "1.0"
+  }
+}

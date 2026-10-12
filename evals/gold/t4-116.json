@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-116",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "multi_issue",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-116@mail.example.com>",
+    "from_name": "Ingrid Halloran",
+    "from_email": "ingrid.halloran@amberlow.example.org",
+    "subject": "API 502 on every request + invoice question",
+    "body_text": "Hi,\n\nYour API has returned 502 on every request since 10:40 UTC, for all of our workspaces. Our order pipeline is stopped.\n\nUnrelated, and not urgent: our last invoice shows the wrong company name.\n\nThanks,\nIngrid",
+    "received_at": "2026-09-17T03:22:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "295083c92873d1530caa",
+  "content_sha256": "32d7fc6f20c03c82e8a17272658678cf2646fff48cccbf3dbdc5b714cb3aade7",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "multi_issue: the API failure for all workspaces blocks the customer most (outage, P1, high). Second issue: wrong company name on the invoice (billing).",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-outage-multi-api-invoice",
+    "version": "1.0"
+  }
+}

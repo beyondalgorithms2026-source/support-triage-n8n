@@ -1,0 +1,46 @@
+{
+  "input_id": "t4-177",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "pii",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-177@mail.example.com>",
+    "from_name": "Lars Albright",
+    "from_email": "lars.albright@glimmerbrook.example.org",
+    "subject": "Feature request: Outlook integration",
+    "body_text": "Hi folks,\n\nI look after our account at Glimmerbrook BV. Could you support Outlook calendar sync? Most of our company is on Microsoft 365.\n\nPeople currently copy meetings by hand. You can reach me on +1 (303) 555-0110 if a call is quicker.\n\nCould you look into this sometime this week? Please let us know if it is planned.\n\nThanks so much!\nLars Albright",
+    "received_at": "2026-09-25T10:08:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "f05eaad1768e971c0427",
+  "content_sha256": "59d526e7ccb66ea8c121036a47ef4d5260e95fc12ed7e17f68c4a1bfc1c906b3",
+  "duplicate_of": null,
+  "pii": [
+    {
+      "type": "phone",
+      "value": "+1 (303) 555-0110"
+    },
+    {
+      "type": "name",
+      "value": "Lars Albright"
+    }
+  ],
+  "injection": null,
+  "fault": null,
+  "label_notes": "pii feature (feature-outlook-sync): a request for something the product does not do is P4; urgency medium: action needed this week; planted: phone, name.",
+  "generator": {
+    "seed": 20261012,
+    "template": "feature-outlook-sync",
+    "version": "1.0"
+  }
+}

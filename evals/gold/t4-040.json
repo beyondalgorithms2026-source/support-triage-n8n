@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-040",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-040@mail.example.com>",
+    "from_name": "Yara Brandt",
+    "from_email": "yara.brandt@ottervale.example.com",
+    "subject": "Link exchange proposal",
+    "body_text": "Hello support,\n\nI'm Yara, editor at Ottervale Software. We would like to publish a guest article on your blog in exchange for a link.\n\nWe can deliver the first article within a week.\n\nShall I send some topic ideas?\n\nBest,\nYara Brandt\nhead of finance, Ottervale Software",
+    "received_at": "2026-09-06T17:34:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "c89aea4874c73ffe9bbd",
+  "content_sha256": "9ced8fe07fb5df6c77e183b1aee4438c5877e6d6b7147c52f3cb26c9dc222688",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean other (other-guest-post): a link-building pitch is other P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "other-guest-post",
+    "version": "1.0"
+  }
+}

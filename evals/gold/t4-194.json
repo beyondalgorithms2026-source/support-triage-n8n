@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-194",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "malformed",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-194@mail.example.com>",
+    "from_name": "Yara Quintero",
+    "from_email": "yara.quintero@glimmerbrook.example.org",
+    "subject": "",
+    "body_text": "",
+    "received_at": "2026-09-27T18:43:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "rejected",
+  "must_review": true,
+  "review_reason": "malformed:empty_content",
+  "dedupe_key": "40460d605e65ba475de2",
+  "content_sha256": "8840bcf3e98f0a28e1150d377d661cd857a1bbb5195dffc75d9ebc7514891b2e",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "malformed empty_content: subject and body are empty, rejected at intake (C-3); nothing to route, so other P4 low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "malformed-empty_content",
+    "version": "1.0"
+  }
+}

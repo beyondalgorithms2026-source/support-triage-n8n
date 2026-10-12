@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-051",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-051@mail.example.com>",
+    "from_name": "Chloe Pemberton",
+    "from_email": "chloe.pemberton@velloran.example.net",
+    "subject": "Duplicate day in the weekly chart",
+    "body_text": "Hi team,\n\nI'm the support lead at Velloran SAS. The weekly activity chart on our dashboard shows Sunday's numbers twice, and Monday is missing.\n\nThe raw numbers in the table below the chart are correct. I see it in both Chrome and Firefox.\n\nNo rush on this, whenever you have a moment. Could you take a look?\n\nRegards,\nChloe",
+    "received_at": "2026-09-08T04:42:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P3",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "1380fbad1d70d5eac01f",
+  "content_sha256": "fb967c37419ac9bc0e7fdac8a4977f41634110ad68de0a95c0981e39a0effdb9",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean bug (bug-chart-duplicate): a display error while the correct data is still available is P3; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "bug-chart-duplicate",
+    "version": "1.0"
+  }
+}

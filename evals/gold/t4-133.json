@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-133",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "short",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-133@mail.example.com>",
+    "from_name": "Bruno Novak",
+    "from_email": "bruno.novak@wrenfield.example.com",
+    "subject": "notification sound",
+    "body_text": "how do I change the notification sound?",
+    "received_at": "2026-09-19T09:55:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "e9f0b513ae9d48bc0906",
+  "content_sha256": "3df078648ef25d5056ddbcc9c9810417a47e939ab1b7b24fd2e2ca3d99583511",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "short: a how-to question with no impact = P4 low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-howto-short",
+    "version": "1.0"
+  }
+}

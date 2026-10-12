@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-151",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "multi_issue",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-151@mail.example.com>",
+    "from_name": "Elliot Ferreira",
+    "from_email": "elliot.ferreira@fennimore.example.com",
+    "subject": "Cannot log in to get my export",
+    "body_text": "Hi,\n\nI want to download my data export and then have my account deleted under the CCPA. But I cannot log in to download the export: the password reset email never arrives.\n\nPlease help me with both this week.\n\nElliot",
+    "received_at": "2026-09-21T21:26:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "11b1a1fdb97053902dde",
+  "content_sha256": "3f4c07139ab4e467c4fe098888897b04d4b56b05edeb40469f23ccb6212ed095",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "multi_issue: a deletion request under CCPA is present, so privacy (P3, this week = medium). Second issue: password reset email missing (access).",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-privacy-multi-export-delete",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-093",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-093",
+    "from_name": "Jonas Pemberton",
+    "from_email": "jonas.pemberton@ottervale.example.com",
+    "subject": "How to avoid 429 errors",
+    "body_text": "Hi folks,\n\nWriting on behalf of Ottervale Software. What are the API rate limits for our plan? Our sync stops halfway with 429 responses.\n\nThe job is blocked until we know how to pace it.\n\nWe would like this sorted before the end of the week. Please point me to the right page.\n\nCheers,\nJonas",
+    "received_at": "2026-09-13T23:03:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "ae154c7f5be39b3d6a04",
+  "content_sha256": "aae5c41b243c340644a5b0e272ea8d584e75d464f88b06d0650a3e9d13479f93",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean howto (howto-api-rate-limit): a how-to that blocks work is P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "howto-api-rate-limit",
+    "version": "1.0"
+  }
+}

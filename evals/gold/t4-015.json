@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-015",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-015",
+    "from_name": "Priya Haddad",
+    "from_email": "priya.haddad@hollowfen.example.com",
+    "subject": "Data access request",
+    "body_text": "Hey team,\n\nUnder GDPR Article 15, I request a copy of all personal data you hold about me.\n\nI used your app through my former employer, Hollowfen Media. Please include where the data came from and who it was shared with.\n\nCould you look into this sometime this week? Let me know if you need anything to verify my identity.\n\nMany thanks,\nPriya Haddad",
+    "received_at": "2026-09-03T07:25:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "a012c19c47022e2185b0",
+  "content_sha256": "55408170e8b84537604d04896221fe4536f7bf07b26b027feda33fe7f7d1bf34",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean privacy (privacy-dsar-access): a data access request is privacy; the legal deadline is weeks away, so P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "privacy-dsar-access",
+    "version": "1.0"
+  }
+}

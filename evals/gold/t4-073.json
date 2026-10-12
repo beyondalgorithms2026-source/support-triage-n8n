@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-073",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-073@mail.example.com>",
+    "from_name": "Nikhil Novak",
+    "from_email": "nikhil.novak@hollowfen.example.com",
+    "subject": "VAT ID missing on invoice",
+    "body_text": "Good morning,\n\nI'm the marketing coordinator at Hollowfen Media. Our VAT ID is saved in the billing settings, but it does not appear on invoice INV-2026-2623, and the invoice charges VAT that should be reverse charged.\n\nWe checked the billing settings and the tax details look correct there. Our accountant cannot book the invoice in its current form.\n\nWe would like this sorted before the end of the week. Could you reissue the invoice with the VAT ID and a reverse charge note?\n\nYours sincerely,\nNikhil",
+    "received_at": "2026-09-11T05:26:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "d75bc009da8d09b74970",
+  "content_sha256": "e39b7a1915fb57406b41270268ce1ac7141fa62c9ba7e3984385e3592528bc2c",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean billing (billing-vat-missing): a single invoice error is P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-vat-missing",
+    "version": "1.0"
+  }
+}

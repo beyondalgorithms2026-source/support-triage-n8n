@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-011",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-011@mail.example.com>",
+    "from_name": "Mateo Pemberton",
+    "from_email": "mateo.pemberton@brambleway.example.net",
+    "subject": "Template changes not saving",
+    "body_text": "Dear Support Team,\n\nI look after our account at Brambleway Studio. Every time I edit a project template and press Save, I get 'Something went wrong' and the change is lost.\n\nOur onboarding process is built on these templates, and there is no other way to edit them. I tried a different browser and a private window with the same result.\n\nThis is blocking us right now, so we need help today. Please help us fix this quickly.\n\nYours sincerely,\nMateo Pemberton",
+    "received_at": "2026-09-02T17:01:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "722a6db793d9a039fe60",
+  "content_sha256": "6587c55590580db9cefbf6f1b81bd0c99b97d98a6babb609f2d3d2321e7ab034",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean bug (bug-save-error): a core workflow is broken for one customer with no workaround, so P2; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "bug-save-error",
+    "version": "1.0"
+  }
+}

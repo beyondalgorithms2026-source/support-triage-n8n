@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-199",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "malformed",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-199@mail.example.com>",
+    "from_name": "Mei Achterberg",
+    "from_email": "mei.achterberg@tidewell.example.com",
+    "subject": "Request to delete my account and personal data - please read - Request to delete my account and personal data - please read - Request to delete my account and personal data - please read - Request to delete my account and personal data - please read - Request to delete my account and personal data - please read - Request to delete my account and personal data - please read - Request to delete my account and personal data - please read - Request to delete my account and personal data - please read - Request to delete my account and personal data - please read - Request to delete my account and personal data - please read - Request to delete my account and personal data - please read - Request to delete my account and personal data - please read - Request to delete my account and personal data - please read - Request to delete my account and personal data - please read - Request to delete my account and personal data - please read - Request to delete my account and personal data - please",
+    "body_text": "Hi,\n\nI closed my account last month. Please delete my data, including any backups and marketing lists.\n\nMy account was under the Tidewell Logistics workspace.\n\nWe would like this sorted before the end of the week. Thank you.\n\nRegards,\nMei",
+    "received_at": "2026-09-28T10:09:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "rejected",
+  "must_review": true,
+  "review_reason": "malformed:subject_too_long",
+  "dedupe_key": "4966c6705756da6d8013",
+  "content_sha256": "2feb7554c1803adc51d9da683de5566d0f47d63097b8cacf2f1f2e5b8e7aeedb",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "malformed subject_too_long: subject is 1,000 chars (> 300), rejected at intake (C-2, SEC-10); labels describe the visible request (privacy P3 medium).",
+  "generator": {
+    "seed": 20261012,
+    "template": "malformed-subject_too_long",
+    "version": "1.0"
+  }
+}

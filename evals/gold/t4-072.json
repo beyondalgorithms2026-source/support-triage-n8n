@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-072",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-072@mail.example.com>",
+    "from_name": "Lucia Castellano",
+    "from_email": "lucia.castellano@larkspurlabs.example.com",
+    "subject": "Thanks for the help",
+    "body_text": "Hello,\n\nWriting on behalf of Larkspur Labs. Just wanted to say thanks to your support team for the help with our setup last week.\n\nOur team is very happy with the app. Really appreciated.\n\nKeep it up!\n\nRegards,\nLucia Castellano",
+    "received_at": "2026-09-11T03:05:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "a7330b170936793e9850",
+  "content_sha256": "f9e3b1483fa5c1c3336c1b28dc2e5d8a66b3230f201c65e41e2254de1f1466ef",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean other (other-thank-you): a thank-you note is other P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "other-thank-you",
+    "version": "1.0"
+  }
+}

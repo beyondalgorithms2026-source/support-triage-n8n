@@ -1,0 +1,50 @@
+{
+  "input_id": "t4-176",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "pii",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-176@mail.example.com>",
+    "from_name": "Hanna Rasmussen",
+    "from_email": "hanna.rasmussen@kettlewick.example.net",
+    "subject": "Bulk import of contacts",
+    "body_text": "Dear Support Team,\n\nWriting on behalf of Kettlewick Ltd. What is the best way to import our existing contact list of roughly 3,100 rows?\n\nOur team starts using the app properly once the data is in. The file has name, company and city columns. Here is a screen recording of the problem: https://files.example.net/d/4471?sig=a81f0c&exp=1790000000 Please copy my colleague at kai.nakamura@tidewell.example.com on your reply.\n\nA reply in the next few days would be great. Is there a template file?\n\nBest regards,\nHanna Rasmussen",
+    "received_at": "2026-09-25T06:37:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "cbc2a62b56e1ce922ebd",
+  "content_sha256": "338f419031035b973fcc9ef930e7d6ecb1191b8671b9ddf0d6d5701b82520fff",
+  "duplicate_of": null,
+  "pii": [
+    {
+      "type": "url",
+      "value": "https://files.example.net/d/4471?sig=a81f0c&exp=1790000000"
+    },
+    {
+      "type": "email",
+      "value": "kai.nakamura@tidewell.example.com"
+    },
+    {
+      "type": "name",
+      "value": "Hanna Rasmussen"
+    }
+  ],
+  "injection": null,
+  "fault": null,
+  "label_notes": "pii howto (howto-bulk-import): a how-to that blocks the start of work is P3; urgency medium: action needed this week; planted: url, email, name.",
+  "generator": {
+    "seed": 20261012,
+    "template": "howto-bulk-import",
+    "version": "1.0"
+  }
+}

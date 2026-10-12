@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-066",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-066@mail.example.com>",
+    "from_name": "Dana Brandt",
+    "from_email": "dana.brandt@amberlow.example.org",
+    "subject": "Invite link expired",
+    "body_text": "Hi team,\n\nWe invited a new colleague yesterday, but the invite link says it has expired when they open it.\n\nWe have free seats on our plan, so that should not be the problem.\n\nWe would like this sorted before the end of the week. Please help us get them into the workspace.\n\nThanks,\nDana Brandt\nIT lead, Amberlow AB",
+    "received_at": "2026-09-10T06:40:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "6ee8c69e2640de35977e",
+  "content_sha256": "f7e5a7872ace2dd92ef2c9304c62e8e77b661562c50e678d860f8c0224f777af",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean access (access-invite-expired): an invitation problem for one new user is P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "access-invite-expired",
+    "version": "1.0"
+  }
+}

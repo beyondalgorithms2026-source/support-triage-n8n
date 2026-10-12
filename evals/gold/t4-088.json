@@ -1,0 +1,43 @@
+{
+  "input_id": "t4-088",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-088@mail.example.com>",
+    "from_name": "Ingrid Castellano",
+    "from_email": "ingrid.castellano@velloran.example.net",
+    "subject": "Job application",
+    "body_text": "Hi folks,\n\nI'm applying for the Support Engineer role I saw on your careers page.\n\nI enjoy solving technical problems and explaining them in plain language. My CV is attached.\n\nThank you for considering me.\n\nCheers,\nIngrid Castellano\nmarketing coordinator, Velloran SAS",
+    "received_at": "2026-09-13T06:26:00Z",
+    "attachments": [
+      {
+        "name": "cv.pdf",
+        "type": "application/pdf",
+        "bytes": 114428
+      }
+    ]
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "93c7156a55d91b63b30b",
+  "content_sha256": "012ab0cafc2386b16fa5e8a1a4c0abe7df579c3a243615bc46c578ac1abd5735",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean other (other-job-application): a job application is other P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "other-job-application",
+    "version": "1.0"
+  }
+}

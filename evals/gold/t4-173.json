@@ -1,0 +1,50 @@
+{
+  "input_id": "t4-173",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "pii",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-173",
+    "from_name": "Elliot Quintero",
+    "from_email": "elliot.quintero@ottervale.example.com",
+    "subject": "Prorated refund for plan change",
+    "body_text": "Dear Support Team,\n\nI'm the head of finance at Ottervale Software. We downgraded from the Business plan to the Team plan in the middle of the billing cycle, and the latest invoice still charges the full Business price of $249.00.\n\nYour pricing page says plan changes are prorated. If a refund is easier by bank transfer, our IBAN is DE89 3704 0044 0532 0130 00. Please copy my colleague at j.berg@amberlow.example.org on your reply.\n\nCan you apply the prorated credit to our next invoice?\n\nYours sincerely,\nElliot Quintero",
+    "received_at": "2026-09-24T21:21:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P3",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "0fd2072ec5169450168e",
+  "content_sha256": "7a5cc643cb3218cdfb51eba76ec0760c5aa7dc4bcb3308e2cb7ed05832d305d0",
+  "duplicate_of": null,
+  "pii": [
+    {
+      "type": "iban",
+      "value": "DE89 3704 0044 0532 0130 00"
+    },
+    {
+      "type": "email",
+      "value": "j.berg@amberlow.example.org"
+    },
+    {
+      "type": "name",
+      "value": "Elliot Quintero"
+    }
+  ],
+  "injection": null,
+  "fault": null,
+  "label_notes": "pii billing (billing-downgrade-credit): a billing error with no work blocked is P3; urgency low: no time pressure; planted: iban, email, name.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-downgrade-credit",
+    "version": "1.0"
+  }
+}

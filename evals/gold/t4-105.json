@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-105",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "ambiguous",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-105@mail.example.com>",
+    "from_name": "Nikhil Albright",
+    "from_email": "nikhil.albright@hollowfen.example.com",
+    "subject": "Users locked out after renewal",
+    "body_text": "Hi,\n\nOur card on file expired, the renewal payment failed on Monday, and now three of our users see a 'subscription inactive' banner and cannot get into the workspace.\n\nHow do we update the card so they can work again? They are blocked right now.\n\nThanks,\nNikhil",
+    "received_at": "2026-09-15T14:33:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "08de05ca462585316d78",
+  "content_sha256": "a0ba9985318d7fd917a1f27f7c38c06524a23d4dda4b225ab85aa9833f20ad4d",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "billing vs access: users are locked out, but the cause and the fix are a failed card payment, so billing; P2 because work is blocked with no workaround; high because users are blocked now.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-billing-ambiguous-card",
+    "version": "1.0"
+  }
+}

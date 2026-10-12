@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-147",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "thread_quoted",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-147@mail.example.com>",
+    "from_name": "Sofia Castellano",
+    "from_email": "sofia.castellano@larkspurlabs.example.com",
+    "subject": "Re: Report export failing",
+    "body_text": "Hi Sam Ortega,\n\nThe export works again, thanks. One small new thing: the scheduled email for the report now shows yesterday's date in the subject line. The content is correct. No rush.\n\nBest,\nSofia\n\nOn Sun, 20 Sep 2026 at 06:35, Sam Ortega (Support) wrote:\n> We have deployed a fix for the report export. Could you try again and\n> confirm that the file downloads?\n\n> On Sat, 19 Sep 2026 at 05:28, Sofia Castellano wrote:\n>> The monthly report export fails with 'export error' every time. We need it\n>> for our board pack on Thursday, so it would be great to get it fixed this\n>> week. It worked fine last month.\n\n>> On Sat, 19 Sep 2026 at 04:21, Sam Ortega (Support) wrote:\n>>> Thanks, we can reproduce the export error and are working on it. I will\n>>> update you today.",
+    "received_at": "2026-09-21T07:42:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P3",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "34cc0301b330079e06cc",
+  "content_sha256": "fe3d2f4fb772047e53366f5dfe48ff1359150eb173e2026ed2701a46805f8578",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "thread_quoted: the quoted history is a blocking export failure (now fixed); the new message is a minor defect (wrong date in the subject) with correct content = bug P3; 'no rush' = low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-bug-thread-report-date",
+    "version": "1.0"
+  }
+}

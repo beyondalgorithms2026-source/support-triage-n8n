@@ -1,0 +1,50 @@
+{
+  "input_id": "t4-172",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "pii",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-172@mail.example.com>",
+    "from_name": "Priya Esposito",
+    "from_email": "priya.esposito@tidewell.example.com",
+    "subject": "Subject access request",
+    "body_text": "Dear support,\n\nI would like to exercise my right to access and receive a copy of the personal data your company holds about me.\n\nI used your app through my former employer, Tidewell Logistics. For verification, my SSN is 987-65-4320. Please copy my colleague at maria.lopez@ottervale.example.com on your reply.\n\nWe would like this sorted before the end of the week. Please confirm receipt and the expected timeline.\n\nKind regards,\nPriya Esposito",
+    "received_at": "2026-09-24T17:33:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "726a986a48ff0a9098c0",
+  "content_sha256": "63176a9ed9c2d2d01d7d62d56e2eb9d000b73a677192589f4d9ac05a9b2eabeb",
+  "duplicate_of": null,
+  "pii": [
+    {
+      "type": "ssn",
+      "value": "987-65-4320"
+    },
+    {
+      "type": "email",
+      "value": "maria.lopez@ottervale.example.com"
+    },
+    {
+      "type": "name",
+      "value": "Priya Esposito"
+    }
+  ],
+  "injection": null,
+  "fault": null,
+  "label_notes": "pii privacy (privacy-dsar-access): a data access request is privacy; the legal deadline is weeks away, so P3; urgency medium: action needed this week; planted: ssn, email, name.",
+  "generator": {
+    "seed": 20261012,
+    "template": "privacy-dsar-access",
+    "version": "1.0"
+  }
+}

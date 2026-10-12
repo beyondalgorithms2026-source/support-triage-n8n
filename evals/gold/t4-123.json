@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-123",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "tone_mismatch",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-123@mail.example.com>",
+    "from_name": "Lars Tanabe",
+    "from_email": "lars.tanabe@hollowfen.example.com",
+    "subject": "Who approved this?!",
+    "body_text": "WHO approved this release?! The tooltip on the Save button says 'Svae'. SVAE. Do you even test anything before you ship it? Unbelievable.\n\nLars",
+    "received_at": "2026-09-18T01:26:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "0d281b7a43da5074236b",
+  "content_sha256": "98301ef6d38554ad8e5ce3873ec201cd5b60d3cc84d33b58bb294eac429cae33",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "tone_mismatch: angry, but a cosmetic typo with no impact on work, so bug P4 low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-bug-tone-typo",
+    "version": "1.0"
+  }
+}

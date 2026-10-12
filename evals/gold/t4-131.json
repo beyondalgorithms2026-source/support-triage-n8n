@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-131",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "short",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-131@mail.example.com>",
+    "from_name": "Lucia Achterberg",
+    "from_email": "lucia.achterberg@kettlewick.example.net",
+    "subject": "export",
+    "body_text": "export button does nothing when I click it",
+    "received_at": "2026-09-19T03:47:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P3",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "8d0032ab71403eb6eb9f",
+  "content_sha256": "be8f0dd4ceed7b66577ce504f180a65562ff32f8d8d736443402e3c358296039",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "short: a defect for one user, impact unclear, so P3; no time pressure stated = low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-bug-short-export",
+    "version": "1.0"
+  }
+}

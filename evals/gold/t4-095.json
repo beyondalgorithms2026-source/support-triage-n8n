@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-095",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-095@mail.example.com>",
+    "from_name": "Mateo Moreau",
+    "from_email": "mateo.moreau@brambleway.example.net",
+    "subject": "Data processing agreement request",
+    "body_text": "Dear support,\n\nI'm the IT lead at Brambleway Studio. Before our renewal, we need your DPA and details on where our data is stored and which sub-processors you use.\n\nOur renewal is in three weeks. We are an EU company, so the transfer terms matter to us.\n\nCould you look into this sometime this week? Please send the documents or a link.\n\nKind regards,\nMateo Moreau\nIT lead, Brambleway Studio",
+    "received_at": "2026-09-14T06:31:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "732e91e6729c6deb1a06",
+  "content_sha256": "d7ef1ab61f6a1656af9134571607a19d1c4f23606920bdf638d4ffc64e3d7aa9",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean privacy (privacy-dpa): a DPA question is privacy; renewal is weeks away, so P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "privacy-dpa",
+    "version": "1.0"
+  }
+}

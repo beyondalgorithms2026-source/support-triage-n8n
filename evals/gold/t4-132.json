@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-132",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "short",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-132@mail.example.com>",
+    "from_name": "Freya Castellano",
+    "from_email": "freya.castellano@ottervale.example.com",
+    "subject": "down??",
+    "body_text": "everything is down?? 500s everywhere",
+    "received_at": "2026-09-19T08:01:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "d4458bf0d9a40bf26e90",
+  "content_sha256": "dc5ad517d8cfafe91d3e8089ae433233ac190cff498cc29a25eb4a3937ae9542",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "short: 'everything down, 500s everywhere' is outage material = P1; ongoing = high.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-outage-short",
+    "version": "1.0"
+  }
+}

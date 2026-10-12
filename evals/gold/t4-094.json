@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-094",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-094@mail.example.com>",
+    "from_name": "Freya Szabo",
+    "from_email": "freya.szabo@velloran.example.net",
+    "subject": "Feature request: bulk delete via the API",
+    "body_text": "Hi folks,\n\nI'm the founder at Velloran SAS. Could you add a bulk delete endpoint to the API?\n\nA bulk endpoint would also mean far fewer requests against your API. Our developers would use it every month.\n\nCould you look into this sometime this week? Is there a timeline for this?\n\nMany thanks,\nFreya",
+    "received_at": "2026-09-14T01:24:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "665d37f00f25d2d92dce",
+  "content_sha256": "47f852ced6f9bfad0441139624e240084b0e76febf37a3c4325f8fbe0b487834",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean feature (feature-bulk-delete-api): a request for something the product does not do is P4; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "feature-bulk-delete-api",
+    "version": "1.0"
+  }
+}

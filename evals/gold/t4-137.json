@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-137",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "thread_quoted",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-137@mail.example.com>",
+    "from_name": "Jonas Okonkwo",
+    "from_email": "jonas.okonkwo@tidewell.example.com",
+    "subject": "Re: SSO login loop for our team",
+    "body_text": "Hi Sam Ortega,\n\nGreat, that worked, everyone can sign in with SSO again. While I have you: our September invoice still charges for the SSO add-on, which we cancelled in August. Can you credit it this week?\n\nThanks,\nJonas\n\nOn Fri, 18 Sep 2026 at 22:30, Sam Ortega (Support) wrote:\n> Thanks for the details. Your identity provider was sending the email address\n> in a different attribute after your change. I have updated the mapping on\n> our side. Could you ask one of your users to sign out and sign in again with\n> SSO and let me know if the loop is gone?\n\n> On Thu, 17 Sep 2026 at 21:23, Jonas Okonkwo wrote:\n>> Since this morning, everyone who signs in with SSO ends up in a loop: they\n>> log in at our identity provider, come back to your login page, and start\n>> again. Password login still works for the two admins. We changed the\n>> identity provider settings last week, but nothing related to your app as far\n>> as we know.\n\n>> On Wed, 16 Sep 2026 at 20:16, Sam Ortega (Support) wrote:\n>>> Hello, thanks for reaching out. Could you send us the time of a failed sign-\n>>> in and the name of the identity provider you use? That helps us find the\n>>> right log entries.",
+    "received_at": "2026-09-19T23:37:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "87983e5a59daa32182b2",
+  "content_sha256": "6ab19e2ce2b5235f4cbdfaa3aeb7b95d65e2d1ad4e3f0da2fc7f754f7e3e3ea1",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "thread_quoted: the quoted history is an access problem (SSO loop) that is now solved; the new message asks for a credit on an invoice, so billing P3; 'this week' = medium.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-billing-thread-sso-credit",
+    "version": "1.0"
+  }
+}

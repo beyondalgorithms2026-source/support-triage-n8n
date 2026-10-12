@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-063",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-063@mail.example.com>",
+    "from_name": "Henrik Novak",
+    "from_email": "henrik.novak@velloran.example.net",
+    "subject": "Erasure for a workspace user",
+    "body_text": "Hi there!\n\nI'm the founder at Velloran SAS. A user in our workspace asked us to erase their personal data under GDPR. Deactivating them seems to keep their name and messages.\n\nWe want to answer them within the month. We could not find a delete option for user data in the admin area.\n\nCould you look into this sometime this week? Can you do it for us or tell us the steps?\n\nThanks so much!\nHenrik",
+    "received_at": "2026-09-09T21:09:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "a49da036856f3dbc3377",
+  "content_sha256": "14eb28c977a39eef0b69ce616664f22a436ad69ecec8f2755e97d742f7dd4a76",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean privacy (privacy-erasure-admin): an erasure request is privacy even when the admin asks how to do it; P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "privacy-erasure-admin",
+    "version": "1.0"
+  }
+}

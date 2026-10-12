@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-047",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-047",
+    "from_name": "Priya Novak",
+    "from_email": "priya.novak@hollowfen.example.com",
+    "subject": "Wrong name in your records",
+    "body_text": "Hi there!\n\nPlease correct my personal data under GDPR: my name changed, and invoices and emails still use the old one.\n\nI already changed it in my profile, but it did not reach the other systems.\n\nThere is no deadline here. Thank you.\n\nThanks so much!\nPriya Novak\nfounder, Hollowfen Media",
+    "received_at": "2026-09-07T16:17:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "19c510ce8f661c7407e9",
+  "content_sha256": "9cfda9a7d12d06c4c247b1b47190e93146dae83e6418ca579a96ce60c7e5df9d",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean privacy (privacy-rectification): a rectification request is privacy P3; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "privacy-rectification",
+    "version": "1.0"
+  }
+}

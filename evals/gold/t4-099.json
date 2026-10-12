@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-099",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-099@mail.example.com>",
+    "from_name": "Jonas Delacroix",
+    "from_email": "jonas.delacroix@tidewell.example.com",
+    "subject": "Contacts export incomplete",
+    "body_text": "Good morning,\n\nWhen I export the Contacts list to CSV, the file stops at exactly 1,000 rows, although we have about 2,400 contacts.\n\nThis started after last week's release; it worked before.\n\nCould you look into this sometime this week? Could you look into it?\n\nBest regards,\nJonas Delacroix\nIT lead, Tidewell Logistics",
+    "received_at": "2026-09-14T19:29:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "303f7ed7838a08eced4b",
+  "content_sha256": "0ecf03373435cf94fe7c3c4d130b5230170047ec1bccf3699787a1151557732d",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean bug (bug-export-csv): impaired with a workaround is P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "bug-export-csv",
+    "version": "1.0"
+  }
+}

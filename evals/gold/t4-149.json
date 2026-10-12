@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-149",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "ambiguous",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-149@mail.example.com>",
+    "from_name": "Henrik Castellano",
+    "from_email": "henrik.castellano@kettlewick.example.net",
+    "subject": "Due date jumps to the 1st",
+    "body_text": "Hi,\n\nWhen I set a recurring task's due date to the 31st, it moves to the 1st of the next month in months with 30 days. Is that expected, and how do I keep it at month-end? Our payroll reminders depend on it and the next one is due this week.\n\nThanks,\nHenrik",
+    "received_at": "2026-09-21T15:21:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "52a8c9bcc4bf38c9fc4a",
+  "content_sha256": "c0e80d509c3a796752faf302e67f7bda058077d90737dd0567454c33d65d36de",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "howto vs bug: this is documented behaviour with a 'last day of month' option, so howto; it blocks payroll reminders = P3; this week = medium.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-howto-ambiguous-month-end",
+    "version": "1.0"
+  }
+}

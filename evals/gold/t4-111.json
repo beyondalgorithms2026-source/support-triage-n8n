@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-111",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "ambiguous",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-111@mail.example.com>",
+    "from_name": "Owen Haddad",
+    "from_email": "owen.haddad@fennimore.example.com",
+    "subject": "Close my account",
+    "body_text": "Hello,\n\nPlease close my account and remove everything you have about me from your systems. And stop charging my card from now on.\n\nOwen Haddad",
+    "received_at": "2026-09-16T10:48:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "71e3867640e6c6d954d3",
+  "content_sha256": "83e182045145e11c3a89cc9ac8b9f82276fce4549f2ad8115f298260a6716c71",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "privacy vs billing: cancellation intent is billing, but an erasure request is present, and privacy beats every other category; P3 medium.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-privacy-ambiguous-close",
+    "version": "1.0"
+  }
+}

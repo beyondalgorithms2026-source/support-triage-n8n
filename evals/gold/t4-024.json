@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-024",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-024",
+    "from_name": "Mateo Brandt",
+    "from_email": "mateo.brandt@quillmoor.example.org",
+    "subject": "Meeting notes",
+    "body_text": "Hi,\n\nSorry, my previous message was meant for a colleague, not for you.\n\nPlease disregard it. You can throw it away. Our accounting firm has a very similar address, so the autocomplete picked yours.\n\nApologies for the noise.\n\nBest,\nMateo",
+    "received_at": "2026-09-04T12:31:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "598c3347dc8ccda109bf",
+  "content_sha256": "84895eda5db834e3aafd88c874a50f103a4d2b643b48b3f44478310d333b9a76",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean other (other-wrong-recipient): a message sent to the wrong recipient is other P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "other-wrong-recipient",
+    "version": "1.0"
+  }
+}

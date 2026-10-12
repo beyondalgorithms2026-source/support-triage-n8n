@@ -1,0 +1,43 @@
+{
+  "input_id": "t4-032",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-032@mail.example.com>",
+    "from_name": "Chloe Iversen",
+    "from_email": "chloe.iversen@velloran.example.net",
+    "subject": "Job application",
+    "body_text": "Hello,\n\nI would like to apply for a position on your support team.\n\nMy CV is attached. I have four years of experience in SaaS support. I enjoy solving technical problems and explaining them in plain language.\n\nI look forward to hearing from you.\n\nRegards,\nChloe Iversen",
+    "received_at": "2026-09-05T15:00:00Z",
+    "attachments": [
+      {
+        "name": "cv.pdf",
+        "type": "application/pdf",
+        "bytes": 312391
+      }
+    ]
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "f66b5772e0593d96e9eb",
+  "content_sha256": "7a3075362a4aaae6110a60242eb2ebd4cfc77684e96e99dbd0a6bf658f1dbe73",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean other (other-job-application): a job application is other P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "other-job-application",
+    "version": "1.0"
+  }
+}

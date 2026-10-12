@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-084",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-084@mail.example.com>",
+    "from_name": "Rafael Brandt",
+    "from_email": "rafael.brandt@tidewell.example.com",
+    "subject": "Pages take 30+ seconds",
+    "body_text": "Dear Support Team,\n\nI look after our account at Tidewell Logistics. Since 10:50 UTC the whole app has been extremely slow for everyone at Tidewell Logistics: pages take more than 30 seconds to load.\n\nPeople at other companies are posting about the same thing.\n\nIt is affecting our work as we speak, so please look at it today. Please look into it.\n\nKind regards,\nRafael",
+    "received_at": "2026-09-12T18:12:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "37af3fb0039a0ba9551d",
+  "content_sha256": "3b67a316749fc2b37f3f1bd7e81965ebc77dbed2aa3c03766ab3f780dd2bfce0",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean outage (outage-slow): the whole service is degraded for many users but still usable, so P2; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "outage-slow",
+    "version": "1.0"
+  }
+}

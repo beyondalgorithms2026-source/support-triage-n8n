@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-055",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-055@mail.example.com>",
+    "from_name": "Freya Moreau",
+    "from_email": "freya.moreau@fennimore.example.com",
+    "subject": "Urgent: data subject request from a former employee",
+    "body_text": "Hello support,\n\nA former employee filed a data subject request with us, and we need to export everything your platform holds about them. Our deadline is tomorrow.\n\nWe already searched the help center.\n\nThis is blocking us right now, so we need help today. Please tell us how to get the export today.\n\nRegards,\nFreya",
+    "received_at": "2026-09-08T17:19:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "78464e2cf3abbf048f7c",
+  "content_sha256": "f450643660f7f0e7bb2123fd9d622c03c953d0076798df94d3f05a95c726141b",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean privacy (privacy-employee-dsar): a rights request with the legal deadline at risk is P2; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "privacy-employee-dsar",
+    "version": "1.0"
+  }
+}

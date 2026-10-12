@@ -1,0 +1,43 @@
+{
+  "input_id": "t4-035",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-035",
+    "from_name": "Fatima Albright",
+    "from_email": "fatima.albright@ottervale.example.com",
+    "subject": "iOS app crashes on Inbox",
+    "body_text": "Hi,\n\nThe iOS app crashes every time I open the Inbox tab.\n\nWe reinstalled the app and restarted the phones. Our field technicians only use the iOS app, so they cannot see their new jobs. Honestly, this is really frustrating.\n\nThis is blocking us right now, so we need help today. Let me know if you need logs.\n\nRegards,\nFatima",
+    "received_at": "2026-09-06T01:09:00Z",
+    "attachments": [
+      {
+        "name": "screenshot.png",
+        "type": "image/png",
+        "bytes": 227680
+      }
+    ]
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "dfeb1a7ee93f14861b89",
+  "content_sha256": "5f1914a838635842066e9ca910888bf9d0cd9ed09cfdaf2c0689a70551f30192",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean bug (bug-ios-crash): a core workflow is broken for one customer with no workaround (field staff use only the iOS app), so P2; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "bug-ios-crash",
+    "version": "1.0"
+  }
+}

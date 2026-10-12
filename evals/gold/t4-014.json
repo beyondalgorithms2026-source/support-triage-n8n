@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-014",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-014@mail.example.com>",
+    "from_name": "Henrik Iversen",
+    "from_email": "henrik.iversen@hollowfen.example.com",
+    "subject": "Feature request: deals in EUR and USD",
+    "body_text": "Dear Support Team,\n\nI'm the operations manager at Hollowfen Media. We would like to keep deals in more than one currency in the same workspace.\n\nWe sell in the US and in Europe. Our reports would need to convert amounts at a fixed monthly rate.\n\nPlease consider it.\n\nKind regards,\nHenrik Iversen",
+    "received_at": "2026-09-03T02:51:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "64729f0d7f8ea1544576",
+  "content_sha256": "e73528f5555481b3a2790c735f81687edaacbeb3129bec9da8adb2592de330df",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean feature (feature-multi-currency): a request for something the product does not do is P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "feature-multi-currency",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-129",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "short",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-129@mail.example.com>",
+    "from_name": "Fatima Delacroix",
+    "from_email": "fatima.delacroix@fennimore.example.com",
+    "subject": "refund",
+    "body_text": "refund for the double charge pls",
+    "received_at": "2026-09-18T21:19:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P2",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "2694619ebff1bd05f2e4",
+  "content_sha256": "a525d126580bf221453b54ca339c06cac58ac0edeaa7bbb28a444d5d16e586f3",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "short: a double charge is P2 in the guide; no time pressure is stated, so urgency low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-billing-short-refund",
+    "version": "1.0"
+  }
+}

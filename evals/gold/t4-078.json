@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-078",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-078",
+    "from_name": "Ingrid Esposito",
+    "from_email": "ingrid.esposito@velloran.example.net",
+    "subject": "Any plans for dark mode?",
+    "body_text": "Dear support,\n\nIt would be great to have a dark mode in the web app.\n\nSeveral people on our team have asked for it.\n\nNo rush on this, whenever you have a moment. Please add it to the roadmap.\n\nBest regards,\nIngrid Esposito\nproject manager, Velloran SAS",
+    "received_at": "2026-09-11T22:23:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "be6433d2e1588706e990",
+  "content_sha256": "96e4702021232b189e62e57e232654ad2c5ef4a9da20f9bb146774f2383b7127",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean feature (feature-dark-mode): a request for something the product does not do is P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "feature-dark-mode",
+    "version": "1.0"
+  }
+}

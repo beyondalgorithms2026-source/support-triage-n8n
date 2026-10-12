@@ -1,0 +1,43 @@
+{
+  "input_id": "t4-003",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-003",
+    "from_name": "Lucia Whitfield",
+    "from_email": "lucia.whitfield@kettlewick.example.net",
+    "subject": "CRM sync broken since the update",
+    "body_text": "Hello,\n\nWriting on behalf of Kettlewick Ltd. Our CRM sync stopped working after your last release: no new events have arrived since then.\n\nOur sales team depends on this sync, and we have no other way to move the data. The webhook settings still show the endpoint as active, and the test button returns success. We are not happy that this happened at all.\n\nThis is blocking us right now, so we need help today. Please investigate as soon as possible.\n\nThanks,\nLucia Whitfield\nproject manager, Kettlewick Ltd",
+    "received_at": "2026-09-01T16:18:00Z",
+    "attachments": [
+      {
+        "name": "screenshot.png",
+        "type": "image/png",
+        "bytes": 317392
+      }
+    ]
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "751f70fc4caf5eb612e6",
+  "content_sha256": "b07da287ff4429523b037fef32749bb2557161c43c96f41baedfff0950d097e2",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean bug (bug-integration-sync): a core workflow is broken for one customer with no workaround, so P2; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "bug-integration-sync",
+    "version": "1.0"
+  }
+}

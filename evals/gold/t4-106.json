@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-106",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "ambiguous",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-106@mail.example.com>",
+    "from_name": "Jonas Quintero",
+    "from_email": "jonas.quintero@kettlewick.example.net",
+    "subject": "Sign in with Google bounces me back",
+    "body_text": "Hello,\n\nSince yesterday's update, when I click 'Sign in with Google' I am sent back to the login page without any error. Email and password still work, so I can get in that way for now.\n\nCould you look at it this week?\n\nThanks,\nJonas",
+    "received_at": "2026-09-15T17:42:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "7f503a96dd5525e2a433",
+  "content_sha256": "fea3be151112967a8091a48319e5955636d3ed798edab13a64fb69d2e58a1948",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "access vs bug: it may be a defect, but the symptom is 'cannot sign in', and access beats bug; a workaround exists, so P3; 'this week' = medium.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-access-ambiguous-google",
+    "version": "1.0"
+  }
+}

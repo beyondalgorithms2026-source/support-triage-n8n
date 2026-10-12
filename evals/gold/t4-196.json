@@ -1,0 +1,98 @@
+{
+  "input_id": "t4-196",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "malformed",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-196@mail.example.com>",
+    "from_name": "Owen Esposito",
+    "from_email": "owen.esposito@nimbleford.example.org",
+    "subject": "Dashboard chart wrong",
+    "body_text": "Hello,\n\nThe weekly activity chart on our dashboard shows Sunday's numbers twice, and Monday is missing.\n\nThe raw numbers in the table below the chart are correct. I attached twelve screenshots, one per browser and zoom level.\n\nA reply in the next few days would be great. Is this a known issue?\n\nRegards,\nOwen",
+    "received_at": "2026-09-28T00:57:00Z",
+    "attachments": [
+      {
+        "name": "screenshot-01.png",
+        "type": "image/png",
+        "bytes": 269694
+      },
+      {
+        "name": "screenshot-02.png",
+        "type": "image/png",
+        "bytes": 45544
+      },
+      {
+        "name": "screenshot-03.png",
+        "type": "image/png",
+        "bytes": 83428
+      },
+      {
+        "name": "screenshot-04.png",
+        "type": "image/png",
+        "bytes": 288932
+      },
+      {
+        "name": "screenshot-05.png",
+        "type": "image/png",
+        "bytes": 290519
+      },
+      {
+        "name": "screenshot-06.png",
+        "type": "image/png",
+        "bytes": 260647
+      },
+      {
+        "name": "screenshot-07.png",
+        "type": "image/png",
+        "bytes": 274280
+      },
+      {
+        "name": "screenshot-08.png",
+        "type": "image/png",
+        "bytes": 45216
+      },
+      {
+        "name": "screenshot-09.png",
+        "type": "image/png",
+        "bytes": 130685
+      },
+      {
+        "name": "screenshot-10.png",
+        "type": "image/png",
+        "bytes": 347110
+      },
+      {
+        "name": "screenshot-11.png",
+        "type": "image/png",
+        "bytes": 64153
+      },
+      {
+        "name": "screenshot-12.png",
+        "type": "image/png",
+        "bytes": 205014
+      }
+    ]
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "rejected",
+  "must_review": true,
+  "review_reason": "malformed:too_many_attachments",
+  "dedupe_key": "6c5ab981d14594acbf7f",
+  "content_sha256": "0c769da726a6cd7bfd49e93d8529cd83cc87760a6c8f5da9dc9e067a6d4bc4ae",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "malformed too_many_attachments: 12 attachments (> 10), rejected at intake (C-2); labels describe the visible request (bug P3 medium).",
+  "generator": {
+    "seed": 20261012,
+    "template": "malformed-too_many_attachments",
+    "version": "1.0"
+  }
+}

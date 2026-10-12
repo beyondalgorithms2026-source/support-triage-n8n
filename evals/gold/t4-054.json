@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-054",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-054@mail.example.com>",
+    "from_name": "Chloe Tanabe",
+    "from_email": "chloe.tanabe@hollowfen.example.com",
+    "subject": "Export to Excel format",
+    "body_text": "Hi there!\n\nCould you add an export to XLSX next to the CSV export?\n\nDates also turn into text when we open the CSV files. Our finance team re-formats every CSV by hand.\n\nIt would save us a lot of time.\n\nThanks so much!\nChloe Tanabe\nengineering manager, Hollowfen Media",
+    "received_at": "2026-09-08T14:50:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "5de70cc6b83587b259f5",
+  "content_sha256": "dd4677cac7b0337cf0ce2da18da68f338d74e352689712cbf57eacf7189f2fee",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean feature (feature-xlsx-export): a request for something the product does not do is P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "feature-xlsx-export",
+    "version": "1.0"
+  }
+}

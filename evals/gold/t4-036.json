@@ -1,0 +1,41 @@
+{
+  "input_id": "t4-036",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-036@mail.example.com>",
+    "from_name": "Bruno Okonkwo",
+    "from_email": "bruno.okonkwo@fennimore.example.com",
+    "subject": "API down for all our workspaces",
+    "body_text": "Hello,\n\nWriting on behalf of Fennimore Freight. All of our API requests have failed with HTTP 500 since 10:20 UTC, for every workspace and every API key we have.\n\nYour status page still shows everything as operational.\n\nWe have a hard deadline tomorrow morning, so please treat this as urgent. Please confirm you are aware and give us an estimate.\n\nThanks,\nBruno",
+    "received_at": "2026-09-06T04:14:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "f7b782661e17c0a03e53",
+  "content_sha256": "66d1c416b61d2adb0b7ab5ee3aa8f054248d0f9aed220b2859de17fc6d7a5809",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": {
+    "target": "jira",
+    "mode": "commit_then_504",
+    "pass": "A"
+  },
+  "label_notes": "clean outage (outage-all-500): the API is down across all workspaces, which is outage material and P1; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "outage-all-500",
+    "version": "1.0"
+  }
+}

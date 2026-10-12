@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-064",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-064@mail.example.com>",
+    "from_name": "Priya Marchetti",
+    "from_email": "priya.marchetti@velloran.example.net",
+    "subject": "Quick question about your marketing",
+    "body_text": "Good morning,\n\nI'm Priya from Velloran SAS. We help software companies grow organic traffic with link building and content.\n\nI would love 15 minutes of your time next week.\n\nWho is the right person to talk to?\n\nBest regards,\nPriya",
+    "received_at": "2026-09-09T23:58:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "0d7fce0087570057f838",
+  "content_sha256": "15c554755cf5fe5618a7ead915288e3088f27480d0201bc218cd5bab8d53ac5e",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean other (other-sales-pitch): a sales pitch is other P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "other-sales-pitch",
+    "version": "1.0"
+  }
+}

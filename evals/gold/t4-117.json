@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-117",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "multi_issue",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-117@mail.example.com>",
+    "from_name": "Bruno Castellano",
+    "from_email": "bruno.castellano@wrenfield.example.com",
+    "subject": "Recurring tasks and billing contact",
+    "body_text": "Hello,\n\nHow do I set up recurring tasks? I want a task to come back every first Monday of the month.\n\nAlso, where do I change the contact who receives our invoices?\n\nBest,\nBruno",
+    "received_at": "2026-09-17T05:34:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "b9d7b8ac4d1b627c3c06",
+  "content_sha256": "84636696d59449c588aa9b65a14ff6a0c13ba90c6292c44fad90928b24f4513f",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "multi_issue: the main question is how to set up recurring tasks (howto, P4 low). Second issue: change the invoice contact (billing question).",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-howto-multi-recurring",
+    "version": "1.0"
+  }
+}

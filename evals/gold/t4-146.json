@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-146",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "multi_issue",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-146@mail.example.com>",
+    "from_name": "Jonas Tanabe",
+    "from_email": "jonas.tanabe@glimmerbrook.example.org",
+    "subject": "New hires + invoice copy",
+    "body_text": "Hello,\n\nPlease help us add our two new hires to the workspace. Both invitations bounce back with 'invitation not valid' and they start on Monday.\n\nAlso, could you send me last month's invoice again? I cannot find the email.\n\nBest,\nJonas Tanabe\nengineering manager, Glimmerbrook BV",
+    "received_at": "2026-09-21T04:09:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "94ae86b384d0999f3953",
+  "content_sha256": "76cb0d1235be26b0c90f6ec92968d8d291f6047e87ccf3bc7e6983cb37db1474",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "multi_issue: the broken invitations block the customer most (access, P3, start Monday = medium). Second issue: resend an invoice (billing).",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-access-multi-invites-invoice",
+    "version": "1.0"
+  }
+}

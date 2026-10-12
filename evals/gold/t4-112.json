@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-112",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "auto_reply",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-112@mail.example.com>",
+    "from_name": "Lars Oyelaran",
+    "from_email": "lars.oyelaran@quillmoor.example.org",
+    "subject": "Out of office: Re: Your ticket has been updated",
+    "body_text": "Thank you for your message. I am out of the office until 22 September with limited access to email. For urgent matters, please call our main office line.\n\nLars Oyelaran",
+    "received_at": "2026-09-16T12:34:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "12baeabfd83bd8af5876",
+  "content_sha256": "bcd44b0607d810429c0da143b711c515994a91a2233eb7ac480ec3bb3aea1b9e",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "auto_reply: out-of-office message = other P4 low; the word 'urgent' is part of the template, not a request.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-other-autoreply-ooo",
+    "version": "1.0"
+  }
+}

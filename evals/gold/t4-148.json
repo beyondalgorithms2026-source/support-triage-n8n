@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-148",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "tone_mismatch",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-148@mail.example.com>",
+    "from_name": "Bruno Halloran",
+    "from_email": "bruno.halloran@ottervale.example.com",
+    "subject": "Quick question :)",
+    "body_text": "Hi! Quick question, is something going on? None of our 60 agents can load the inbox, it is just blank, and a friend at another company says theirs is blank too. Thanks so much :)\n\nBruno",
+    "received_at": "2026-09-21T11:13:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "a96039277199f995f2ba",
+  "content_sha256": "263e6a3a957f4337d4cf87e2d7cb6117f26e11440433a475f66864d07bd8980c",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "tone_mismatch: friendly and casual, but the core inbox is down for many users at several companies = outage P1, high.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-outage-tone-calm-inbox",
+    "version": "1.0"
+  }
+}

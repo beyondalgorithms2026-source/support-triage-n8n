@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-136",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "auto_reply",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-136@mail.example.com>",
+    "from_name": "Yara Lindqvist",
+    "from_email": "yara.lindqvist@hollowfen.example.com",
+    "subject": "Automatic reply: Outage notification",
+    "body_text": "Automatic reply: I am on parental leave until January. Your email will not be forwarded. For anything about our account, please contact the Hollowfen Media operations team.\n\nYara",
+    "received_at": "2026-09-19T21:09:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "3f02957fd7734e3b5f30",
+  "content_sha256": "212e112a56512507a3adea29ce167b746c0fdc211eb5a3a504ef260caeff8d24",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "auto_reply: an automatic reply to our status email; the word 'outage' is in our own subject line only = other P4 low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-other-autoreply-leave",
+    "version": "1.0"
+  }
+}

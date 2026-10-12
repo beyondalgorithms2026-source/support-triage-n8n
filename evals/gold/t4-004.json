@@ -1,0 +1,43 @@
+{
+  "input_id": "t4-004",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-004@mail.example.com>",
+    "from_name": "Aisha Rasmussen",
+    "from_email": "aisha.rasmussen@ottervale.example.com",
+    "subject": "Email notifications down",
+    "body_text": "Hey team,\n\nNo notification emails have gone out from any of our workspaces since 11:35 UTC, so our customers are not getting their receipts.\n\nTwo other companies we work with see the same problem. The email log in the admin area is empty for today.\n\nWe have a hard deadline tomorrow morning, so please treat this as urgent. Please treat this as an incident.\n\nMany thanks,\nAisha Rasmussen\nhead of finance, Ottervale Software",
+    "received_at": "2026-09-01T17:57:00Z",
+    "attachments": [
+      {
+        "name": "screenshot.png",
+        "type": "image/png",
+        "bytes": 363320
+      }
+    ]
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "71f5ef6253b0760ec910",
+  "content_sha256": "86abd3b0e5bc2b20c10678236ec6b8953f8acf516848d8914fd5aed8b4bcbede",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean outage (outage-emails): a core service is down for many customers, so outage P1; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "outage-emails",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-183",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "duplicate",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-060@mail.example.com>",
+    "from_name": "Kenji Okonkwo",
+    "from_email": "kenji.okonkwo@glimmerbrook.example.org",
+    "subject": "Emails stopped going out",
+    "body_text": "Hey team,\n\nWriting on behalf of Glimmerbrook BV. No notification emails have gone out from any of our workspaces since 15:35 UTC, so our customers are not getting their receipts.\n\nThe email log in the admin area is empty for today.\n\nIt is affecting our work as we speak, so please look at it today. Please treat this as an incident.\n\nThanks so much!\nKenji Okonkwo",
+    "received_at": "2026-09-09T09:48:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "duplicate_skip",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "14ac55662057c8c8a659",
+  "content_sha256": "5e81c713b5972bd415d1c08b1b7a6a24f0214dced041ec98a3146a9978c9897b",
+  "duplicate_of": "t4-060",
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "duplicate: resend of t4-060 with the same source_message_id (webhook retry / re-delivery).",
+  "generator": {
+    "seed": 20261012,
+    "template": "duplicate-resend:t4-060",
+    "version": "1.0"
+  }
+}

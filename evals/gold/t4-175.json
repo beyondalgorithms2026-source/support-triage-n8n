@@ -1,0 +1,50 @@
+{
+  "input_id": "t4-175",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "pii",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-175@mail.example.com>",
+    "from_name": "Chloe Okonkwo",
+    "from_email": "chloe.okonkwo@saltmarsh.example.com",
+    "subject": "Invite link expired",
+    "body_text": "Hi folks,\n\nI'm the engineering manager at Saltmarsh Robotics. We invited a new colleague yesterday, but the invite link says it has expired when they open it.\n\nWe have free seats on our plan, so that should not be the problem. We have resent the invite three times with the same result. Please copy my colleague at finance@quillmoor.example.org on your reply. You can reach me on 617-555-0199 if a call is quicker.\n\nA reply in the next few days would be great. Please help us get them into the workspace.\n\nCheers,\nChloe Okonkwo",
+    "received_at": "2026-09-25T05:12:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "0c00d15fc9c21876a7ff",
+  "content_sha256": "f58a93319e3fbe01380b89e12dd3623e03008023ac75d21c3b98ea0987968713",
+  "duplicate_of": null,
+  "pii": [
+    {
+      "type": "email",
+      "value": "finance@quillmoor.example.org"
+    },
+    {
+      "type": "phone",
+      "value": "617-555-0199"
+    },
+    {
+      "type": "name",
+      "value": "Chloe Okonkwo"
+    }
+  ],
+  "injection": null,
+  "fault": null,
+  "label_notes": "pii access (access-invite-expired): an invitation problem for one new user is P3; urgency medium: action needed this week; planted: email, phone, name.",
+  "generator": {
+    "seed": 20261012,
+    "template": "access-invite-expired",
+    "version": "1.0"
+  }
+}

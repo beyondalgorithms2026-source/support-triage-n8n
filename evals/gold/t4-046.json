@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-046",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-046@mail.example.com>",
+    "from_name": "Henrik Szabo",
+    "from_email": "henrik.szabo@wrenfield.example.com",
+    "subject": "Feature request: custom permissions",
+    "body_text": "Good morning,\n\nWe would like to define our own roles, for example someone who can edit projects but not see billing.\n\nOur contractors currently see more than they need.\n\nThere is no deadline here. Thanks for listening.\n\nBest regards,\nHenrik Szabo\nfounder, Wrenfield Partners",
+    "received_at": "2026-09-07T11:49:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "081109384fd0c1a22b80",
+  "content_sha256": "9c0efdd0f221f8005d0e26be6c3d9df434588b2515f61deedfcaa43e106c4168",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean feature (feature-granular-roles): a request for something the product does not do is P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "feature-granular-roles",
+    "version": "1.0"
+  }
+}

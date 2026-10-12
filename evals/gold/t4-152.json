@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-152",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "tone_mismatch",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-152@mail.example.com>",
+    "from_name": "Amara Szabo",
+    "from_email": "amara.szabo@saltmarsh.example.com",
+    "subject": "WHY IS NOBODY ANSWERING",
+    "body_text": "WHY IS NOBODY ANSWERING?! Our office printer has been jammed since Monday and our IT people told me to email this address. This is completely unacceptable!!!\n\nAmara",
+    "received_at": "2026-09-22T00:23:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "7066ab0b5610304b3320",
+  "content_sha256": "812b0ea7603e4a5409c74d6770f789481d50797bae4b8e1024362e56b75c4253",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "tone_mismatch: angry and demanding, but it is about an office printer and was sent to the wrong recipient = other P4 low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-other-tone-printer",
+    "version": "1.0"
+  }
+}

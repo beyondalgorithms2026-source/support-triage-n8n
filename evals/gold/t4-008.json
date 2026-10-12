@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-008",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-008@mail.example.com>",
+    "from_name": "Lucia Whitfield",
+    "from_email": "lucia.whitfield@quillmoor.example.org",
+    "subject": "Grow your organic traffic by 300%",
+    "body_text": "Hi folks,\n\nI'm reaching out from Quillmoor GmbH; we run outbound campaigns for software companies like yours.\n\nOur clients usually see results within the first three months.\n\nWould you be open to a quick call?\n\nThanks so much!\nLucia Whitfield",
+    "received_at": "2026-09-02T08:53:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "59d6a5ae7550435a3e6f",
+  "content_sha256": "51645668ef2989ca427fd87295ed81be8f4fcaf098f44668c3c37d05cc3076b0",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean other (other-sales-pitch): a sales pitch is other P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "other-sales-pitch",
+    "version": "1.0"
+  }
+}

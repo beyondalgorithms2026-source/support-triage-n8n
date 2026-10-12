@@ -1,0 +1,50 @@
+{
+  "input_id": "t4-170",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "pii",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-170@mail.example.com>",
+    "from_name": "Owen Castellano",
+    "from_email": "owen.castellano@saltmarsh.example.com",
+    "subject": "Admin locked out after 2FA attempts",
+    "body_text": "Hello support,\n\nWriting on behalf of Saltmarsh Robotics. My admin account got locked after several 2FA attempts, and I am the only person at Saltmarsh Robotics who can manage users.\n\nThe account recovery page sends me in a loop back to the 2FA screen. Nobody else on our side can add or remove users until this is fixed. You can reach me on (212) 555-0187 if a call is quicker. Our office egress IP is 192.0.2.15, in case that helps with the logs.\n\nIt is affecting our work as we speak, so please look at it today. Can you help me get back in?\n\nRegards,\nOwen Castellano",
+    "received_at": "2026-09-24T12:44:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "698c498f7ca46cdee403",
+  "content_sha256": "0b893d779955780ab5a13e32a66ba80658218f07f5b3e4dfe52844bdab0b4fc0",
+  "duplicate_of": null,
+  "pii": [
+    {
+      "type": "phone",
+      "value": "(212) 555-0187"
+    },
+    {
+      "type": "ipv4",
+      "value": "192.0.2.15"
+    },
+    {
+      "type": "name",
+      "value": "Owen Castellano"
+    }
+  ],
+  "injection": null,
+  "fault": null,
+  "label_notes": "pii access (access-locked-admin): a locked-out admin is P2 in the guide; urgency high: ongoing impact or a deadline within 24 h; planted: phone, ipv4, name.",
+  "generator": {
+    "seed": 20261012,
+    "template": "access-locked-admin",
+    "version": "1.0"
+  }
+}

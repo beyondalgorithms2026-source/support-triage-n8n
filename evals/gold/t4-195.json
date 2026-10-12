@@ -1,0 +1,36 @@
+{
+  "input_id": "t4-195",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "malformed",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "from_name": "Fatima Oyelaran",
+    "from_email": "fatima.oyelaran@hollowfen.example.com",
+    "subject": "Password reset email never arrives",
+    "body_text": "Hey team,\n\nI look after our account at Hollowfen Media. The password reset link is not coming through to my inbox, and I have checked the spam folder.\n\nI can still use the mobile app because I am signed in there, so I am not completely stuck. Colleagues on the same email domain receive your emails fine.\n\nCould you look into this sometime this week? Please send a reset link or reset it from your side.\n\nThanks so much!\nFatima",
+    "received_at": "2026-09-27T22:06:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "rejected",
+  "must_review": true,
+  "review_reason": "malformed:missing_message_id",
+  "dedupe_key": null,
+  "content_sha256": "47260dd8b299c9d8ad05a25e810668ed6ed548199afbfb083d4097695a73a428",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "malformed missing_message_id: no source_message_id, rejected at intake (C-3), dedupe_key null; labels describe the visible request (access P3 medium).",
+  "generator": {
+    "seed": 20261012,
+    "template": "malformed-missing_message_id",
+    "version": "1.0"
+  }
+}

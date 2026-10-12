@@ -1,0 +1,41 @@
+{
+  "input_id": "t4-187",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "duplicate",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-022@mail.example.com>",
+    "from_name": "Jonas Szabo",
+    "from_email": "jonas.szabo@hollowfen.example.com",
+    "subject": "Feature request: dark theme",
+    "body_text": "Hi,\n\nWriting on behalf of Hollowfen Media. It would be great to have a dark mode in the web app.\n\nThe mobile app already has one, so the web app feels inconsistent. Several people on our team have asked for it.\n\nLet us know if it is planned.\n\nBest,\nJonas",
+    "received_at": "2026-09-04T05:58:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "feature",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "duplicate_skip",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "325db4f7295148b829d0",
+  "content_sha256": "89382c9eb4b3457372005e306d20c7100df302df2a290e9146711e692585220e",
+  "duplicate_of": "t4-022",
+  "pii": [],
+  "injection": null,
+  "fault": {
+    "target": "jira",
+    "mode": "search_lag",
+    "pass": "A"
+  },
+  "label_notes": "duplicate: resend of t4-022 with the same source_message_id (webhook retry / re-delivery).",
+  "generator": {
+    "seed": 20261012,
+    "template": "duplicate-resend:t4-022",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-138",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "thread_quoted",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-138@mail.example.com>",
+    "from_name": "Kenji Pemberton",
+    "from_email": "kenji.pemberton@wrenfield.example.com",
+    "subject": "Re: Password reset not working",
+    "body_text": "Hi Sam Ortega,\n\nStill cannot get in. The new reset link you sent also says 'link expired' as soon as I open it, even when I click it straight away. I have a client call in two hours and all my notes are in there.\n\nKenji\n\nOn Sat, 19 Sep 2026 at 00:47, Sam Ortega (Support) wrote:\n> Sorry about that. I have sent a fresh reset link to the address on your\n> account. The link is valid for 30 minutes. Please open it in the same\n> browser where you requested it.\n\n> On Fri, 18 Sep 2026 at 23:40, Kenji Pemberton wrote:\n>> I asked for a password reset this morning. The email arrived, but the link\n>> says it has expired. I tried twice more and got the same message both times.\n>> My colleagues are not affected, only my account.\n\n>> On Thu, 17 Sep 2026 at 22:33, Sam Ortega (Support) wrote:\n>>> Hello, thanks for your message. Your account is active. If you have\n>>> forgotten your password, you can use the 'Forgot password' link on the sign-\n>>> in page to set a new one.",
+    "received_at": "2026-09-20T01:54:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P3",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "fc329fec963d186a18ac",
+  "content_sha256": "bf48cab1a0439903ff00971203f2bbf70ca4b0a3a701b0cb3f7b0ce53b0769e9",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "thread_quoted: one user cannot sign in (access); colleagues unaffected = P3; client call in two hours = urgency high. The long history repeats the same issue.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-access-thread-reset",
+    "version": "1.0"
+  }
+}

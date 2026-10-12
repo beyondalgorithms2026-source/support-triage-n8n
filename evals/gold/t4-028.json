@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-028",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-028",
+    "from_name": "Mateo Novak",
+    "from_email": "mateo.novak@larkspurlabs.example.com",
+    "subject": "Performance problem for all users",
+    "body_text": "Hi,\n\nI look after our account at Larkspur Labs. Since 14:50 UTC the whole app has been extremely slow for everyone at Larkspur Labs: pages take more than 30 seconds to load.\n\nWe can still work, but very slowly. People at other companies are posting about the same thing. This has already cost us a morning of work.\n\nIt is affecting our work as we speak, so please look at it today. Please look into it.\n\nRegards,\nMateo",
+    "received_at": "2026-09-05T01:06:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "23d1396ea9b2f5299383",
+  "content_sha256": "b640d5924337127d8fc15c13d92000622ae317350db97b07abcf20b91d219f11",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean outage (outage-slow): the whole service is degraded for many users but still usable, so P2; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "outage-slow",
+    "version": "1.0"
+  }
+}

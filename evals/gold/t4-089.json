@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-089",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-089@mail.example.com>",
+    "from_name": "Bruno Tanabe",
+    "from_email": "bruno.tanabe@kettlewick.example.net",
+    "subject": "Cancel our subscription",
+    "body_text": "Hello,\n\nI look after our account at Kettlewick Ltd. We have decided to cancel our Scale subscription at the end of the current billing period.\n\nWe do not want the plan to renew automatically.\n\nA reply in the next few days would be great. Please confirm the cancellation date in writing.\n\nBest,\nBruno",
+    "received_at": "2026-09-13T10:06:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "83e8c6da42af76f6782d",
+  "content_sha256": "ef590563b2f936c794d06f21f1d58edbe7c1b9eebf04fd96c2d474e1c20bbb6f",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean billing (billing-cancel): cancellation intent is billing; nothing is broken, so P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-cancel",
+    "version": "1.0"
+  }
+}

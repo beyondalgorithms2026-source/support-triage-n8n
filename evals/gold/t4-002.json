@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-002",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-002@mail.example.com>",
+    "from_name": "Sofia Brandt",
+    "from_email": "sofia.brandt@wrenfield.example.com",
+    "subject": "No reset email",
+    "body_text": "Good morning,\n\nI look after our account at Wrenfield Partners. I requested a password reset four times this morning, but the email never arrives.\n\nI can still use the mobile app because I am signed in there, so I am not completely stuck.\n\nThis is blocking us right now, so we need help today. Please send a reset link or reset it from your side.\n\nYours sincerely,\nSofia Brandt\nengineering manager, Wrenfield Partners",
+    "received_at": "2026-09-01T12:02:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P3",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "100528e998981bfbc53c",
+  "content_sha256": "b36fae43401404604fd148f49e8305fd1a7d0aca8a98a953de0dd8237c35213c",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean access (access-reset-email): one user cannot sign in on the web but still has the mobile app, so P3; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "access-reset-email",
+    "version": "1.0"
+  }
+}

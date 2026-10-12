@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-184",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "duplicate",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-184@mail.example.com>",
+    "from_name": "Nikhil Quintero",
+    "from_email": "nikhil.quintero@nimbleford.example.org",
+    "subject": "Role documentation",
+    "body_text": "Hello,\n\nI look after our account at Nimbleford Dental. Where in the docs can I find what each role (Member, Manager, Admin) can see and do?\n\nWe are just tidying up our workspace.\n\nA link would be enough.\n\nThanks,\nNikhil Quintero\nsupport lead, Nimbleford Dental",
+    "received_at": "2026-09-26T08:52:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "duplicate_skip",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "958ae2d3a69676264a8b",
+  "content_sha256": "4f6666c07b20550e16abc2a40364c258fb03194e6215800b921c31d5dd479882",
+  "duplicate_of": "t4-069",
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "duplicate: same sender, subject and body as t4-069 with a new message id.",
+  "generator": {
+    "seed": 20261012,
+    "template": "duplicate-content:t4-069",
+    "version": "1.0"
+  }
+}

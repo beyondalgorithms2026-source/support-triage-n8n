@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-069",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-069@mail.example.com>",
+    "from_name": "Nikhil Quintero",
+    "from_email": "nikhil.quintero@nimbleford.example.org",
+    "subject": "Role documentation",
+    "body_text": "Hello,\n\nI look after our account at Nimbleford Dental. Where in the docs can I find what each role (Member, Manager, Admin) can see and do?\n\nWe are just tidying up our workspace.\n\nA link would be enough.\n\nThanks,\nNikhil Quintero\nsupport lead, Nimbleford Dental",
+    "received_at": "2026-09-10T15:36:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "273b60555ba657c1e03e",
+  "content_sha256": "4f6666c07b20550e16abc2a40364c258fb03194e6215800b921c31d5dd479882",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean howto (howto-roles-docs): a docs question with no impact is P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "howto-roles-docs",
+    "version": "1.0"
+  }
+}

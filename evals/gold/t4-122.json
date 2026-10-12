@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-122",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "tone_mismatch",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-122@mail.example.com>",
+    "from_name": "Ingrid Oyelaran",
+    "from_email": "ingrid.oyelaran@saltmarsh.example.com",
+    "subject": "Small question about a login",
+    "body_text": "Hi team, hope you are well!\n\nNot a huge deal probably, but we noticed a sign-in to our admin account at 03:12 from a location none of us has been to, and an API key called 'backup2' was created that none of us made. The key has been active since then.\n\nCould someone take a look when convenient? No stress.\n\nCheers,\nIngrid",
+    "received_at": "2026-09-17T22:59:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "ddcb1ee1d25c6139e392",
+  "content_sha256": "a02269a1be0d975ef7066e4c704796673ca38d325b642a52498d4d33ce1505f8",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "tone_mismatch: calm and polite, but a suspected account takeover with an unknown active key is a security incident = P1; the impact is ongoing now, so urgency high despite 'when convenient'.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-access-tone-calm-compromise",
+    "version": "1.0"
+  }
+}

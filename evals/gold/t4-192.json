@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-192",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "duplicate",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-192@mail.example.com>",
+    "from_name": "Yara Moreau",
+    "from_email": "yara.moreau@tidewell.example.com",
+    "subject": "Duplicate payment for invoice INV-2026-4634",
+    "body_text": "Hello,\n\nSame subject as before, but a new question: our finance team would like the purchase order number PO-41577 printed on future invoices. Is that possible? No rush.\n\nYara Moreau",
+    "received_at": "2026-09-27T11:31:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "cecf8d7c700ca4b0031c",
+  "content_sha256": "a6682c66ca6921aae0be78264cb3988635b73ce8d84a7f9f91b99d6fe0a0b9f0",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "duplicate trap: same sender and subject as t4-057, different issue, so a new ticket: a general billing question with no impact (billing P4 low).",
+  "generator": {
+    "seed": 20261012,
+    "template": "duplicate-trap:t4-057",
+    "version": "1.0"
+  }
+}

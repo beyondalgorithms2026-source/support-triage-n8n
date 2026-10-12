@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-101",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-101@mail.example.com>",
+    "from_name": "Lars Moreau",
+    "from_email": "lars.moreau@wrenfield.example.com",
+    "subject": "How to add extra fields",
+    "body_text": "Hello support,\n\nI look after our account at Wrenfield Partners. Is there a way to add a custom field, like 'contract end date', to the contact form?\n\nI saw a mention of custom fields in your changelog.\n\nAny help is appreciated.\n\nRegards,\nLars Moreau",
+    "received_at": "2026-09-15T02:01:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "9ef45c4b40abc5afea38",
+  "content_sha256": "2a117713c7745e12b31595541a72c74c855bf0643fa0f9c7af4615c957cae5cf",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean howto (howto-custom-field): a how-to question about an existing feature with no impact is P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "howto-custom-field",
+    "version": "1.0"
+  }
+}

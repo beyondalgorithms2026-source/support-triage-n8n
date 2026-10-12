@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-087",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-087@mail.example.com>",
+    "from_name": "Bruno Varga",
+    "from_email": "bruno.varga@velloran.example.net",
+    "subject": "California privacy request",
+    "body_text": "Hi folks,\n\nI am a California resident and, under the CCPA, I opt out of the sale or sharing of my personal information.\n\nI am a user in the Velloran SAS workspace. This also covers any advertising partners.\n\nPlease confirm once this is done.\n\nThanks so much!\nBruno Varga",
+    "received_at": "2026-09-13T02:51:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "e0a6f5538899e4be25e8",
+  "content_sha256": "ac541cf6daef9bfc70b712ea5e181b3ea90d921b81a9040e3fae1c39874c3049",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean privacy (privacy-ccpa-optout): a CCPA opt-out is a rights request, so privacy P3; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "privacy-ccpa-optout",
+    "version": "1.0"
+  }
+}

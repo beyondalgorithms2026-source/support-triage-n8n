@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-113",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "multi_issue",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-113@mail.example.com>",
+    "from_name": "Bruno Esposito",
+    "from_email": "bruno.esposito@velloran.example.net",
+    "subject": "Invoice address and slow reports",
+    "body_text": "Hello,\n\nTwo things. Our August invoice still shows our old office address; we moved in July and updated it in the billing settings. Our accounts team cannot book the invoice until the address is right, and the books close at the end of next week.\n\nSecond, and less important: the Reports page has been a bit slow for me this week, maybe 5 or 6 seconds to load.\n\nBest regards,\nBruno Esposito\nproject manager, Velloran SAS",
+    "received_at": "2026-09-16T15:48:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "a29818e72899d1d1aa04",
+  "content_sha256": "0f542950cc5366be761bdeb796162bd08a85832bb3e38d19fcb99af7284aa6df",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "multi_issue: the invoice address blocks the customer most (billing P3, deadline next week = medium). Second issue: slow Reports page (bug, minor).",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-billing-multi-address",
+    "version": "1.0"
+  }
+}

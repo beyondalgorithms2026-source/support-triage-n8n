@@ -1,0 +1,47 @@
+{
+  "input_id": "t4-068",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-068@mail.example.com>",
+    "from_name": "Leila Iversen",
+    "from_email": "leila.iversen@larkspurlabs.example.com",
+    "subject": "EU data center timeouts",
+    "body_text": "Dear support,\n\nAll our workspaces hosted in the EU region have been unreachable since 15:35 UTC.\n\nWe see the same from home connections and from our office. Our US workspace still works.\n\nWe have a hard deadline tomorrow morning, so please treat this as urgent. Please confirm and let us know the expected recovery time.\n\nKind regards,\nLeila",
+    "received_at": "2026-09-10T12:04:00Z",
+    "attachments": [
+      {
+        "name": "screenshot.png",
+        "type": "image/png",
+        "bytes": 284586
+      }
+    ]
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P1",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "d0f520404c5432aae97d",
+  "content_sha256": "d5a34f599b4653dcb03f9b825fda2f74f13f370f0ddca0c1abca2e522b2c7103",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": {
+    "target": "slack",
+    "mode": "503",
+    "pass": "A"
+  },
+  "label_notes": "clean outage (outage-eu-region): a whole region is unreachable, so outage P1; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "outage-eu-region",
+    "version": "1.0"
+  }
+}

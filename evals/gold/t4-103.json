@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-103",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-103@mail.example.com>",
+    "from_name": "Rafael Halloran",
+    "from_email": "rafael.halloran@glimmerbrook.example.org",
+    "subject": "Rectification request",
+    "body_text": "Hello support,\n\nYour records still show my old surname. Under GDPR I ask you to correct it in all your systems.\n\nMy account is part of the Glimmerbrook BV workspace.\n\nNo rush on this, whenever you have a moment. Thank you.\n\nRegards,\nRafael",
+    "received_at": "2026-09-15T07:40:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "8017af445dc90c508138",
+  "content_sha256": "2ed3f2eae47912a63cc84f9f5fa7252b085675c4039f17f134248c676f95cc80",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean privacy (privacy-rectification): a rectification request is privacy P3; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "privacy-rectification",
+    "version": "1.0"
+  }
+}

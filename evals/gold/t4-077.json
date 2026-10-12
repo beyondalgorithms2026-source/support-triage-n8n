@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-077",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-077@mail.example.com>",
+    "from_name": "Henrik Brandt",
+    "from_email": "henrik.brandt@tidewell.example.com",
+    "subject": "Slack notifications setup",
+    "body_text": "Hi folks,\n\nHow do we set up Slack notifications for new tasks in one project?\n\nI saw a Slack option under Integrations, but it asks for settings I do not understand.\n\nNo rush on this, whenever you have a moment. Could you explain the steps?\n\nThanks so much!\nHenrik Brandt",
+    "received_at": "2026-09-11T18:47:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "f223f8bb60b54b8f5934",
+  "content_sha256": "09ec2644780f1ce262b0d0001077797e0cc510e9b3e14b25308700470e3593c6",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean howto (howto-slack-connect): a how-to question about an existing integration with no impact is P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "howto-slack-connect",
+    "version": "1.0"
+  }
+}

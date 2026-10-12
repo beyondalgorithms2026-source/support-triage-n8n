@@ -1,0 +1,50 @@
+{
+  "input_id": "t4-179",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "pii",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-179@mail.example.com>",
+    "from_name": "Henrik Esposito",
+    "from_email": "henrik.esposito@wrenfield.example.com",
+    "subject": "Grow your organic traffic by 300%",
+    "body_text": "Dear support,\n\nI'm reaching out from Wrenfield Partners; we run outbound campaigns for software companies like yours.\n\nWe have worked with more than 200 brands. I would love 15 minutes of your time next week. You can reach me on 312.555.0156 if a call is quicker. Please copy my colleague at r.santos@velloran.example.net on your reply.\n\nWould you be open to a quick call?\n\nBest regards,\nHenrik Esposito",
+    "received_at": "2026-09-25T17:39:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "4484f24e8ae21b9f0769",
+  "content_sha256": "af61cfb1317881501a8c3f633a52b9c08ed270123473438681730de0f6f43b9d",
+  "duplicate_of": null,
+  "pii": [
+    {
+      "type": "phone",
+      "value": "312.555.0156"
+    },
+    {
+      "type": "email",
+      "value": "r.santos@velloran.example.net"
+    },
+    {
+      "type": "name",
+      "value": "Henrik Esposito"
+    }
+  ],
+  "injection": null,
+  "fault": null,
+  "label_notes": "pii other (other-sales-pitch): a sales pitch is other P4; urgency low: no time pressure; planted: phone, email, name.",
+  "generator": {
+    "seed": 20261012,
+    "template": "other-sales-pitch",
+    "version": "1.0"
+  }
+}

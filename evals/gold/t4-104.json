@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-104",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-104",
+    "from_name": "Leila Albright",
+    "from_email": "leila.albright@quillmoor.example.org",
+    "subject": "Invitation to speak at our webinar",
+    "body_text": "Good morning,\n\nWe are hosting a webinar on customer operations next month and would love someone from your team on the panel.\n\nThe session is 45 minutes and fully online. Past speakers came from about 30 software companies.\n\nWould anyone be available?\n\nKind regards,\nLeila",
+    "received_at": "2026-09-15T12:00:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "df87dd6aa306d1617dc6",
+  "content_sha256": "5a3368b9ba719fa82578390ae78a3c2e2a5d496d0c178eb7377f681ba2b0bc44",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean other (other-webinar-invite): an event invitation is other P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "other-webinar-invite",
+    "version": "1.0"
+  }
+}

@@ -149,3 +149,44 @@ vectors pin the preimage strings; the hex digest is computed in the test, becaus
 Why: no other tool can run Python.
 Reverse: the loop's own `accept.sh G1` and `guard.sh` run decides DONE. Optional: freeze hex literals in
 `tests/test_norm.py` in G7, when the JS twin test needs them.
+
+## Q-22 Which two malformed tickets go through "as label" — L now, H after G9
+Date: 2026-10-12. Goal: G2 (T4-02).
+Decision: the control-characters ticket and the body-exactly-at-model-cap ticket go through as labelled (`auto_route`).
+The 1,000-char subject and the `.exe` attachment are `rejected` with the other four (6 rejected in total).
+Why: HARNESS_SPEC §1.1 says "last two: as label", and read literally that means the 1,000-char subject and the model-cap
+body. But ARCHITECTURE C-2 caps the subject at 300 chars, and SECURITY_CONTROLS SEC-10 expects the 1,000-char subject
+to be `rejected before model`. ARCHITECTURE and SEC-10 agree, so the spec row is read as "the last two that do not
+break a C-2 limit".
+Reverse: change the `code` argument of two builders in `src/fixtures/make_tickets.py` (`_MALFORMED`), regenerate,
+add a § Label changes line. Before G7 nothing is scored on gold; after G9/G10 the affected runs must be re-scored.
+Owner answer:
+
+## Q-23 Priority mix is off the HARNESS_SPEC target — L now, H after G9
+Date: 2026-10-12. Goal: G2 (T4-02).
+Decision: keep the mix the labelling guide produces: P1 23, P2 29, P3 76, P4 72 (generated table in
+`evals/README.md` § Label stats). Target was ≈ 20 / 50 / 80 / 50. Urgency is near target (52 / 70 / 78).
+Why: `feature` and `other` are P4 by definition (49 tickets, § Label stats), and the 8-category floor fixes their share. Two clean
+scenarios moved to P2 where the text states "no workaround" (`bug-ios-crash`, `access-new-phone`). Moving more would
+mean writing labels toward a quota, not toward the guide.
+Reverse: add P2 scenarios to `SCENARIOS` in `make_tickets.py`, regenerate. Cost rises after G9 (re-tune, re-run).
+Owner answer:
+
+## Q-24 Gold field choices HARNESS_SPEC §1.3 leaves open — M
+Date: 2026-10-12. Goal: G2 (T4-02).
+Decision:
+(1) The missing-message-id ticket omits the `source_message_id` key (not `""`, not `null`); its `dedupe_key` is `null`.
+(2) `review_reason` ∈ `policy_class | injection | malformed:<code>` or `null`; `must_review` = outcome ∈ {review, rejected}.
+(3) `pii[].type` ∈ `card, ssn, iban, phone, email, ipv4, url, name`. Pii-bucket tickets sign with the full sender name
+and list it as `name`. Other tickets list only planted values; their sender names are not in `pii`.
+(4) The injection `location` enum is frozen, so the fake system footer and the markdown link are `body`, and the
+Slack-mention ticket is `subject`; the form is written in `label_notes`.
+(5) Duplicate traps have `duplicate_of: null`; the look-alike id is in `generator.template` (`duplicate-trap:<id>`).
+Resends copy the original ticket byte for byte, including `received_at`.
+(6) Faults: `jira:search_lag` sits on a test-split resend (SEC-17). The other 9 sit on test clean `auto_route`
+tickets that are not duplicate originals.
+(7) `received_at` comes from the seed. It is synthetic ticket data, not run evidence (I-6 covers run files).
+(8) The generator owns the block between the label-stats markers in `evals/README.md`; `--check` fails if it is stale.
+Why: smallest choices that keep `scripts/checks.py gold`, G3 scoring and the G4 leak check simple.
+Reverse: edit `make_tickets.py`, regenerate; G3/G4 code that reads these fields changes with it.
+Owner answer:

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-067",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-067@mail.example.com>",
+    "from_name": "Bruno Varga",
+    "from_email": "bruno.varga@ottervale.example.com",
+    "subject": "Template changes not saving",
+    "body_text": "Hello support,\n\nWriting on behalf of Ottervale Software. Every time I edit a project template and press Save, I get 'Something went wrong' and the change is lost.\n\nOur onboarding process is built on these templates, and there is no other way to edit them.\n\nThis is blocking us right now, so we need help today. Please help us fix this quickly.\n\nBest,\nBruno",
+    "received_at": "2026-09-10T09:29:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "96a801b27e5a77182a1a",
+  "content_sha256": "7d4023b59eb63bad64576f392370173292e4408a82b03b2dd92ef2734c40cae2",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean bug (bug-save-error): a core workflow is broken for one customer with no workaround, so P2; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "bug-save-error",
+    "version": "1.0"
+  }
+}

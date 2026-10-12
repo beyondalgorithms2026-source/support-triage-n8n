@@ -1,0 +1,41 @@
+{
+  "input_id": "t4-059",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-059@mail.example.com>",
+    "from_name": "Hanna Okonkwo",
+    "from_email": "hanna.okonkwo@quillmoor.example.org",
+    "subject": "Webhook integration stopped sending events",
+    "body_text": "Dear Support Team,\n\nWriting on behalf of Quillmoor GmbH. Our CRM sync stopped working after your last release: no new events have arrived since then.\n\nThe webhook settings still show the endpoint as active, and the test button returns success. Our sales team depends on this sync, and we have no other way to move the data.\n\nCould you look into this sometime this week? Can you check the delivery logs for our workspace?\n\nKind regards,\nHanna",
+    "received_at": "2026-09-09T07:17:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P2",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "4e24f363a01efbb92f86",
+  "content_sha256": "d2e9e881142a153f095a26138b20ab0acf86e9543bab018c86b3bcd5d62cc063",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": {
+    "target": "slack",
+    "mode": "503",
+    "pass": "A"
+  },
+  "label_notes": "clean bug (bug-integration-sync): a core workflow is broken for one customer with no workaround, so P2; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "bug-integration-sync",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "input_id": "t4-045",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-045@mail.example.com>",
+    "from_name": "Ingrid Marchetti",
+    "from_email": "ingrid.marchetti@tidewell.example.com",
+    "subject": "How to add extra fields",
+    "body_text": "Dear Support Team,\n\nHow can I add our own field to contact records?\n\nWe would use it for renewal tracking. I saw a mention of custom fields in your changelog.\n\nThanks in advance.\n\nBest regards,\nIngrid Marchetti\nsupport lead, Tidewell Logistics",
+    "received_at": "2026-09-07T09:58:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "f98116889733183ddf28",
+  "content_sha256": "03b85253223b233a6919a84a5408180ae81471f14ef3645659c37f7ae1ad4bb9",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": {
+    "target": "jira",
+    "mode": "503",
+    "pass": "A"
+  },
+  "label_notes": "clean howto (howto-custom-field): a how-to question about an existing feature with no impact is P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "howto-custom-field",
+    "version": "1.0"
+  }
+}

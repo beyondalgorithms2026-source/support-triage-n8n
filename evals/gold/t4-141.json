@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-141",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "thread_quoted",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-141@mail.example.com>",
+    "from_name": "Mateo Ferreira",
+    "from_email": "mateo.ferreira@velloran.example.net",
+    "subject": "Re: Moving many tasks at once",
+    "body_text": "Hi Sam Ortega,\n\nThanks, that worked perfectly. How do I do the same for tasks in archived projects? The checkbox does not show up there.\n\nCheers,\nMateo\n\nOn Sat, 19 Sep 2026 at 11:37, Sam Ortega (Support) wrote:\n> You can move many tasks at once: open the list view, tick the checkbox next\n> to each task (or the one in the header to select all), then choose 'Move to\n> project' from the actions menu.\n\n> On Fri, 18 Sep 2026 at 10:30, Mateo Ferreira wrote:\n>> We are reorganising our projects and need to move about 200 tasks from one\n>> project to another. Doing it one by one takes forever. Is there a faster\n>> way?\n\n>> On Fri, 18 Sep 2026 at 09:23, Sam Ortega (Support) wrote:\n>>> Thanks for your question, I will check the best way to do this and get back\n>>> to you shortly.",
+    "received_at": "2026-09-20T12:44:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "46557b33dbceac971277",
+  "content_sha256": "08a5a22aeec0e50a6640611c7e9c5db44cc29e7ba0bcf4aea6b0a7dba16671be",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "thread_quoted: a follow-up how-to question; nothing is broken = howto P4 low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-howto-thread-archived",
+    "version": "1.0"
+  }
+}

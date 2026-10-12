@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-125",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "hard",
+  "hard_case": "tone_mismatch",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-125@mail.example.com>",
+    "from_name": "Aisha Oyelaran",
+    "from_email": "aisha.oyelaran@quillmoor.example.org",
+    "subject": "WHERE IS THE SETTING",
+    "body_text": "I have been clicking around for 20 minutes and I am LOSING MY MIND. Where on earth is the setting to change the date format to day/month/year?! Why is this so hard to find?!\n\nAisha",
+    "received_at": "2026-09-18T07:50:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "howto",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "da8cc037d0694c42960a",
+  "content_sha256": "9b47d7747ce899a3c78025e9fd5fc81a36818e6a892a49a3c5ae5cd45c96c132",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "tone_mismatch: angry, but a how-to question that does not block work = howto P4 low.",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-howto-tone-date-format",
+    "version": "1.0"
+  }
+}

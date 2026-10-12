@@ -1,0 +1,50 @@
+{
+  "input_id": "t4-178",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "pii",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-178@mail.example.com>",
+    "from_name": "Mei Kowalczyk",
+    "from_email": "mei.kowalczyk@brambleway.example.net",
+    "subject": "Contacts export incomplete",
+    "body_text": "Hello,\n\nWriting on behalf of Brambleway Studio. When I export the Contacts list to CSV, the file stops at exactly 1,000 rows, although we have about 4,800 contacts.\n\nThis started after last week's release; it worked before. We can work around it by exporting in smaller filtered batches, but it takes a long time. Here is a screen recording of the problem: https://drive.example.org/view?id=5521&key=Zp4Lk8 Our office egress IP is 203.0.113.7, in case that helps with the logs.\n\nCould you look into this sometime this week? Could you look into it?\n\nThanks,\nMei Kowalczyk",
+    "received_at": "2026-09-25T13:13:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "8e7830ee99ac8187b3f5",
+  "content_sha256": "2b5df2a4ff727240f2857162342dffe42b921acf00fbf977adbb7f53a014627b",
+  "duplicate_of": null,
+  "pii": [
+    {
+      "type": "url",
+      "value": "https://drive.example.org/view?id=5521&key=Zp4Lk8"
+    },
+    {
+      "type": "ipv4",
+      "value": "203.0.113.7"
+    },
+    {
+      "type": "name",
+      "value": "Mei Kowalczyk"
+    }
+  ],
+  "injection": null,
+  "fault": null,
+  "label_notes": "pii bug (bug-export-csv): impaired with a workaround is P3; urgency medium: action needed this week; planted: url, ipv4, name.",
+  "generator": {
+    "seed": 20261012,
+    "template": "bug-export-csv",
+    "version": "1.0"
+  }
+}

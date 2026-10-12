@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-065",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-065@mail.example.com>",
+    "from_name": "Owen Esposito",
+    "from_email": "owen.esposito@saltmarsh.example.com",
+    "subject": "Question about invoice INV-2026-9980",
+    "body_text": "Good morning,\n\nWriting on behalf of Saltmarsh Robotics. Our September invoice charges for 9 seats although we removed several users last month and now have 6.\n\nWe paid the invoice already so our books stay clean, but we expect a credit for the difference.\n\nPlease send a corrected invoice or a credit note.\n\nBest regards,\nOwen Esposito\nproject manager, Saltmarsh Robotics",
+    "received_at": "2026-09-10T03:35:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "billing",
+    "priority": "P3",
+    "urgency": "low"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "382b40ca83feed690225",
+  "content_sha256": "c2c31b733d3f0fb63d6e15cb7acea41286f4964b7a38397e93525b09b9bc0d81",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean billing (billing-invoice-seats): a single invoice error is P3; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "billing-invoice-seats",
+    "version": "1.0"
+  }
+}

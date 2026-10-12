@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-052",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-052@mail.example.com>",
+    "from_name": "Freya Okonkwo",
+    "from_email": "freya.okonkwo@fennimore.example.com",
+    "subject": "Webhook deliveries delayed for hours",
+    "body_text": "Dear Support Team,\n\nI'm the office manager at Fennimore Freight. Every webhook from your platform has arrived over an hour late since 16:10 UTC, across all our accounts.\n\nOther customers in your community forum report the same delays. Nothing is lost so far, but everything downstream is late.\n\nIt is affecting our work as we speak, so please look at it today. When do you expect the backlog to clear?\n\nYours sincerely,\nFreya",
+    "received_at": "2026-09-08T09:24:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "outage",
+    "priority": "P2",
+    "urgency": "high"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "755879b116360eabe270",
+  "content_sha256": "b65b8c4a48c1bf3a7f6253c11ee92bce70df3b97abb9d4f24bb5225c274ce1e0",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean outage (outage-webhooks-delayed): a degraded service for many customers that is not fully down is P2; urgency high: ongoing impact or a deadline within 24 h.",
+  "generator": {
+    "seed": 20261012,
+    "template": "outage-webhooks-delayed",
+    "version": "1.0"
+  }
+}

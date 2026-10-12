@@ -1,0 +1,50 @@
+{
+  "input_id": "t4-171",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "pii",
+  "hard_case": null,
+  "ticket": {
+    "source": "webhook",
+    "source_message_id": "form-t4-171",
+    "from_name": "Ingrid Delacroix",
+    "from_email": "ingrid.delacroix@tidewell.example.com",
+    "subject": "Cannot upload files over 10 MB",
+    "body_text": "Dear support,\n\nI'm the project manager at Tidewell Logistics. Any PDF above roughly 10 MB stops at 99% and then shows an upload error.\n\nYour docs say the limit is 50 MB on our plan. Smaller files upload fine, so we split the large ones for now. Here is a screen recording of the problem: https://share.example.com/rec/8f3a2c?token=q7Rk2mZx91 Our office egress IP is 198.51.100.23, in case that helps with the logs.\n\nCould you look into this sometime this week? Could you check what is going wrong?\n\nYours sincerely,\nIngrid Delacroix",
+    "received_at": "2026-09-24T14:49:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "514f45a64f9004a475c9",
+  "content_sha256": "2a1ccd531baebae56a24e7b2a562dbb65d61c71ca57a92bcfdfd1ab4ffaf9976",
+  "duplicate_of": null,
+  "pii": [
+    {
+      "type": "url",
+      "value": "https://share.example.com/rec/8f3a2c?token=q7Rk2mZx91"
+    },
+    {
+      "type": "ipv4",
+      "value": "198.51.100.23"
+    },
+    {
+      "type": "name",
+      "value": "Ingrid Delacroix"
+    }
+  ],
+  "injection": null,
+  "fault": null,
+  "label_notes": "pii bug (bug-upload-large): impaired with a workaround is P3; urgency medium: action needed this week; planted: url, ipv4, name.",
+  "generator": {
+    "seed": 20261012,
+    "template": "bug-upload-large",
+    "version": "1.0"
+  }
+}

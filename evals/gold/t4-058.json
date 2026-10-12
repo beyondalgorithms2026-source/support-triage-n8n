@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-058",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-058@mail.example.com>",
+    "from_name": "Fatima Varga",
+    "from_email": "fatima.varga@fennimore.example.com",
+    "subject": "No reset email",
+    "body_text": "Good morning,\n\nI look after our account at Fennimore Freight. I requested a password reset four times this morning, but the email never arrives.\n\nI can still use the mobile app because I am signed in there, so I am not completely stuck. Colleagues on the same email domain receive your emails fine.\n\nWe would like this sorted before the end of the week. Could you check whether the reset emails are being sent?\n\nBest regards,\nFatima Varga",
+    "received_at": "2026-09-09T03:09:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "access",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "1c4c9205a37f4c6fea9a",
+  "content_sha256": "a553ca09147d949106406b893bcb5e26aba544a1b149b39c37a92cae5f915550",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean access (access-reset-email): one user cannot sign in on the web but still has the mobile app, so P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "access-reset-email",
+    "version": "1.0"
+  }
+}

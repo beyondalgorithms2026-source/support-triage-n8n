@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-056",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-056@mail.example.com>",
+    "from_name": "Henrik Kowalczyk",
+    "from_email": "henrik.kowalczyk@amberlow.example.org",
+    "subject": "Re: Your feedback matters",
+    "body_text": "Hello support,\n\nI look after our account at Amberlow AB. Replying to your survey: everything is going well, and the team likes the app.\n\nNo complaints from our side. Special thanks to the person who ran our training.\n\nKeep up the good work.\n\nThanks,\nHenrik Kowalczyk",
+    "received_at": "2026-09-08T20:53:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "8a78fe0ddcf501225ad5",
+  "content_sha256": "24ae5e60b2de43beb53e394052354d2711705d70b2cd170e0ade7424786e953f",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean other (other-survey-reply): a survey reply with praise is other P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "other-survey-reply",
+    "version": "1.0"
+  }
+}

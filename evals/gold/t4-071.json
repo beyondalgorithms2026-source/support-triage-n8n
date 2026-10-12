@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-071",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-071@mail.example.com>",
+    "from_name": "Hanna Esposito",
+    "from_email": "hanna.esposito@ottervale.example.com",
+    "subject": "Data access request",
+    "body_text": "Hey team,\n\nUnder GDPR Article 15, I request a copy of all personal data you hold about me.\n\nI used your app through my former employer, Ottervale Software. Please include where the data came from and who it was shared with.\n\nCould you look into this sometime this week? Please confirm receipt and the expected timeline.\n\nMany thanks,\nHanna Esposito\nhead of finance, Ottervale Software",
+    "received_at": "2026-09-10T21:50:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "469af6a46a723811ea40",
+  "content_sha256": "1ad062f0f9c99dee4edc6fccb8a34bc8520bf970db10c6b4c02760e699233b29",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean privacy (privacy-dsar-access): a data access request is privacy; the legal deadline is weeks away, so P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "privacy-dsar-access",
+    "version": "1.0"
+  }
+}

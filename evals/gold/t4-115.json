@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-115",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "hard",
+  "hard_case": "multi_issue",
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-115@mail.example.com>",
+    "from_name": "Sofia Tanabe",
+    "from_email": "sofia.tanabe@nimbleford.example.org",
+    "subject": "Bulk edit greyed out (and PDF logo)",
+    "body_text": "Hi,\n\nThe bulk-edit button greys out as soon as I select more than 50 rows. We are doing our quarterly cleanup this week and have about 900 rows to change. We can do it 50 at a time, but it is slow.\n\nSmaller thing: exported PDFs are missing our logo since the last release.\n\nRegards,\nSofia",
+    "received_at": "2026-09-16T23:25:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "bug",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "auto_route",
+  "must_review": false,
+  "review_reason": null,
+  "dedupe_key": "c4ec8758cc80b004f9c2",
+  "content_sha256": "b322faaf1db3d9a61ba0d7dba822fa1f86d28724b4894c9af70d0330b9411ff7",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "multi_issue: bulk edit blocks the customer most (bug, workaround in batches = P3, this week = medium). Second issue: missing logo in PDF exports (bug, cosmetic).",
+  "generator": {
+    "seed": 20261012,
+    "template": "hard-bug-multi-bulk-edit",
+    "version": "1.0"
+  }
+}

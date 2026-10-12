@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-031",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-031@mail.example.com>",
+    "from_name": "Priya Castellano",
+    "from_email": "priya.castellano@fennimore.example.com",
+    "subject": "Do not sell or share my personal information",
+    "body_text": "Hi folks,\n\nPlease treat this as a CCPA request to stop selling or sharing my personal information.\n\nI am a user in the Fennimore Freight workspace.\n\nCould you look into this sometime this week? Please confirm once this is done.\n\nMany thanks,\nPriya Castellano",
+    "received_at": "2026-09-05T11:40:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "ca9f0ce8cef14e934170",
+  "content_sha256": "78f25e42f1677a2e262f99bd5db12a5773c7bbf931d5fb0167da56cd8afacf76",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean privacy (privacy-ccpa-optout): a CCPA opt-out is a rights request, so privacy P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "privacy-ccpa-optout",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-079",
+  "synthetic": true,
+  "split": "test",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-079@mail.example.com>",
+    "from_name": "Leila Halloran",
+    "from_email": "leila.halloran@tidewell.example.com",
+    "subject": "Erasure request",
+    "body_text": "Hey team,\n\nI closed my account last month. Please delete my data, including any backups and marketing lists.\n\nMy account was under the Tidewell Logistics workspace.\n\nWe would like this sorted before the end of the week. Thank you.\n\nThanks so much!\nLeila",
+    "received_at": "2026-09-12T00:59:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "privacy",
+    "priority": "P3",
+    "urgency": "medium"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "68e64579d78123aa3dfd",
+  "content_sha256": "6d844370b076e975d8a6798d9b2c6044785d85792fa4005829b110e25fd0512d",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean privacy (privacy-deletion): an erasure request is privacy; no deadline at risk, so P3; urgency medium: action needed this week.",
+  "generator": {
+    "seed": 20261012,
+    "template": "privacy-deletion",
+    "version": "1.0"
+  }
+}

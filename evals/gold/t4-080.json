@@ -1,0 +1,37 @@
+{
+  "input_id": "t4-080",
+  "synthetic": true,
+  "split": "dev",
+  "label_bucket": "clean",
+  "hard_case": null,
+  "ticket": {
+    "source": "email",
+    "source_message_id": "<t4-080@mail.example.com>",
+    "from_name": "Mei Quintero",
+    "from_email": "mei.quintero@velloran.example.net",
+    "subject": "Re: Q3 budget figures",
+    "body_text": "Hi,\n\nSorry, my previous message was meant for a colleague, not for you.\n\nPlease disregard it. You can throw it away. Our accounting firm has a very similar address, so the autocomplete picked yours.\n\nSorry for the trouble.\n\nThanks,\nMei",
+    "received_at": "2026-09-12T04:00:00Z",
+    "attachments": []
+  },
+  "expected": {
+    "category": "other",
+    "priority": "P4",
+    "urgency": "low"
+  },
+  "expect_outcome": "review",
+  "must_review": true,
+  "review_reason": "policy_class",
+  "dedupe_key": "c1cd759296a6228d5fe6",
+  "content_sha256": "4e46b82322c10b90faa110cda4a2fe2583e39280ac129a5f2cdf8e77a7ac2d2c",
+  "duplicate_of": null,
+  "pii": [],
+  "injection": null,
+  "fault": null,
+  "label_notes": "clean other (other-wrong-recipient): a message sent to the wrong recipient is other P4; urgency low: no time pressure.",
+  "generator": {
+    "seed": 20261012,
+    "template": "other-wrong-recipient",
+    "version": "1.0"
+  }
+}
