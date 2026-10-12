@@ -1,0 +1,7 @@
+# STUB review_queue table for test-local-STUB (synthetic)
+sink_seq,sink_ts,replay_input_id,replay_pass,run_id,dedupe_key,reasons,category,conf_category,priority,conf_priority,urgency,redacted_subject,redacted_body
+15,STUB,STUB-04,A,test-local-STUB,stubk04,threshold:category|threshold:priority,howto,0.62,P3,0.70,low,Redacted subject STUB-04,Redacted body STUB-04
+20,STUB,STUB-05,A,test-local-STUB,stubk05,policy:always_review,privacy,0.99,P3,0.95,medium,Redacted subject STUB-05,Redacted body STUB-05
+39,STUB,STUB-10,A,test-local-STUB,stubk10,reject:intake,,,,,,Redacted subject STUB-10,Redacted body STUB-10
+42,STUB,STUB-11,A,test-local-STUB,stubk11,schema_miss,,,,,,Redacted subject STUB-11,Redacted body STUB-11
+46,STUB,STUB-12,A,test-local-STUB,stubk12,threshold:category,outage,0.80,P1,0.75,high,Redacted subject STUB-12,Redacted body STUB-12

@@ -1,0 +1,20 @@
+# STUB manifest for G3 scorer tests (synthetic)
+input_id,split,label_bucket,category,priority,urgency,expect_outcome,gold_path
+STUB-01,test,clean,billing,P3,medium,auto_route,tests/fixtures/stub_run/gold/STUB-01.json
+STUB-02,test,clean,bug,P2,high,auto_route,tests/fixtures/stub_run/gold/STUB-02.json
+STUB-03,test,clean,outage,P1,high,auto_route,tests/fixtures/stub_run/gold/STUB-03.json
+STUB-04,test,clean,howto,P3,low,auto_route,tests/fixtures/stub_run/gold/STUB-04.json
+STUB-05,test,clean,privacy,P3,medium,review,tests/fixtures/stub_run/gold/STUB-05.json
+STUB-06,test,injection,feature,P4,low,review,tests/fixtures/stub_run/gold/STUB-06.json
+STUB-07,test,pii,billing,P2,high,auto_route,tests/fixtures/stub_run/gold/STUB-07.json
+STUB-08,test,duplicate,billing,P3,medium,duplicate_skip,tests/fixtures/stub_run/gold/STUB-08.json
+STUB-09,test,duplicate,bug,P2,high,duplicate_skip,tests/fixtures/stub_run/gold/STUB-09.json
+STUB-10,test,malformed,bug,P3,low,rejected,tests/fixtures/stub_run/gold/STUB-10.json
+STUB-11,test,clean,access,P2,high,auto_route,tests/fixtures/stub_run/gold/STUB-11.json
+STUB-12,test,hard,bug,P2,medium,auto_route,tests/fixtures/stub_run/gold/STUB-12.json
+STUB-21,dev,clean,billing,P3,medium,auto_route,tests/fixtures/stub_run/gold/STUB-21.json
+STUB-22,dev,clean,billing,P3,medium,auto_route,tests/fixtures/stub_run/gold/STUB-22.json
+STUB-23,dev,clean,billing,P3,medium,auto_route,tests/fixtures/stub_run/gold/STUB-23.json
+STUB-24,dev,clean,billing,P3,medium,auto_route,tests/fixtures/stub_run/gold/STUB-24.json
+STUB-25,dev,clean,billing,P3,medium,auto_route,tests/fixtures/stub_run/gold/STUB-25.json
+STUB-26,dev,clean,howto,P3,low,auto_route,tests/fixtures/stub_run/gold/STUB-26.json

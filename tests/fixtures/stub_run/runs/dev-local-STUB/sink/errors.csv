@@ -1,0 +1,2 @@
+# STUB errors table for dev-local-STUB (synthetic)
+sink_seq,sink_ts,replay_input_id,replay_pass,run_id,input_ref,stage,node,code,message

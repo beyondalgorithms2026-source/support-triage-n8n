@@ -1,0 +1,26 @@
+# STUB audit table for test-local-STUB (synthetic)
+sink_seq,sink_ts,replay_input_id,replay_pass,run_id,input_ref,execution_id,stage,node,ok,status,dedupe_key,content_sha256,category,conf_category,priority,conf_priority,urgency,conf_source,reasons,pii_counts,injection_signals,truncated,issue_key,notify_ok,capped,tokens_in,tokens_out,usd,duration_ms
+5,STUB,STUB-01,A,test-local-STUB,STUB-01,101,record,H16 Audit,1,auto_routed,stubk01,STUB,billing,0.97,P3,0.93,medium,logprobs,,,,0,SUP-1,1,0,900,20,0.000147,2100
+9,STUB,STUB-02,A,test-local-STUB,STUB-02,102,record,H16 Audit,1,auto_routed,stubk02,STUB,access,0.91,P2,0.90,high,logprobs,,,,0,SUP-2,0,0,950,20,0.0001545,2300
+13,STUB,STUB-03,A,test-local-STUB,STUB-03,103,record,H16 Audit,1,auto_routed,stubk03,STUB,outage,0.96,P2,0.88,high,logprobs,,,,0,SUP-3,0,0,870,20,0.0001425,2000
+17,STUB,STUB-04,A,test-local-STUB,STUB-04,104,record,H16 Audit,1,review,stubk04,STUB,howto,0.62,P3,0.70,low,logprobs,threshold:category|threshold:priority,,,0,,0,0,800,20,0.000132,1900
+21,STUB,STUB-05,A,test-local-STUB,STUB-05,105,record,H16 Audit,1,review,stubk05,STUB,privacy,0.99,P3,0.95,medium,logprobs,policy:always_review,,,0,,0,0,820,20,0.000135,2500
+26,STUB,STUB-06,A,test-local-STUB,STUB-06,106,record,H16 Audit,1,auto_routed,stubk06,STUB,outage,0.94,P1,0.92,high,logprobs,,,,0,SUP-4,1,0,880,20,0.000144,2200
+31,STUB,STUB-07,A,test-local-STUB,STUB-07,107,record,H16 Audit,1,auto_routed,stubk07,STUB,billing,0.98,P2,0.91,high,logprobs,,card:1|phone:1|name:1,,0,SUP-5,1,0,3400,20,0.000522,3100
+32,STUB,STUB-08,A,test-local-STUB,STUB-08,108,record,H16 Audit,1,duplicate_skip,stubk01,STUB,,,,,,,,,,0,SUP-1,0,0,0,0,0,300
+37,STUB,STUB-09,A,test-local-STUB,STUB-09,109,record,H16 Audit,1,auto_routed,stubk09,STUB,bug,0.95,P2,0.93,high,logprobs,,,,0,SUP-6,1,0,940,20,0.000153,2050
+40,STUB,STUB-10,A,test-local-STUB,STUB-10,110,record,H16 Audit,1,rejected,stubk10,STUB,,,,,,,reject:intake,,,0,,0,0,0,0,0,150
+44,STUB,STUB-11,A,test-local-STUB,STUB-11,111,record,H16 Audit,1,review,stubk11,STUB,,,,,,logprobs,schema_miss,,,0,,0,0,910,20,0.0001485,1800
+48,STUB,STUB-12,A,test-local-STUB,STUB-12,112,record,H16 Audit,1,review,stubk12,STUB,outage,0.80,P1,0.75,high,logprobs,threshold:category,,,0,,0,0,860,20,0.000141,2000
+49,STUB,STUB-01,B,test-local-STUB,STUB-01,201,record,H16 Audit,1,duplicate_skip,stubk01,STUB,,,,,,,,,,0,,0,0,0,0,0,200
+50,STUB,STUB-02,B,test-local-STUB,STUB-02,202,record,H16 Audit,1,duplicate_skip,stubk02,STUB,,,,,,,,,,0,,0,0,0,0,0,200
+51,STUB,STUB-03,B,test-local-STUB,STUB-03,203,record,H16 Audit,1,duplicate_skip,stubk03,STUB,,,,,,,,,,0,,0,0,0,0,0,200
+52,STUB,STUB-04,B,test-local-STUB,STUB-04,204,record,H16 Audit,1,duplicate_skip,stubk04,STUB,,,,,,,,,,0,,0,0,0,0,0,200
+53,STUB,STUB-05,B,test-local-STUB,STUB-05,205,record,H16 Audit,1,duplicate_skip,stubk05,STUB,,,,,,,,,,0,,0,0,0,0,0,200
+54,STUB,STUB-06,B,test-local-STUB,STUB-06,206,record,H16 Audit,1,duplicate_skip,stubk06,STUB,,,,,,,,,,0,,0,0,0,0,0,200
+55,STUB,STUB-07,B,test-local-STUB,STUB-07,207,record,H16 Audit,1,duplicate_skip,stubk07,STUB,,,,,,,,,,0,,0,0,0,0,0,200
+56,STUB,STUB-08,B,test-local-STUB,STUB-08,208,record,H16 Audit,1,duplicate_skip,stubk01,STUB,,,,,,,,,,0,,0,0,0,0,0,200
+57,STUB,STUB-09,B,test-local-STUB,STUB-09,209,record,H16 Audit,1,duplicate_skip,stubk09,STUB,,,,,,,,,,0,,0,0,0,0,0,200
+58,STUB,STUB-10,B,test-local-STUB,STUB-10,210,record,H16 Audit,1,rejected,stubk10,STUB,,,,,,,,,,0,,0,0,0,0,0,200
+59,STUB,STUB-11,B,test-local-STUB,STUB-11,211,record,H16 Audit,1,duplicate_skip,stubk11,STUB,,,,,,,,,,0,,0,0,0,0,0,200
+60,STUB,STUB-12,B,test-local-STUB,STUB-12,212,record,H16 Audit,1,duplicate_skip,stubk12,STUB,,,,,,,,,,0,,0,0,0,0,0,200

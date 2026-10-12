@@ -1,0 +1,6 @@
+{"STUB": true, "note": "STUB requests log for test-local-STUB (synthetic)"}
+{"STUB": true, "ts": "STUB", "method": "POST", "path": "/api/chat.postMessage", "status": 503, "active_input": "STUB-05", "pass": "A", "target": "slack", "body": {"channel": "C-REVIEW", "text": "Review: [privacy] Redacted subject STUB-05"}}
+{"STUB": true, "ts": "STUB", "method": "POST", "path": "/api/chat.postMessage", "status": 503, "active_input": "STUB-05", "pass": "A", "target": "slack", "body": {"channel": "C-REVIEW", "text": "Review: [privacy] Redacted subject STUB-05"}}
+{"STUB": true, "ts": "STUB", "method": "POST", "path": "/api/chat.postMessage", "status": 503, "active_input": "STUB-05", "pass": "A", "target": "slack", "body": {"channel": "C-REVIEW", "text": "Review: [privacy] Redacted subject STUB-05"}}
+{"STUB": true, "ts": "STUB", "method": "POST", "path": "/api/chat.postMessage", "status": 503, "active_input": "STUB-05", "pass": "A", "target": "slack", "body": {"channel": "C-REVIEW", "text": "Review: [privacy] Redacted subject STUB-05"}}
+{"STUB": true, "ts": "STUB", "method": "POST", "path": "/rest/api/3/issue", "status": 201, "active_input": "STUB-07", "pass": "A", "target": "jira", "body": {"fields": {"summary": "[billing] Redacted subject STUB-07", "description": "Card [CARD_1] was charged twice. Call me at [PHONE_1]. [NAME_1]"}}}

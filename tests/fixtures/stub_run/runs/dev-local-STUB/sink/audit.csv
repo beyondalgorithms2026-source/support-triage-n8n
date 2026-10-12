@@ -1,0 +1,8 @@
+# STUB audit table for dev-local-STUB (synthetic)
+sink_seq,sink_ts,replay_input_id,replay_pass,run_id,input_ref,execution_id,stage,node,ok,status,dedupe_key,content_sha256,category,conf_category,priority,conf_priority,urgency,conf_source,reasons,pii_counts,injection_signals,truncated,issue_key,notify_ok,capped,tokens_in,tokens_out,usd,duration_ms
+5,STUB,STUB-21,A,dev-local-STUB,STUB-21,101,record,H16 Audit,1,auto_routed,stubk21,STUB,billing,0.90,P3,0.91,medium,logprobs,,,,0,SUP-1,1,0,900,20,0.000147,2000
+10,STUB,STUB-22,A,dev-local-STUB,STUB-22,102,record,H16 Audit,1,auto_routed,stubk22,STUB,billing,0.92,P3,0.93,medium,logprobs,,,,0,SUP-2,1,0,900,20,0.000147,2000
+15,STUB,STUB-23,A,dev-local-STUB,STUB-23,103,record,H16 Audit,1,auto_routed,stubk23,STUB,billing,0.95,P3,0.96,medium,logprobs,,,,0,SUP-3,1,0,900,20,0.000147,2000
+20,STUB,STUB-24,A,dev-local-STUB,STUB-24,104,record,H16 Audit,1,auto_routed,stubk24,STUB,billing,0.97,P3,0.94,medium,logprobs,,,,0,SUP-4,1,0,900,20,0.000147,2000
+25,STUB,STUB-25,A,dev-local-STUB,STUB-25,105,record,H16 Audit,1,auto_routed,stubk25,STUB,billing,0.99,P3,0.92,medium,logprobs,,,,0,SUP-5,1,0,900,20,0.000147,2000
+30,STUB,STUB-26,A,dev-local-STUB,STUB-26,106,record,H16 Audit,1,auto_routed,stubk26,STUB,feature,0.55,P4,0.80,low,logprobs,,,,0,SUP-6,1,0,900,20,0.000147,2000

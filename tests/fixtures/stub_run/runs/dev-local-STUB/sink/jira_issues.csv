@@ -1,0 +1,8 @@
+# STUB jira_issues table for dev-local-STUB (synthetic)
+sink_seq,sink_ts,replay_input_id,replay_pass,key,project,issuetype,summary,description_text,labels,priority,created_seq
+2,STUB,STUB-21,A,SUP-1,SUP,Task,[billing] Redacted subject STUB-21,Redacted body,t4|t4dk-stubk21|t4-cat-billing,Medium,1
+7,STUB,STUB-22,A,SUP-2,SUP,Task,[billing] Redacted subject STUB-22,Redacted body,t4|t4dk-stubk22|t4-cat-billing,Medium,2
+12,STUB,STUB-23,A,SUP-3,SUP,Task,[billing] Redacted subject STUB-23,Redacted body,t4|t4dk-stubk23|t4-cat-billing,Medium,3
+17,STUB,STUB-24,A,SUP-4,SUP,Task,[billing] Redacted subject STUB-24,Redacted body,t4|t4dk-stubk24|t4-cat-billing,Medium,4
+22,STUB,STUB-25,A,SUP-5,SUP,Task,[billing] Redacted subject STUB-25,Redacted body,t4|t4dk-stubk25|t4-cat-billing,Medium,5
+27,STUB,STUB-26,A,SUP-6,SUP,Task,[feature] Redacted subject STUB-26,Redacted body,t4|t4dk-stubk26|t4-cat-feature,Low,6

@@ -1,0 +1,170 @@
+"""Per-phase run invariants used by G7–G11 acceptance and tests/test_replay_regression.py.
+
+    python3 -m src.score.check_run --phase <slice|smoke|dev|test|attack> (--latest | --run-id <id>)
+
+Checks: phase, split and ticket count; one terminal audit row per ticket per pass; at most one Jira issue per
+dedupe_key; pass B creates no issue (test: and makes no model call); no planted PII in outbound bodies or LLM input;
+ledger rows present; spend within the run cap; slice: confidences come from logprobs. Exit 0 only if all hold.
+"""
+from __future__ import annotations
+
+import argparse
+import sys
+from collections import Counter
+from pathlib import Path
+
+from src.score.score import (MANIFEST, ROOT, RUNS_DIR, as_float, as_list, input_of, leak_targets, load_golds,
+                             load_run, outbound, pass_of, read_csv, run_facts, truth)
+
+PHASES = {
+    "slice": {"split": "dev", "tickets": 10, "passes": "A"},
+    "smoke": {"split": "dev", "tickets": 12, "passes": "AB"},
+    "dev": {"split": "dev", "tickets": 100, "passes": "A"},
+    "test": {"split": "test", "tickets": 100, "passes": "AB"},
+    "attack": {"split": None, "tickets": None, "passes": "A"},
+}
+NO_LLM_IN_PASS_B = ("test",)
+COST_LEDGER = ROOT / "evals" / "cost_ledger.csv"
+
+
+def latest_run(phase, runs_dir=RUNS_DIR):
+    runs = sorted(p.name for p in Path(runs_dir).glob(phase + "-*") if p.is_dir())
+    return runs[-1] if runs else None
+
+
+# ---------------------------------------------------------------- invariants (each returns a list of problems)
+def phase_problems(run, phase, golds, expect_tickets=None):
+    rule, problems = PHASES[phase], []
+    if run.phase != phase:
+        problems.append("summary phase is {!r}, want {!r}".format(run.phase, phase))
+    want_n = rule["tickets"] if expect_tickets is None else expect_tickets
+    if want_n is not None and len(run.input_ids) != want_n:
+        problems.append("{} tickets, want {}".format(len(run.input_ids), want_n))
+    if not run.input_ids:
+        problems.append("run lists no tickets")
+    if not set(rule["passes"]) <= set(run.passes):
+        problems.append("passes {} lack {}".format("".join(run.passes), rule["passes"]))
+    unknown = [i for i in run.input_ids if i not in golds]
+    if unknown:
+        problems.append("tickets not in manifest: {}".format(", ".join(unknown[:5])))
+    if rule["split"]:
+        wrong = [i for i in run.input_ids if i in golds and golds[i].get("split") != rule["split"]]
+        if wrong:
+            problems.append("tickets outside split {}: {}".format(rule["split"], ", ".join(wrong[:5])))
+    return problems
+
+
+def terminal_audit_problems(run):
+    problems = []
+    for p in run.passes:
+        for input_id in run.input_ids:
+            n = len(run.terminal(input_id, p))
+            if n != 1:
+                problems.append("{} pass {}: {} terminal audit rows, want 1".format(input_id, p, n))
+    return problems
+
+
+def issue_problems(run):
+    per_key = Counter(label for r in run.tables["jira_issues"] for label in as_list(r.get("labels"))
+                      if label.startswith("t4dk-"))
+    return ["{}: {} Jira issues, want at most 1".format(key, n) for key, n in sorted(per_key.items()) if n > 1]
+
+
+def pass_b_problems(run):
+    if len(run.passes) < 2:
+        return []
+    facts, problems = run_facts(run), []
+    if facts["new_jira_issues_pass_b"]:
+        problems.append("pass B created {} Jira issue(s) (I-8)".format(facts["new_jira_issues_pass_b"]))
+    if run.summary.get("new_jira_issues_pass_b", 0):
+        problems.append("summary.json new_jira_issues_pass_b = {}".format(run.summary["new_jira_issues_pass_b"]))
+    if run.phase in NO_LLM_IN_PASS_B:
+        calls = max(facts["llm_calls_pass_b"], int(as_float(run.summary.get("llm_calls_pass_b"))))
+        if calls:
+            problems.append("pass B made {} model call(s)".format(calls))
+    return problems
+
+
+def pii_problems(run, golds):
+    """Every planted value of every ticket in the run, against every outbound text of the run."""
+    pairs = outbound(run)
+    problems = []
+    for input_id in run.input_ids:
+        targets = leak_targets((golds.get(input_id) or {}).get("pii"), pairs)
+        if targets:
+            problems.append("{}: planted PII found in {}".format(input_id, "+".join(targets)))
+    return problems
+
+
+def ledger_problems(run, cost_ledger):
+    problems = []
+    for call in run.llm_calls():
+        if truth(call.get("ok", True)) and not run.rows("ledger", input_of(call), pass_of(call)):
+            problems.append("{} pass {}: model call without a ledger row".format(input_of(call), pass_of(call)))
+    if not any(r.get("run_id") == run.run_id for r in read_csv(cost_ledger)):
+        problems.append("{}: no row for this run".format(cost_ledger))
+    return problems
+
+
+def cap_problems(run, cost_ledger):
+    rows = [r for r in read_csv(cost_ledger) if r.get("run_id") == run.run_id]
+    cap = run.summary.get("run_usd_cap")
+    if cap is None and rows:
+        cap = rows[-1].get("run_usd_cap")
+    if cap in (None, ""):
+        return ["no run_usd_cap recorded in summary.json or the cost ledger"]
+    spent = run_facts(run)["usd_run"]
+    return ["spend {:.6f} over run_usd_cap {}".format(spent, cap)] if spent > as_float(cap) else []
+
+
+def logprob_problems(run):
+    rows = [r for p in run.passes for i in run.input_ids for r in run.terminal(i, p) if r.get("category")]
+    bad = [input_of(r) for r in rows if r.get("conf_source") != "logprobs"]
+    return ["{}: confidence source is not logprobs".format(i) for i in bad]
+
+
+def i8_problems(run, golds):
+    """The regression set (HARNESS_SPEC §4) for committed test/attack runs."""
+    return terminal_audit_problems(run) + issue_problems(run) + pass_b_problems(run) + pii_problems(run, golds)
+
+
+def check(run, phase, golds, cost_ledger=COST_LEDGER, expect_tickets=None):
+    problems = phase_problems(run, phase, golds, expect_tickets) + i8_problems(run, golds) \
+        + ledger_problems(run, cost_ledger) + cap_problems(run, cost_ledger)
+    if phase == "slice":
+        problems += logprob_problems(run)
+    return problems
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--phase", required=True, choices=sorted(PHASES))
+    which = parser.add_mutually_exclusive_group(required=True)
+    which.add_argument("--latest", action="store_true")
+    which.add_argument("--run-id")
+    parser.add_argument("--runs-dir", default=str(RUNS_DIR))
+    parser.add_argument("--manifest", default=str(MANIFEST))
+    parser.add_argument("--cost-ledger", default=str(COST_LEDGER))
+    parser.add_argument("--expect-tickets", type=int, help="override the phase ticket count (STUB runs)")
+    args = parser.parse_args(argv)
+    run_id = latest_run(args.phase, args.runs_dir) if args.latest else args.run_id
+    if not run_id:
+        print("FAIL: no {}-* run under {}".format(args.phase, args.runs_dir))
+        return 1
+    try:
+        run = load_run(run_id, args.runs_dir)
+    except FileNotFoundError as exc:
+        print("FAIL: {}".format(exc))
+        return 1
+    problems = check(run, args.phase, load_golds(args.manifest), args.cost_ledger, args.expect_tickets)
+    for p in problems:
+        print("FAIL: {}: {}".format(run_id, p))
+    if problems:
+        return 1
+    print("ok: {} holds every {} invariant ({} tickets, passes {})".format(run_id, args.phase, len(run.input_ids),
+                                                                          "".join(run.passes)))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

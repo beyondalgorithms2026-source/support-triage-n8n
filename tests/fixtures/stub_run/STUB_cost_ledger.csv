@@ -1,0 +1,4 @@
+# STUB cost ledger for G3 check_run tests (synthetic)
+run_id,run_phase,target,started_utc,ended_utc,model,llm_calls,tokens_in,tokens_out,usd,run_usd_cap,capped_inputs,tickets,usd_per_1k_tickets
+test-local-STUB,test,local,STUB,STUB,gpt-4o-mini-2024-07-18,10,11330,200,0.0018195,0.25,0,12,0.151625
+dev-local-STUB,dev,local,STUB,STUB,gpt-4o-mini-2024-07-18,6,5400,120,0.000882,0.25,0,6,0.147

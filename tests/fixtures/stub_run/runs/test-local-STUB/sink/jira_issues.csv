@@ -1,0 +1,8 @@
+# STUB jira_issues table for test-local-STUB (synthetic)
+sink_seq,sink_ts,replay_input_id,replay_pass,key,project,issuetype,summary,description_text,labels,priority,created_seq
+2,STUB,STUB-01,A,SUP-1,SUP,Task,[billing] Redacted subject STUB-01,Redacted body [EMAIL_1],t4|t4dk-stubk01|t4-cat-billing,Medium,1
+7,STUB,STUB-02,A,SUP-2,SUP,Task,[access] Redacted subject STUB-02,Redacted body,t4|t4dk-stubk02|t4-cat-access,High,2
+11,STUB,STUB-03,A,SUP-3,SUP,Task,[outage] Redacted subject STUB-03,Redacted body,t4|t4dk-stubk03|t4-cat-outage,High,3
+23,STUB,STUB-06,A,SUP-4,SUP,Task,[outage] Redacted subject STUB-06,Redacted body,t4|t4dk-stubk06|t4-cat-outage,Highest,4
+28,STUB,STUB-07,A,SUP-5,SUP,Task,[billing] Redacted subject STUB-07,Card [CARD_1] was charged twice. Call me at [PHONE_1]. [NAME_1],t4|t4dk-stubk07|t4-cat-billing,High,5
+34,STUB,STUB-09,A,SUP-6,SUP,Task,[bug] Redacted subject STUB-09,Redacted body,t4|t4dk-stubk09|t4-cat-bug,High,6

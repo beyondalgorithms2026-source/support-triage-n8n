@@ -1,0 +1,8 @@
+# STUB jira_links table for test-local-STUB (synthetic)
+sink_seq,sink_ts,replay_input_id,replay_pass,run_id,dedupe_key,issue_key,category,priority,created_via
+3,STUB,STUB-01,A,test-local-STUB,stubk01,SUP-1,billing,P3,create
+8,STUB,STUB-02,A,test-local-STUB,stubk02,SUP-2,access,P2,create
+12,STUB,STUB-03,A,test-local-STUB,stubk03,SUP-3,outage,P2,create
+24,STUB,STUB-06,A,test-local-STUB,stubk06,SUP-4,outage,P1,create
+29,STUB,STUB-07,A,test-local-STUB,stubk07,SUP-5,billing,P2,create
+35,STUB,STUB-09,A,test-local-STUB,stubk09,SUP-6,bug,P2,create

@@ -1,0 +1,8 @@
+# STUB ledger table for dev-local-STUB (synthetic)
+sink_seq,sink_ts,replay_input_id,replay_pass,run_id,input_ref,day,model,tokens_in,tokens_out,usd
+1,STUB,STUB-21,A,dev-local-STUB,STUB-21,STUB,gpt-4o-mini-2024-07-18,900,20,0.000147
+6,STUB,STUB-22,A,dev-local-STUB,STUB-22,STUB,gpt-4o-mini-2024-07-18,900,20,0.000147
+11,STUB,STUB-23,A,dev-local-STUB,STUB-23,STUB,gpt-4o-mini-2024-07-18,900,20,0.000147
+16,STUB,STUB-24,A,dev-local-STUB,STUB-24,STUB,gpt-4o-mini-2024-07-18,900,20,0.000147
+21,STUB,STUB-25,A,dev-local-STUB,STUB-25,STUB,gpt-4o-mini-2024-07-18,900,20,0.000147
+26,STUB,STUB-26,A,dev-local-STUB,STUB-26,STUB,gpt-4o-mini-2024-07-18,900,20,0.000147

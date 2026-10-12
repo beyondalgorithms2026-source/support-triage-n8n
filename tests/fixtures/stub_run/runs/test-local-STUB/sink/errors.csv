@@ -1,0 +1,4 @@
+# STUB errors table for test-local-STUB (synthetic)
+sink_seq,sink_ts,replay_input_id,replay_pass,run_id,input_ref,stage,node,code,message
+19,STUB,STUB-05,A,test-local-STUB,STUB-05,approve,H15s Slack Review Post,error:slack,503 after retries
+38,STUB,STUB-10,A,test-local-STUB,STUB-10,intake,H1 Intake Guard,reject:intake,empty subject and body

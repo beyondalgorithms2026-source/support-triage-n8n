@@ -1,0 +1,9 @@
+# STUB slack_messages table for test-local-STUB (synthetic)
+sink_seq,sink_ts,replay_input_id,replay_pass,channel,text,unfurl_links
+4,STUB,STUB-01,A,C-TRIAGE,SUP-1 [billing] P3 Redacted subject STUB-01,false
+16,STUB,STUB-04,A,C-REVIEW,Review: [howto] P3 Redacted subject STUB-04,false
+25,STUB,STUB-06,A,C-TRIAGE,SUP-4 [outage] P1 Redacted subject STUB-06,false
+30,STUB,STUB-07,A,C-TRIAGE,SUP-5 [billing] P2 Redacted subject STUB-07,false
+36,STUB,STUB-09,A,C-TRIAGE,SUP-6 [bug] P2 Redacted subject STUB-09,false
+43,STUB,STUB-11,A,C-REVIEW,Review: []  Redacted subject STUB-11,false
+47,STUB,STUB-12,A,C-REVIEW,Review: [outage] P1 Redacted subject STUB-12,false

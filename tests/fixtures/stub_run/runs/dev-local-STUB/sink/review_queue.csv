@@ -1,0 +1,2 @@
+# STUB review_queue table for dev-local-STUB (synthetic)
+sink_seq,sink_ts,replay_input_id,replay_pass,run_id,dedupe_key,reasons,category,conf_category,priority,conf_priority,urgency,redacted_subject,redacted_body
