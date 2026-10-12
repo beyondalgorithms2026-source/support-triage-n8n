@@ -1,16 +1,17 @@
 # Current handoff
-Task: T4-03 (G3) Scorer, threshold tuner, run checker, report generator (on STUB data). Attempt 1 (overnight, unattended).
+Task: T4-04 (G4) PII redaction and injection scan (Python reference + JS twin). Attempt 1 (overnight, unattended).
 Branch: main
-Last commit: 5242566 T4-02: Golden set: 200 labelled synthetic tickets (this run did not commit; the loop commits)
-Done: src/score/{__init__,score,tune,check_run,report}.py; tests/test_score.py, test_tune.py, test_check_run.py,
-test_replay_regression.py; tests/fixtures/stub_run/ (builder make_STUB_fixtures.py, 18 STUB gold files, STUB manifest,
-STUB cost ledger, runs test-local-STUB (passes AB) and dev-local-STUB (pass A)). The STUB request logs now begin with a
-marker row, so every fixture file has STUB in its name or first line (Q-27).
-Next task: G4 (T4-04) PII redaction and injection scan. G5 and G6 are also unblocked.
-Read first: OPEN_QUESTIONS.md Q-25 (run-file contract that G5/G6 must write), Q-26 (scoring/tuning definitions;
-(6) the reason prefixes `policy`/`threshold` that G8 must use), Q-27; tests/fixtures/stub_run/make_STUB_fixtures.py.
-Do not change: SCORECARD_HEADER and FAILURE_CODES in src/score/score.py (frozen at G3, HARNESS_SPEC §5); STUB fixture
-files by hand (edit make_STUB_fixtures.py and rerun it); scripts/.
-Tests run / result: `bash scripts/accept.sh G3` → ACCEPT PASS [G3]; `bash scripts/guard.sh` → guard clean;
-`python3 -m unittest discover -s tests -t .` → 118 tests OK. The I-8 regression passes vacuously (no committed runs yet).
-Open questions: Q-25, Q-26, Q-27 (owner review; cheap to reverse until G9 runs). Q-22…Q-24 from G2 are still open.
+Last commit: d1483c0 T4-03: Scorer, threshold tuner, run checker, report generator (on STUB data) (this run did not
+commit; the loop commits)
+Done: src/common/redact.py (C-5; `redact_ticket`, `--audit`), src/common/inject.py (C-6, C-7; `scan`, `model_text`,
+`scan_and_cap`, `--audit --split`), src/js/redact.js (`redactTicket`) and src/js/inject.js (`scanAndCap`): plain ES2019,
+ASCII only, no require/exports. tests/test_redact.py and tests/test_inject.py: vectors, gold audits, node parity on all
+200 gold tickets. tests/vectors/{redact,inject}_vectors.json are the shared contract.
+Next task: G5 (T4-05) Sink with Jira and Slack sandbox. G6 is also unblocked. G7 pastes src/js/*.js into H3 and H4.
+Read first: OPEN_QUESTIONS.md Q-28 (signal names, model_text format, cap on body only, test-split exposure), Q-25 (run-file
+contract for G5/G6).
+Do not change: the vector files by hand without changing both twins; norm.WHITESPACE (inject.js copies it as escapes);
+SCORECARD_HEADER and FAILURE_CODES in src/score/score.py; scripts/.
+Tests run / result: `bash scripts/accept.sh G4` → ACCEPT PASS [G4]; `bash scripts/guard.sh` → guard clean;
+`python3 -m unittest discover -s tests -t .` → 138 tests OK.
+Open questions: Q-28 (new). Q-22…Q-27 are still open.

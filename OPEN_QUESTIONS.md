@@ -245,3 +245,35 @@ The marker row has no input id, so `score.select()` never assigns it to a ticket
 Why: smallest change that puts STUB in the first line of every fixture file.
 Reverse: delete the marker write in `make_STUB_fixtures.py` and rerun it (minutes).
 Owner answer:
+
+## Q-28 Redaction and injection-scan choices, and test-split exposure — M
+Date: 2026-10-13. Goal: G4 (T4-04).
+Decision:
+(1) The port source `RAG_ENTERPRISE_LANGGRAPH_APP/.../input_security.py` is outside this folder, and the read was
+denied. The scanner patterns come from the ARCHITECTURE C-6 families, SECURITY_CONTROLS SEC-01…SEC-09 and the 8 dev
+injection tickets. Signals: `instruction_override role_override prompt_extraction data_exfil ai_address
+routing_override field_override slack_mention slack_link html_comment delimiter_break fake_role encoded_instruction`.
+G8 R5 must send any non-empty list to review.
+(2) Test-split exposure: the worker printed all 16 gold injection tickets (dev and test) while it read the gold files.
+Phrases seen only in test tickets were left out ("automated classifiers", "file this as", bare `assignee:`).
+Some doc-named families also match test tickets ("you are now", a `SYSTEM:` line, `priority: Highest`). The
+G11 test-split recall is therefore not fully blind. The inject audit was run on `--split dev` only.
+(3) `model_text` = `Subject: <subject>` + blank line + body. Quoted `>` lines and single `On … wrote:` lines are
+dropped from the body. Forwarded headers (`From:`, `---------- Forwarded message`) stay. The cap applies to the
+body only, in code points (t4-200 label note: a 6,000-char body is not truncated). The subject is not capped here
+(C-2 limits it to 300).
+(4) The scan reads the full redacted subject, body (quoted lines included) and attachment names. Text is NFKC, lower case,
+`_` → space, quote marks removed. Base64 tokens of 24+ chars are decoded; printable text that hits a pattern gives
+`encoded_instruction`.
+(5) `<ticket>` / `</ticket>` in subject or body become `(ticket>` / `(/ticket>` in `model_text` (C-9 delimiter) and
+raise `delimiter_break`.
+(6) Redaction: one placeholder number per distinct value per ticket, shared by subject and body; counts are occurrences.
+The sender name is matched as the full display name, then each part of 2+ characters, case-sensitive, whole word; all
+forms become `[NAME_1]`. Cards need Luhn, IBANs need mod-97, SSN = any `3-2-4` digits. Phones = NANP with area code,
+or `+` country code forms; bare 7-digit numbers (`555-0142`) are not redacted.
+(7) The JS twins declare top-level functions and export nothing. G7 pastes the file into the Code node and appends
+the call (`redactTicket`, `scanAndCap`). The test harness loads the file with `new Function` under node.
+Why: smallest choices that meet GOALS G4 and keep the Python and JS outputs equal on all 200 gold tickets.
+Reverse: edit both twins and `tests/vectors/*.json` together, then rerun `bash scripts/accept.sh G4`. For (2), the
+owner can write fresh test-split injection tickets before G11 (regenerate gold: cost H after G9).
+Owner answer:
