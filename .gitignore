@@ -1,0 +1,7 @@
+.env
+__pycache__/
+.DS_Store
+logs/
+evals/runs/*/sink/*.lock
+MORNING_REPORT.md
+.claude/settings.local.json
