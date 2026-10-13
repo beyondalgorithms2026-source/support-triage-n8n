@@ -419,3 +419,28 @@ Why: smallest choices that put every ARCHITECTURE §3 control in the graph and e
 Reverse: edit the workflow JSON and the tests; re-run smoke (9 calls, about $0.001). After G9, a change to the reason
 strings in (4) needs a new dev run, because `tune.py` filters on the `policy`/`threshold` prefixes.
 Owner answer:
+
+## Q-33 Dev run and tuning choices GOALS G9 / HARNESS_SPEC §3 leave open — L now, M after G10
+Date: 2026-10-13. Goal: G9 (T4-09).
+Decision:
+(1) New Config key `tuning_mode` (boolean, committed `false`). GOALS G9 names `--config-override tuning_mode=true`, but
+no earlier goal created the key, and the runner refuses unknown keys (Q-30 (4)). When it is true, `H10 Decide` counts
+every τ as 0 (HARNESS_SPEC §3.1 "all τ = 0"). Rules, injection, schema_miss and the policy classes still apply.
+`tests.test_workflow` checks the committed value is `false` and the H10 behaviour in both modes.
+Option not taken: tuning mode sends every ticket to review with a `threshold:` reason (fails closed if left on). The
+sweep would be the same, because `tune.py` ignores `threshold` reasons. Not taken because §3 says τ = 0.
+(2) The dev run also had `--config-override llm_max_rpm=120` (in memory, listed in `summary.json`). The runner does not
+pace tickets, and the smoke ledger showed 9 calls in about 16 s. A capped ticket has no prediction and leaves the
+sweep. In run `dev-local-20261013T034424Z-3accb59` the peak was 28 model calls in a 60 s window, so the committed
+30 would probably have held, with little margin. G10 should check the same peak or set the same override.
+(3) `test_config` now asserts Config τ = `evals/thresholds.json` and the policy classes at 1.01 (HARNESS_SPEC §3.6),
+in place of the G8 "all τ = 1.01" check. `test_committed_tau_sends_everything_to_review` became
+`test_tau_never_sends_everything_to_review` with explicit 1.01 values.
+(4) The committed workflow differs from the dev run's workflow only in the τ values `tune --apply` wrote, so its
+`workflow_sha256` differs from the run's. `prompt_sha256` is the same.
+(5) Results from the run (in `evals/threshold_sweep.csv`): `outage`, `feature` and `P2` reach no target, so they get
+1.01 (always human). The model predicted P2 for 31 dev tickets and 13 were P2. These are G10/G13 findings, not changes here.
+Why: smallest change that makes the GOALS G9 command run, and keeps a dev run that loses no ticket to the rate gate.
+Reverse: (1) remove the key and the two H10 lines plus the test (minutes; no re-run, because the sweep ignores
+`threshold` reasons). (2) re-run dev without the override (about $0.01) and re-tune; cost rises after G10 (re-run test).
+Owner answer:

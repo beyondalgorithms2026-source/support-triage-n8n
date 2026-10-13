@@ -1,0 +1,5 @@
+sink_seq,sink_ts,replay_input_id,replay_pass,run_id,input_ref,stage,node,code,message
+433,2026-10-13T03:48:58.574779+00:00,t4-193,A,dev-local-20261013T034424Z-3accb59,t4-193,intake,H1 Intake Guard,reject:body_too_long,intake limit or required field: body_too_long
+436,2026-10-13T03:48:58.970295+00:00,t4-195,A,dev-local-20261013T034424Z-3accb59,t4-195,intake,H1 Intake Guard,reject:missing_message_id,intake limit or required field: missing_message_id
+439,2026-10-13T03:48:59.330603+00:00,t4-197,A,dev-local-20261013T034424Z-3accb59,t4-197,intake,H1 Intake Guard,reject:attachment_type,intake limit or required field: attachment_type
+442,2026-10-13T03:48:59.667403+00:00,t4-199,A,dev-local-20261013T034424Z-3accb59,t4-199,intake,H1 Intake Guard,reject:subject_too_long,intake limit or required field: subject_too_long

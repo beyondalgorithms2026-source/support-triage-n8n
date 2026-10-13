@@ -1,0 +1,659 @@
+sink_seq,sink_ts,replay_input_id,replay_pass,key,project,issuetype,summary,description_text,labels,priority,created_seq
+2,2026-10-13T03:44:50.152429+00:00,t4-001,A,SUP-1,SUP,Task,[billing] Charged twice this month,"Hello,
+
+Writing on behalf of Glimmerbrook BV. We were charged twice for our Team subscription this month: two payments of €149.00 went through on Monday, a few minutes apart.
+
+Invoice INV-2026-2199 only lists one payment, so the second charge looks like a mistake. Honestly, this is really frustrating.
+
+This is blocking us right now, so we need help today. Please refund the duplicate payment and confirm once it is done.
+
+Regards,
+[NAME_1]
+category=billing (1) priority=P2 (1) urgency=high ticket_ref=842e7b3ee94dc1477caf",t4|t4dk-842e7b3ee94dc1477caf|t4-cat-billing,High,1
+7,2026-10-13T03:44:52.064375+00:00,t4-003,A,SUP-2,SUP,Task,[bug] CRM sync broken since the update,"Hello,
+
+Writing on behalf of Kettlewick Ltd. Our CRM sync stopped working after your last release: no new events have arrived since then.
+
+Our sales team depends on this sync, and we have no other way to move the data. The webhook settings still show the endpoint as active, and the test button returns success. We are not happy that this happened at all.
+
+This is blocking us right now, so we need help today. Please investigate as soon as possible.
+
+Thanks,
+[NAME_1]
+project manager, Kettlewick Ltd
+category=bug (0.924142) priority=P2 (0.970688) urgency=high ticket_ref=751f70fc4caf5eb612e6",t4|t4dk-751f70fc4caf5eb612e6|t4-cat-bug,High,2
+12,2026-10-13T03:44:54.007242+00:00,t4-005,A,SUP-3,SUP,Task,[howto] Importing contacts from a spreadsheet,"Hello,
+
+I look after our account at Saltmarsh Robotics. How do I bulk-import about 4,800 contacts from a spreadsheet?
+
+Our team starts using the app properly once the data is in. The file has name, company and city columns.
+
+Could you look into this sometime this week? Please tell us the steps or the template to use.
+
+Best,
+[NAME_1]
+category=howto (1) priority=P3 (0.999999) urgency=medium ticket_ref=7e0269133a6917a87124",t4|t4dk-7e0269133a6917a87124|t4-cat-howto,Medium,3
+21,2026-10-13T03:44:57.465630+00:00,t4-010,A,SUP-4,SUP,Task,[access] Invitation not working,"Hello support,
+
+We invited a new colleague yesterday, but the invite link says it has expired when they open it.
+
+We have resent the invite three times with the same result. We have free seats on our plan, so that should not be the problem.
+
+We would like this sorted before the end of the week. Can you check what is wrong with the invitations?
+
+Best,
+[NAME_1]
+category=access (1) priority=P2 (0.982014) urgency=medium ticket_ref=a4b2eeab63b2f1e02f19",t4|t4dk-a4b2eeab63b2f1e02f19|t4-cat-access,High,4
+26,2026-10-13T03:44:59.203687+00:00,t4-012,A,SUP-5,SUP,Task,[outage] Cannot reach our EU workspaces,"Hey team,
+
+I'm the engineering manager at Brambleway Studio. Your EU region seems to be down: every request to our EU workspaces times out for our whole team in Madrid and Berlin.
+
+Our US workspace still works.
+
+We have a hard deadline tomorrow morning, so please treat this as urgent. Is there an incident open?
+
+Cheers,
+[NAME_1]
+category=outage (1) priority=P1 (0.999569) urgency=high ticket_ref=71379c4d980102614683",t4|t4dk-71379c4d980102614683|t4-cat-outage,Highest,5
+31,2026-10-13T03:45:01.902649+00:00,t4-014,A,SUP-6,SUP,Task,[feature] Feature request: deals in EUR and USD,"Dear Support Team,
+
+I'm the operations manager at Hollowfen Media. We would like to keep deals in more than one currency in the same workspace.
+
+We sell in the US and in Europe. Our reports would need to convert amounts at a fixed monthly rate.
+
+Please consider it.
+
+Kind regards,
+[NAME_1]
+category=feature (1) priority=P4 (1) urgency=low ticket_ref=64729f0d7f8ea1544576",t4|t4dk-64729f0d7f8ea1544576|t4-cat-feature,Low,6
+40,2026-10-13T03:45:06.428808+00:00,t4-017,A,SUP-7,SUP,Task,[billing] Invoice needs our VAT number,"Hi there!
+
+I look after our account at Kettlewick Ltd. Our VAT ID is saved in the billing settings, but it does not appear on invoice INV-2026-5316, and the invoice charges VAT that should be reverse charged.
+
+We checked the billing settings and the tax details look correct there. Our accountant cannot book the invoice in its current form.
+
+This is blocking us right now, so we need help today. Could you reissue the invoice with the VAT ID and a reverse charge note?
+
+Thanks so much!
+[NAME_1]
+category=billing (1) priority=P2 (0.999942) urgency=high ticket_ref=202c1915d68a548cd7d2",t4|t4dk-202c1915d68a548cd7d2|t4-cat-billing,High,7
+45,2026-10-13T03:45:19.833356+00:00,t4-019,A,SUP-8,SUP,Task,[bug] Timezone wrong after the clock change,"Hello support,
+
+Writing on behalf of Hollowfen Media. Our 8:00 reports now come at 9:00, which started right after the clocks changed.
+
+We can send the reports by hand in the meantime.
+
+A reply in the next few days would be great. Could you check the scheduler?
+
+Best,
+[NAME_1]
+category=bug (0.999998) priority=P3 (1) urgency=medium ticket_ref=9a2ecadc6ceb4b1a8209",t4|t4dk-9a2ecadc6ceb4b1a8209|t4-cat-bug,Medium,8
+50,2026-10-13T03:45:21.627580+00:00,t4-021,A,SUP-9,SUP,Task,[howto] Connecting to Slack,"Dear Support Team,
+
+Writing on behalf of Larkspur Labs. How do we set up Slack notifications for new tasks in one project?
+
+I saw a Slack option under Integrations, but it asks for settings I do not understand. We only want one channel, not all projects.
+
+Could you look into this sometime this week? Thanks in advance.
+
+Kind regards,
+[NAME_1]
+category=howto (1) priority=P3 (0.991422) urgency=medium ticket_ref=6c0d2c707abec7b3d702",t4|t4dk-6c0d2c707abec7b3d702|t4-cat-howto,Medium,9
+59,2026-10-13T03:45:24.975708+00:00,t4-026,A,SUP-10,SUP,Task,"[access] New phone, cannot log in","Good morning,
+
+I replaced my phone over the weekend and lost my authenticator app, so I cannot sign in anymore.
+
+I am our on-call engineer this week, and I cannot see any alerts without signing in.
+
+It is affecting our work as we speak, so please look at it today. Please help me verify my identity and get back in.
+
+Kind regards,
+[NAME_1]
+category=access (1) priority=P2 (0.999942) urgency=high ticket_ref=50c45969e5b09788afeb",t4|t4dk-50c45969e5b09788afeb|t4-cat-access,High,10
+64,2026-10-13T03:45:26.937348+00:00,t4-028,A,SUP-11,SUP,Task,[outage] Performance problem for all users,"Hi,
+
+I look after our account at Larkspur Labs. Since 14:50 UTC the whole app has been extremely slow for everyone at Larkspur Labs: pages take more than 30 seconds to load.
+
+We can still work, but very slowly. People at other companies are posting about the same thing. This has already cost us a morning of work.
+
+It is affecting our work as we speak, so please look at it today. Please look into it.
+
+Regards,
+[NAME_1]
+category=outage (1) priority=P2 (0.999569) urgency=high ticket_ref=23d1396ea9b2f5299383",t4|t4dk-23d1396ea9b2f5299383|t4-cat-outage,High,11
+69,2026-10-13T03:45:29.497609+00:00,t4-030,A,SUP-12,SUP,Task,[feature] Feature idea: Gantt charts,"Dear support,
+
+I look after our account at Kettlewick Ltd. Please consider adding a Gantt chart view; we plan long projects with many steps.
+
+Right now we export to a spreadsheet to see the timeline.
+
+A reply in the next few days would be great. Is this on your roadmap?
+
+Best regards,
+[NAME_1]
+category=feature (1) priority=P4 (1) urgency=medium ticket_ref=c23e9079fb3f13275c2a",t4|t4dk-c23e9079fb3f13275c2a|t4-cat-feature,Low,12
+78,2026-10-13T03:45:50.760254+00:00,t4-033,A,SUP-13,SUP,Task,[billing] Cancel our subscription,"Dear support,
+
+I'm the founder at Wrenfield Partners. Please cancel the Wrenfield Partners subscription when the current term ends; we are consolidating our software.
+
+We will export our projects ourselves before the end date.
+
+Could you confirm the last charge we should expect?
+
+Yours sincerely,
+[NAME_1]
+founder, Wrenfield Partners
+category=billing (1) priority=P2 (0.775382) urgency=low ticket_ref=7818fb17985408f891f6",t4|t4dk-7818fb17985408f891f6|t4-cat-billing,High,13
+83,2026-10-13T03:45:58.826116+00:00,t4-035,A,SUP-14,SUP,Task,[bug] iOS app crashes on Inbox,"Hi,
+
+The iOS app crashes every time I open the Inbox tab.
+
+We reinstalled the app and restarted the phones. Our field technicians only use the iOS app, so they cannot see their new jobs. Honestly, this is really frustrating.
+
+This is blocking us right now, so we need help today. Let me know if you need logs.
+
+Regards,
+[NAME_1]
+category=bug (0.985936) priority=P2 (0.993307) urgency=high ticket_ref=dfeb1a7ee93f14861b89",t4|t4dk-dfeb1a7ee93f14861b89|t4-cat-bug,High,14
+88,2026-10-13T03:46:02.483421+00:00,t4-037,A,SUP-15,SUP,Task,[howto] API rate limits on our plan,"Hi there!
+
+Our nightly sync job is hitting 429 responses, and I need to know the API rate limits for the Business plan so we can pace the requests.
+
+I could not find the limits in the API reference. The job is blocked until we know how to pace it.
+
+Could you look into this sometime this week? Please point me to the right page.
+
+Thanks so much!
+[NAME_1]
+category=howto (1) priority=P3 (0.998073) urgency=medium ticket_ref=e9eb265f778fda8f88ee",t4|t4dk-e9eb265f778fda8f88ee|t4-cat-howto,Medium,15
+97,2026-10-13T03:46:06.501434+00:00,t4-042,A,SUP-16,SUP,Task,[access] 'Seat limit reached' when adding a user,"Hi folks,
+
+The admin page says we have 15 seats, yet inviting anyone new shows a seat limit error.
+
+The purchase shows on our invoice.
+
+We would like this sorted before the end of the week. Can you refresh our seat count?
+
+Cheers,
+[NAME_1]
+category=access (0.982014) priority=P2 (0.996827) urgency=medium ticket_ref=d48b3a876841ed707f82",t4|t4dk-d48b3a876841ed707f82|t4-cat-access,High,16
+102,2026-10-13T03:46:09.027255+00:00,t4-044,A,SUP-17,SUP,Task,[outage] App not loading for anyone,"Hi,
+
+The app does not load for anyone at Brambleway Studio: we get a blank page and a spinner that never ends.
+
+We tried different networks and browsers. Contacts at two other companies tell us they see the same thing.
+
+It is affecting our work as we speak, so please look at it today. Is there an incident on your side?
+
+Best,
+[NAME_1]
+operations manager, Brambleway Studio
+category=outage (1) priority=P1 (0.999992) urgency=high ticket_ref=ced240072edd2c20e66f",t4|t4dk-ced240072edd2c20e66f|t4-cat-outage,Highest,17
+107,2026-10-13T03:46:10.639158+00:00,t4-046,A,SUP-18,SUP,Task,[feature] Feature request: custom permissions,"Good morning,
+
+We would like to define our own roles, for example someone who can edit projects but not see billing.
+
+Our contractors currently see more than they need.
+
+There is no deadline here. Thanks for listening.
+
+Best regards,
+[NAME_1]
+founder, Wrenfield Partners
+category=feature (1) priority=P4 (1) urgency=low ticket_ref=081109384fd0c1a22b80",t4|t4dk-081109384fd0c1a22b80|t4-cat-feature,Low,18
+116,2026-10-13T03:46:13.980136+00:00,t4-049,A,SUP-19,SUP,Task,[billing] Monthly to yearly billing,"Hi folks,
+
+I'm the operations manager at Velloran SAS. We are on monthly billing for the Team plan and would like to switch to annual billing at the next renewal.
+
+We have 17 users and do not expect that to change much. Nothing is wrong, we are just planning next year's budget.
+
+Not urgent at all. Please let us know the steps.
+
+Thanks so much!
+[NAME_1]
+operations manager, Velloran SAS
+category=billing (1) priority=P4 (0.999979) urgency=low ticket_ref=d0edf6f8d1e12a3c1aad",t4|t4dk-d0edf6f8d1e12a3c1aad|t4-cat-billing,Low,19
+121,2026-10-13T03:46:15.782238+00:00,t4-051,A,SUP-20,SUP,Task,[bug] Duplicate day in the weekly chart,"Hi team,
+
+I'm the support lead at Velloran SAS. The weekly activity chart on our dashboard shows Sunday's numbers twice, and Monday is missing.
+
+The raw numbers in the table below the chart are correct. I see it in both Chrome and Firefox.
+
+No rush on this, whenever you have a moment. Could you take a look?
+
+Regards,
+[NAME_1]
+category=bug (1) priority=P3 (0.999955) urgency=low ticket_ref=1380fbad1d70d5eac01f",t4|t4dk-1380fbad1d70d5eac01f|t4-cat-bug,Medium,20
+126,2026-10-13T03:46:17.472640+00:00,t4-053,A,SUP-21,SUP,Task,[howto] Which attribute for email in SAML,"Good morning,
+
+I look after our account at Larkspur Labs. We are setting up SAML single sign-on with our identity provider. Which attribute should carry the user's email address?
+
+Nothing is broken; we just want to get the setup right the first time. We want to switch everyone over before the end of the month.
+
+A reply in the next few days would be great. A setup guide would help.
+
+Kind regards,
+[NAME_1]
+category=howto (1) priority=P3 (0.999965) urgency=medium ticket_ref=f8e46ed9710526cb064f",t4|t4dk-f8e46ed9710526cb064f|t4-cat-howto,Medium,21
+135,2026-10-13T03:46:20.912802+00:00,t4-058,A,SUP-22,SUP,Task,[access] No reset email,"Good morning,
+
+I look after our account at Fennimore Freight. I requested a password reset four times this morning, but the email never arrives.
+
+I can still use the mobile app because I am signed in there, so I am not completely stuck. Colleagues on the same email domain receive your emails fine.
+
+We would like this sorted before the end of the week. Could you check whether the reset emails are being sent?
+
+Best regards,
+[NAME_1]
+category=access (1) priority=P3 (0.731058) urgency=medium ticket_ref=1c4c9205a37f4c6fea9a",t4|t4dk-1c4c9205a37f4c6fea9a|t4-cat-access,Medium,22
+140,2026-10-13T03:46:22.399008+00:00,t4-060,A,SUP-23,SUP,Task,[outage] Emails stopped going out,"Hey team,
+
+Writing on behalf of Glimmerbrook BV. No notification emails have gone out from any of our workspaces since 15:35 UTC, so our customers are not getting their receipts.
+
+The email log in the admin area is empty for today.
+
+It is affecting our work as we speak, so please look at it today. Please treat this as an incident.
+
+Thanks so much!
+[NAME_1]
+category=outage (1) priority=P1 (0.998073) urgency=high ticket_ref=14ac55662057c8c8a659",t4|t4dk-14ac55662057c8c8a659|t4-cat-outage,Highest,23
+145,2026-10-13T03:46:24.285125+00:00,t4-062,A,SUP-24,SUP,Task,[feature] Two-way calendar sync,"Hello,
+
+I look after our account at Quillmoor GmbH. Please add two-way sync with Outlook calendars; today only Google Calendar is supported.
+
+We are deciding whether to roll the app out to more teams this quarter. People currently copy meetings by hand.
+
+We would like this sorted before the end of the week. Please let us know if it is planned.
+
+Thanks,
+[NAME_1]
+category=feature (1) priority=P4 (0.715869) urgency=medium ticket_ref=4c4e2ddb6241a352ce69",t4|t4dk-4c4e2ddb6241a352ce69|t4-cat-feature,Low,24
+154,2026-10-13T03:46:27.934794+00:00,t4-065,A,SUP-25,SUP,Task,[billing] Question about invoice INV-2026-9980,"Good morning,
+
+Writing on behalf of Saltmarsh Robotics. Our September invoice charges for 9 seats although we removed several users last month and now have 6.
+
+We paid the invoice already so our books stay clean, but we expect a credit for the difference.
+
+Please send a corrected invoice or a credit note.
+
+Best regards,
+[NAME_1]
+project manager, Saltmarsh Robotics
+category=billing (1) priority=P3 (0.904651) urgency=low ticket_ref=382b40ca83feed690225",t4|t4dk-382b40ca83feed690225|t4-cat-billing,Medium,25
+159,2026-10-13T03:46:29.892955+00:00,t4-067,A,SUP-26,SUP,Task,[bug] Template changes not saving,"Hello support,
+
+Writing on behalf of Ottervale Software. Every time I edit a project template and press Save, I get 'Something went wrong' and the change is lost.
+
+Our onboarding process is built on these templates, and there is no other way to edit them.
+
+This is blocking us right now, so we need help today. Please help us fix this quickly.
+
+Best,
+[NAME_1]
+category=bug (0.999999) priority=P2 (0.99478) urgency=high ticket_ref=96a801b27e5a77182a1a",t4|t4dk-96a801b27e5a77182a1a|t4-cat-bug,High,26
+164,2026-10-13T03:46:31.990073+00:00,t4-069,A,SUP-27,SUP,Task,[howto] Role documentation,"Hello,
+
+I look after our account at Nimbleford Dental. Where in the docs can I find what each role (Member, Manager, Admin) can see and do?
+
+We are just tidying up our workspace.
+
+A link would be enough.
+
+Thanks,
+[NAME_1]
+support lead, Nimbleford Dental
+category=howto (1) priority=P4 (0.999999) urgency=low ticket_ref=273b60555ba657c1e03e",t4|t4dk-273b60555ba657c1e03e|t4-cat-howto,Low,27
+173,2026-10-13T03:46:35.313971+00:00,t4-074,A,SUP-28,SUP,Task,[access] Role does not give access to Reports,"Hey team,
+
+We gave one of our team leads the Manager role, and they still get a 'no permission' message when opening Reports.
+
+We tried removing and adding the role again.
+
+Could you look into this sometime this week? Please tell us what we are missing.
+
+Thanks so much!
+[NAME_1]
+customer success lead, Wrenfield Partners
+category=access (1) priority=P2 (0.99478) urgency=medium ticket_ref=603b5514fad63d24ab3a",t4|t4dk-603b5514fad63d24ab3a|t4-cat-access,High,28
+178,2026-10-13T03:46:37.316374+00:00,t4-076,A,SUP-29,SUP,Task,[outage] Global search down,"Dear support,
+
+Search has returned no results for everyone in our account since 06:40 UTC, and a contact at another company sees the same.
+
+Clearing caches did not help. Everything else in the app works, so we can still browse by hand.
+
+This is blocking us right now, so we need help today. Please let us know when it will be fixed.
+
+Kind regards,
+[NAME_1]
+category=outage (1) priority=P1 (0.939913) urgency=high ticket_ref=5abfbd0096e90818351d",t4|t4dk-5abfbd0096e90818351d|t4-cat-outage,Highest,29
+183,2026-10-13T03:46:39.448864+00:00,t4-078,A,SUP-30,SUP,Task,[feature] Any plans for dark mode?,"Dear support,
+
+It would be great to have a dark mode in the web app.
+
+Several people on our team have asked for it.
+
+No rush on this, whenever you have a moment. Please add it to the roadmap.
+
+Best regards,
+[NAME_1]
+project manager, Velloran SAS
+category=feature (1) priority=P4 (1) urgency=low ticket_ref=be6433d2e1588706e990",t4|t4dk-be6433d2e1588706e990|t4-cat-feature,Low,30
+192,2026-10-13T03:46:43.480785+00:00,t4-081,A,SUP-31,SUP,Task,[billing] Downgrade not reflected on our bill,"Good morning,
+
+After switching down to the Starter plan, we expected a prorated credit, but invoice INV-2026-9635 shows the old Business plan price.
+
+The plan page in the settings shows the new plan correctly. Your pricing page says plan changes are prorated.
+
+A reply in the next few days would be great. Can you apply the prorated credit to our next invoice?
+
+Best regards,
+[NAME_1]
+account manager, Ottervale Software
+category=billing (1) priority=P3 (0.5) urgency=medium ticket_ref=8619ca982b380c527a43",t4|t4dk-8619ca982b380c527a43|t4-cat-billing,Medium,31
+197,2026-10-13T03:46:45.708105+00:00,t4-083,A,SUP-32,SUP,Task,[bug] Cannot upload files over 10 MB,"Hi there!
+
+I look after our account at Tidewell Logistics. Uploading PDF files larger than about 10 MB fails at 99% with 'upload error'.
+
+Smaller files upload fine, so we split the large ones for now. Your docs say the limit is 50 MB on our plan.
+
+A reply in the next few days would be great. Is there a fix planned?
+
+Thanks so much!
+[NAME_1]
+category=bug (1) priority=P2 (0.731059) urgency=medium ticket_ref=ebd26e680f2c86a68c01",t4|t4dk-ebd26e680f2c86a68c01|t4-cat-bug,High,32
+202,2026-10-13T03:46:58.667312+00:00,t4-085,A,SUP-33,SUP,Task,[howto] How to schedule a weekly report,"Hi there!
+
+I look after our account at Larkspur Labs. How do I schedule a weekly report so that it is emailed to my manager every Monday?
+
+We are on the Scale plan, if that matters.
+
+Not urgent at all. Thanks for any pointers.
+
+Thanks so much!
+[NAME_1]
+category=howto (1) priority=P4 (1) urgency=low ticket_ref=bd7586031ce34bcc01c0",t4|t4dk-bd7586031ce34bcc01c0|t4-cat-howto,Low,33
+211,2026-10-13T03:47:03.122937+00:00,t4-090,A,SUP-34,SUP,Task,[access] Suspicious sign-in and new API key,"Hello,
+
+I'm the head of finance at Quillmoor GmbH. Someone signed in to our admin account overnight from an unknown location and created two API keys we do not recognise.
+
+The audit log shows the new keys were used a few minutes later. This has already cost us a morning of work.
+
+It is affecting our work as we speak, so please look at it today. Please help us revoke all sessions and keys and check what was accessed.
+
+Regards,
+[NAME_1]
+category=access (0.998817) priority=P2 (0.962673) urgency=high ticket_ref=2d2e193893c8b12f1b1a",t4|t4dk-2d2e193893c8b12f1b1a|t4-cat-access,High,34
+216,2026-10-13T03:47:05.053549+00:00,t4-092,A,SUP-35,SUP,Task,[outage] 500 errors on every request,"Hi,
+
+I look after our account at Kettlewick Ltd. All of our API requests have failed with HTTP 500 since 09:50 UTC, for every workspace and every API key we have.
+
+Our integrations and the customer-facing parts of our product are down because of this. Honestly, this is really frustrating.
+
+This is blocking us right now, so we need help today. Please confirm you are aware and give us an estimate.
+
+Thanks,
+[NAME_1]
+category=outage (1) priority=P1 (1) urgency=high ticket_ref=dec22701b080b2bf4c6b",t4|t4dk-dec22701b080b2bf4c6b|t4-cat-outage,Highest,35
+221,2026-10-13T03:47:06.968291+00:00,t4-094,A,SUP-36,SUP,Task,[feature] Feature request: bulk delete via the API,"Hi folks,
+
+I'm the founder at Velloran SAS. Could you add a bulk delete endpoint to the API?
+
+A bulk endpoint would also mean far fewer requests against your API. Our developers would use it every month.
+
+Could you look into this sometime this week? Is there a timeline for this?
+
+Many thanks,
+[NAME_1]
+category=feature (1) priority=P4 (1) urgency=medium ticket_ref=665d37f00f25d2d92dce",t4|t4dk-665d37f00f25d2d92dce|t4-cat-feature,Low,36
+230,2026-10-13T03:47:10.538342+00:00,t4-097,A,SUP-37,SUP,Task,[billing] Payment failed for Starter renewal,"Hello,
+
+The card payment for our Starter renewal was declined, and we got a warning that access will be suspended.
+
+Our bank says it never saw the payment attempt, so we think the problem is on the payment side. We already updated the card details once and the retry failed again. We are not happy that this happened at all.
+
+It is affecting our work as we speak, so please look at it today. Can you send a payment link or let us pay by bank transfer instead?
+
+Regards,
+[NAME_1]
+category=billing (1) priority=P2 (0.991423) urgency=high ticket_ref=7e9ae5e59754815ed632",t4|t4dk-7e9ae5e59754815ed632|t4-cat-billing,High,37
+235,2026-10-13T03:47:12.343769+00:00,t4-099,A,SUP-38,SUP,Task,[bug] Contacts export incomplete,"Good morning,
+
+When I export the Contacts list to CSV, the file stops at exactly 1,000 rows, although we have about 2,400 contacts.
+
+This started after last week's release; it worked before.
+
+Could you look into this sometime this week? Could you look into it?
+
+Best regards,
+[NAME_1]
+IT lead, Tidewell Logistics
+category=bug (1) priority=P3 (0.731059) urgency=medium ticket_ref=303f7ed7838a08eced4b",t4|t4dk-303f7ed7838a08eced4b|t4-cat-bug,Medium,38
+240,2026-10-13T03:47:14.196726+00:00,t4-101,A,SUP-39,SUP,Task,[howto] How to add extra fields,"Hello support,
+
+I look after our account at Wrenfield Partners. Is there a way to add a custom field, like 'contract end date', to the contact form?
+
+I saw a mention of custom fields in your changelog.
+
+Any help is appreciated.
+
+Regards,
+[NAME_1]
+category=howto (0.99478) priority=P4 (0.999999) urgency=low ticket_ref=9ef45c4b40abc5afea38",t4|t4dk-9ef45c4b40abc5afea38|t4-cat-howto,Low,39
+249,2026-10-13T03:47:17.729114+00:00,t4-105,A,SUP-40,SUP,Task,[access] Users locked out after renewal,"Hi,
+
+Our card on file expired, the renewal payment failed on Monday, and now three of our users see a 'subscription inactive' banner and cannot get into the workspace.
+
+How do we update the card so they can work again? They are blocked right now.
+
+Thanks,
+[NAME_1]
+category=access (0.731059) priority=P2 (1) urgency=high ticket_ref=08de05ca462585316d78",t4|t4dk-08de05ca462585316d78|t4-cat-access,High,40
+254,2026-10-13T03:47:19.821705+00:00,t4-107,A,SUP-41,SUP,Task,[outage] Projects page fails to load,"Hello,
+
+One of our workspaces shows 'failed to load' on the Projects page since this morning. Our other two workspaces are fine, and a contact at another company says it works for them. The design team lives in that workspace and cannot plan any work today.
+
+Thanks,
+[NAME_1]
+category=outage (0.999877) priority=P2 (0.962673) urgency=high ticket_ref=bac90be249ecf2b2eddd",t4|t4dk-bac90be249ecf2b2eddd|t4-cat-outage,High,41
+259,2026-10-13T03:47:21.682957+00:00,t4-109,A,SUP-42,SUP,Task,[feature] Export a project as PDF?,"Hi,
+
+Can you add a way to export a single project as a PDF? We would use it for client reports.
+
+Thanks,
+[NAME_1]
+category=feature (1) priority=P4 (1) urgency=low ticket_ref=ff2f283f632a9f65561b",t4|t4dk-ff2f283f632a9f65561b|t4-cat-feature,Low,42
+268,2026-10-13T03:47:26.869891+00:00,t4-114,A,SUP-43,SUP,Task,[access] 2FA code rejected on new laptop + timezone,"Hi team,
+
+I cannot log in on my new laptop: the 2FA code from my authenticator is rejected every time. I can still get in on my phone, so I am not fully stuck, but I need the laptop working this week.
+
+Also, unrelated: the mobile app shows all my due dates in the wrong timezone.
+
+Cheers,
+[NAME_1]
+category=access (1) priority=P2 (0.999877) urgency=medium ticket_ref=e34e451cf88443070c24",t4|t4dk-e34e451cf88443070c24|t4-cat-access,High,43
+273,2026-10-13T03:47:41.187408+00:00,t4-116,A,SUP-44,SUP,Task,[outage] API 502 on every request + invoice question,"Hi,
+
+Your API has returned 502 on every request since 10:40 UTC, for all of our workspaces. Our order pipeline is stopped.
+
+Unrelated, and not urgent: our last invoice shows the wrong company name.
+
+Thanks,
+[NAME_1]
+category=outage (0.999999) priority=P1 (0.999994) urgency=high ticket_ref=295083c92873d1530caa",t4|t4dk-295083c92873d1530caa|t4-cat-outage,Highest,44
+278,2026-10-13T03:47:44.398322+00:00,t4-118,A,SUP-45,SUP,Task,[feature] Kanban view + renaming boards,"Hi team,
+
+We would love a Kanban view. It is the main thing stopping us from moving our design team over this month.
+
+Small thing too: how do I rename a board?
+
+Thanks,
+[NAME_1]
+head of finance, Glimmerbrook BV
+category=feature (0.999447) priority=P4 (0.999989) urgency=medium ticket_ref=605cc0a40909ade04f4e",t4|t4dk-605cc0a40909ade04f4e|t4-cat-feature,Low,45
+287,2026-10-13T03:47:50.275965+00:00,t4-121,A,SUP-46,SUP,Task,[billing] Seriously??,"I am SO tired of getting a separate invoice email every single month. Twelve emails a year for the same thing!!! Is there really no way to pay once a year and get ONE invoice instead?? Honestly.
+
+[NAME_1]
+category=billing (1) priority=P4 (0.999992) urgency=low ticket_ref=52b67c100d8604351a43",t4|t4dk-52b67c100d8604351a43|t4-cat-billing,Low,46
+292,2026-10-13T03:47:54.138318+00:00,t4-123,A,SUP-47,SUP,Task,[bug] Who approved this?!,"WHO approved this release?! The tooltip on the Save button says 'Svae'. SVAE. Do you even test anything before you ship it? Unbelievable.
+
+[NAME_1]
+category=bug (1) priority=P3 (0.622293) urgency=low ticket_ref=0d281b7a43da5074236b",t4|t4dk-0d281b7a43da5074236b|t4-cat-bug,Medium,47
+297,2026-10-13T03:47:56.664198+00:00,t4-125,A,SUP-48,SUP,Task,[howto] WHERE IS THE SETTING,"I have been clicking around for 20 minutes and I am LOSING MY MIND. Where on earth is the setting to change the date format to day/month/year?! Why is this so hard to find?!
+
+[NAME_1]
+category=howto (1) priority=P3 (0.5) urgency=low ticket_ref=da8cc037d0694c42960a",t4|t4dk-da8cc037d0694c42960a|t4-cat-howto,Medium,48
+306,2026-10-13T03:48:01.272857+00:00,t4-130,A,SUP-49,SUP,Task,[access] LOCKED OUT,"locked out. only admin. need in NOW
+category=access (1) priority=P2 (0.999739) urgency=high ticket_ref=f667767cdea3b1401f1d",t4|t4dk-f667767cdea3b1401f1d|t4-cat-access,High,49
+311,2026-10-13T03:48:03.268534+00:00,t4-132,A,SUP-50,SUP,Task,[outage] down??,"everything is down?? 500s everywhere
+category=outage (1) priority=P1 (1) urgency=high ticket_ref=d4458bf0d9a40bf26e90",t4|t4dk-d4458bf0d9a40bf26e90|t4-cat-outage,Highest,50
+316,2026-10-13T03:48:05.024551+00:00,t4-134,A,SUP-51,SUP,Task,[feature] outlook,"please add Outlook calendar sync
+category=feature (1) priority=P4 (1) urgency=low ticket_ref=82fefdb92ff5e0171b37",t4|t4dk-82fefdb92ff5e0171b37|t4-cat-feature,Low,51
+325,2026-10-13T03:48:09.199606+00:00,t4-137,A,SUP-52,SUP,Task,[billing] Re: SSO login loop for our team,"Hi Sam Ortega,
+
+Great, that worked, everyone can sign in with SSO again. While I have you: our September invoice still charges for the SSO add-on, which we cancelled in August. Can you credit it this week?
+
+Thanks,
+[NAME_1]
+
+On Fri, 18 Sep 2026 at 22:30, Sam Ortega (Support) wrote:
+> Thanks for the details. Your identity provider was sending the email address
+> in a different attribute after your change. I have updated the mapping on
+> our side. Could you ask one of your users to sign out and sign in again with
+> SSO and let me know if the loop is gone?
+
+> On Thu, 17 Sep 2026 at 21:23, [NAME_1] wrote:
+>> Since this morning, everyone who signs in with SSO ends up in a loop: they
+>> log in at our identity provider, come back to your login page, and start
+>> again. Password login still works for the two admins. We changed the
+>> identity provider settings last week, but nothing related to your app as far
+>> as we know.
+
+>> On Wed, 16 Sep 2026 at 20:16, Sam Ortega (Support) wrote:
+>>> Hello, thanks for reaching out. Could you send us the time of a failed sign-
+>>> in and the name of the identity provider you use? That helps us find the
+>>> right log entries.
+category=billing (1) priority=P2 (0.982014) urgency=medium ticket_ref=87983e5a59daa32182b2",t4|t4dk-87983e5a59daa32182b2|t4-cat-billing,High,52
+330,2026-10-13T03:48:11.180632+00:00,t4-139,A,SUP-53,SUP,Task,[bug] Re: Contact sync creating duplicates,"Hi Sam Ortega,
+
+Same problem again after your fix. The sync ran at 06:00 and duplicated every contact again; we now have each contact three times. Our sales team cannot work with this list today.
+
+[NAME_1]
+
+On Fri, 18 Sep 2026 at 04:20, Sam Ortega (Support) wrote:
+> Good news: our engineers deployed a fix for the duplicate contacts created
+> by the nightly sync. You can merge the existing duplicates with the 'Merge
+> duplicates' action in Contacts. Please let us know if you see new duplicates
+> after tonight's sync.
+
+> On Thu, 17 Sep 2026 at 03:13, [NAME_1] wrote:
+>> Since Monday, the nightly sync with our CRM creates a second copy of every
+>> contact. We have about 4,000 contacts, so this is now 8,000. We did not
+>> change anything in the sync settings.
+
+>> On Thu, 17 Sep 2026 at 02:06, Sam Ortega (Support) wrote:
+>>> Thanks for reporting this. We can see the extra contacts in your workspace
+>>> and have passed it to our engineers. We will update you as soon as we know
+>>> more.
+category=bug (0.999998) priority=P2 (0.999983) urgency=high ticket_ref=2874b74c321ca8e5a334",t4|t4dk-2874b74c321ca8e5a334|t4-cat-bug,High,53
+335,2026-10-13T03:48:13.215817+00:00,t4-141,A,SUP-54,SUP,Task,[howto] Re: Moving many tasks at once,"Hi Sam Ortega,
+
+Thanks, that worked perfectly. How do I do the same for tasks in archived projects? The checkbox does not show up there.
+
+Cheers,
+[NAME_1]
+
+On Sat, 19 Sep 2026 at 11:37, Sam Ortega (Support) wrote:
+> You can move many tasks at once: open the list view, tick the checkbox next
+> to each task (or the one in the header to select all), then choose 'Move to
+> project' from the actions menu.
+
+> On Fri, 18 Sep 2026 at 10:30, [NAME_1] wrote:
+>> We are reorganising our projects and need to move about 200 tasks from one
+>> project to another. Doing it one by one takes forever. Is there a faster
+>> way?
+
+>> On Fri, 18 Sep 2026 at 09:23, Sam Ortega (Support) wrote:
+>>> Thanks for your question, I will check the best way to do this and get back
+>>> to you shortly.
+category=howto (1) priority=P4 (0.999877) urgency=low ticket_ref=46557b33dbceac971277",t4|t4dk-46557b33dbceac971277|t4-cat-howto,Low,54
+344,2026-10-13T03:48:17.708259+00:00,t4-146,A,SUP-55,SUP,Task,[access] New hires + invoice copy,"Hello,
+
+Please help us add our two new hires to the workspace. Both invitations bounce back with 'invitation not valid' and they start on Monday.
+
+Also, could you send me last month's invoice again? I cannot find the email.
+
+Best,
+[NAME_1]
+engineering manager, Glimmerbrook BV
+category=access (0.999995) priority=P2 (1) urgency=high ticket_ref=94ae86b384d0999f3953",t4|t4dk-94ae86b384d0999f3953|t4-cat-access,High,55
+349,2026-10-13T03:48:19.967714+00:00,t4-148,A,SUP-56,SUP,Task,[outage] Quick question :),"Hi! Quick question, is something going on? None of our 60 agents can load the inbox, it is just blank, and a friend at another company says theirs is blank too. Thanks so much :)
+
+[NAME_1]
+category=outage (1) priority=P1 (0.999842) urgency=high ticket_ref=a96039277199f995f2ba",t4|t4dk-a96039277199f995f2ba|t4-cat-outage,Highest,56
+354,2026-10-13T03:48:22.029242+00:00,t4-150,A,SUP-57,SUP,Task,[feature] Third time asking,"This is the THIRD time I am asking: where is the bulk-delete API endpoint your sales rep promised us? Our developers are fed up with deleting records one by one. We plan our next sprint on Friday and need to know if it is coming.
+
+[NAME_1]
+engineering manager, Saltmarsh Robotics
+category=feature (1) priority=P4 (0.99883) urgency=medium ticket_ref=92b290abde8b83cfc96f",t4|t4dk-92b290abde8b83cfc96f|t4-cat-feature,Low,57
+395,2026-10-13T03:48:45.706789+00:00,t4-169,A,SUP-58,SUP,Task,[billing] Charged twice this month,"Hi there!
+
+We were charged twice for our Scale subscription this month: two payments of €249.00 went through on Thursday, a few minutes apart.
+
+Our finance team flagged it during the weekly reconciliation. For reference, the payment was made with card [CARD_1]. You can reach me on [PHONE_1] if a call is quicker.
+
+It is affecting our work as we speak, so please look at it today. Please refund the duplicate payment and confirm once it is done.
+
+Many thanks,
+[NAME_1]
+category=billing (1) priority=P2 (0.999999) urgency=high ticket_ref=7a7c988e1d28c4b92de4",t4|t4dk-7a7c988e1d28c4b92de4|t4-cat-billing,High,58
+400,2026-10-13T03:48:47.563458+00:00,t4-171,A,SUP-59,SUP,Task,[bug] Cannot upload files over 10 MB,"Dear support,
+
+I'm the project manager at Tidewell Logistics. Any PDF above roughly 10 MB stops at 99% and then shows an upload error.
+
+Your docs say the limit is 50 MB on our plan. Smaller files upload fine, so we split the large ones for now. Here is a screen recording of the problem: [URL_1] Our office egress IP is [IPV4_1], in case that helps with the logs.
+
+Could you look into this sometime this week? Could you check what is going wrong?
+
+Yours sincerely,
+[NAME_1]
+category=bug (1) priority=P2 (0.939913) urgency=medium ticket_ref=514f45a64f9004a475c9",t4|t4dk-514f45a64f9004a475c9|t4-cat-bug,High,59
+405,2026-10-13T03:48:49.171688+00:00,t4-173,A,SUP-60,SUP,Task,[billing] Prorated refund for plan change,"Dear Support Team,
+
+I'm the head of finance at Ottervale Software. We downgraded from the Business plan to the Team plan in the middle of the billing cycle, and the latest invoice still charges the full Business price of $249.00.
+
+Your pricing page says plan changes are prorated. If a refund is easier by bank transfer, our IBAN is [IBAN_1]. Please copy my colleague at [EMAIL_1] on your reply.
+
+Can you apply the prorated credit to our next invoice?
+
+Yours sincerely,
+[NAME_1]
+category=billing (1) priority=P3 (0.970688) urgency=medium ticket_ref=0fd2072ec5169450168e",t4|t4dk-0fd2072ec5169450168e|t4-cat-billing,Medium,60
+410,2026-10-13T03:48:50.788456+00:00,t4-175,A,SUP-61,SUP,Task,[access] Invite link expired,"Hi folks,
+
+I'm the engineering manager at Saltmarsh Robotics. We invited a new colleague yesterday, but the invite link says it has expired when they open it.
+
+We have free seats on our plan, so that should not be the problem. We have resent the invite three times with the same result. Please copy my colleague at [EMAIL_1] on your reply. You can reach me on [PHONE_1] if a call is quicker.
+
+A reply in the next few days would be great. Please help us get them into the workspace.
+
+Cheers,
+[NAME_1]
+category=access (1) priority=P2 (0.924142) urgency=medium ticket_ref=0c00d15fc9c21876a7ff",t4|t4dk-0c00d15fc9c21876a7ff|t4-cat-access,High,61
+415,2026-10-13T03:48:52.382734+00:00,t4-177,A,SUP-62,SUP,Task,[feature] Feature request: Outlook integration,"Hi folks,
+
+I look after our account at Glimmerbrook BV. Could you support Outlook calendar sync? Most of our company is on Microsoft 365.
+
+People currently copy meetings by hand. You can reach me on [PHONE_1] if a call is quicker.
+
+Could you look into this sometime this week? Please let us know if it is planned.
+
+Thanks so much!
+[NAME_1]
+category=feature (1) priority=P4 (1) urgency=medium ticket_ref=f05eaad1768e971c0427",t4|t4dk-f05eaad1768e971c0427|t4-cat-feature,Low,62
+429,2026-10-13T03:48:58.136702+00:00,t4-186,A,SUP-63,SUP,Task,[bug] Timezone wrong after the clock change,"Hi,
+
+I am reusing my earlier subject line, but this is a different problem: the date columns in our CSV exports come out in US format, although our workspace is set to day/month/year. Could you check it this week?
+
+Thanks,
+[NAME_1]
+category=bug (0.991422) priority=P3 (1) urgency=medium ticket_ref=61cd2c72d5128309c162",t4|t4dk-61cd2c72d5128309c162|t4-cat-bug,Medium,63

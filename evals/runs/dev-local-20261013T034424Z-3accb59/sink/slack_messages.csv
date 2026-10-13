@@ -1,0 +1,92 @@
+sink_seq,sink_ts,replay_input_id,replay_pass,channel,text,unfurl_links
+4,2026-10-13T03:44:50.195917+00:00,t4-001,A,C0T4TRIAGE,"T4 triage: SUP-1 [billing] priority P2, urgency high, ticket_ref 842e7b3ee94dc1477caf",false
+9,2026-10-13T03:44:52.101483+00:00,t4-003,A,C0T4TRIAGE,"T4 triage: SUP-2 [bug] priority P2, urgency high, ticket_ref 751f70fc4caf5eb612e6",false
+14,2026-10-13T03:44:54.028812+00:00,t4-005,A,C0T4TRIAGE,"T4 triage: SUP-3 [howto] priority P3, urgency medium, ticket_ref 7e0269133a6917a87124",false
+18,2026-10-13T03:44:55.574326+00:00,t4-007,A,C0T4REVIEW,"T4 review: [privacy] priority P2, urgency medium, reasons policy:privacy, ticket_ref 419f2055d9438848c0a8",false
+23,2026-10-13T03:44:57.485197+00:00,t4-010,A,C0T4TRIAGE,"T4 triage: SUP-4 [access] priority P2, urgency medium, ticket_ref a4b2eeab63b2f1e02f19",false
+28,2026-10-13T03:44:59.245025+00:00,t4-012,A,C0T4TRIAGE,"T4 triage: SUP-5 [outage] priority P1, urgency high, ticket_ref 71379c4d980102614683",false
+33,2026-10-13T03:45:01.938976+00:00,t4-014,A,C0T4TRIAGE,"T4 triage: SUP-6 [feature] priority P4, urgency low, ticket_ref 64729f0d7f8ea1544576",false
+37,2026-10-13T03:45:04.625540+00:00,t4-016,A,C0T4REVIEW,"T4 review: [other] priority P4, urgency low, reasons policy:other, ticket_ref 553d3750f2e03e6bfc89",false
+42,2026-10-13T03:45:06.450861+00:00,t4-017,A,C0T4TRIAGE,"T4 triage: SUP-7 [billing] priority P2, urgency high, ticket_ref 202c1915d68a548cd7d2",false
+47,2026-10-13T03:45:19.853512+00:00,t4-019,A,C0T4TRIAGE,"T4 triage: SUP-8 [bug] priority P3, urgency medium, ticket_ref 9a2ecadc6ceb4b1a8209",false
+52,2026-10-13T03:45:21.645671+00:00,t4-021,A,C0T4TRIAGE,"T4 triage: SUP-9 [howto] priority P3, urgency medium, ticket_ref 6c0d2c707abec7b3d702",false
+56,2026-10-13T03:45:23.251461+00:00,t4-023,A,C0T4REVIEW,"T4 review: [privacy] priority P2, urgency medium, reasons policy:privacy, ticket_ref 3bebcf059ea638ae5c6c",false
+61,2026-10-13T03:45:25.004634+00:00,t4-026,A,C0T4TRIAGE,"T4 triage: SUP-10 [access] priority P2, urgency high, ticket_ref 50c45969e5b09788afeb",false
+66,2026-10-13T03:45:26.972506+00:00,t4-028,A,C0T4TRIAGE,"T4 triage: SUP-11 [outage] priority P2, urgency high, ticket_ref 23d1396ea9b2f5299383",false
+71,2026-10-13T03:45:29.521831+00:00,t4-030,A,C0T4TRIAGE,"T4 triage: SUP-12 [feature] priority P4, urgency medium, ticket_ref c23e9079fb3f13275c2a",false
+75,2026-10-13T03:45:31.495236+00:00,t4-032,A,C0T4REVIEW,"T4 review: [other] priority P4, urgency low, reasons policy:other, ticket_ref f66b5772e0593d96e9eb",false
+80,2026-10-13T03:45:50.888529+00:00,t4-033,A,C0T4TRIAGE,"T4 triage: SUP-13 [billing] priority P2, urgency low, ticket_ref 7818fb17985408f891f6",false
+85,2026-10-13T03:45:58.973822+00:00,t4-035,A,C0T4TRIAGE,"T4 triage: SUP-14 [bug] priority P2, urgency high, ticket_ref dfeb1a7ee93f14861b89",false
+90,2026-10-13T03:46:02.525765+00:00,t4-037,A,C0T4TRIAGE,"T4 triage: SUP-15 [howto] priority P3, urgency medium, ticket_ref e9eb265f778fda8f88ee",false
+94,2026-10-13T03:46:04.510294+00:00,t4-039,A,C0T4REVIEW,"T4 review: [privacy] priority P2, urgency medium, reasons policy:privacy, ticket_ref 171883f5b77125dc35ae",false
+99,2026-10-13T03:46:06.624394+00:00,t4-042,A,C0T4TRIAGE,"T4 triage: SUP-16 [access] priority P2, urgency medium, ticket_ref d48b3a876841ed707f82",false
+104,2026-10-13T03:46:09.046507+00:00,t4-044,A,C0T4TRIAGE,"T4 triage: SUP-17 [outage] priority P1, urgency high, ticket_ref ced240072edd2c20e66f",false
+109,2026-10-13T03:46:10.660977+00:00,t4-046,A,C0T4TRIAGE,"T4 triage: SUP-18 [feature] priority P4, urgency low, ticket_ref 081109384fd0c1a22b80",false
+113,2026-10-13T03:46:12.238118+00:00,t4-048,A,C0T4REVIEW,"T4 review: [other] priority P4, urgency low, reasons policy:other, ticket_ref f66736a02a0bd8f46ed7",false
+118,2026-10-13T03:46:14.006125+00:00,t4-049,A,C0T4TRIAGE,"T4 triage: SUP-19 [billing] priority P4, urgency low, ticket_ref d0edf6f8d1e12a3c1aad",false
+123,2026-10-13T03:46:15.799056+00:00,t4-051,A,C0T4TRIAGE,"T4 triage: SUP-20 [bug] priority P3, urgency low, ticket_ref 1380fbad1d70d5eac01f",false
+128,2026-10-13T03:46:17.488418+00:00,t4-053,A,C0T4TRIAGE,"T4 triage: SUP-21 [howto] priority P3, urgency medium, ticket_ref f8e46ed9710526cb064f",false
+132,2026-10-13T03:46:19.225968+00:00,t4-055,A,C0T4REVIEW,"T4 review: [privacy] priority P1, urgency high, reasons policy:privacy, ticket_ref 78464e2cf3abbf048f7c",false
+137,2026-10-13T03:46:20.934062+00:00,t4-058,A,C0T4TRIAGE,"T4 triage: SUP-22 [access] priority P3, urgency medium, ticket_ref 1c4c9205a37f4c6fea9a",false
+142,2026-10-13T03:46:22.462480+00:00,t4-060,A,C0T4TRIAGE,"T4 triage: SUP-23 [outage] priority P1, urgency high, ticket_ref 14ac55662057c8c8a659",false
+147,2026-10-13T03:46:24.363882+00:00,t4-062,A,C0T4TRIAGE,"T4 triage: SUP-24 [feature] priority P4, urgency medium, ticket_ref 4c4e2ddb6241a352ce69",false
+151,2026-10-13T03:46:26.237577+00:00,t4-064,A,C0T4REVIEW,"T4 review: [other] priority P4, urgency low, reasons policy:other, ticket_ref 0d7fce0087570057f838",false
+156,2026-10-13T03:46:28.082848+00:00,t4-065,A,C0T4TRIAGE,"T4 triage: SUP-25 [billing] priority P3, urgency low, ticket_ref 382b40ca83feed690225",false
+161,2026-10-13T03:46:29.922059+00:00,t4-067,A,C0T4TRIAGE,"T4 triage: SUP-26 [bug] priority P2, urgency high, ticket_ref 96a801b27e5a77182a1a",false
+166,2026-10-13T03:46:32.016904+00:00,t4-069,A,C0T4TRIAGE,"T4 triage: SUP-27 [howto] priority P4, urgency low, ticket_ref 273b60555ba657c1e03e",false
+170,2026-10-13T03:46:33.774182+00:00,t4-071,A,C0T4REVIEW,"T4 review: [privacy] priority P2, urgency medium, reasons policy:privacy, ticket_ref 469af6a46a723811ea40",false
+175,2026-10-13T03:46:35.346000+00:00,t4-074,A,C0T4TRIAGE,"T4 triage: SUP-28 [access] priority P2, urgency medium, ticket_ref 603b5514fad63d24ab3a",false
+180,2026-10-13T03:46:37.334820+00:00,t4-076,A,C0T4TRIAGE,"T4 triage: SUP-29 [outage] priority P1, urgency high, ticket_ref 5abfbd0096e90818351d",false
+185,2026-10-13T03:46:39.481240+00:00,t4-078,A,C0T4TRIAGE,"T4 triage: SUP-30 [feature] priority P4, urgency low, ticket_ref be6433d2e1588706e990",false
+189,2026-10-13T03:46:41.646456+00:00,t4-080,A,C0T4REVIEW,"T4 review: [other] priority P4, urgency low, reasons policy:other, ticket_ref c1cd759296a6228d5fe6",false
+194,2026-10-13T03:46:43.502314+00:00,t4-081,A,C0T4TRIAGE,"T4 triage: SUP-31 [billing] priority P3, urgency medium, ticket_ref 8619ca982b380c527a43",false
+199,2026-10-13T03:46:45.734702+00:00,t4-083,A,C0T4TRIAGE,"T4 triage: SUP-32 [bug] priority P2, urgency medium, ticket_ref ebd26e680f2c86a68c01",false
+204,2026-10-13T03:46:58.699439+00:00,t4-085,A,C0T4TRIAGE,"T4 triage: SUP-33 [howto] priority P4, urgency low, ticket_ref bd7586031ce34bcc01c0",false
+208,2026-10-13T03:47:01.272262+00:00,t4-087,A,C0T4REVIEW,"T4 review: [privacy] priority P3, urgency low, reasons policy:privacy, ticket_ref e0a6f5538899e4be25e8",false
+213,2026-10-13T03:47:03.151108+00:00,t4-090,A,C0T4TRIAGE,"T4 triage: SUP-34 [access] priority P2, urgency high, ticket_ref 2d2e193893c8b12f1b1a",false
+218,2026-10-13T03:47:05.082458+00:00,t4-092,A,C0T4TRIAGE,"T4 triage: SUP-35 [outage] priority P1, urgency high, ticket_ref dec22701b080b2bf4c6b",false
+223,2026-10-13T03:47:06.987161+00:00,t4-094,A,C0T4TRIAGE,"T4 triage: SUP-36 [feature] priority P4, urgency medium, ticket_ref 665d37f00f25d2d92dce",false
+227,2026-10-13T03:47:08.658790+00:00,t4-096,A,C0T4REVIEW,"T4 review: [other] priority P4, urgency low, reasons policy:other, ticket_ref 977b68e15349830690cb",false
+232,2026-10-13T03:47:10.560051+00:00,t4-097,A,C0T4TRIAGE,"T4 triage: SUP-37 [billing] priority P2, urgency high, ticket_ref 7e9ae5e59754815ed632",false
+237,2026-10-13T03:47:12.364296+00:00,t4-099,A,C0T4TRIAGE,"T4 triage: SUP-38 [bug] priority P3, urgency medium, ticket_ref 303f7ed7838a08eced4b",false
+242,2026-10-13T03:47:14.220253+00:00,t4-101,A,C0T4TRIAGE,"T4 triage: SUP-39 [howto] priority P4, urgency low, ticket_ref 9ef45c4b40abc5afea38",false
+246,2026-10-13T03:47:16.040216+00:00,t4-103,A,C0T4REVIEW,"T4 review: [privacy] priority P3, urgency low, reasons policy:privacy, ticket_ref 8017af445dc90c508138",false
+251,2026-10-13T03:47:17.765916+00:00,t4-105,A,C0T4TRIAGE,"T4 triage: SUP-40 [access] priority P2, urgency high, ticket_ref 08de05ca462585316d78",false
+256,2026-10-13T03:47:19.846814+00:00,t4-107,A,C0T4TRIAGE,"T4 triage: SUP-41 [outage] priority P2, urgency high, ticket_ref bac90be249ecf2b2eddd",false
+261,2026-10-13T03:47:21.719070+00:00,t4-109,A,C0T4TRIAGE,"T4 triage: SUP-42 [feature] priority P4, urgency low, ticket_ref ff2f283f632a9f65561b",false
+265,2026-10-13T03:47:24.549274+00:00,t4-111,A,C0T4REVIEW,"T4 review: [privacy] priority P2, urgency high, reasons policy:privacy, ticket_ref 71e3867640e6c6d954d3",false
+270,2026-10-13T03:47:27.116234+00:00,t4-114,A,C0T4TRIAGE,"T4 triage: SUP-43 [access] priority P2, urgency medium, ticket_ref e34e451cf88443070c24",false
+275,2026-10-13T03:47:41.228845+00:00,t4-116,A,C0T4TRIAGE,"T4 triage: SUP-44 [outage] priority P1, urgency high, ticket_ref 295083c92873d1530caa",false
+280,2026-10-13T03:47:44.473782+00:00,t4-118,A,C0T4TRIAGE,"T4 triage: SUP-45 [feature] priority P4, urgency medium, ticket_ref 605cc0a40909ade04f4e",false
+284,2026-10-13T03:47:47.704066+00:00,t4-120,A,C0T4REVIEW,"T4 review: [other] priority P4, urgency low, reasons policy:other, ticket_ref 1c988a05682341fcde35",false
+289,2026-10-13T03:47:50.357762+00:00,t4-121,A,C0T4TRIAGE,"T4 triage: SUP-46 [billing] priority P4, urgency low, ticket_ref 52b67c100d8604351a43",false
+294,2026-10-13T03:47:54.190218+00:00,t4-123,A,C0T4TRIAGE,"T4 triage: SUP-47 [bug] priority P3, urgency low, ticket_ref 0d281b7a43da5074236b",false
+299,2026-10-13T03:47:56.692036+00:00,t4-125,A,C0T4TRIAGE,"T4 triage: SUP-48 [howto] priority P3, urgency low, ticket_ref da8cc037d0694c42960a",false
+303,2026-10-13T03:47:59.428432+00:00,t4-127,A,C0T4REVIEW,"T4 review: [privacy] priority P2, urgency high, reasons policy:privacy, ticket_ref 1e00f653c448cc689232",false
+308,2026-10-13T03:48:01.306573+00:00,t4-130,A,C0T4TRIAGE,"T4 triage: SUP-49 [access] priority P2, urgency high, ticket_ref f667767cdea3b1401f1d",false
+313,2026-10-13T03:48:03.295102+00:00,t4-132,A,C0T4TRIAGE,"T4 triage: SUP-50 [outage] priority P1, urgency high, ticket_ref d4458bf0d9a40bf26e90",false
+318,2026-10-13T03:48:05.051896+00:00,t4-134,A,C0T4TRIAGE,"T4 triage: SUP-51 [feature] priority P4, urgency low, ticket_ref 82fefdb92ff5e0171b37",false
+322,2026-10-13T03:48:06.776600+00:00,t4-136,A,C0T4REVIEW,"T4 review: [other] priority P4, urgency low, reasons policy:other, ticket_ref 3f02957fd7734e3b5f30",false
+327,2026-10-13T03:48:09.244365+00:00,t4-137,A,C0T4TRIAGE,"T4 triage: SUP-52 [billing] priority P2, urgency medium, ticket_ref 87983e5a59daa32182b2",false
+332,2026-10-13T03:48:11.208844+00:00,t4-139,A,C0T4TRIAGE,"T4 triage: SUP-53 [bug] priority P2, urgency high, ticket_ref 2874b74c321ca8e5a334",false
+337,2026-10-13T03:48:13.244127+00:00,t4-141,A,C0T4TRIAGE,"T4 triage: SUP-54 [howto] priority P4, urgency low, ticket_ref 46557b33dbceac971277",false
+341,2026-10-13T03:48:15.158868+00:00,t4-143,A,C0T4REVIEW,"T4 review: [privacy] priority P2, urgency high, reasons policy:privacy, ticket_ref 46356df719f5729791e5",false
+346,2026-10-13T03:48:17.766883+00:00,t4-146,A,C0T4TRIAGE,"T4 triage: SUP-55 [access] priority P2, urgency high, ticket_ref 94ae86b384d0999f3953",false
+351,2026-10-13T03:48:20.006625+00:00,t4-148,A,C0T4TRIAGE,"T4 triage: SUP-56 [outage] priority P1, urgency high, ticket_ref a96039277199f995f2ba",false
+356,2026-10-13T03:48:22.062734+00:00,t4-150,A,C0T4TRIAGE,"T4 triage: SUP-57 [feature] priority P4, urgency medium, ticket_ref 92b290abde8b83cfc96f",false
+360,2026-10-13T03:48:24.013111+00:00,t4-152,A,C0T4REVIEW,"T4 review: [other] priority P4, urgency low, reasons policy:other, ticket_ref 7066ab0b5610304b3320",false
+364,2026-10-13T03:48:26.304924+00:00,t4-153,A,C0T4REVIEW,"T4 review: [feature] priority P4, urgency low, reasons injection, ticket_ref de127062b153ca0aa697",false
+368,2026-10-13T03:48:29.693389+00:00,t4-154,A,C0T4REVIEW,"T4 review: [howto] priority P4, urgency low, reasons injection, ticket_ref da9b6b8120bbf2ea6aa6",false
+372,2026-10-13T03:48:32.500538+00:00,t4-155,A,C0T4REVIEW,"T4 review: [billing] priority P3, urgency medium, reasons injection, ticket_ref a17ea19ce54498b47010",false
+376,2026-10-13T03:48:35.673266+00:00,t4-156,A,C0T4REVIEW,"T4 review: [bug] priority P3, urgency medium, reasons injection, ticket_ref 64dc8406f90c386c7db0",false
+380,2026-10-13T03:48:38.445745+00:00,t4-157,A,C0T4REVIEW,"T4 review: [access] priority P2, urgency high, reasons injection, ticket_ref e29412e220c538ad2d8c",false
+384,2026-10-13T03:48:40.824745+00:00,t4-158,A,C0T4REVIEW,"T4 review: [outage] priority P1, urgency high, reasons injection, ticket_ref b349a8e0f2157ff66650",false
+388,2026-10-13T03:48:42.427208+00:00,t4-159,A,C0T4REVIEW,"T4 review: [privacy] priority P2, urgency high, reasons injection policy:privacy, ticket_ref c816284ac4ab2ccbae97",false
+392,2026-10-13T03:48:44.071243+00:00,t4-160,A,C0T4REVIEW,"T4 review: [other] priority P4, urgency low, reasons injection policy:other, ticket_ref 19ad0eceb3de8061fbfb",false
+397,2026-10-13T03:48:45.728062+00:00,t4-169,A,C0T4TRIAGE,"T4 triage: SUP-58 [billing] priority P2, urgency high, ticket_ref 7a7c988e1d28c4b92de4",false
+402,2026-10-13T03:48:47.585255+00:00,t4-171,A,C0T4TRIAGE,"T4 triage: SUP-59 [bug] priority P2, urgency medium, ticket_ref 514f45a64f9004a475c9",false
+407,2026-10-13T03:48:49.187616+00:00,t4-173,A,C0T4TRIAGE,"T4 triage: SUP-60 [billing] priority P3, urgency medium, ticket_ref 0fd2072ec5169450168e",false
+412,2026-10-13T03:48:50.805378+00:00,t4-175,A,C0T4TRIAGE,"T4 triage: SUP-61 [access] priority P2, urgency medium, ticket_ref 0c00d15fc9c21876a7ff",false
+417,2026-10-13T03:48:52.417414+00:00,t4-177,A,C0T4TRIAGE,"T4 triage: SUP-62 [feature] priority P4, urgency medium, ticket_ref f05eaad1768e971c0427",false
+421,2026-10-13T03:48:54.180908+00:00,t4-179,A,C0T4REVIEW,"T4 review: [other] priority P4, urgency low, reasons policy:other, ticket_ref 4484f24e8ae21b9f0769",false
+431,2026-10-13T03:48:58.159261+00:00,t4-186,A,C0T4TRIAGE,"T4 triage: SUP-63 [bug] priority P3, urgency medium, ticket_ref 61cd2c72d5128309c162",false

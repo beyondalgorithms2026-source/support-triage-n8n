@@ -1,24 +1,19 @@
-# REVIEW — T4-08 (G8) attempt 1
+# REVIEW — T4-09 (G9) attempt 1
 
-- Changed: workflows/t4-triage.json, tests/test_workflow.py, src/score/check_run.py, tests/test_check_run.py, OPEN_QUESTIONS.md (Q-32), evals/runs/smoke-local-20261013T032636Z-88604b7/, evals/runs/smoke-local-20261013T032958Z-88604b7/, evals/cost_ledger.csv.
-- Did: G8. The workflow has 47 nodes. It adds H2, H5, H9, H10 thresholds, H11, H12r, H12b, H14, H15, H15s and the E review path. The smoke run used 12 dev tickets, 4 forced faults and passes AB. It made 9 model calls. Pass B made 0 model calls and 0 Jira issues. Each fault gave an errors row or a reconcile link. The run cost $0.0010308.
-- Did: the first smoke run showed that n8n `first()` can read the empty error branch. Audit `pii_counts` was empty. The fix is `first(0)`. A test and a check_run rule stop it (Q-32 (7)).
-- Did-not: workflows/t4-error-handler.json, src/replay/, src/sink/, src/js/, scripts/, GOALS.md, .ai/STATUS.md. Goals G9–G14.
-- Check: `bash scripts/accept.sh G8` gives ACCEPT PASS [G8] (46 workflow tests OK, check_run ok). `bash scripts/guard.sh` gives guard clean. `python3 -m unittest discover -s tests -t .` runs 228 tests, OK.
-- Risk: real Slack sends HTTP 200 `ok:false` on an error. H14 and H15s then set `notify_ok = 0` but write no errors row.
-- Next: G9 (T4-09).
+- Changed: workflows/t4-triage.json (`tuning_mode` key, H10, Config τ), tests/test_workflow.py, OPEN_QUESTIONS.md (Q-33), evals/thresholds.json, evals/threshold_sweep.csv, evals/runs/dev-local-20261013T034424Z-3accb59/, evals/cost_ledger.csv.
+- Did: G9. The dev run used 100 dev tickets in tuning mode. It made 91 model calls. It capped 0 tickets. The run cost $0.01012185.
+- Did: `tune` wrote 156 sweep rows. `tune --apply` copied τ into `0. Config`. outage, feature, privacy, other and P2 have τ 1.01. global_tau is 0.50.
+- Did-not: src/, workflows/t4-error-handler.json, scripts/, GOALS.md, .ai/STATUS.md. Goals G10–G14.
+- Check: `bash scripts/accept.sh G9` gives ACCEPT PASS [G9]. `bash scripts/guard.sh` gives guard clean. `python3 -m unittest discover -s tests -t .` runs 229 tests, OK.
+- Risk: the dev peak was 28 model calls in 60 s. The committed `llm_max_rpm` is 30. The G10 test run can hit `capped:llm_rpm` (Q-33 (2)).
+- Next: G10 (T4-10).
 
 ```mermaid
 flowchart LR
-  W["W0-H1 intake guard"] --> H2{"H2 dedupe lookups"}
-  H2 -->|duplicate| A["H16 audit + respond"]
-  H2 --> R["H3-H4 redact, scan"] --> S{"H5 spend gate"}
-  S -->|capped| Q["H15 review queue + H15s Slack"]
-  S --> L["H6-H8 classify, ledger"] --> V{"H9 validate, H10 decide"}
-  V -->|review| Q
-  V -->|auto| J["H11 search, H12 / H12r / H12b"]
-  J --> K["H13 link, H14 Slack"] --> A
-  Q --> A
-  W -.->|reject| E["E errors + review row"] --> A
-  J -.->|error| E
+  C["0. Config tuning_mode=true (in memory)"] --> H["H9 validate"] --> D{"H10 decide: every τ = 0"}
+  D --> R["dev run dev-local-20261013T034424Z-3accb59"]
+  R --> T["tune --run-id: sweep 156 rows"]
+  T --> J["evals/thresholds.json"]
+  J --> A["tune --apply: 0. Config τ"]
+  A --> V["tune --verify + test_config"]
 ```

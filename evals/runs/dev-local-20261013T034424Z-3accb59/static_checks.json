@@ -1,0 +1,236 @@
+{
+  "file": "/Users/Work/Projects/Non RAG Repos/support-triage-t4/workflows/t4-triage.json",
+  "nodes": [
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "GET",
+      "name": "H2 Link Lookup",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "GET",
+      "name": "H2 Content Lookup",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "GET",
+      "name": "H5 Day Spend",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "GET",
+      "name": "H5 Run Spend",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "GET",
+      "name": "H5 Rate Count",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "https://api.openai.com",
+      "maxTries": 2,
+      "method": "POST",
+      "name": "H6 LLM Classify",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 30000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "POST",
+      "name": "H7 Ledger Append",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "GET",
+      "name": "H11 Create Count",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__JIRA_BASE_URL__",
+      "maxTries": 2,
+      "method": "GET",
+      "name": "H11 Jira Search",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 15000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__JIRA_BASE_URL__",
+      "maxTries": null,
+      "method": "POST",
+      "name": "H12 Jira Create",
+      "onError": "continueErrorOutput",
+      "retry": false,
+      "timeout": 15000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__JIRA_BASE_URL__",
+      "maxTries": 2,
+      "method": "GET",
+      "name": "H12r Reconcile",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 15000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__JIRA_BASE_URL__",
+      "maxTries": null,
+      "method": "POST",
+      "name": "H12b Jira Create (retry once)",
+      "onError": "continueErrorOutput",
+      "retry": false,
+      "timeout": 15000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "POST",
+      "name": "H13 Link Record",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SLACK_BASE_URL__",
+      "maxTries": 2,
+      "method": "POST",
+      "name": "H14 Slack Notify",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "POST",
+      "name": "H15 Review Queue",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SLACK_BASE_URL__",
+      "maxTries": 2,
+      "method": "POST",
+      "name": "H15s Slack Review Post",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "POST",
+      "name": "E Append Error",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "POST",
+      "name": "E Review Queue Append",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "host": "__SINK_BASE_URL__",
+      "maxTries": 2,
+      "method": "POST",
+      "name": "H16 Audit Append",
+      "onError": "continueErrorOutput",
+      "retry": true,
+      "timeout": 10000,
+      "type": "n8n-nodes-base.httpRequest"
+    }
+  ],
+  "paths": [
+    {
+      "method": "GET",
+      "node": "H11 Jira Search",
+      "path": "/rest/api/3/search/jql",
+      "target": "jira"
+    },
+    {
+      "method": "POST",
+      "node": "H12 Jira Create",
+      "path": "/rest/api/3/issue",
+      "target": "jira"
+    },
+    {
+      "method": "GET",
+      "node": "H12r Reconcile",
+      "path": "/rest/api/3/search/jql",
+      "target": "jira"
+    },
+    {
+      "method": "POST",
+      "node": "H12b Jira Create (retry once)",
+      "path": "/rest/api/3/issue",
+      "target": "jira"
+    },
+    {
+      "method": "POST",
+      "node": "H14 Slack Notify",
+      "path": "/api/chat.postMessage",
+      "target": "slack"
+    },
+    {
+      "method": "POST",
+      "node": "H15s Slack Review Post",
+      "path": "/api/chat.postMessage",
+      "target": "slack"
+    }
+  ],
+  "secrets": [],
+  "sha256": "b41afffbf1b21c9e174805b87519f622d387a06d717771f55016e00605a8d048",
+  "violations": []
+}

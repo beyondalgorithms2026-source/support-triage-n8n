@@ -25,6 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 TRIAGE = ROOT / "workflows" / "t4-triage.json"
 HANDLER = ROOT / "workflows" / "t4-error-handler.json"
 JS_DIR = ROOT / "src" / "js"
+THRESHOLDS = ROOT / "evals" / "thresholds.json"
 GOLD = ROOT / "evals" / "gold"
 CREDENTIALS = {"t4-llm", "t4-webhook-auth", "t4-sink-auth", "t4-jira", "t4-slack"}
 # ARCHITECTURE §4 node ids (G8 adds H2, H5, H9, H11, H12r, H12b, H14, H15, H15s to the G7 slice).
@@ -34,7 +35,7 @@ CONFIG_KEYS = {"llm_model", "llm_price_in_per_mtok", "llm_price_out_per_mtok", "
                "daily_usd_cap", "llm_max_rpm", "max_body_chars", "max_subject_chars", "max_attachments",
                "max_model_chars", "max_output_tokens", "allowed_attachment_types", "jira_project_key",
                "jira_issue_type", "jira_max_creates_per_run", "slack_channel_triage", "slack_channel_review",
-               "always_review", "privacy_keywords", "tau_category", "tau_priority"}
+               "always_review", "privacy_keywords", "tau_category", "tau_priority", "tuning_mode"}
 AUDIT = "H16 Audit Record"
 AFTER_AUDIT = {"H16 Audit Append", "H16r Respond", "H16e Audit Failed"}
 JIRA_CREATES = ("H12 Jira Create", "H12b Jira Create (retry once)")
@@ -254,8 +255,12 @@ class WorkflowShapeTest(unittest.TestCase):
         self.assertEqual(cfg["always_review"], ["privacy", "other"])
         self.assertEqual(set(cfg["tau_category"]), set(CATEGORIES))
         self.assertEqual(set(cfg["tau_priority"]), {"P1", "P2", "P3", "P4"})
-        # All tau = 1.01 until G9 tunes them (GOALS G8): everything goes to review.
-        self.assertEqual(set(cfg["tau_category"].values()) | set(cfg["tau_priority"].values()), {1.01})
+        # G9: Config tau = evals/thresholds.json (HARNESS_SPEC §3.6); policy classes never auto-route.
+        thresholds = load(THRESHOLDS)
+        self.assertEqual(cfg["tau_category"], thresholds["tau_category"])
+        self.assertEqual(cfg["tau_priority"], thresholds["tau_priority"])
+        self.assertEqual({cfg["tau_category"][c] for c in cfg["always_review"]}, {1.01})
+        self.assertIs(cfg["tuning_mode"], False)     # only a dev run sets it, in memory
         self.assertEqual(cfg["llm_model"], "gpt-4o-mini-2024-07-18")
         self.assertNotEqual(cfg["slack_channel_triage"], cfg["slack_channel_review"])
         self.assertTrue(cfg["slack_channel_triage"] and cfg["slack_channel_review"])
@@ -522,8 +527,22 @@ class ControlNodesTest(unittest.TestCase):
         out = self.node("H10 Decide", self.labels(**extra))
         return out["route"], out["reasons"]
 
-    def test_committed_tau_sends_everything_to_review(self):
-        self.assertEqual(self.decide(conf_category=1, conf_priority=1),
+    def test_tau_never_sends_everything_to_review(self):
+        never_cat, never_pri = {c: 1.01 for c in CATEGORIES}, {p: 1.01 for p in ("P1", "P2", "P3", "P4")}
+        self.assertEqual(self.decide(conf_category=1, conf_priority=1, tau_category=never_cat, tau_priority=never_pri),
+                         ("review", ["threshold:category", "threshold:priority"]))
+
+    def test_tuning_mode_counts_every_tau_as_zero(self):
+        never_cat, never_pri = {c: 1.01 for c in CATEGORIES}, {p: 1.01 for p in ("P1", "P2", "P3", "P4")}
+        for flag in (True, "true"):      # --config-override keeps the type; a string form also counts
+            with self.subTest(flag):
+                self.assertEqual(self.decide(tau_category=never_cat, tau_priority=never_pri, tuning_mode=flag,
+                                             conf_category=0.31, conf_priority=0.2), ("auto", []))
+        self.assertEqual(self.decide(tau_category=never_cat, tau_priority=never_pri, tuning_mode=True,
+                                     category="other", reasons=["rule:urgent_low"]),
+                         ("review", ["rule:urgent_low", "policy:other"]))      # rules and policy still apply
+        self.assertEqual(self.decide(tau_category=never_cat, tau_priority=never_pri, tuning_mode=False,
+                                     conf_category=1, conf_priority=1),
                          ("review", ["threshold:category", "threshold:priority"]))
 
     def test_tau_zero_auto_routes_clean_labels(self):

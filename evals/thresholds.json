@@ -1,0 +1,29 @@
+{
+  "source_run_id": "dev-local-20261013T034424Z-3accb59",
+  "split": "dev",
+  "targets": {
+    "category": 0.95,
+    "priority": 0.9,
+    "priority_P1": 0.95,
+    "min_selected": 5
+  },
+  "tau_category": {
+    "billing": 0.5,
+    "access": 0.75,
+    "bug": 0.5,
+    "outage": 1.01,
+    "howto": 0.5,
+    "feature": 1.01,
+    "privacy": 1.01,
+    "other": 1.01
+  },
+  "tau_priority": {
+    "P1": 0.95,
+    "P2": 1.01,
+    "P3": 0.65,
+    "P4": 0.5
+  },
+  "global_tau": 0.5,
+  "tuner_version": "1.0",
+  "generated_at": "2026-10-13T03:49:19Z"
+}

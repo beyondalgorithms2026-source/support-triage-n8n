@@ -151,14 +151,20 @@
             {
               "id": "b3be8ce3-bcee-504c-ae0f-a0887fd821ad",
               "name": "tau_category",
-              "value": "{\"access\": 1.01, \"billing\": 1.01, \"bug\": 1.01, \"feature\": 1.01, \"howto\": 1.01, \"other\": 1.01, \"outage\": 1.01, \"privacy\": 1.01}",
+              "value": "{\"access\": 0.75, \"billing\": 0.5, \"bug\": 0.5, \"feature\": 1.01, \"howto\": 0.5, \"other\": 1.01, \"outage\": 1.01, \"privacy\": 1.01}",
               "type": "object"
             },
             {
               "id": "41456b05-6279-52cc-9927-615b70073853",
               "name": "tau_priority",
-              "value": "{\"P1\": 1.01, \"P2\": 1.01, \"P3\": 1.01, \"P4\": 1.01}",
+              "value": "{\"P1\": 0.95, \"P2\": 1.01, \"P3\": 0.65, \"P4\": 0.5}",
               "type": "object"
+            },
+            {
+              "id": "5d0f6c1e-8a3b-5b47-9c2e-7f1a4e9b0d61",
+              "name": "tuning_mode",
+              "value": false,
+              "type": "boolean"
             }
           ]
         },
@@ -584,7 +590,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// C-15, C-16: auto-route iff conf_category >= tau_category[category] and conf_priority >= tau_priority[priority],\n// no validation reason, and category not in always_review. A missing tau fails closed. Reason prefixes `policy:`\n// and `threshold:` are the ones src/score/tune.py keeps in the sweep.\nconst item = $input.first().json;\nconst obj = (v) => (v && typeof v === 'object' ? v : JSON.parse(String(v || '{}')));\nconst list = (v) => (Array.isArray(v) ? v : JSON.parse(String(v || '[]')));\nconst tauCat = obj(item.tau_category);\nconst tauPri = obj(item.tau_priority);\nconst reasons = (item.reasons || []).slice();\nconst add = (r) => { if (reasons.indexOf(r) < 0) reasons.push(r); };\nif (!item.category || !item.priority) add('schema_miss');\nif (item.category && list(item.always_review).indexOf(item.category) >= 0) add('policy:' + item.category);\nif (item.category && !(Number(item.conf_category) >= Number(tauCat[item.category]))) add('threshold:category');\nif (item.priority && !(Number(item.conf_priority) >= Number(tauPri[item.priority]))) add('threshold:priority');\nreturn [{ json: { ...item, reasons, route: reasons.length ? 'review' : 'auto' } }];\n"
+        "jsCode": "// C-15, C-16: auto-route iff conf_category >= tau_category[category] and conf_priority >= tau_priority[priority],\n// no validation reason, and category not in always_review. A missing tau fails closed. Reason prefixes `policy:`\n// and `threshold:` are the ones src/score/tune.py keeps in the sweep.\n// tuning_mode (HARNESS_SPEC §3, dev run only, set in memory by --config-override): every tau counts as 0; the\n// rules and the policy classes still apply. The committed Config keeps it false.\nconst item = $input.first().json;\nconst obj = (v) => (v && typeof v === 'object' ? v : JSON.parse(String(v || '{}')));\nconst list = (v) => (Array.isArray(v) ? v : JSON.parse(String(v || '[]')));\nconst tauCat = obj(item.tau_category);\nconst tauPri = obj(item.tau_priority);\nconst tuning = item.tuning_mode === true || item.tuning_mode === 'true';\nconst tau = (t, k) => (tuning ? 0 : Number(t[k]));\nconst reasons = (item.reasons || []).slice();\nconst add = (r) => { if (reasons.indexOf(r) < 0) reasons.push(r); };\nif (!item.category || !item.priority) add('schema_miss');\nif (item.category && list(item.always_review).indexOf(item.category) >= 0) add('policy:' + item.category);\nif (item.category && !(Number(item.conf_category) >= tau(tauCat, item.category))) add('threshold:category');\nif (item.priority && !(Number(item.conf_priority) >= tau(tauPri, item.priority))) add('threshold:priority');\nreturn [{ json: { ...item, reasons, route: reasons.length ? 'review' : 'auto' } }];\n"
       },
       "id": "27ca851a-6e86-58b4-b207-a24520b14f01",
       "name": "H10 Decide",
