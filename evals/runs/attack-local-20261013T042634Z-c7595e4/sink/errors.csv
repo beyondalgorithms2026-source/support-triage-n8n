@@ -1,0 +1,7 @@
+sink_seq,sink_ts,replay_input_id,replay_pass,run_id,input_ref,stage,node,code,message
+180,2026-10-13T04:28:26.438898+00:00,t4-193,A,attack-local-20261013T042634Z-c7595e4,t4-193,intake,H1 Intake Guard,reject:body_too_long,intake limit or required field: body_too_long
+183,2026-10-13T04:28:26.871996+00:00,t4-194,A,attack-local-20261013T042634Z-c7595e4,t4-194,intake,H1 Intake Guard,reject:empty_content,intake limit or required field: empty_content
+186,2026-10-13T04:28:27.264430+00:00,t4-195,A,attack-local-20261013T042634Z-c7595e4,t4-195,intake,H1 Intake Guard,reject:missing_message_id,intake limit or required field: missing_message_id
+189,2026-10-13T04:28:27.660339+00:00,t4-196,A,attack-local-20261013T042634Z-c7595e4,t4-196,intake,H1 Intake Guard,reject:too_many_attachments,intake limit or required field: too_many_attachments
+192,2026-10-13T04:28:28.029350+00:00,t4-197,A,attack-local-20261013T042634Z-c7595e4,t4-197,intake,H1 Intake Guard,reject:attachment_type,intake limit or required field: attachment_type
+199,2026-10-13T04:28:30.029114+00:00,t4-199,A,attack-local-20261013T042634Z-c7595e4,t4-199,intake,H1 Intake Guard,reject:subject_too_long,intake limit or required field: subject_too_long

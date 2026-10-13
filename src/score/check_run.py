@@ -5,7 +5,8 @@
 Checks: phase, split and ticket count; one terminal audit row per ticket per pass; at most one Jira issue per
 dedupe_key; pass B creates no issue (test: and makes no model call); no planted PII in outbound bodies or LLM input;
 ledger rows present; spend within the run cap; slice: confidences come from logprobs; smoke: injection -> review,
-malformed -> rejected, every forced fault fired and left an errors row (or a reconcile link). Exit 0 only if all hold.
+malformed -> rejected, every forced fault fired and left an errors row (or a reconcile link); attack: every SEC ID
+has a result with evidence, and the secret scan is clean. Exit 0 only if all hold.
 """
 from __future__ import annotations
 
@@ -15,7 +16,7 @@ from collections import Counter
 from pathlib import Path
 
 from src.score.score import (MANIFEST, ROOT, RUNS_DIR, as_float, as_list, input_of, leak_targets, load_golds,
-                             load_run, outbound, pass_of, read_csv, run_facts, truth)
+                             load_run, outbound, pass_of, read_csv, read_json, run_facts, truth)
 
 PHASES = {
     "slice": {"split": "dev", "tickets": 10, "passes": "A"},
@@ -26,6 +27,8 @@ PHASES = {
 }
 NO_LLM_IN_PASS_B = ("test",)
 COST_LEDGER = ROOT / "evals" / "cost_ledger.csv"
+ATTACK_RESULTS = "attack_results.json"      # written by src/replay/attacks.py (G11)
+SEC_IDS = tuple("SEC-{:02d}".format(n) for n in range(1, 21))
 
 
 def latest_run(phase, runs_dir=RUNS_DIR):
@@ -174,6 +177,36 @@ def logprob_problems(run):
     return ["{}: confidence source is not logprobs".format(i) for i in bad]
 
 
+def attack_problems(run, root=ROOT):
+    """GOALS G11: attack_results.json lists SEC-01 … SEC-20 once each, result defended|failed|not_run, evidence paths
+    that exist, a reason for not_run; SEC-20 (secret scan) is clean."""
+    data = read_json(run.dir / ATTACK_RESULTS) or {}
+    results = data.get("results") if isinstance(data, dict) else None
+    if not isinstance(results, list):
+        return ["{} missing or has no results list".format(ATTACK_RESULTS)]
+    problems, by_id = [], Counter(r.get("id") for r in results)
+    for sec in SEC_IDS:
+        if by_id[sec] != 1:
+            problems.append("{}: {} result rows, want 1".format(sec, by_id[sec]))
+    problems += ["unknown attack id {}".format(i) for i in sorted(set(by_id) - set(SEC_IDS), key=str)]
+    for r in results:
+        sec = r.get("id")
+        if r.get("result") not in ("defended", "failed", "not_run"):
+            problems.append("{}: result {!r} not defended|failed|not_run".format(sec, r.get("result")))
+        evidence = r.get("evidence") or []
+        if not evidence:
+            problems.append("{}: no evidence path".format(sec))
+        for path in evidence:
+            if not (Path(path) if Path(path).is_absolute() else Path(root) / path).exists():
+                problems.append("{}: evidence path {} does not exist".format(sec, path))
+        if r.get("result") == "not_run" and not str(r.get("reason") or "").strip():
+            problems.append("{}: not_run without a reason".format(sec))
+    sec20 = [r for r in results if r.get("id") == "SEC-20"]
+    if sec20 and (sec20[0].get("result") != "defended" or (sec20[0].get("detail") or {}).get("hits")):
+        problems.append("SEC-20: secret scan is not clean")
+    return problems
+
+
 def i8_problems(run, golds):
     """The regression set (HARNESS_SPEC §4) for committed test/attack runs."""
     return terminal_audit_problems(run) + issue_problems(run) + pass_b_problems(run) + pii_problems(run, golds)
@@ -186,6 +219,8 @@ def check(run, phase, golds, cost_ledger=COST_LEDGER, expect_tickets=None):
         problems += logprob_problems(run)
     if phase == "smoke":
         problems += smoke_problems(run, golds)
+    if phase == "attack":
+        problems += attack_problems(run)
     return problems
 
 

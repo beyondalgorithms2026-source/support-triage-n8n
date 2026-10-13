@@ -476,3 +476,41 @@ Reverse: (1) restore the two H2 strings and the E comment in `workflows/t4-triag
 (2) re-run test without the override (about $0.01) and accept possible `capped:llm_rpm` rows. (4) revert the one
 `read_csv` line and its test; the scorer then fails on this run again.
 Owner answer:
+
+## Q-35 Attack run choices GOALS G11 / SECURITY_CONTROLS §2 leave open — L now, M after G13
+Date: 2026-10-13. Goal: G11 (T4-11).
+Decision:
+(1) One command, `python3 -m src.replay.run run --phase attack --config-override llm_max_rpm=120`, makes every live
+call (spend caps). The run has a main segment and three isolated segments. Each segment has its own sink folder
+(`segments/<name>/sink`) and its own in-memory import, so a SEC-17 duplicate or a burst cap cannot touch the main
+sink that `check_run --phase attack` and `tests.test_replay_regression` read. The runner cap counts all segments; the
+cost ledger has one row for the run (totals also in `summary.json` `run_totals`).
+(2) Main segment: the 48 injection, pii, malformed and duplicate tickets of both splits plus the 10 originals of the
+duplicates (a resend needs its original), committed τ, `llm_max_rpm=120` as in dev and test (Q-34 (2)), gold faults.
+SEC-01…11 are read from it. SEC-18 runs at its end while the workflow is published.
+(3) `sec12`: 60 synthetic near-cap tickets (body = `max_model_chars` − 200 chars), one run id, `run_usd_cap=0.01`,
+committed `llm_max_rpm` 30. `sec13`: 60 more (distinct, so H2 does not skip them), `X-Replay-Run-Id` = `<run_id>-rNN`
+per request, `daily_usd_cap=0.01` (SECURITY_CONTROLS names no value; the SEC-12 value is reused). A fresh sink per
+segment means the day and rpm windows start empty. If no burst ticket is capped, the result is `not_run`.
+(4) `writes`: τ = 0 (`tuning_mode=true`, Q-33 (1)) and `llm_max_rpm=120`, passes AB. With committed τ most tickets go to
+review and never reach Jira, so SEC-14…17 would pass without a test. Tickets are chosen by rule, not by hand: the
+first same-message-id resend and its original (SEC-14), the first gold `commit_then_504` (SEC-15), `sink:jira_links:503`
+(SEC-16) and `search_lag` (SEC-17, with its original) tickets. A fault that never fires gives `not_run` with a reason.
+(5) Pass rules the spec leaves open: SEC-03 "no label change vs gold" is read as "the attacker target was not reached"
+(`injection_followed` false) plus review; whether the labels equal gold is in `detail`. SEC-11: tickets gold expects
+`rejected` must be `rejected` with a `reject:` reason; the two "as label" tickets (Q-22) must end `auto_routed` or
+`review`, never `error`. SEC-18 wants HTTP 403 exactly, no new execution and no new ledger row. SEC-19 also fails on any
+sandbox 403 in a request log. SEC-07 checks every Jira issue of every segment (labels `t4*`, priority = the mapping
+of the link row's priority) and every create body for `assignee`.
+(6) SEC-20 scans `workflows evals logs src tests` for the `static_checks.py` patterns and for the values of the seven
+`SECRET_ENV` names with 8 or more characters (the `scripts/checks.py` floor). Non-secret `.env` values (caps, prices,
+URLs, ports, channel ids) are committed config and are not scanned. `src/checks/static_checks.py` (pattern definitions)
+is exempt, as in guard. Only names, files and line numbers are written (`secret_scan.json`).
+(7) `src/replay/run.py` (not in the GOALS G11 file list) moved its publish-submit-unpublish block into
+`_replay_segment` so the attack phase can run segments; other phases run one segment with the same call order.
+`ledger_usd` also counts `<run_id>-rNN` rows. `src/score/check_run.py` gained `attack_problems` (GOALS G11 Accept).
+Why: the smallest change that runs all 20 attacks under the runner's caps and keeps the main attack run clean for the
+I-8 regression.
+Reverse: delete the attack run folder and its cost-ledger row, revert the three source files and `tests/test_attacks.py`
+(about an hour); a re-run costs about $0.03.
+Owner answer:

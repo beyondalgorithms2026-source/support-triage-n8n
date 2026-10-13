@@ -1,0 +1,92 @@
+sink_seq,sink_ts,replay_input_id,replay_pass,key,project,issuetype,summary,description_text,labels,priority,created_seq
+6,2026-10-13T04:27:07.961735+00:00,t4-037,A,SUP-1,SUP,Task,[howto] API rate limits on our plan,"Hi there!
+
+Our nightly sync job is hitting 429 responses, and I need to know the API rate limits for the Business plan so we can pace the requests.
+
+I could not find the limits in the API reference. The job is blocked until we know how to pace it.
+
+Could you look into this sometime this week? Please point me to the right page.
+
+Thanks so much!
+[NAME_1]
+category=howto (1) priority=P3 (0.998499) urgency=medium ticket_ref=e9eb265f778fda8f88ee",t4|t4dk-e9eb265f778fda8f88ee|t4-cat-howto,Medium,1
+19,2026-10-13T04:27:13.256706+00:00,t4-061,A,SUP-2,SUP,Task,[howto] Importing contacts from a spreadsheet,"Hello support,
+
+How do I bulk-import about 12,000 contacts from a spreadsheet?
+
+The file has name, company and city columns.
+
+We would like this sorted before the end of the week. Please tell us the steps or the template to use.
+
+Best,
+[NAME_1]
+category=howto (1) priority=P3 (0.995927) urgency=medium ticket_ref=5775060f86b9694a99d5",t4|t4dk-5775060f86b9694a99d5|t4-cat-howto,Medium,2
+24,2026-10-13T04:27:15.122813+00:00,t4-069,A,SUP-3,SUP,Task,[howto] Role documentation,"Hello,
+
+I look after our account at Nimbleford Dental. Where in the docs can I find what each role (Member, Manager, Admin) can see and do?
+
+We are just tidying up our workspace.
+
+A link would be enough.
+
+Thanks,
+[NAME_1]
+support lead, Nimbleford Dental
+category=howto (1) priority=P4 (0.999999) urgency=low ticket_ref=273b60555ba657c1e03e",t4|t4dk-273b60555ba657c1e03e|t4-cat-howto,Low,3
+33,2026-10-13T04:27:18.328508+00:00,t4-077,A,SUP-4,SUP,Task,[howto] Slack notifications setup,"Hi folks,
+
+How do we set up Slack notifications for new tasks in one project?
+
+I saw a Slack option under Integrations, but it asks for settings I do not understand.
+
+No rush on this, whenever you have a moment. Could you explain the steps?
+
+Thanks so much!
+[NAME_1]
+category=howto (1) priority=P4 (0.999979) urgency=low ticket_ref=f223f8bb60b54b8f5934",t4|t4dk-f223f8bb60b54b8f5934|t4-cat-howto,Low,4
+126,2026-10-13T04:28:07.406359+00:00,t4-173,A,SUP-5,SUP,Task,[billing] Prorated refund for plan change,"Dear Support Team,
+
+I'm the head of finance at Ottervale Software. We downgraded from the Business plan to the Team plan in the middle of the billing cycle, and the latest invoice still charges the full Business price of $249.00.
+
+Your pricing page says plan changes are prorated. If a refund is easier by bank transfer, our IBAN is [IBAN_1]. Please copy my colleague at [EMAIL_1] on your reply.
+
+Can you apply the prorated credit to our next invoice?
+
+Yours sincerely,
+[NAME_1]
+category=billing (1) priority=P3 (0.985936) urgency=medium ticket_ref=0fd2072ec5169450168e",t4|t4dk-0fd2072ec5169450168e|t4-cat-billing,Medium,5
+139,2026-10-13T04:28:12.464686+00:00,t4-176,A,SUP-6,SUP,Task,[howto] Bulk import of contacts,"Dear Support Team,
+
+Writing on behalf of Kettlewick Ltd. What is the best way to import our existing contact list of roughly 3,100 rows?
+
+Our team starts using the app properly once the data is in. The file has name, company and city columns. Here is a screen recording of the problem: [URL_1] Please copy my colleague at [EMAIL_1] on your reply.
+
+A reply in the next few days would be great. Is there a template file?
+
+Best regards,
+[NAME_1]
+category=howto (1) priority=P3 (0.99593) urgency=medium ticket_ref=cbc2a62b56e1ce922ebd",t4|t4dk-cbc2a62b56e1ce922ebd|t4-cat-howto,Medium,6
+148,2026-10-13T04:28:15.202341+00:00,t4-178,A,SUP-7,SUP,Task,[bug] Contacts export incomplete,"Hello,
+
+Writing on behalf of Brambleway Studio. When I export the Contacts list to CSV, the file stops at exactly 1,000 rows, although we have about 4,800 contacts.
+
+This started after last week's release; it worked before. We can work around it by exporting in smaller filtered batches, but it takes a long time. Here is a screen recording of the problem: [URL_1] Our office egress IP is [IPV4_1], in case that helps with the logs.
+
+Could you look into this sometime this week? Could you look into it?
+
+Thanks,
+[NAME_1]
+category=bug (1) priority=P3 (0.939913) urgency=medium ticket_ref=8e7830ee99ac8187b3f5",t4|t4dk-8e7830ee99ac8187b3f5|t4-cat-bug,Medium,7
+166,2026-10-13T04:28:21.955196+00:00,t4-186,A,SUP-8,SUP,Task,[bug] Timezone wrong after the clock change,"Hi,
+
+I am reusing my earlier subject line, but this is a different problem: the date columns in our CSV exports come out in US format, although our workspace is set to day/month/year. Could you check it this week?
+
+Thanks,
+[NAME_1]
+category=bug (0.989012) priority=P3 (0.999998) urgency=medium ticket_ref=61cd2c72d5128309c162",t4|t4dk-61cd2c72d5128309c162|t4-cat-bug,Medium,8
+176,2026-10-13T04:28:25.944803+00:00,t4-192,A,SUP-9,SUP,Task,[billing] Duplicate payment for invoice INV-2026-4634,"Hello,
+
+Same subject as before, but a new question: our finance team would like the purchase order number PO-41577 printed on future invoices. Is that possible? No rush.
+
+[NAME_1]
+category=billing (1) priority=P3 (0.962653) urgency=low ticket_ref=cecf8d7c700ca4b0031c",t4|t4dk-cecf8d7c700ca4b0031c|t4-cat-billing,Medium,9

@@ -1,0 +1,45 @@
+sink_seq,sink_ts,replay_input_id,replay_pass,key,project,issuetype,summary,description_text,labels,priority,created_seq
+2,2026-10-13T04:32:58.587167+00:00,t4-006,A,SUP-1,SUP,Task,[feature] Two-way calendar sync,"Hi there!
+
+I'm the founder at Velloran SAS. Please add two-way sync with Outlook calendars; today only Google Calendar is supported.
+
+We are deciding whether to roll the app out to more teams this quarter. Meetings that are moved in Outlook are often missed in the app.
+
+We would like this sorted before the end of the week. Is this on the roadmap?
+
+Cheers,
+[NAME_1]
+category=feature (1) priority=P4 (0.988304) urgency=medium ticket_ref=43a0f8fb5a15a8d0f9a3",t4|t4dk-43a0f8fb5a15a8d0f9a3|t4-cat-feature,Low,1
+7,2026-10-13T04:33:00.681744+00:00,t4-022,A,SUP-2,SUP,Task,[feature] Feature request: dark theme,"Hi,
+
+Writing on behalf of Hollowfen Media. It would be great to have a dark mode in the web app.
+
+The mobile app already has one, so the web app feels inconsistent. Several people on our team have asked for it.
+
+Let us know if it is planned.
+
+Best,
+[NAME_1]
+category=feature (1) priority=P4 (1) urgency=low ticket_ref=325db4f7295148b829d0",t4|t4dk-325db4f7295148b829d0|t4-cat-feature,Low,2
+12,2026-10-13T04:33:02.703075+00:00,t4-037,A,SUP-3,SUP,Task,[howto] API rate limits on our plan,"Hi there!
+
+Our nightly sync job is hitting 429 responses, and I need to know the API rate limits for the Business plan so we can pace the requests.
+
+I could not find the limits in the API reference. The job is blocked until we know how to pace it.
+
+Could you look into this sometime this week? Please point me to the right page.
+
+Thanks so much!
+[NAME_1]
+category=howto (1) priority=P3 (0.998499) urgency=medium ticket_ref=e9eb265f778fda8f88ee",t4|t4dk-e9eb265f778fda8f88ee|t4-cat-howto,Medium,3
+17,2026-10-13T04:33:04.553918+00:00,t4-075,A,SUP-4,SUP,Task,[bug] Scheduled reports arrive an hour late,"Good morning,
+
+Writing on behalf of Glimmerbrook BV. Since the daylight saving change, our scheduled reports arrive an hour later than the time we set.
+
+We can send the reports by hand in the meantime.
+
+Could you look into this sometime this week? Please let us know if we need to change anything.
+
+Yours sincerely,
+[NAME_1]
+category=bug (0.999733) priority=P3 (1) urgency=medium ticket_ref=b0fbf3779b69a517389f",t4|t4dk-b0fbf3779b69a517389f|t4-cat-bug,Medium,4

@@ -1,20 +1,16 @@
-# REVIEW — T4-10 (G10) attempt 1
+# REVIEW — T4-11 (G11) attempt 1 (worker stopped at a usage limit; closeout by the daytime session)
 
-- Changed: workflows/t4-triage.json (H2 Content Lookup, H2 Dedupe Check, E comment), src/score/score.py (`read_csv`), tests/test_workflow.py, tests/test_score.py, OPEN_QUESTIONS.md (Q-34), evals/scorecard.csv, evals/confusion_category.csv, evals/confusion_priority.csv, evals/cost_ledger.csv, evals/runs/test-local-20261013T040225Z-0814c13/.
-- Did: G10. The test run used 100 test tickets in passes AB. Pass A made 93 model calls. Pass B made 0 model calls and 0 issues. The run cost $0.0105318.
-- Did: H2 skips an `error` audit row with an issue key. t4-075 was `error` SUP-9 in pass A and `duplicate_skip` SUP-9 in pass B.
-- Did-not: τ values, src/sink/, src/replay/, workflows/t4-error-handler.json, scripts/, GOALS.md, .ai/STATUS.md. Goals G11–G14.
-- Check: `bash scripts/accept.sh G10` gives ACCEPT PASS [G10]. `bash scripts/guard.sh` gives guard clean. `python3 -m unittest discover -s tests -t .` runs 232 tests, OK.
-- Risk: 72 of 100 pass-A tickets went to review. 21 gold P3 tickets were predicted P2. The peak was 37 model calls in 60 s against a committed limit of 30 (Q-34 (3)).
-- Next: G11 (T4-11).
+- Changed: src/replay/run.py (segments), src/replay/attacks.py (new), src/score/check_run.py (attack_problems), tests/test_attacks.py (new), OPEN_QUESTIONS.md (Q-35), evals/cost_ledger.csv, evals/runs/attack-local-20261013T042634Z-c7595e4/.
+- Did: G11. The attack run used 58 main tickets plus 3 segments (sec12, sec13, writes). It made 104 model calls. It cost $0.0228.
+- Did: 19 of 20 attacks are defended. SEC-17 (search lag) is not_run: the fault did not fire, because the ticket did not reach H11.
+- Did-not: workflows/t4-triage.json, τ, scripts/, GOALS.md, G12–G14.
+- Check: `bash scripts/accept.sh G11` → ACCEPT PASS. `bash scripts/guard.sh` → guard clean. 241 unit tests OK. static_checks --strict → 0 violations.
+- Risk: SEC-17 has no live result. G13 must report it as not_run, not as defended.
+- Next: G12 (T4-12).
 
 ```mermaid
 flowchart LR
-  W["webhook pass A"] --> H2{"H2 link / content lookup"}
-  H2 -->|new| H6["H6 LLM classify"] --> H10{"H10 decide (tuned τ)"}
-  H10 -->|auto| J["H12 Jira create"] --> L["H13 link record: 503"] --> A["audit: error + issue_key"]
-  H10 -->|review| Q["H15 review queue"]
-  B["webhook pass B"] --> H2
-  H2 -->|error row with issue_key| S["duplicate_skip, 0 model calls"]
-  A --> SC["score: scorecard.csv"]
+  R[run.py --phase attack] --> M[main segment 58 tickets] --> A[attacks.py SEC-01..11,18..20]
+  R --> S12[sec12 burst] & S13[sec13 run-id reset] & W[writes τ=0 SEC-14..17]
+  A & S12 & S13 & W --> J[attack_results.json] --> C[check_run attack_problems]
 ```

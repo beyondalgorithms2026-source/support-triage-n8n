@@ -10,6 +10,8 @@ starts a fresh sink for the run, submits tickets one at a time (I-7), and reads 
 read-only mode. It writes `evals/runs/<run_id>/` (trace.jsonl, sink/, static_checks.json, summary.json) and one
 `evals/cost_ledger.csv` row. Caps: refuses to start when the project cap would be passed; stops submitting when the
 run passes `RUN_USD_CAP`. Nothing here prints or writes a credential, token, webhook path or `.env` value.
+`--phase attack` (G11) adds isolated segments, the SEC-18 probe, the SEC-20 scan and `attack_results.json`
+(`src/replay/attacks.py`); the cap counts the spend of every segment.
 """
 from __future__ import annotations
 
@@ -29,6 +31,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 from src.checks.static_checks import check_file
+from src.replay import attacks
 from src.score.score import is_llm_node, read_csv
 from src.sink.server import FAULTS, make_server
 
@@ -286,9 +289,9 @@ def project_spend(cost_ledger):
 
 
 def ledger_usd(sink_dir, run_id):
-    """Spend the workflow itself recorded for this run (sink `ledger` table, H7)."""
+    """Spend the workflow itself recorded for this run (sink `ledger` table, H7). SEC-13 sends `<run_id>-rNN`."""
     return sum(float(row.get("usd") or 0) for row in read_csv(Path(sink_dir) / "ledger.csv")
-               if row.get("run_id") == run_id)
+               if row.get("run_id") == run_id or str(row.get("run_id") or "").startswith(run_id + "-r"))
 
 
 # ---------------------------------------------------------------- n8n (CLI + read-only SQLite)
@@ -541,7 +544,11 @@ def run_replay(args, n8n=None, env=None):
             spent, run_cap, project_cap))
     passes = args.passes or PHASES[args.phase][1]
     split = args.split or PHASES[args.phase][0]
-    rows = select_tickets(load_manifest(args.manifest), args.phase, split, args.ids, args.limit)
+    manifest_rows = load_manifest(args.manifest)
+    ids = args.ids
+    if args.phase == "attack" and not ids:
+        ids = attacks.select_ids(manifest_rows, read_gold)
+    rows = select_tickets(manifest_rows, args.phase, split, ids, args.limit)
     golds = {row["input_id"]: read_gold(row) for row in rows}
     forced = dict(parse_fault(spec) for spec in args.force_fault or ())
     unknown = sorted(set(forced) - set(golds))
@@ -567,24 +574,122 @@ def run_replay(args, n8n=None, env=None):
     handler = json.loads(handler_path.read_text(encoding="utf-8")) if handler_path and handler_path.exists() else None
 
     n8n = n8n or LocalN8n(args.sqlite, env.get("N8N_CONTAINER") or "n8n")
-    ids = n8n.credential_ids(tuple(CREDENTIAL_IDS))
-    workflow = substitute(bind_credentials(workflow, ids), env)
+    cred_ids = n8n.credential_ids(tuple(CREDENTIAL_IDS))
     if handler is not None:
-        handler = substitute(bind_credentials(handler, ids), env)
+        handler = substitute(bind_credentials(handler, cred_ids), env)
     n8n_version = n8n.version()
 
     run_id = "{}-local-{}-{}".format(args.phase, datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ"),
                                      git_short_sha())
     run_dir = Path(args.runs_dir) / run_id
+    started = utc_now()
+    segments = [{"name": "main", "dir": run_dir, "workflow": workflow, "tickets": [golds[r["input_id"]] for r in rows],
+                 "passes": passes, "forced": forced, "overrides": list(args.config_override or ()),
+                 "auth_probe": args.phase == "attack"}]
+    if args.phase == "attack":      # isolated segments, each on its own sink (src/replay/attacks.py)
+        all_golds = {row["input_id"]: read_gold(row) for row in manifest_rows}
+        for seg in attacks.plan_segments(all_golds, committed_config.get("max_model_chars"), started):
+            segments.append(dict(seg, dir=run_dir / "segments" / seg["name"], forced={},
+                                 workflow=apply_overrides(committed, seg["overrides"])))
     run_dir.mkdir(parents=True)
     (run_dir / "static_checks.json").write_text(json.dumps(static, indent=2, sort_keys=True) + "\n",
                                                 encoding="utf-8")
-    scrub = scrubber(env)
-    webhook = env["N8N_BASE_URL"].rstrip("/") + "/webhook/" + env["T4_WEBHOOK_PATH"]
-    started = utc_now()
-    events, capped, trace_usd = [], 0, 0.0
-    sink = LocalSink(run_dir / "sink", env, args.sink_host, args.sink_port)
-    sink_url = sink.start(env["SINK_TOKEN"])
+    ctx = {"n8n": n8n, "env": env, "args": args, "run_id": run_id, "handler": handler, "cred_ids": cred_ids,
+           "price": (price_in, price_out), "run_cap": run_cap, "scrub": scrubber(env), "spent": 0.0,
+           "webhook": env["N8N_BASE_URL"].rstrip("/") + "/webhook/" + env["T4_WEBHOOK_PATH"]}
+    aborted, done = None, []
+    for seg in segments:
+        result = _replay_segment(seg, ctx)
+        ctx["spent"] += result["usd"]
+        done.append((seg, result))
+        if result["aborted"]:
+            aborted = result["aborted"]
+            break
+    ended = utc_now()
+
+    scrub = ctx["scrub"]
+    totals = {"llm_calls": 0, "tokens_in": 0, "tokens_out": 0, "usd": 0.0, "capped": 0, "tickets": 0}
+    seg_summaries = []
+    for seg, result in done:
+        events = result["events"]
+        llm = [e for e in events if is_llm_node(e["node"])]
+        facts = {"llm_calls": len(llm), "tokens_in": sum(e["tokens_in"] for e in llm),
+                 "tokens_out": sum(e["tokens_out"] for e in llm), "usd": result["usd"], "capped": result["capped"],
+                 "tickets": len(seg["tickets"])}
+        for key in totals:
+            totals[key] += facts[key]
+        seg["dir"].mkdir(parents=True, exist_ok=True)
+        with (seg["dir"] / "trace.jsonl").open("w", encoding="utf-8") as f:
+            for event in events:
+                f.write(json.dumps(event, separators=(",", ":"), ensure_ascii=False) + "\n")
+        if result["probe"] is not None:
+            (run_dir / "auth_probe.json").write_text(json.dumps(scrub(result["probe"]), indent=2) + "\n",
+                                                     encoding="utf-8")
+        later = set(seg["passes"][1:])
+        issues = read_csv(seg["dir"] / "sink" / "jira_issues.csv")
+        seg_config = config_values(seg["workflow"])
+        is_main = seg is segments[0]
+        summary = {
+            "run_id": run_id, "phase": args.phase, "split": split, "target": "local", "passes": seg["passes"],
+            "input_ids": [g["input_id"] for g in seg["tickets"]], "tickets": len(seg["tickets"]),
+            "started": started, "ended": ended, "git_sha": run_id.rsplit("-", 1)[1],
+            "model": seg_config.get("llm_model"), "n8n_version": n8n_version,
+            "workflow_sha256": sha256_file(source), "handler_sha256": sha256_file(handler_path) if handler else None,
+            "thresholds_sha256": sha256_file(THRESHOLDS), "prompt_sha256": prompt_sha256(committed),
+            "config_overrides": seg["overrides"], "forced_faults": list(args.force_fault or ()) if is_main else [],
+            "run_usd_cap": run_cap, "max_model_chars": seg_config.get("max_model_chars"),
+            "llm_price_in_per_mtok": price_in, "llm_price_out_per_mtok": price_out,
+            "llm_calls": facts["llm_calls"], "tokens_in": facts["tokens_in"], "tokens_out": facts["tokens_out"],
+            "usd": facts["usd"], "capped_inputs": facts["capped"],
+            "new_jira_issues_pass_b": sum(1 for r in issues if r.get("replay_pass") in later),
+            "llm_calls_pass_b": sum(1 for e in llm if e["pass"] in later),
+            "aborted": scrub(str(result["aborted"])) if result["aborted"] else None,
+        }
+        if is_main:
+            main_summary = summary
+        else:
+            summary.update(segment=seg["name"], run_id_mode=seg.get("run_id_mode"), config={
+                k: seg_config.get(k) for k in ("run_usd_cap", "daily_usd_cap", "llm_max_rpm", "tuning_mode")})
+            seg_summaries.append({"name": seg["name"], "dir": "segments/" + seg["name"], "passes": seg["passes"],
+                                  "tickets": facts["tickets"], "config_overrides": seg["overrides"],
+                                  "run_id_mode": seg.get("run_id_mode"), "llm_calls": facts["llm_calls"],
+                                  "usd": facts["usd"], "capped_inputs": facts["capped"],
+                                  "roles": seg.get("roles")})
+        (seg["dir"] / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    if len(segments) > 1:            # the main summary also carries the whole-run totals (= the ledger row)
+        main_summary.update(segments=seg_summaries, run_totals=dict(totals))
+        (run_dir / "summary.json").write_text(json.dumps(main_summary, indent=2) + "\n", encoding="utf-8")
+    ledger = Path(args.cost_ledger)
+    write_header = not ledger.exists()
+    with ledger.open("a", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=LEDGER_HEADER, lineterminator="\n")
+        if write_header:
+            writer.writeheader()
+        writer.writerow({"run_id": run_id, "run_phase": args.phase, "target": "local", "started_utc": started,
+                         "ended_utc": ended, "model": config.get("llm_model") or "",
+                         "llm_calls": totals["llm_calls"], "tokens_in": totals["tokens_in"],
+                         "tokens_out": totals["tokens_out"], "usd": totals["usd"], "run_usd_cap": run_cap,
+                         "capped_inputs": totals["capped"], "tickets": totals["tickets"],
+                         "usd_per_1k_tickets": totals["usd"] / totals["tickets"] * 1000})
+    if aborted:
+        raise aborted
+    if args.phase == "attack":       # after every run file exists, so the scan covers them (SEC-20)
+        values = {name: env.get(name) or "" for name in SECRET_ENV}
+        scan = attacks.secret_scan(ROOT, values)
+        (run_dir / "secret_scan.json").write_text(json.dumps(scan, indent=2) + "\n", encoding="utf-8")
+        attacks.write_results(run_dir, {row["input_id"]: read_gold(row) for row in manifest_rows})
+    return run_dir
+
+
+def _replay_segment(seg, ctx):
+    """One workflow import over a fresh sink in `seg['dir']/sink`: publish, submit the tickets one at a time (I-7),
+    unpublish. Returns events, capped count, usd, the exception that stopped it (or None) and the SEC-18 probe."""
+    n8n, env, args, run_id, scrub = ctx["n8n"], ctx["env"], ctx["args"], ctx["run_id"], ctx["scrub"]
+    workflow, handler = substitute(bind_credentials(seg["workflow"], ctx["cred_ids"]), env), ctx["handler"]
+    sink_dir, token = Path(seg["dir"]) / "sink", env["SINK_TOKEN"]
+    events, capped, trace_usd, probe = [], 0, 0.0, None
+    sink = LocalSink(sink_dir, env, args.sink_host, args.sink_port)
+    sink_url = sink.start(token)
     published, aborted = [], None
     try:
         if handler is not None:
@@ -595,41 +700,47 @@ def run_replay(args, n8n=None, env=None):
         published.append(workflow["id"])
         n8n.publish(workflow["id"])
         n8n.wait_ready(env["N8N_BASE_URL"])
-        for pass_name in passes:
-            for row in rows:
-                input_id = row["input_id"]
-                if max(trace_usd, ledger_usd(run_dir / "sink", run_id)) >= run_cap:
+        for pass_name in seg["passes"]:
+            for index, gold in enumerate(seg["tickets"]):
+                input_id = gold["input_id"]
+                if ctx["spent"] + max(trace_usd, ledger_usd(sink_dir, run_id)) >= ctx["run_cap"]:
                     capped += 1
                     events.append(runner_event(run_id, pass_name, input_id, False, capped=True,
                                                error="runner_cap"))
                     continue
-                status, _ = request_json("POST", sink_url + "/_replay/active", env["SINK_TOKEN"],
+                status, _ = request_json("POST", sink_url + "/_replay/active", token,
                                          {"input_id": input_id, "pass": pass_name})
                 if status != 200:
                     raise RuntimeError("sink did not accept the active input")
-                fault = forced.get(input_id) or golds[input_id].get("fault") or {}
+                fault = seg["forced"].get(input_id) or gold.get("fault") or {}
                 fault_name = ""
                 if fault and fault.get("pass", "A") == pass_name:
                     body = {k: fault[k] for k in ("target", "mode", "pass") if k in fault}
-                    if request_json("POST", sink_url + "/_replay/fault", env["SINK_TOKEN"], body)[0] != 200:
+                    if request_json("POST", sink_url + "/_replay/fault", token, body)[0] != 200:
                         raise RuntimeError("sink did not accept the fault for " + input_id)
                     fault_name = "{}:{}".format(fault["target"], fault["mode"])
+                # SEC-13 sends a fresh X-Replay-Run-Id per request (T2 R-2); every other run sends the run id.
+                header_run_id = "{}-r{:02d}".format(run_id, index + 1) \
+                    if seg.get("run_id_mode") == "per_request" else run_id
                 before = n8n.latest_id(workflow["id"])
-                http_status = submit(webhook, env["T4_WEBHOOK_TOKEN"], run_id, golds[input_id], args.timeout)
+                http_status = submit(ctx["webhook"], env["T4_WEBHOOK_TOKEN"], header_run_id, gold, args.timeout)
                 events.append(runner_event(run_id, pass_name, input_id, 200 <= http_status < 300, stage="intake",
                                            http_status=http_status, fault=fault_name))
                 if http_status in (401, 403, 404):
                     raise RuntimeError("webhook returned HTTP {} (token or path wrong?)".format(http_status))
                 execution = n8n.wait_execution(workflow["id"], before, args.timeout)
                 ticket_events = [scrub(e) for e in trace_events(execution, run_id, pass_name, input_id,
-                                                                price_in, price_out)]
+                                                                *ctx["price"])]
                 for event in ticket_events:
                     if "llm_input" in event:
-                        request_json("POST", sink_url + "/_replay/llm_input", env["SINK_TOKEN"],
-                                     {"llm_input": event["llm_input"]})
+                        request_json("POST", sink_url + "/_replay/llm_input", token, {"llm_input": event["llm_input"]})
                 events.extend(ticket_events)
                 trace_usd += sum(float(e.get("usd") or 0) for e in ticket_events)
-                request_json("POST", sink_url + "/_replay/fault", env["SINK_TOKEN"], {"clear": True})
+                request_json("POST", sink_url + "/_replay/fault", token, {"clear": True})
+        if seg.get("auth_probe") and seg["tickets"]:
+            request_json("POST", sink_url + "/_replay/active", token, {"input_id": "sec18-probe", "pass": "A"})
+            probe = attacks.auth_probe(ctx["webhook"], seg["tickets"][0], lambda: n8n.latest_id(workflow["id"]),
+                                       lambda: len(read_csv(sink_dir / "ledger.csv")))
     except Exception as error:      # keep the evidence (and the spend) of a run that stopped half way, then re-raise
         aborted = error
     finally:
@@ -638,47 +749,8 @@ def run_replay(args, n8n=None, env=None):
                 n8n.unpublish(workflow_id)
         finally:
             sink.stop()
-    ended = utc_now()
-
-    with (run_dir / "trace.jsonl").open("w", encoding="utf-8") as f:
-        for event in events:
-            f.write(json.dumps(event, separators=(",", ":"), ensure_ascii=False) + "\n")
-    llm = [e for e in events if is_llm_node(e["node"])]
-    tokens_in, tokens_out = sum(e["tokens_in"] for e in llm), sum(e["tokens_out"] for e in llm)
-    usd = max(trace_usd, ledger_usd(run_dir / "sink", run_id))
-    issues = read_csv(run_dir / "sink" / "jira_issues.csv")
-    later = set(passes[1:])
-    summary = {
-        "run_id": run_id, "phase": args.phase, "split": split, "target": "local", "passes": passes,
-        "input_ids": [row["input_id"] for row in rows], "tickets": len(rows),
-        "started": started, "ended": ended, "git_sha": run_id.rsplit("-", 1)[1],
-        "model": config.get("llm_model"), "n8n_version": n8n_version,
-        "workflow_sha256": sha256_file(source), "handler_sha256": sha256_file(handler_path) if handler else None,
-        "thresholds_sha256": sha256_file(THRESHOLDS), "prompt_sha256": prompt_sha256(committed),
-        "config_overrides": list(args.config_override or ()), "forced_faults": list(args.force_fault or ()),
-        "run_usd_cap": run_cap, "max_model_chars": config.get("max_model_chars"),
-        "llm_price_in_per_mtok": price_in, "llm_price_out_per_mtok": price_out,
-        "llm_calls": len(llm), "tokens_in": tokens_in, "tokens_out": tokens_out, "usd": usd,
-        "capped_inputs": capped,
-        "new_jira_issues_pass_b": sum(1 for r in issues if r.get("replay_pass") in later),
-        "llm_calls_pass_b": sum(1 for e in llm if e["pass"] in later),
-        "aborted": scrub(str(aborted)) if aborted else None,
-    }
-    (run_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
-    ledger = Path(args.cost_ledger)
-    write_header = not ledger.exists()
-    with ledger.open("a", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=LEDGER_HEADER, lineterminator="\n")
-        if write_header:
-            writer.writeheader()
-        writer.writerow({"run_id": run_id, "run_phase": args.phase, "target": "local", "started_utc": started,
-                         "ended_utc": ended, "model": config.get("llm_model") or "", "llm_calls": len(llm),
-                         "tokens_in": tokens_in, "tokens_out": tokens_out, "usd": usd, "run_usd_cap": run_cap,
-                         "capped_inputs": capped, "tickets": len(rows),
-                         "usd_per_1k_tickets": usd / len(rows) * 1000})
-    if aborted:
-        raise aborted
-    return run_dir
+    return {"events": events, "capped": capped, "usd": max(trace_usd, ledger_usd(sink_dir, run_id)),
+            "aborted": aborted, "probe": probe}
 
 
 def setup(env=None, n8n=None):

@@ -1,0 +1,2 @@
+sink_seq,sink_ts,replay_input_id,replay_pass,run_id,input_ref,stage,node,code,message
+18,2026-10-13T04:33:05.646049+00:00,t4-075,A,attack-local-20261013T042634Z-c7595e4,t4-075,act,H13 Link Record,error:sink,"503 - ""{\""error\"":\""injected fault\""}"""

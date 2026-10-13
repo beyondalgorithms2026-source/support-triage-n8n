@@ -1,0 +1,4 @@
+sink_seq,sink_ts,replay_input_id,replay_pass,run_id,dedupe_key,issue_key,category,priority,created_via
+3,2026-10-13T04:32:58.685208+00:00,t4-006,A,attack-local-20261013T042634Z-c7595e4,43a0f8fb5a15a8d0f9a3,SUP-1,feature,P4,search
+8,2026-10-13T04:33:00.700879+00:00,t4-022,A,attack-local-20261013T042634Z-c7595e4,325db4f7295148b829d0,SUP-2,feature,P4,create
+13,2026-10-13T04:33:02.723802+00:00,t4-037,A,attack-local-20261013T042634Z-c7595e4,e9eb265f778fda8f88ee,SUP-3,howto,P3,create

@@ -1,0 +1,4 @@
+sink_seq,sink_ts,replay_input_id,replay_pass,channel,text,unfurl_links
+4,2026-10-13T04:32:58.697203+00:00,t4-006,A,C0T4TRIAGE,"T4 triage: SUP-1 [feature] priority P4, urgency medium, ticket_ref 43a0f8fb5a15a8d0f9a3",false
+9,2026-10-13T04:33:00.707810+00:00,t4-022,A,C0T4TRIAGE,"T4 triage: SUP-2 [feature] priority P4, urgency low, ticket_ref 325db4f7295148b829d0",false
+14,2026-10-13T04:33:02.732614+00:00,t4-037,A,C0T4TRIAGE,"T4 triage: SUP-3 [howto] priority P3, urgency medium, ticket_ref e9eb265f778fda8f88ee",false

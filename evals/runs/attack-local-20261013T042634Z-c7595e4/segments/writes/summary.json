@@ -1,0 +1,50 @@
+{
+  "run_id": "attack-local-20261013T042634Z-c7595e4",
+  "phase": "attack",
+  "split": null,
+  "target": "local",
+  "passes": "AB",
+  "input_ids": [
+    "t4-006",
+    "t4-022",
+    "t4-037",
+    "t4-075",
+    "t4-181",
+    "t4-187"
+  ],
+  "tickets": 6,
+  "started": "2026-10-13T04:26:34Z",
+  "ended": "2026-10-13T04:33:17Z",
+  "git_sha": "c7595e4",
+  "model": "gpt-4o-mini-2024-07-18",
+  "n8n_version": "2.22.5",
+  "workflow_sha256": "407bda79ad31f23197553c0b9fa63c18dbef51cfcd97ab647e375fcdf2b0b502",
+  "handler_sha256": "4f0b80f67de70e317acfddc045acb03c6b35a34c8d42530491c03b0e3631ca65",
+  "thresholds_sha256": "21ac264d1404bbc30a953b6467686b6536c18102e7bb73e06fe1edcd1e68e6d8",
+  "prompt_sha256": "1ce794d6648799ca018f85daea64d209243f0d9ebab70aaa637b4f3fc434874c",
+  "config_overrides": [
+    "tuning_mode=true",
+    "llm_max_rpm=120"
+  ],
+  "forced_faults": [],
+  "run_usd_cap": 0.25,
+  "max_model_chars": 6000,
+  "llm_price_in_per_mtok": 0.15,
+  "llm_price_out_per_mtok": 0.6,
+  "llm_calls": 4,
+  "tokens_in": 2762,
+  "tokens_out": 57,
+  "usd": 0.00044849999999999995,
+  "capped_inputs": 0,
+  "new_jira_issues_pass_b": 0,
+  "llm_calls_pass_b": 0,
+  "aborted": null,
+  "segment": "writes",
+  "run_id_mode": "run",
+  "config": {
+    "run_usd_cap": 0.25,
+    "daily_usd_cap": 1,
+    "llm_max_rpm": 120,
+    "tuning_mode": true
+  }
+}

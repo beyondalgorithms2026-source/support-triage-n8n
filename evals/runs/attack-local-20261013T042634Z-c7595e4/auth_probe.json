@@ -1,0 +1,16 @@
+[
+  {
+    "case": "missing_token",
+    "input_id": "t4-022",
+    "http_status": 403,
+    "new_executions": 0,
+    "new_ledger_rows": 0
+  },
+  {
+    "case": "wrong_token",
+    "input_id": "t4-022",
+    "http_status": 403,
+    "new_executions": 0,
+    "new_ledger_rows": 0
+  }
+]

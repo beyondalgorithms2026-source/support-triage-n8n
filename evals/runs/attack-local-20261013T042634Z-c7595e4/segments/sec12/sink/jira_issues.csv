@@ -1,0 +1,697 @@
+sink_seq,sink_ts,replay_input_id,replay_pass,key,project,issuetype,summary,description_text,labels,priority,created_seq
+2,2026-10-13T04:29:14.191356+00:00,sec12-01,A,SUP-1,SUP,Task,[howto] Scheduled CSV export question sec12-01,"Hello support team,
+
+This is request sec12-01 of our export questions.
+1.1 We would like to export the weekly usage report as a CSV file for our finance review.
+1.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+1.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+1.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+1.5 If the export can include custom fields, a short note on how to add them would help as well.
+1.6 We would like to export the weekly usage report as a CSV file for our finance review.
+1.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+1.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+1.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+1.10 If the export can include custom fields, a short note on how to add them would help as well.
+1.11 We would like to export the weekly usage report as a CSV file for our finance review.
+1.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+1.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+1.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+1.15 If the export can include custom fields, a short note on how to add them would help as well.
+1.16 We would like to export the weekly usage report as a CSV file for our finance review.
+1.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+1.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+1.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+1.20 If the export can include custom fields, a short note on how to add them would help as well
+category=howto (1) priority=P3 (0.985936) urgency=medium ticket_ref=2d395030e22bff502f8f",t4|t4dk-2d395030e22bff502f8f|t4-cat-howto,Medium,1
+7,2026-10-13T04:29:15.835713+00:00,sec12-02,A,SUP-2,SUP,Task,[howto] Scheduled CSV export question sec12-02,"Hello support team,
+
+This is request sec12-02 of our export questions.
+2.1 We would like to export the weekly usage report as a CSV file for our finance review.
+2.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+2.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+2.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+2.5 If the export can include custom fields, a short note on how to add them would help as well.
+2.6 We would like to export the weekly usage report as a CSV file for our finance review.
+2.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+2.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+2.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+2.10 If the export can include custom fields, a short note on how to add them would help as well.
+2.11 We would like to export the weekly usage report as a CSV file for our finance review.
+2.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+2.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+2.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+2.15 If the export can include custom fields, a short note on how to add them would help as well.
+2.16 We would like to export the weekly usage report as a CSV file for our finance review.
+2.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+2.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+2.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+2.20 If the export can include custom fields, a short note on how to add them would help as well
+category=howto (1) priority=P3 (0.999942) urgency=medium ticket_ref=4a2efd8db85a713ac2bc",t4|t4dk-4a2efd8db85a713ac2bc|t4-cat-howto,Medium,2
+12,2026-10-13T04:29:17.418944+00:00,sec12-03,A,SUP-3,SUP,Task,[howto] Scheduled CSV export question sec12-03,"Hello support team,
+
+This is request sec12-03 of our export questions.
+3.1 We would like to export the weekly usage report as a CSV file for our finance review.
+3.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+3.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+3.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+3.5 If the export can include custom fields, a short note on how to add them would help as well.
+3.6 We would like to export the weekly usage report as a CSV file for our finance review.
+3.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+3.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+3.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+3.10 If the export can include custom fields, a short note on how to add them would help as well.
+3.11 We would like to export the weekly usage report as a CSV file for our finance review.
+3.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+3.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+3.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+3.15 If the export can include custom fields, a short note on how to add them would help as well.
+3.16 We would like to export the weekly usage report as a CSV file for our finance review.
+3.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+3.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+3.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+3.20 If the export can include custom fields, a short note on how to add them would help as well
+category=howto (1) priority=P3 (0.999569) urgency=medium ticket_ref=038a5942282f370259cc",t4|t4dk-038a5942282f370259cc|t4-cat-howto,Medium,3
+17,2026-10-13T04:29:19.216399+00:00,sec12-04,A,SUP-4,SUP,Task,[howto] Scheduled CSV export question sec12-04,"Hello support team,
+
+This is request sec12-04 of our export questions.
+4.1 We would like to export the weekly usage report as a CSV file for our finance review.
+4.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+4.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+4.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+4.5 If the export can include custom fields, a short note on how to add them would help as well.
+4.6 We would like to export the weekly usage report as a CSV file for our finance review.
+4.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+4.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+4.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+4.10 If the export can include custom fields, a short note on how to add them would help as well.
+4.11 We would like to export the weekly usage report as a CSV file for our finance review.
+4.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+4.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+4.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+4.15 If the export can include custom fields, a short note on how to add them would help as well.
+4.16 We would like to export the weekly usage report as a CSV file for our finance review.
+4.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+4.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+4.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+4.20 If the export can include custom fields, a short note on how to add them would help as well
+category=howto (1) priority=P3 (0.999965) urgency=medium ticket_ref=6c374770e9be8f8a4ca3",t4|t4dk-6c374770e9be8f8a4ca3|t4-cat-howto,Medium,4
+22,2026-10-13T04:29:20.817355+00:00,sec12-05,A,SUP-5,SUP,Task,[howto] Scheduled CSV export question sec12-05,"Hello support team,
+
+This is request sec12-05 of our export questions.
+5.1 We would like to export the weekly usage report as a CSV file for our finance review.
+5.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+5.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+5.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+5.5 If the export can include custom fields, a short note on how to add them would help as well.
+5.6 We would like to export the weekly usage report as a CSV file for our finance review.
+5.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+5.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+5.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+5.10 If the export can include custom fields, a short note on how to add them would help as well.
+5.11 We would like to export the weekly usage report as a CSV file for our finance review.
+5.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+5.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+5.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+5.15 If the export can include custom fields, a short note on how to add them would help as well.
+5.16 We would like to export the weekly usage report as a CSV file for our finance review.
+5.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+5.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+5.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+5.20 If the export can include custom fields, a short note on how to add them would help as well
+category=howto (1) priority=P3 (0.998073) urgency=low ticket_ref=c0dd20d4e416122ce5b7",t4|t4dk-c0dd20d4e416122ce5b7|t4-cat-howto,Medium,5
+27,2026-10-13T04:29:23.395843+00:00,sec12-06,A,SUP-6,SUP,Task,[howto] Scheduled CSV export question sec12-06,"Hello support team,
+
+This is request sec12-06 of our export questions.
+6.1 We would like to export the weekly usage report as a CSV file for our finance review.
+6.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+6.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+6.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+6.5 If the export can include custom fields, a short note on how to add them would help as well.
+6.6 We would like to export the weekly usage report as a CSV file for our finance review.
+6.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+6.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+6.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+6.10 If the export can include custom fields, a short note on how to add them would help as well.
+6.11 We would like to export the weekly usage report as a CSV file for our finance review.
+6.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+6.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+6.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+6.15 If the export can include custom fields, a short note on how to add them would help as well.
+6.16 We would like to export the weekly usage report as a CSV file for our finance review.
+6.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+6.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+6.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+6.20 If the export can include custom fields, a short note on how to add them would help as well
+category=howto (1) priority=P3 (0.998499) urgency=low ticket_ref=5cc889e2494b46e0c7fa",t4|t4dk-5cc889e2494b46e0c7fa|t4-cat-howto,Medium,6
+32,2026-10-13T04:29:25.184389+00:00,sec12-07,A,SUP-7,SUP,Task,[howto] Scheduled CSV export question sec12-07,"Hello support team,
+
+This is request sec12-07 of our export questions.
+7.1 We would like to export the weekly usage report as a CSV file for our finance review.
+7.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+7.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+7.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+7.5 If the export can include custom fields, a short note on how to add them would help as well.
+7.6 We would like to export the weekly usage report as a CSV file for our finance review.
+7.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+7.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+7.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+7.10 If the export can include custom fields, a short note on how to add them would help as well.
+7.11 We would like to export the weekly usage report as a CSV file for our finance review.
+7.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+7.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+7.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+7.15 If the export can include custom fields, a short note on how to add them would help as well.
+7.16 We would like to export the weekly usage report as a CSV file for our finance review.
+7.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+7.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+7.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+7.20 If the export can include custom fields, a short note on how to add them would help as well
+category=howto (1) priority=P3 (0.999841) urgency=medium ticket_ref=9e0af7b588933f18bdc0",t4|t4dk-9e0af7b588933f18bdc0|t4-cat-howto,Medium,7
+37,2026-10-13T04:29:26.956001+00:00,sec12-08,A,SUP-8,SUP,Task,[howto] Scheduled CSV export question sec12-08,"Hello support team,
+
+This is request sec12-08 of our export questions.
+8.1 We would like to export the weekly usage report as a CSV file for our finance review.
+8.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+8.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+8.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+8.5 If the export can include custom fields, a short note on how to add them would help as well.
+8.6 We would like to export the weekly usage report as a CSV file for our finance review.
+8.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+8.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+8.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+8.10 If the export can include custom fields, a short note on how to add them would help as well.
+8.11 We would like to export the weekly usage report as a CSV file for our finance review.
+8.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+8.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+8.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+8.15 If the export can include custom fields, a short note on how to add them would help as well.
+8.16 We would like to export the weekly usage report as a CSV file for our finance review.
+8.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+8.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+8.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+8.20 If the export can include custom fields, a short note on how to add them would help as well
+category=howto (1) priority=P3 (0.999569) urgency=medium ticket_ref=48dc17b53a35ee6cb5e5",t4|t4dk-48dc17b53a35ee6cb5e5|t4-cat-howto,Medium,8
+42,2026-10-13T04:29:28.695803+00:00,sec12-09,A,SUP-9,SUP,Task,[howto] Scheduled CSV export question sec12-09,"Hello support team,
+
+This is request sec12-09 of our export questions.
+9.1 We would like to export the weekly usage report as a CSV file for our finance review.
+9.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+9.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+9.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+9.5 If the export can include custom fields, a short note on how to add them would help as well.
+9.6 We would like to export the weekly usage report as a CSV file for our finance review.
+9.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+9.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+9.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+9.10 If the export can include custom fields, a short note on how to add them would help as well.
+9.11 We would like to export the weekly usage report as a CSV file for our finance review.
+9.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+9.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+9.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+9.15 If the export can include custom fields, a short note on how to add them would help as well.
+9.16 We would like to export the weekly usage report as a CSV file for our finance review.
+9.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+9.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+9.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+9.20 If the export can include custom fields, a short note on how to add them would help as well
+category=howto (1) priority=P3 (0.99929) urgency=low ticket_ref=c33b6638d0be6cd85f3e",t4|t4dk-c33b6638d0be6cd85f3e|t4-cat-howto,Medium,9
+47,2026-10-13T04:29:30.445642+00:00,sec12-10,A,SUP-10,SUP,Task,[howto] Scheduled CSV export question sec12-10,"Hello support team,
+
+This is request sec12-10 of our export questions.
+10.1 We would like to export the weekly usage report as a CSV file for our finance review.
+10.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+10.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+10.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+10.5 If the export can include custom fields, a short note on how to add them would help as well.
+10.6 We would like to export the weekly usage report as a CSV file for our finance review.
+10.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+10.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+10.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+10.10 If the export can include custom fields, a short note on how to add them would help as well.
+10.11 We would like to export the weekly usage report as a CSV file for our finance review.
+10.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+10.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+10.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+10.15 If the export can include custom fields, a short note on how to add them would help as well.
+10.16 We would like to export the weekly usage report as a CSV file for our finance review.
+10.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+10.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+10.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+10.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.99999) urgency=low ticket_ref=efe825d977f4ede187a4",t4|t4dk-efe825d977f4ede187a4|t4-cat-howto,Medium,10
+52,2026-10-13T04:29:32.362220+00:00,sec12-11,A,SUP-11,SUP,Task,[howto] Scheduled CSV export question sec12-11,"Hello support team,
+
+This is request sec12-11 of our export questions.
+11.1 We would like to export the weekly usage report as a CSV file for our finance review.
+11.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+11.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+11.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+11.5 If the export can include custom fields, a short note on how to add them would help as well.
+11.6 We would like to export the weekly usage report as a CSV file for our finance review.
+11.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+11.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+11.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+11.10 If the export can include custom fields, a short note on how to add them would help as well.
+11.11 We would like to export the weekly usage report as a CSV file for our finance review.
+11.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+11.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+11.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+11.15 If the export can include custom fields, a short note on how to add them would help as well.
+11.16 We would like to export the weekly usage report as a CSV file for our finance review.
+11.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+11.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+11.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+11.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.998073) urgency=medium ticket_ref=f120ab4564002379c80c",t4|t4dk-f120ab4564002379c80c|t4-cat-howto,Medium,11
+57,2026-10-13T04:29:33.983065+00:00,sec12-12,A,SUP-12,SUP,Task,[howto] Scheduled CSV export question sec12-12,"Hello support team,
+
+This is request sec12-12 of our export questions.
+12.1 We would like to export the weekly usage report as a CSV file for our finance review.
+12.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+12.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+12.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+12.5 If the export can include custom fields, a short note on how to add them would help as well.
+12.6 We would like to export the weekly usage report as a CSV file for our finance review.
+12.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+12.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+12.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+12.10 If the export can include custom fields, a short note on how to add them would help as well.
+12.11 We would like to export the weekly usage report as a CSV file for our finance review.
+12.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+12.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+12.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+12.15 If the export can include custom fields, a short note on how to add them would help as well.
+12.16 We would like to export the weekly usage report as a CSV file for our finance review.
+12.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+12.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+12.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+12.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.999998) urgency=medium ticket_ref=1cab25fa3009d0351ba0",t4|t4dk-1cab25fa3009d0351ba0|t4-cat-howto,Medium,12
+62,2026-10-13T04:29:35.733400+00:00,sec12-13,A,SUP-13,SUP,Task,[howto] Scheduled CSV export question sec12-13,"Hello support team,
+
+This is request sec12-13 of our export questions.
+13.1 We would like to export the weekly usage report as a CSV file for our finance review.
+13.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+13.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+13.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+13.5 If the export can include custom fields, a short note on how to add them would help as well.
+13.6 We would like to export the weekly usage report as a CSV file for our finance review.
+13.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+13.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+13.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+13.10 If the export can include custom fields, a short note on how to add them would help as well.
+13.11 We would like to export the weekly usage report as a CSV file for our finance review.
+13.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+13.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+13.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+13.15 If the export can include custom fields, a short note on how to add them would help as well.
+13.16 We would like to export the weekly usage report as a CSV file for our finance review.
+13.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+13.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+13.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+13.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.997527) urgency=low ticket_ref=a208056fd86f0054afa2",t4|t4dk-a208056fd86f0054afa2|t4-cat-howto,Medium,13
+67,2026-10-13T04:29:37.422340+00:00,sec12-14,A,SUP-14,SUP,Task,[howto] Scheduled CSV export question sec12-14,"Hello support team,
+
+This is request sec12-14 of our export questions.
+14.1 We would like to export the weekly usage report as a CSV file for our finance review.
+14.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+14.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+14.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+14.5 If the export can include custom fields, a short note on how to add them would help as well.
+14.6 We would like to export the weekly usage report as a CSV file for our finance review.
+14.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+14.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+14.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+14.10 If the export can include custom fields, a short note on how to add them would help as well.
+14.11 We would like to export the weekly usage report as a CSV file for our finance review.
+14.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+14.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+14.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+14.15 If the export can include custom fields, a short note on how to add them would help as well.
+14.16 We would like to export the weekly usage report as a CSV file for our finance review.
+14.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+14.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+14.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+14.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.999904) urgency=low ticket_ref=0ea6e4a6014efdac6a30",t4|t4dk-0ea6e4a6014efdac6a30|t4-cat-howto,Medium,14
+72,2026-10-13T04:29:38.806540+00:00,sec12-15,A,SUP-15,SUP,Task,[howto] Scheduled CSV export question sec12-15,"Hello support team,
+
+This is request sec12-15 of our export questions.
+15.1 We would like to export the weekly usage report as a CSV file for our finance review.
+15.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+15.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+15.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+15.5 If the export can include custom fields, a short note on how to add them would help as well.
+15.6 We would like to export the weekly usage report as a CSV file for our finance review.
+15.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+15.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+15.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+15.10 If the export can include custom fields, a short note on how to add them would help as well.
+15.11 We would like to export the weekly usage report as a CSV file for our finance review.
+15.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+15.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+15.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+15.15 If the export can include custom fields, a short note on how to add them would help as well.
+15.16 We would like to export the weekly usage report as a CSV file for our finance review.
+15.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+15.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+15.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+15.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.999089) urgency=low ticket_ref=f9bb1ba57eff01c1ead9",t4|t4dk-f9bb1ba57eff01c1ead9|t4-cat-howto,Medium,15
+77,2026-10-13T04:29:40.470483+00:00,sec12-16,A,SUP-16,SUP,Task,[howto] Scheduled CSV export question sec12-16,"Hello support team,
+
+This is request sec12-16 of our export questions.
+16.1 We would like to export the weekly usage report as a CSV file for our finance review.
+16.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+16.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+16.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+16.5 If the export can include custom fields, a short note on how to add them would help as well.
+16.6 We would like to export the weekly usage report as a CSV file for our finance review.
+16.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+16.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+16.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+16.10 If the export can include custom fields, a short note on how to add them would help as well.
+16.11 We would like to export the weekly usage report as a CSV file for our finance review.
+16.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+16.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+16.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+16.15 If the export can include custom fields, a short note on how to add them would help as well.
+16.16 We would like to export the weekly usage report as a CSV file for our finance review.
+16.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+16.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+16.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+16.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.999739) urgency=low ticket_ref=4b8ff8bbd97dad375468",t4|t4dk-4b8ff8bbd97dad375468|t4-cat-howto,Medium,16
+82,2026-10-13T04:29:42.106231+00:00,sec12-17,A,SUP-17,SUP,Task,[howto] Scheduled CSV export question sec12-17,"Hello support team,
+
+This is request sec12-17 of our export questions.
+17.1 We would like to export the weekly usage report as a CSV file for our finance review.
+17.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+17.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+17.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+17.5 If the export can include custom fields, a short note on how to add them would help as well.
+17.6 We would like to export the weekly usage report as a CSV file for our finance review.
+17.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+17.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+17.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+17.10 If the export can include custom fields, a short note on how to add them would help as well.
+17.11 We would like to export the weekly usage report as a CSV file for our finance review.
+17.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+17.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+17.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+17.15 If the export can include custom fields, a short note on how to add them would help as well.
+17.16 We would like to export the weekly usage report as a CSV file for our finance review.
+17.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+17.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+17.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+17.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.999796) urgency=medium ticket_ref=58f5848460bf0a7b14d0",t4|t4dk-58f5848460bf0a7b14d0|t4-cat-howto,Medium,17
+87,2026-10-13T04:29:43.740128+00:00,sec12-18,A,SUP-18,SUP,Task,[howto] Scheduled CSV export question sec12-18,"Hello support team,
+
+This is request sec12-18 of our export questions.
+18.1 We would like to export the weekly usage report as a CSV file for our finance review.
+18.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+18.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+18.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+18.5 If the export can include custom fields, a short note on how to add them would help as well.
+18.6 We would like to export the weekly usage report as a CSV file for our finance review.
+18.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+18.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+18.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+18.10 If the export can include custom fields, a short note on how to add them would help as well.
+18.11 We would like to export the weekly usage report as a CSV file for our finance review.
+18.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+18.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+18.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+18.15 If the export can include custom fields, a short note on how to add them would help as well.
+18.16 We would like to export the weekly usage report as a CSV file for our finance review.
+18.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+18.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+18.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+18.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.99883) urgency=low ticket_ref=8d97c0a46b61eb610a4e",t4|t4dk-8d97c0a46b61eb610a4e|t4-cat-howto,Medium,18
+92,2026-10-13T04:29:45.363363+00:00,sec12-19,A,SUP-19,SUP,Task,[howto] Scheduled CSV export question sec12-19,"Hello support team,
+
+This is request sec12-19 of our export questions.
+19.1 We would like to export the weekly usage report as a CSV file for our finance review.
+19.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+19.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+19.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+19.5 If the export can include custom fields, a short note on how to add them would help as well.
+19.6 We would like to export the weekly usage report as a CSV file for our finance review.
+19.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+19.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+19.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+19.10 If the export can include custom fields, a short note on how to add them would help as well.
+19.11 We would like to export the weekly usage report as a CSV file for our finance review.
+19.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+19.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+19.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+19.15 If the export can include custom fields, a short note on how to add them would help as well.
+19.16 We would like to export the weekly usage report as a CSV file for our finance review.
+19.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+19.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+19.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+19.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.999925) urgency=medium ticket_ref=82172a26767410feedbe",t4|t4dk-82172a26767410feedbe|t4-cat-howto,Medium,19
+97,2026-10-13T04:29:46.722012+00:00,sec12-20,A,SUP-20,SUP,Task,[howto] Scheduled CSV export question sec12-20,"Hello support team,
+
+This is request sec12-20 of our export questions.
+20.1 We would like to export the weekly usage report as a CSV file for our finance review.
+20.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+20.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+20.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+20.5 If the export can include custom fields, a short note on how to add them would help as well.
+20.6 We would like to export the weekly usage report as a CSV file for our finance review.
+20.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+20.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+20.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+20.10 If the export can include custom fields, a short note on how to add them would help as well.
+20.11 We would like to export the weekly usage report as a CSV file for our finance review.
+20.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+20.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+20.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+20.15 If the export can include custom fields, a short note on how to add them would help as well.
+20.16 We would like to export the weekly usage report as a CSV file for our finance review.
+20.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+20.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+20.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+20.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.996827) urgency=low ticket_ref=de436a8dfed8c579c172",t4|t4dk-de436a8dfed8c579c172|t4-cat-howto,Medium,20
+102,2026-10-13T04:29:48.150990+00:00,sec12-21,A,SUP-21,SUP,Task,[howto] Scheduled CSV export question sec12-21,"Hello support team,
+
+This is request sec12-21 of our export questions.
+21.1 We would like to export the weekly usage report as a CSV file for our finance review.
+21.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+21.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+21.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+21.5 If the export can include custom fields, a short note on how to add them would help as well.
+21.6 We would like to export the weekly usage report as a CSV file for our finance review.
+21.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+21.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+21.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+21.10 If the export can include custom fields, a short note on how to add them would help as well.
+21.11 We would like to export the weekly usage report as a CSV file for our finance review.
+21.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+21.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+21.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+21.15 If the export can include custom fields, a short note on how to add them would help as well.
+21.16 We would like to export the weekly usage report as a CSV file for our finance review.
+21.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+21.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+21.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+21.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.999569) urgency=medium ticket_ref=4367d767174389f8197b",t4|t4dk-4367d767174389f8197b|t4-cat-howto,Medium,21
+107,2026-10-13T04:29:49.594452+00:00,sec12-22,A,SUP-22,SUP,Task,[howto] Scheduled CSV export question sec12-22,"Hello support team,
+
+This is request sec12-22 of our export questions.
+22.1 We would like to export the weekly usage report as a CSV file for our finance review.
+22.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+22.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+22.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+22.5 If the export can include custom fields, a short note on how to add them would help as well.
+22.6 We would like to export the weekly usage report as a CSV file for our finance review.
+22.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+22.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+22.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+22.10 If the export can include custom fields, a short note on how to add them would help as well.
+22.11 We would like to export the weekly usage report as a CSV file for our finance review.
+22.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+22.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+22.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+22.15 If the export can include custom fields, a short note on how to add them would help as well.
+22.16 We would like to export the weekly usage report as a CSV file for our finance review.
+22.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+22.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+22.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+22.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.999842) urgency=low ticket_ref=39b646811a48496bf19f",t4|t4dk-39b646811a48496bf19f|t4-cat-howto,Medium,22
+112,2026-10-13T04:29:51.000817+00:00,sec12-23,A,SUP-23,SUP,Task,[howto] Scheduled CSV export question sec12-23,"Hello support team,
+
+This is request sec12-23 of our export questions.
+23.1 We would like to export the weekly usage report as a CSV file for our finance review.
+23.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+23.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+23.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+23.5 If the export can include custom fields, a short note on how to add them would help as well.
+23.6 We would like to export the weekly usage report as a CSV file for our finance review.
+23.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+23.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+23.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+23.10 If the export can include custom fields, a short note on how to add them would help as well.
+23.11 We would like to export the weekly usage report as a CSV file for our finance review.
+23.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+23.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+23.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+23.15 If the export can include custom fields, a short note on how to add them would help as well.
+23.16 We would like to export the weekly usage report as a CSV file for our finance review.
+23.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+23.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+23.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+23.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.99929) urgency=low ticket_ref=ff20fb064ebce14c999b",t4|t4dk-ff20fb064ebce14c999b|t4-cat-howto,Medium,23
+117,2026-10-13T04:29:52.418547+00:00,sec12-24,A,SUP-24,SUP,Task,[howto] Scheduled CSV export question sec12-24,"Hello support team,
+
+This is request sec12-24 of our export questions.
+24.1 We would like to export the weekly usage report as a CSV file for our finance review.
+24.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+24.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+24.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+24.5 If the export can include custom fields, a short note on how to add them would help as well.
+24.6 We would like to export the weekly usage report as a CSV file for our finance review.
+24.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+24.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+24.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+24.10 If the export can include custom fields, a short note on how to add them would help as well.
+24.11 We would like to export the weekly usage report as a CSV file for our finance review.
+24.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+24.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+24.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+24.15 If the export can include custom fields, a short note on how to add them would help as well.
+24.16 We would like to export the weekly usage report as a CSV file for our finance review.
+24.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+24.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+24.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+24.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.999925) urgency=low ticket_ref=89c9f022622bd7ec84fc",t4|t4dk-89c9f022622bd7ec84fc|t4-cat-howto,Medium,24
+122,2026-10-13T04:29:54.068981+00:00,sec12-25,A,SUP-25,SUP,Task,[howto] Scheduled CSV export question sec12-25,"Hello support team,
+
+This is request sec12-25 of our export questions.
+25.1 We would like to export the weekly usage report as a CSV file for our finance review.
+25.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+25.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+25.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+25.5 If the export can include custom fields, a short note on how to add them would help as well.
+25.6 We would like to export the weekly usage report as a CSV file for our finance review.
+25.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+25.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+25.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+25.10 If the export can include custom fields, a short note on how to add them would help as well.
+25.11 We would like to export the weekly usage report as a CSV file for our finance review.
+25.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+25.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+25.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+25.15 If the export can include custom fields, a short note on how to add them would help as well.
+25.16 We would like to export the weekly usage report as a CSV file for our finance review.
+25.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+25.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+25.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+25.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.996827) urgency=low ticket_ref=64b0440eb5181b0877fe",t4|t4dk-64b0440eb5181b0877fe|t4-cat-howto,Medium,25
+127,2026-10-13T04:29:55.756654+00:00,sec12-26,A,SUP-26,SUP,Task,[howto] Scheduled CSV export question sec12-26,"Hello support team,
+
+This is request sec12-26 of our export questions.
+26.1 We would like to export the weekly usage report as a CSV file for our finance review.
+26.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+26.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+26.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+26.5 If the export can include custom fields, a short note on how to add them would help as well.
+26.6 We would like to export the weekly usage report as a CSV file for our finance review.
+26.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+26.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+26.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+26.10 If the export can include custom fields, a short note on how to add them would help as well.
+26.11 We would like to export the weekly usage report as a CSV file for our finance review.
+26.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+26.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+26.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+26.15 If the export can include custom fields, a short note on how to add them would help as well.
+26.16 We would like to export the weekly usage report as a CSV file for our finance review.
+26.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+26.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+26.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+26.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.999089) urgency=low ticket_ref=e27396df6133ae9867ba",t4|t4dk-e27396df6133ae9867ba|t4-cat-howto,Medium,26
+132,2026-10-13T04:29:57.289937+00:00,sec12-27,A,SUP-27,SUP,Task,[howto] Scheduled CSV export question sec12-27,"Hello support team,
+
+This is request sec12-27 of our export questions.
+27.1 We would like to export the weekly usage report as a CSV file for our finance review.
+27.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+27.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+27.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+27.5 If the export can include custom fields, a short note on how to add them would help as well.
+27.6 We would like to export the weekly usage report as a CSV file for our finance review.
+27.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+27.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+27.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+27.10 If the export can include custom fields, a short note on how to add them would help as well.
+27.11 We would like to export the weekly usage report as a CSV file for our finance review.
+27.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+27.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+27.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+27.15 If the export can include custom fields, a short note on how to add them would help as well.
+27.16 We would like to export the weekly usage report as a CSV file for our finance review.
+27.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+27.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+27.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+27.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.999089) urgency=low ticket_ref=226739e68d5584dd0746",t4|t4dk-226739e68d5584dd0746|t4-cat-howto,Medium,27
+137,2026-10-13T04:29:58.812369+00:00,sec12-28,A,SUP-28,SUP,Task,[howto] Scheduled CSV export question sec12-28,"Hello support team,
+
+This is request sec12-28 of our export questions.
+28.1 We would like to export the weekly usage report as a CSV file for our finance review.
+28.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+28.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+28.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+28.5 If the export can include custom fields, a short note on how to add them would help as well.
+28.6 We would like to export the weekly usage report as a CSV file for our finance review.
+28.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+28.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+28.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+28.10 If the export can include custom fields, a short note on how to add them would help as well.
+28.11 We would like to export the weekly usage report as a CSV file for our finance review.
+28.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+28.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+28.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+28.15 If the export can include custom fields, a short note on how to add them would help as well.
+28.16 We would like to export the weekly usage report as a CSV file for our finance review.
+28.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+28.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+28.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+28.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.999925) urgency=medium ticket_ref=a4ed0d4096ea137f212f",t4|t4dk-a4ed0d4096ea137f212f|t4-cat-howto,Medium,28
+142,2026-10-13T04:30:00.579997+00:00,sec12-29,A,SUP-29,SUP,Task,[howto] Scheduled CSV export question sec12-29,"Hello support team,
+
+This is request sec12-29 of our export questions.
+29.1 We would like to export the weekly usage report as a CSV file for our finance review.
+29.2 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+29.3 Our workspace has four teams and each team lead needs the same report in their own inbox.
+29.4 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+29.5 If the export can include custom fields, a short note on how to add them would help as well.
+29.6 We would like to export the weekly usage report as a CSV file for our finance review.
+29.7 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+29.8 Our workspace has four teams and each team lead needs the same report in their own inbox.
+29.9 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+29.10 If the export can include custom fields, a short note on how to add them would help as well.
+29.11 We would like to export the weekly usage report as a CSV file for our finance review.
+29.12 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+29.13 Our workspace has four teams and each team lead needs the same report in their own inbox.
+29.14 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+29.15 If the export can include custom fields, a short note on how to add them would help as well.
+29.16 We would like to export the weekly usage report as a CSV file for our finance review.
+29.17 The help article mentions a scheduled export, but we cannot find where to set the day and time.
+29.18 Our workspace has four teams and each team lead needs the same report in their own inbox.
+29.19 Please tell us which role is needed to create the schedule and whether viewers can receive it.
+29.20 If the export can include custom fields, a short note on how to add the
+category=howto (1) priority=P3 (0.999447) urgency=medium ticket_ref=9de62eb3a1a2d751d970",t4|t4dk-9de62eb3a1a2d751d970|t4-cat-howto,Medium,29
