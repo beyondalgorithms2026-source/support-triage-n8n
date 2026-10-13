@@ -514,3 +514,21 @@ I-8 regression.
 Reverse: delete the attack run folder and its cost-ledger row, revert the three source files and `tests/test_attacks.py`
 (about an hour); a re-run costs about $0.03.
 Owner answer (2026-10-13): accept. SEC-17 is reported as not_run in G13, with the reason; no re-run.
+
+## Q-36 Runbook and limitations choices GOALS G12 leaves open — L
+Date: 2026-10-13. Goal: G12 (T4-12).
+Decision:
+(1) The runbook describes this build as it runs: a local replay, published only while `run` is active. It does not
+describe an always-on deployment, because none exists. "Start / Stop" = `setup` + `run`, Ctrl+C, and the manual
+`unpublish:workflow` commands the runner itself uses (`LocalN8n.unpublish`, ids from the workflow JSON).
+(2) The runbook tells reviewers to create a queued ticket's issue by hand with label `t4dk-<dedupe_key>`, so that
+H11 finds it on a later delivery (ADR-006). No run tested a hand-made issue.
+(3) "Pruning n8n executions" names the n8n settings `EXECUTIONS_DATA_PRUNE` and `EXECUTIONS_DATA_MAX_AGE` and the
+Executions list. They belong to the container config outside this folder, and no run used them. The runbook says so.
+(4) "Rotating secrets" uses `scripts/init_env.py` as it is: it never overwrites a value, so the operator empties the
+value first.
+(5) LIMITATIONS states the test-run human share and the P3→P2 pattern without counts. G13 publishes the numbers
+from `eval_report.json` (I-6). Commands and file paths in the runbook sit in fenced blocks, which the word check skips.
+Why: smallest docs that let an operator run and stop the replay without reading code, with no claim beyond the runs.
+Reverse: doc edit (minutes).
+Owner answer:

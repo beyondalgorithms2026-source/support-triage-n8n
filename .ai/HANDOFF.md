@@ -1,13 +1,13 @@
 # Current handoff
-Task: T4-11 (G11) Attack run. Attempt 1 (worker hit a Claude usage limit after the run; daytime session closed out).
+Task: T4-12 (G12) Runbook and limitations note. Attempt 1 (overnight, unattended).
 Branch: main
-Last commit: c7595e4 T4-10: Held-out test run, replay proof, scorecard (before this commit)
-Done: live attack run `attack-local-20261013T042634Z-c7595e4`: main segment (48 injection/pii/malformed/duplicate tickets of both splits + 10 originals)
-and isolated segments sec12, sec13, writes (Q-35). 104 model calls, $0.0228. `attack_results.json`: 19 defended,
-SEC-17 not_run (jira:search_lag never fired). auth_probe.json, secret_scan.json, static_checks.json written.
-Next task: G12 (T4-12) Runbook and limitations note.
-Read first: OPEN_QUESTIONS.md Q-35, Q-34; `evals/runs/attack-local-20261013T042634Z-c7595e4/attack_results.json`, `summary.json`.
-Do not change: `evals/runs/attack-local-20261013T042634Z-c7595e4/`; τ in `0. Config`; frozen headers; node names; workflow ids; scripts/.
-Tests run / result: accept.sh G11 → ACCEPT PASS; guard.sh → guard clean; 241 unit tests OK; compileall ok;
-static_checks --strict → 0 violations.
-Open questions: Q-35 (new). Q-2 and Q-22…Q-34 still have no owner answer.
+Last commit: e6ece8e T4-11: record owner answer on Q-35 (before this goal; the loop commits G12)
+Done: `docs/RUNBOOK.md` (10 headings, 580 words, commands in fenced blocks) and `docs/LIMITATIONS.md` (25 bullets:
+ARCHITECTURE §11, G7–G11 run findings, GOALS § Cut; each with an evidence path). Q-36 records the choices.
+Next task: G13 (T4-13) Security findings table and eval report.
+Read first: `docs/LIMITATIONS.md` (residual-risk lines for findings.md), OPEN_QUESTIONS Q-34, Q-35, Q-36;
+`evals/runs/attack-local-20261013T042634Z-c7595e4/attack_results.json`.
+Do not change: `evals/runs/*`; τ in `0. Config`; frozen headers; node names; workflow ids; scripts/.
+Tests run / result: `bash scripts/accept.sh G12` → ACCEPT PASS; `bash scripts/guard.sh` → guard clean.
+No unit tests or live runs were needed (docs only).
+Open questions: Q-36 (new). Q-2, Q-4…Q-9, Q-11, Q-12, Q-14…Q-17 and Q-22…Q-34 still have no owner answer.

@@ -28,7 +28,7 @@ blocked). A DONE row is never reopened by the loop.
 | T4-09 | G9 | Dev run and per-class threshold tuning | DONE | 1 | accept+guard pass (attempt 1, $1.9861820000000001) |
 | T4-10 | G10 | Held-out test run, replay proof, scorecard | DONE | 1 | accept+guard pass (attempt 1, $3.4378754000000007) |
 | T4-11 | G11 | Attack run | DONE | 1 | accept+guard pass (attempt 1, $4.78; closeout by daytime session) |
-| T4-12 | G12 | Runbook and limitations note | TODO | 0 | — |
+| T4-12 | G12 | Runbook and limitations note | DONE | 1 | accept+guard pass (attempt 1, $1.9135027999999998) |
 | T4-13 | G13 | Security findings table and eval report | TODO | 0 | — |
 | T4-14 | G14 | Buyer README | TODO | 0 | — |
 <!-- status-table:end -->
@@ -36,4 +36,4 @@ blocked). A DONE row is never reopened by the loop.
 Target: local Docker `n8nio/n8n:2.22.5` (container `n8n`, shared with T2). Sink/sandbox port 8790.
 Model: `gpt-4o-mini-2024-07-18` (ADR-005; logprob check pending, OPEN_QUESTIONS Q-2).
 
-Last updated: 2026-10-13 11:00 UTC (scripts/status.py)
+Last updated: 2026-10-13 11:05 UTC (scripts/status.py)
