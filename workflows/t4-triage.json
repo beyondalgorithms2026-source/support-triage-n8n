@@ -1,5 +1,5 @@
 {
-  "name": "T4 triage — slice (G7)",
+  "name": "T4 triage — full controls (G8)",
   "nodes": [
     {
       "parameters": {
@@ -44,6 +44,12 @@
               "id": "3116c0a0-02cf-5d4f-a63b-817d1d6cb776",
               "name": "llm_price_out_per_mtok",
               "value": 0.6,
+              "type": "number"
+            },
+            {
+              "id": "f544ca83-44e9-5a79-8d60-70433f569456",
+              "name": "llm_prompt_chars",
+              "value": 2686,
               "type": "number"
             },
             {
@@ -119,9 +125,27 @@
               "type": "number"
             },
             {
+              "id": "0c23823a-b122-5454-bf7b-f32e36fc2abf",
+              "name": "slack_channel_triage",
+              "value": "C0T4TRIAGE",
+              "type": "string"
+            },
+            {
+              "id": "12921fa7-c2c8-57b9-81ad-3bb60e35ebcf",
+              "name": "slack_channel_review",
+              "value": "C0T4REVIEW",
+              "type": "string"
+            },
+            {
               "id": "63f95b7e-4574-55a3-a2a7-a2cb8ad3d02e",
               "name": "always_review",
               "value": "[\"privacy\", \"other\"]",
+              "type": "array"
+            },
+            {
+              "id": "0b3ad9b4-b8cc-501c-94ba-421f9ff930b6",
+              "name": "privacy_keywords",
+              "value": "[\"gdpr\", \"ccpa\", \"delete my data\", \"data subject\", \"right to access\"]",
               "type": "array"
             },
             {
@@ -135,12 +159,6 @@
               "name": "tau_priority",
               "value": "{\"P1\": 1.01, \"P2\": 1.01, \"P3\": 1.01, \"P4\": 1.01}",
               "type": "object"
-            },
-            {
-              "id": "e9b99fbc-3852-500f-81f2-12ab1cab1347",
-              "name": "slice_mode",
-              "value": true,
-              "type": "boolean"
             }
           ]
         },
@@ -205,6 +223,108 @@
     },
     {
       "parameters": {
+        "method": "GET",
+        "url": "=__SINK_BASE_URL__/lookup/jira_links?dedupe_key={{ encodeURIComponent($json.dedupe_key) }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "9ec8b364-41aa-59ef-a915-901a7743efdb",
+      "name": "H2 Link Lookup",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpHeaderAuth": {
+          "name": "t4-sink-auth"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 1000,
+      "position": [
+        880,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=__SINK_BASE_URL__/lookup/audit?content_sha256={{ encodeURIComponent($('H1 Intake Guard').first(0).json.content_sha256) }}&status=auto_routed%7Creview",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "d18f2366-017c-52b3-9e8d-bfaac290bb64",
+      "name": "H2 Content Lookup",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpHeaderAuth": {
+          "name": "t4-sink-auth"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 1000,
+      "position": [
+        1100,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// C-18 steps 1-2, before any model spend: a jira_links row with this dedupe_key, or a routed or queued audit row\n// with this content_sha256, makes the ticket a duplicate_skip.\nconst item = $('H1 Intake Guard').first(0).json;\nconst links = ($('H2 Link Lookup').first(0).json || {}).rows || [];\nconst same = ($json || {}).rows || [];\nconst via = links.length ? 'jira_links' : (same.length ? 'content' : '');\nconst issueKey = String((links.length ? links[0].issue_key : (same.length ? same[0].issue_key : '')) || '');\nreturn [{ json: { ...item, dedupe_route: via ? 'duplicate' : 'new', duplicate_via: via,\n  duplicate_issue_key: issueKey } }];\n"
+      },
+      "id": "70c75b9f-ad35-5d4c-b712-a1df38c8b9b1",
+      "name": "H2 Dedupe Check",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "84b88ad6-b1c9-59ef-9fd1-4e101b65b1de",
+              "leftValue": "={{ $json.dedupe_route }}",
+              "rightValue": "new",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "29be3b00-1248-54ae-9ccd-95a79626b18f",
+      "name": "H2 New?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1540,
+        300
+      ]
+    },
+    {
+      "parameters": {
         "jsCode": "// BEGIN src/js/redact.js\n// PII redaction before the model and before any write (ARCHITECTURE C-5, ADR-004). H3 Redact.\n// JS twin of src/common/redact.py: same patterns, same order, same placeholders. Plain ES2019, no require,\n// so the file pastes into an n8n Code node. tests/test_redact.py runs it under node on the shared vectors.\n// Entry point: redactTicket(ticket) -> {redacted_subject, redacted_body, pii_counts}.\n\nvar PII_TYPES = ['email', 'phone', 'card', 'iban', 'ssn', 'ipv4', 'url', 'name'];\n\nvar REDACT_OCTET = '(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])';\nvar REDACT_PATTERNS = {\n  url: '[Hh][Tt][Tt][Pp][Ss]?://[^ \\\\t\\\\r\\\\n<>\"\\'|()\\\\[\\\\]{}]+\\\\?[^ \\\\t\\\\r\\\\n<>\"\\'|()\\\\[\\\\]{}]+',\n  email: '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}',\n  iban: '(?<![A-Za-z0-9])[A-Z]{2}[0-9]{2}(?: ?[A-Z0-9]{4}){2,7}(?: ?[A-Z0-9]{1,3})?(?![A-Za-z0-9])',\n  card: '(?<![0-9])[0-9](?:[ -]?[0-9]){12,18}(?![0-9])',\n  ssn: '(?<![0-9])[0-9]{3}-[0-9]{2}-[0-9]{4}(?![0-9])',\n  ipv4: '(?<![0-9.])(?:' + REDACT_OCTET + '\\\\.){3}' + REDACT_OCTET + '(?![0-9]|\\\\.[0-9])',\n  phone: '(?<![A-Za-z0-9+])(?:(?:\\\\+1[ .-]?)?(?:\\\\([0-9]{3}\\\\)[ .-]?|[0-9]{3}[ .-])[0-9]{3}[ .-][0-9]{4}' +\n         '|\\\\+[0-9]{1,3}(?:[ .-]?(?:\\\\([0-9]{1,4}\\\\)|[0-9]{1,4})){2,5})(?![A-Za-z0-9])'\n};\nvar REDACT_ORDER = ['url', 'email', 'iban', 'card', 'ssn', 'ipv4', 'phone'];\n\nfunction isDigit(c) { return c >= '0' && c <= '9'; }\n\nfunction luhnOk(text) {\n  var digits = [];\n  for (var k = 0; k < text.length; k++) { if (isDigit(text[k])) digits.push(+text[k]); }\n  if (digits.length < 13 || digits.length > 19) return false;\n  var total = 0;\n  for (var i = 0; i < digits.length; i++) {\n    var d = digits[digits.length - 1 - i];\n    if (i % 2) { d *= 2; if (d > 9) d -= 9; }\n    total += d;\n  }\n  return total % 10 === 0;\n}\n\nfunction ibanOk(text) {\n  var code = text.split(' ').join('');\n  if (code.length < 15 || code.length > 34) return false;\n  var moved = code.slice(4) + code.slice(0, 4);\n  var rem = 0;\n  for (var i = 0; i < moved.length; i++) {\n    var c = moved[i];\n    var value = isDigit(c) ? c : String(c.charCodeAt(0) - 55);\n    for (var j = 0; j < value.length; j++) rem = (rem * 10 + (+value[j])) % 97;\n  }\n  return rem === 1;\n}\n\nfunction phoneOk(text) {\n  var n = 0;\n  for (var i = 0; i < text.length; i++) { if (isDigit(text[i])) n++; }\n  return n >= 7 && n <= 15;\n}\n\nvar REDACT_CHECKS = { iban: ibanOk, card: luhnOk, phone: phoneOk };\n\nfunction newRedactState() {\n  var state = { counts: {}, seen: {} };\n  for (var i = 0; i < PII_TYPES.length; i++) { state.counts[PII_TYPES[i]] = 0; state.seen[PII_TYPES[i]] = {}; }\n  return state;\n}\n\nfunction redactPlaceholder(state, kind, value) {\n  var seen = state.seen[kind];\n  if (!Object.prototype.hasOwnProperty.call(seen, value)) seen[value] = Object.keys(seen).length + 1;\n  state.counts[kind] += 1;\n  return '[' + kind.toUpperCase() + '_' + seen[value] + ']';\n}\n\nfunction isWordChar(ch) {\n  return /[A-Za-z0-9_]/.test(ch) || ch.charCodeAt(0) >= 128;\n}\n\nfunction namePartsOf(displayName) {\n  if (!displayName) return [];\n  var full = String(displayName).split('\"').join(' ').split(' ').filter(function (p) { return p; }).join(' ');\n  if (!full) return [];\n  var uniq = [];\n  full.split(' ').forEach(function (p) { if (uniq.indexOf(p) < 0) uniq.push(p); });\n  uniq.sort(function (a, b) {\n    if (a.length !== b.length) return b.length - a.length;\n    return a < b ? -1 : (a > b ? 1 : 0);\n  });\n  var parts = [full];\n  uniq.forEach(function (p) { if (p.length >= 2 && parts.indexOf(p) < 0) parts.push(p); });\n  return parts;\n}\n\nfunction redactName(text, displayName, state) {\n  namePartsOf(displayName).forEach(function (part) {\n    var out = [];\n    var i = 0;\n    for (;;) {\n      var j = text.indexOf(part, i);\n      if (j < 0) break;\n      var end = j + part.length;\n      if ((j > 0 && isWordChar(text[j - 1])) || (end < text.length && isWordChar(text[end]))) {\n        out.push(text.slice(i, j + 1));\n        i = j + 1;\n        continue;\n      }\n      out.push(text.slice(i, j));\n      // Every form of the sender's name is one person: one placeholder.\n      out.push(redactPlaceholder(state, 'name', 'sender'));\n      i = end;\n    }\n    out.push(text.slice(i));\n    text = out.join('');\n  });\n  return text;\n}\n\nfunction redactText(text, displayName, state) {\n  if (!state) state = newRedactState();\n  if (text === null || text === undefined) return '';\n  text = String(text);\n  REDACT_ORDER.forEach(function (kind) {\n    var flags = 'g';\n    var check = REDACT_CHECKS[kind];\n    text = text.replace(new RegExp(REDACT_PATTERNS[kind], flags), function (m) {\n      if (check && !check(m)) return m;\n      return redactPlaceholder(state, kind, m);\n    });\n  });\n  return redactName(text, displayName, state);\n}\n\nfunction redactTicket(ticket) {\n  var state = newRedactState();\n  var name = ticket.from_name;\n  var subject = redactText(ticket.subject, name, state);\n  var body = redactText(ticket.body_text, name, state);\n  var counts = {};\n  PII_TYPES.forEach(function (t) { counts[t] = state.counts[t]; });\n  return { redacted_subject: subject, redacted_body: body, pii_counts: counts };\n}\n// END src/js/redact.js\n\n// C-5: redact before the model and before any write; the raw ticket is dropped from the item here.\nconst item = $input.first().json;\nconst ticket = item.ticket || {};\nconst red = redactTicket(ticket);\nconst nameState = newRedactState();\nconst names = (ticket.attachments || []).map((a) => redactText(a.name, ticket.from_name, nameState));\nconst out = { ...item, ...red, attachment_names: names };\ndelete out.ticket;\nreturn [{ json: out }];\n"
       },
       "id": "24537432-8a37-5131-b128-0f4ad2493a55",
@@ -213,7 +333,7 @@
       "typeVersion": 2,
       "onError": "continueErrorOutput",
       "position": [
-        880,
+        1760,
         300
       ]
     },
@@ -227,7 +347,137 @@
       "typeVersion": 2,
       "onError": "continueErrorOutput",
       "position": [
-        1100,
+        1980,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=__SINK_BASE_URL__/ledger/sum?day={{ new Date().toISOString().slice(0, 10) }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "2e723f68-91a1-553c-9d87-a073f49240e4",
+      "name": "H5 Day Spend",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpHeaderAuth": {
+          "name": "t4-sink-auth"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 1000,
+      "position": [
+        2200,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=__SINK_BASE_URL__/ledger/sum?run_id={{ encodeURIComponent($('H4 Injection Scan + Cap').first(0).json.run_id) }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "337848e9-4890-52ee-998b-a3f32a74da4e",
+      "name": "H5 Run Spend",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpHeaderAuth": {
+          "name": "t4-sink-auth"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 1000,
+      "position": [
+        2420,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=__SINK_BASE_URL__/ledger/count?since_s=60",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "8b494f12-5743-585b-a837-5553dcea7db8",
+      "name": "H5 Rate Count",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpHeaderAuth": {
+          "name": "t4-sink-auth"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 1000,
+      "position": [
+        2640,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// C-8 spend gate before the call. The estimate bounds tokens by chars (prompt + model_text) at the Config prices.\n// Over the daily cap, over the run cap, or llm_max_rpm calls in the last 60 s: no call, review with capped = 1.\nconst src = $('H4 Injection Scan + Cap').first(0).json;\nconst day = $('H5 Day Spend').first(0).json || {};\nconst run = $('H5 Run Spend').first(0).json || {};\nconst rate = $json || {};\nconst chars = Number(src.llm_prompt_chars) + String(src.model_text || '').length;\nconst estUsd = (chars * Number(src.llm_price_in_per_mtok)\n  + Number(src.max_output_tokens) * Number(src.llm_price_out_per_mtok)) / 1000000;\nconst reasons = [];\nif (!(Number(day.usd || 0) + estUsd <= Number(src.daily_usd_cap))) reasons.push('capped:daily_usd');\nif (!(Number(run.usd || 0) + estUsd <= Number(src.run_usd_cap))) reasons.push('capped:run_usd');\nif (!(Number(rate.count || 0) < Number(src.llm_max_rpm))) reasons.push('capped:llm_rpm');\nreturn [{ json: { ...src, est_usd: estUsd, reasons, capped: reasons.length ? 1 : 0,\n  spend_route: reasons.length ? 'capped' : 'call' } }];\n"
+      },
+      "id": "1bc1a7a8-e7e8-5b54-b216-29762d6818a5",
+      "name": "H5 Spend Check",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2860,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "943dd204-4c2e-599d-9620-177925d6d432",
+              "leftValue": "={{ $json.spend_route }}",
+              "rightValue": "call",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "75b13156-e616-5248-ae28-30eaa0c855fe",
+      "name": "H5 Under Cap?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3080,
         300
       ]
     },
@@ -258,20 +508,20 @@
       "maxTries": 2,
       "waitBetweenTries": 2000,
       "position": [
-        1320,
+        3300,
         300
       ]
     },
     {
       "parameters": {
-        "jsCode": "// C-12: one ledger row per model call, priced with the Config prices.\nconst src = $('H4 Injection Scan + Cap').first().json;\nconst usage = $json.usage || {};\nconst tokensIn = Number(usage.prompt_tokens || 0);\nconst tokensOut = Number(usage.completion_tokens || 0);\nconst usd = (tokensIn * Number(src.llm_price_in_per_mtok) + tokensOut * Number(src.llm_price_out_per_mtok)) / 1000000;\nreturn [{ json: { run_id: src.run_id, input_ref: src.input_ref, day: new Date().toISOString().slice(0, 10),\n  model: String($json.model || src.llm_model), tokens_in: tokensIn, tokens_out: tokensOut, usd } }];\n"
+        "jsCode": "// C-12: one ledger row per model call, priced with the Config prices.\nconst src = $('H4 Injection Scan + Cap').first(0).json;\nconst usage = $json.usage || {};\nconst tokensIn = Number(usage.prompt_tokens || 0);\nconst tokensOut = Number(usage.completion_tokens || 0);\nconst usd = (tokensIn * Number(src.llm_price_in_per_mtok) + tokensOut * Number(src.llm_price_out_per_mtok)) / 1000000;\nreturn [{ json: { run_id: src.run_id, input_ref: src.input_ref, day: new Date().toISOString().slice(0, 10),\n  model: String($json.model || src.llm_model), tokens_in: tokensIn, tokens_out: tokensOut, usd } }];\n"
       },
       "id": "b2fd8481-8890-53d5-81ff-7a061836921b",
       "name": "H7 Cost Record",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1540,
+        3520,
         300
       ]
     },
@@ -302,33 +552,46 @@
       "maxTries": 2,
       "waitBetweenTries": 1000,
       "position": [
-        1760,
+        3740,
         300
       ]
     },
     {
       "parameters": {
-        "jsCode": "// BEGIN src/js/confidence.js\n// Parse the classifier reply and compute per-class confidence (ARCHITECTURE C-10, C-13; ADR-005). H8 Parse +\n// Confidence. Confidence of a field = probability of the chosen value's first token, renormalised over the\n// first-token alternatives that start exactly one enum value of that field. No logprobs -> confidence 0 and\n// conf_source \"none\" (fail closed: Decide sends the ticket to review). Plain ES2019, no require, so the file\n// pastes into an n8n Code node. tests/test_workflow.py runs it under node on STUB completions.\n// Entry point: classifyCompletion(completion) -> {category, priority, urgency, conf_*, conf_source, reasons,\n// first_tokens}.\n\nvar CLASS_ENUMS = {\n  category: ['billing', 'access', 'bug', 'outage', 'howto', 'feature', 'privacy', 'other'],\n  priority: ['critical', 'high', 'normal', 'low'],\n  urgency: ['high', 'medium', 'low']\n};\nvar CLASS_FIELDS = ['category', 'priority', 'urgency'];\nvar PRIORITY_CODES = { critical: 'P1', high: 'P2', normal: 'P3', low: 'P4' };\n\n// Offset of the first character of the string value of `field` in the JSON text, or -1.\nfunction valueStart(content, field) {\n  var m = new RegExp('\"' + field + '\"[ \\\\t\\\\r\\\\n]*:[ \\\\t\\\\r\\\\n]*\"').exec(content);\n  return m ? m.index + m[0].length : -1;\n}\n\n// The token that holds character `offset`, and the part of that token before it.\nfunction tokenAt(tokens, offset) {\n  var pos = 0;\n  for (var i = 0; i < tokens.length; i++) {\n    var text = String(tokens[i].token || '');\n    if (offset < pos + text.length) return { index: i, prefix: text.slice(0, offset - pos) };\n    pos += text.length;\n  }\n  return null;\n}\n\n// The one enum value that starts with `rest`, else null (empty or ambiguous token text).\nfunction enumFor(rest, values) {\n  if (!rest) return null;\n  var hits = values.filter(function (v) { return v.indexOf(rest) === 0; });\n  return hits.length === 1 ? hits[0] : null;\n}\n\nfunction fieldConfidence(tokens, content, field, chosen) {\n  var start = valueStart(content, field);\n  var at = start < 0 ? null : tokenAt(tokens, start);\n  if (!at) return null;\n  var tok = tokens[at.index];\n  var alts = (tok.top_logprobs || []).slice();\n  if (!alts.some(function (a) { return a.token === tok.token; })) alts.push({ token: tok.token, logprob: tok.logprob });\n  var mass = {};\n  var seen = [];\n  alts.forEach(function (alt) {\n    var text = String(alt.token || '');\n    var value = text.indexOf(at.prefix) === 0 ? enumFor(text.slice(at.prefix.length), CLASS_ENUMS[field]) : null;\n    var p = Math.exp(Number(alt.logprob));\n    seen.push([text, value, Number(alt.logprob)]);\n    if (value !== null && isFinite(p)) mass[value] = (mass[value] || 0) + p;\n  });\n  var total = 0;\n  Object.keys(mass).forEach(function (v) { total += mass[v]; });\n  if (!mass[chosen] || total <= 0) return null;\n  return { confidence: Math.round(mass[chosen] / total * 1000000) / 1000000,\n           map: { prefix: at.prefix, chosen: tok.token, alternatives: seen } };\n}\n\nfunction classifyCompletion(completion) {\n  var choice = (completion && completion.choices && completion.choices[0]) || {};\n  var content = String((choice.message && choice.message.content) || '');\n  var out = { category: '', priority: '', urgency: '', conf_category: 0, conf_priority: 0, conf_urgency: 0,\n              conf_source: 'none', reasons: [], first_tokens: {} };\n  var parsed = null;\n  try { parsed = JSON.parse(content); } catch (e) { parsed = null; }\n  var ok = parsed !== null && typeof parsed === 'object' && !Array.isArray(parsed) &&\n    Object.keys(parsed).length === CLASS_FIELDS.length &&\n    CLASS_FIELDS.every(function (f) { return CLASS_ENUMS[f].indexOf(parsed[f]) >= 0; });\n  if (!ok) {\n    out.reasons.push('schema_miss');\n    return out;\n  }\n  out.category = parsed.category;\n  out.priority = PRIORITY_CODES[parsed.priority];\n  out.urgency = parsed.urgency;\n  var tokens = choice.logprobs && choice.logprobs.content;\n  var joined = Array.isArray(tokens) ? tokens.map(function (t) { return String(t.token || ''); }).join('') : '';\n  if (!joined || joined !== content) {\n    out.reasons.push('confidence:no_logprobs');\n    return out;\n  }\n  var found = {};\n  CLASS_FIELDS.forEach(function (field) {\n    var r = fieldConfidence(tokens, content, field, parsed[field]);\n    if (r !== null) found[field] = r;\n  });\n  if (Object.keys(found).length !== CLASS_FIELDS.length) {\n    out.reasons.push('confidence:no_logprobs');\n    return out;\n  }\n  CLASS_FIELDS.forEach(function (field) {\n    out['conf_' + field] = found[field].confidence;\n    out.first_tokens[field] = found[field].map;\n  });\n  out.conf_source = 'logprobs';\n  return out;\n}\n// END src/js/confidence.js\n\n// C-10, C-13: enums and per-class confidence; a parse failure is reason schema_miss (Decide sends it to review).\nconst src = $('H4 Injection Scan + Cap').first().json;\nconst cost = $('H7 Cost Record').first().json;\nconst parsed = classifyCompletion($('H6 LLM Classify').first().json);\nconst out = { ...src, ...parsed, tokens_in: cost.tokens_in, tokens_out: cost.tokens_out, usd: cost.usd };\ndelete out.model_text;\nreturn [{ json: out }];\n"
+        "jsCode": "// BEGIN src/js/confidence.js\n// Parse the classifier reply and compute per-class confidence (ARCHITECTURE C-10, C-13; ADR-005). H8 Parse +\n// Confidence. Confidence of a field = probability of the chosen value's first token, renormalised over the\n// first-token alternatives that start exactly one enum value of that field. No logprobs -> confidence 0 and\n// conf_source \"none\" (fail closed: Decide sends the ticket to review). Plain ES2019, no require, so the file\n// pastes into an n8n Code node. tests/test_workflow.py runs it under node on STUB completions.\n// Entry point: classifyCompletion(completion) -> {category, priority, urgency, conf_*, conf_source, reasons,\n// first_tokens}.\n\nvar CLASS_ENUMS = {\n  category: ['billing', 'access', 'bug', 'outage', 'howto', 'feature', 'privacy', 'other'],\n  priority: ['critical', 'high', 'normal', 'low'],\n  urgency: ['high', 'medium', 'low']\n};\nvar CLASS_FIELDS = ['category', 'priority', 'urgency'];\nvar PRIORITY_CODES = { critical: 'P1', high: 'P2', normal: 'P3', low: 'P4' };\n\n// Offset of the first character of the string value of `field` in the JSON text, or -1.\nfunction valueStart(content, field) {\n  var m = new RegExp('\"' + field + '\"[ \\\\t\\\\r\\\\n]*:[ \\\\t\\\\r\\\\n]*\"').exec(content);\n  return m ? m.index + m[0].length : -1;\n}\n\n// The token that holds character `offset`, and the part of that token before it.\nfunction tokenAt(tokens, offset) {\n  var pos = 0;\n  for (var i = 0; i < tokens.length; i++) {\n    var text = String(tokens[i].token || '');\n    if (offset < pos + text.length) return { index: i, prefix: text.slice(0, offset - pos) };\n    pos += text.length;\n  }\n  return null;\n}\n\n// The one enum value that starts with `rest`, else null (empty or ambiguous token text).\nfunction enumFor(rest, values) {\n  if (!rest) return null;\n  var hits = values.filter(function (v) { return v.indexOf(rest) === 0; });\n  return hits.length === 1 ? hits[0] : null;\n}\n\nfunction fieldConfidence(tokens, content, field, chosen) {\n  var start = valueStart(content, field);\n  var at = start < 0 ? null : tokenAt(tokens, start);\n  if (!at) return null;\n  var tok = tokens[at.index];\n  var alts = (tok.top_logprobs || []).slice();\n  if (!alts.some(function (a) { return a.token === tok.token; })) alts.push({ token: tok.token, logprob: tok.logprob });\n  var mass = {};\n  var seen = [];\n  alts.forEach(function (alt) {\n    var text = String(alt.token || '');\n    var value = text.indexOf(at.prefix) === 0 ? enumFor(text.slice(at.prefix.length), CLASS_ENUMS[field]) : null;\n    var p = Math.exp(Number(alt.logprob));\n    seen.push([text, value, Number(alt.logprob)]);\n    if (value !== null && isFinite(p)) mass[value] = (mass[value] || 0) + p;\n  });\n  var total = 0;\n  Object.keys(mass).forEach(function (v) { total += mass[v]; });\n  if (!mass[chosen] || total <= 0) return null;\n  return { confidence: Math.round(mass[chosen] / total * 1000000) / 1000000,\n           map: { prefix: at.prefix, chosen: tok.token, alternatives: seen } };\n}\n\nfunction classifyCompletion(completion) {\n  var choice = (completion && completion.choices && completion.choices[0]) || {};\n  var content = String((choice.message && choice.message.content) || '');\n  var out = { category: '', priority: '', urgency: '', conf_category: 0, conf_priority: 0, conf_urgency: 0,\n              conf_source: 'none', reasons: [], first_tokens: {} };\n  var parsed = null;\n  try { parsed = JSON.parse(content); } catch (e) { parsed = null; }\n  var ok = parsed !== null && typeof parsed === 'object' && !Array.isArray(parsed) &&\n    Object.keys(parsed).length === CLASS_FIELDS.length &&\n    CLASS_FIELDS.every(function (f) { return CLASS_ENUMS[f].indexOf(parsed[f]) >= 0; });\n  if (!ok) {\n    out.reasons.push('schema_miss');\n    return out;\n  }\n  out.category = parsed.category;\n  out.priority = PRIORITY_CODES[parsed.priority];\n  out.urgency = parsed.urgency;\n  var tokens = choice.logprobs && choice.logprobs.content;\n  var joined = Array.isArray(tokens) ? tokens.map(function (t) { return String(t.token || ''); }).join('') : '';\n  if (!joined || joined !== content) {\n    out.reasons.push('confidence:no_logprobs');\n    return out;\n  }\n  var found = {};\n  CLASS_FIELDS.forEach(function (field) {\n    var r = fieldConfidence(tokens, content, field, parsed[field]);\n    if (r !== null) found[field] = r;\n  });\n  if (Object.keys(found).length !== CLASS_FIELDS.length) {\n    out.reasons.push('confidence:no_logprobs');\n    return out;\n  }\n  CLASS_FIELDS.forEach(function (field) {\n    out['conf_' + field] = found[field].confidence;\n    out.first_tokens[field] = found[field].map;\n  });\n  out.conf_source = 'logprobs';\n  return out;\n}\n// END src/js/confidence.js\n\n// C-10, C-13: enums and per-class confidence; a parse failure is reason schema_miss (Decide sends it to review).\nconst src = $('H4 Injection Scan + Cap').first(0).json;\nconst cost = $('H7 Cost Record').first(0).json;\nconst parsed = classifyCompletion($('H6 LLM Classify').first(0).json);\nconst out = { ...src, ...parsed, tokens_in: cost.tokens_in, tokens_out: cost.tokens_out, usd: cost.usd };\ndelete out.model_text;\nreturn [{ json: out }];\n"
       },
       "id": "f0942971-b668-5d1d-899f-0b86e9f9b4ea",
       "name": "H8 Parse + Confidence",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1980,
+        3960,
         300
       ]
     },
     {
       "parameters": {
-        "jsCode": "// Slice decision (GOALS G7): no thresholds yet. Auto-route unless the category is in always_review, parsing or\n// confidence failed, or the injection scan fired. Reasons use the prefixes src/score/tune.py expects.\nconst item = $input.first().json;\nconst always = Array.isArray(item.always_review) ? item.always_review : JSON.parse(String(item.always_review || '[]'));\nconst reasons = (item.reasons || []).slice();\nif (item.slice_mode !== true) reasons.push('threshold:not_tuned');\nif (item.category && always.indexOf(item.category) >= 0) reasons.push('policy:' + item.category);\nif ((item.injection_signals || []).length) reasons.push('injection');\nif (item.conf_source !== 'logprobs' && reasons.indexOf('confidence:no_logprobs') < 0\n    && reasons.indexOf('schema_miss') < 0) reasons.push('confidence:no_logprobs');\nreturn [{ json: { ...item, reasons, route: reasons.length ? 'review' : 'auto' } }];\n"
+        "jsCode": "// C-14 cross-checks R1-R6 on the parsed labels and the redacted text. Each failure adds a reason; any reason\n// sends the ticket to review in H10.\nconst item = $input.first().json;\nconst list = (v) => (Array.isArray(v) ? v : JSON.parse(String(v || '[]')));\nconst reasons = (item.reasons || []).slice();\nconst add = (r) => { if (reasons.indexOf(r) < 0) reasons.push(r); };\nconst cat = item.category;\nconst pri = item.priority;\nif (cat) {\n  if (cat === 'outage' && pri !== 'P1' && pri !== 'P2') add('rule:outage_priority');            // R1\n  if (cat === 'other' && pri === 'P1') add('rule:other_p1');                                     // R2\n  if (item.urgency === 'high' && pri === 'P4') add('rule:urgent_low');                           // R3\n  const text = (String(item.redacted_subject || '') + '\\n' + String(item.redacted_body || '')).toLowerCase();\n  if (cat !== 'privacy' && list(item.privacy_keywords).some((k) => text.indexOf(String(k).toLowerCase()) >= 0)) {\n    add('rule:privacy_keywords');                                                                 // R4\n  }\n  if (Number(item.truncated) === 1 && (cat === 'outage' || cat === 'privacy')) add('rule:truncated_sensitive'); // R6\n}\nif ((item.injection_signals || []).length) add('injection');                                      // R5\nreturn [{ json: { ...item, reasons } }];\n"
       },
-      "id": "b95dc98b-0a35-5ca9-9d9a-917ff381b1a0",
-      "name": "H10 Decide (slice)",
+      "id": "4510e82d-b649-5156-a83e-5c030ee93034",
+      "name": "H9 Validate",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2200,
+        4180,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// C-15, C-16: auto-route iff conf_category >= tau_category[category] and conf_priority >= tau_priority[priority],\n// no validation reason, and category not in always_review. A missing tau fails closed. Reason prefixes `policy:`\n// and `threshold:` are the ones src/score/tune.py keeps in the sweep.\nconst item = $input.first().json;\nconst obj = (v) => (v && typeof v === 'object' ? v : JSON.parse(String(v || '{}')));\nconst list = (v) => (Array.isArray(v) ? v : JSON.parse(String(v || '[]')));\nconst tauCat = obj(item.tau_category);\nconst tauPri = obj(item.tau_priority);\nconst reasons = (item.reasons || []).slice();\nconst add = (r) => { if (reasons.indexOf(r) < 0) reasons.push(r); };\nif (!item.category || !item.priority) add('schema_miss');\nif (item.category && list(item.always_review).indexOf(item.category) >= 0) add('policy:' + item.category);\nif (item.category && !(Number(item.conf_category) >= Number(tauCat[item.category]))) add('threshold:category');\nif (item.priority && !(Number(item.conf_priority) >= Number(tauPri[item.priority]))) add('threshold:priority');\nreturn [{ json: { ...item, reasons, route: reasons.length ? 'review' : 'auto' } }];\n"
+      },
+      "id": "27ca851a-6e86-58b4-b207-a24520b14f01",
+      "name": "H10 Decide",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4400,
         300
       ]
     },
@@ -361,8 +624,143 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2420,
+        4620,
         300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=__SINK_BASE_URL__/lookup/jira_links?run_id={{ encodeURIComponent($json.run_id) }}&created_via=create%7Cretry",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "fea02cef-6484-51c4-b01f-b1c5e5b66777",
+      "name": "H11 Create Count",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpHeaderAuth": {
+          "name": "t4-sink-auth"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 1000,
+      "position": [
+        4840,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=__JIRA_BASE_URL__/rest/api/3/search/jql?jql={{ encodeURIComponent('labels = \"t4dk-' + $('H10 Decide').first(0).json.dedupe_key + '\"') }}&fields=key&maxResults=2",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "id": "8e769115-c8db-5414-a9ce-311d2cff0446",
+      "name": "H11 Jira Search",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpBasicAuth": {
+          "name": "t4-jira"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 1000,
+      "position": [
+        5060,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// C-18 step 3, C-21: an issue with this ticket's label is linked, never re-created. At jira_max_creates_per_run\n// creates in this run the ticket goes to review with capped = 1.\nconst d = $('H10 Decide').first(0).json;\nconst creates = Number(($('H11 Create Count').first(0).json || {}).count || 0);\nconst found = (($json || {}).issues || [])[0] || null;\nlet next = 'create';\nif (found) next = 'link';\nelse if (!(creates < Number(d.jira_max_creates_per_run))) next = 'capped';\nconst reasons = (d.reasons || []).slice();\nif (next === 'capped') reasons.push('capped:jira_creates');\nreturn [{ json: { ...d, next, found_key: found ? String(found.key || '') : '', reasons,\n  capped: next === 'capped' ? 1 : 0 } }];\n"
+      },
+      "id": "d8d0356b-75ed-5626-8a37-f02baac452b0",
+      "name": "H11 Route",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5280,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7b499982-f623-50b1-a969-78defa94eeef",
+              "leftValue": "={{ $json.next }}",
+              "rightValue": "link",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "3b86ba85-ad1f-5d27-b1d6-30744144a6dd",
+      "name": "H11 Found?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        5500,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7f1735d0-08cd-5fa6-b11e-37403ce43c31",
+              "leftValue": "={{ $json.next }}",
+              "rightValue": "create",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "415e004b-a1da-56ba-9372-afbde0dd1c71",
+      "name": "H11 Under Create Cap?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        5720,
+        100
       ]
     },
     {
@@ -374,8 +772,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2640,
-        300
+        5940,
+        100
       ]
     },
     {
@@ -403,8 +801,111 @@
       },
       "retryOnFail": false,
       "position": [
-        2860,
-        300
+        6160,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=__JIRA_BASE_URL__/rest/api/3/search/jql?jql={{ encodeURIComponent('labels = \"t4dk-' + $('H12 Build Fields').first(0).json.dedupe_key + '\"') }}&fields=key&maxResults=2",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "id": "819f744e-9a47-5473-bf40-01b5eda25dcd",
+      "name": "H12r Reconcile",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpBasicAuth": {
+          "name": "t4-jira"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 1000,
+      "position": [
+        6380,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f38fedec-93a6-5453-ae5a-14a950585d67",
+              "leftValue": "={{ ($json.issues || []).length ? 'yes' : 'no' }}",
+              "rightValue": "yes",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a30e99e2-0f23-588b-b190-6af95dc59b32",
+      "name": "H12r Found?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        6600,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__JIRA_BASE_URL__/rest/api/3/issue",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('H12 Build Fields').first(0).json.jira_body }}",
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "id": "389bc86a-b150-524f-97c6-b11c1c55b0c2",
+      "name": "H12b Jira Create (retry once)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpBasicAuth": {
+          "name": "t4-jira"
+        }
+      },
+      "retryOnFail": false,
+      "position": [
+        6820,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const done = (name) => { try { return $(name).isExecuted; } catch (error) { return false; } };\n// first(0): the success output. Without a branch index n8n may pick a node's error branch (empty) when both lead here.\nconst pick = (name) => { if (!done(name)) return {}; try { return $(name).first(0).json || {}; } catch (error) { return {}; } };\n// C-20: Slack text only from escaped fields, so `<!channel>` and link markup cannot be produced.\nconst esc = (s) => String(s === undefined || s === null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;')\n  .replace(/>/g, '&gt;');\n// C-18 step 6: the jira_links row is the commit marker. created_via: create (H12), search (H11 hit or H12r\n// reconcile), retry (H12b). An H11 hit is a duplicate: no Slack post.\nconst d = $('H10 Decide').first(0).json;\nlet source = 'H11';\nif (done('H12b Jira Create (retry once)')) source = 'H12b';\nelse if (done('H12r Reconcile')) source = 'H12r';\nelse if (done('H12 Jira Create')) source = 'H12';\nconst VIA = { H11: 'search', H12: 'create', H12r: 'search', H12b: 'retry' };\nconst found = (($json || {}).issues || [])[0] || {};\nconst key = String($json.key || found.key || $json.found_key || '');\nconst text = 'T4 triage: ' + esc(key) + ' [' + esc(d.category) + '] priority ' + esc(d.priority) + ', urgency '\n  + esc(d.urgency) + ', ticket_ref ' + esc(d.dedupe_key);\nreturn [{ json: { source, issue_key: key, notify: source === 'H11' ? 'no' : 'yes',\n  link_row: { run_id: d.run_id, dedupe_key: d.dedupe_key, issue_key: key, category: d.category, priority: d.priority,\n    created_via: VIA[source] },\n  slack_body: { channel: String(d.slack_channel_triage || ''), text, unfurl_links: false, unfurl_media: false } } }];\n"
+      },
+      "id": "49ac25b3-d802-5f1a-aecc-eedeab893da9",
+      "name": "H13 Build Link",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        7040,
+        100
       ]
     },
     {
@@ -415,7 +916,7 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ { run_id: $('H12 Build Fields').first().json.run_id, dedupe_key: $('H12 Build Fields').first().json.dedupe_key, issue_key: $json.key, category: $('H12 Build Fields').first().json.category, priority: $('H12 Build Fields').first().json.priority, created_via: 'create' } }}",
+        "jsonBody": "={{ $('H13 Build Link').first(0).json.link_row }}",
         "options": {
           "timeout": 10000
         }
@@ -434,21 +935,160 @@
       "maxTries": 2,
       "waitBetweenTries": 1000,
       "position": [
-        3080,
-        300
+        7260,
+        100
       ]
     },
     {
       "parameters": {
-        "jsCode": "// C-25: one errors row for every error branch. Intake rejects carry error_code from H1.\nconst done = (name) => { try { return $(name).isExecuted; } catch (error) { return false; } };\nconst intake = done('H1 Intake Guard') ? $('H1 Intake Guard').first().json : {};\nconst inp = $input.first().json || {};\nconst CODES = { 'H3 Redact': 'error:redact', 'H4 Injection Scan + Cap': 'error:scan', 'H6 LLM Classify': 'error:llm',\n  'H7 Ledger Append': 'error:sink', 'H12 Jira Create': 'error:jira', 'H13 Link Record': 'error:sink' };\nconst STAGES = { H1: 'intake', H3: 'intake', H4: 'intake', H6: 'classify', H7: 'classify', H12: 'act', H13: 'act' };\nlet prev = '';\ntry { prev = $prevNode.name || ''; } catch (error) { prev = ''; }\nconst node = inp.error_node || prev || 'external call';\nconst raw = inp.error_message || (inp.error && (inp.error.message || inp.error)) || inp.message || 'external call failed';\nreturn [{ json: { run_id: intake.run_id || '', input_ref: intake.input_ref || '',\n  stage: inp.error_stage || STAGES[node.split(' ')[0]] || 'record', node,\n  code: inp.error_code || CODES[node] || 'error:external', message: String(raw).slice(0, 300) } }];\n"
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "11298098-7056-5709-889d-6274d4ab9f47",
+              "leftValue": "={{ $('H13 Build Link').first(0).json.notify }}",
+              "rightValue": "yes",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b40e0428-f673-555f-915c-309941cf4d8d",
+      "name": "H13 Notify?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        7480,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SLACK_BASE_URL__/api/chat.postMessage",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('H13 Build Link').first(0).json.slack_body }}",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "a9756177-b3d4-5d58-908b-29250c07ffdc",
+      "name": "H14 Slack Notify",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpHeaderAuth": {
+          "name": "t4-slack"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 1000,
+      "position": [
+        7700,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// C-20: Slack text only from escaped fields, so `<!channel>` and link markup cannot be produced.\nconst esc = (s) => String(s === undefined || s === null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;')\n  .replace(/>/g, '&gt;');\n// C-22: one review_queue row (redacted text, labels, confidences, reasons) and one post to the review channel.\n// Reached from H10 (review), H5 (spend cap) or H11 (create cap); the input item carries the reasons.\nconst item = $input.first().json;\nconst reasons = (item.reasons || []).slice();\nconst review_row = { run_id: item.run_id, dedupe_key: item.dedupe_key, reasons, category: item.category || '',\n  conf_category: item.category ? item.conf_category : '', priority: item.priority || '',\n  conf_priority: item.priority ? item.conf_priority : '', urgency: item.urgency || '',\n  redacted_subject: String(item.redacted_subject || ''), redacted_body: String(item.redacted_body || '') };\nconst text = 'T4 review: [' + esc(item.category || 'unclassified') + '] priority ' + esc(item.priority || '-')\n  + ', urgency ' + esc(item.urgency || '-') + ', reasons ' + esc(reasons.join(' ')) + ', ticket_ref '\n  + esc(item.dedupe_key);\nreturn [{ json: { review_row,\n  slack_body: { channel: String(item.slack_channel_review || ''), text, unfurl_links: false, unfurl_media: false } } }];\n"
+      },
+      "id": "357cb25a-b2a9-5f29-83b4-42a57430fef3",
+      "name": "H15 Build Review",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        7920,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SINK_BASE_URL__/append/review_queue",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.review_row }}",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "fb8b71f9-9bad-57ea-a055-614d83a1989c",
+      "name": "H15 Review Queue",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpHeaderAuth": {
+          "name": "t4-sink-auth"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 1000,
+      "position": [
+        8140,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SLACK_BASE_URL__/api/chat.postMessage",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('H15 Build Review').first(0).json.slack_body }}",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "ad828e27-900a-5d29-9b29-c5a3e3afe461",
+      "name": "H15s Slack Review Post",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpHeaderAuth": {
+          "name": "t4-slack"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 1000,
+      "position": [
+        8360,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const done = (name) => { try { return $(name).isExecuted; } catch (error) { return false; } };\n// first(0): the success output. Without a branch index n8n may pick a node's error branch (empty) when both lead here.\nconst pick = (name) => { if (!done(name)) return {}; try { return $(name).first(0).json || {}; } catch (error) { return {}; } };\n// C-25: one errors row for every error branch, then a review_queue row where a ticket exists (ARCHITECTURE §4 E).\n// Slack failures are non-fatal. After an issue exists (H13 failed) the ticket is not queued: replay finds it by label.\nconst intake = pick('H1 Intake Guard');\nconst inp = $input.first().json || {};\nconst CODES = { 'H2 Link Lookup': 'error:sink', 'H2 Content Lookup': 'error:sink', 'H3 Redact': 'error:redact',\n  'H4 Injection Scan + Cap': 'error:scan', 'H5 Day Spend': 'error:sink', 'H5 Run Spend': 'error:sink',\n  'H5 Rate Count': 'error:sink', 'H6 LLM Classify': 'error:llm', 'H7 Ledger Append': 'error:sink',\n  'H11 Create Count': 'error:sink', 'H11 Jira Search': 'error:jira', 'H12r Reconcile': 'error:jira',\n  'H12b Jira Create (retry once)': 'error:jira', 'H13 Link Record': 'error:sink', 'H14 Slack Notify': 'error:slack',\n  'H15 Review Queue': 'error:sink', 'H15s Slack Review Post': 'error:slack' };\nconst STAGES = { H1: 'intake', H2: 'intake', H3: 'intake', H4: 'intake', H5: 'classify', H6: 'classify',\n  H7: 'classify', H11: 'act', H12r: 'act', H12b: 'act', H13: 'act', H14: 'act', H15: 'approve', H15s: 'approve' };\nconst NONFATAL = ['H14 Slack Notify', 'H15s Slack Review Post'];\nlet prev = '';\ntry { prev = $prevNode.name || ''; } catch (error) { prev = ''; }\nconst node = String(inp.error_node || prev || 'external call');\nconst code = String(inp.error_code || CODES[node] || 'error:external');\nconst stage = String(inp.error_stage || STAGES[node.split(' ')[0]] || 'record');\nconst raw = inp.error_message || (inp.error && (inp.error.message || inp.error)) || inp.message || 'external call failed';\nconst nonfatal = NONFATAL.indexOf(node) >= 0;\nconst queue = !nonfatal && !done('H13 Build Link') && node !== 'H15 Review Queue';\nconst red = pick('H3 Redact');\nconst parsed = pick('H8 Parse + Confidence');\nconst base = done('H10 Decide') ? pick('H10 Decide') : parsed;\nconst reasons = (base.reasons || []).concat([code]);\nconst runId = intake.run_id || '';\nreturn [{ json: { code, stage, node, nonfatal, queue: queue ? 'yes' : 'no',\n  error_row: { run_id: runId, input_ref: intake.input_ref || '', stage, node, code,\n    message: String(raw).slice(0, 300) },\n  review_row: { run_id: runId, dedupe_key: intake.dedupe_key || '', reasons, category: parsed.category || '',\n    conf_category: parsed.category ? parsed.conf_category : '', priority: parsed.priority || '',\n    conf_priority: parsed.priority ? parsed.conf_priority : '', urgency: parsed.urgency || '',\n    redacted_subject: String(red.redacted_subject || ''), redacted_body: String(red.redacted_body || '') } } }];\n"
       },
       "id": "8044880b-b477-5def-9af1-3dfbb4bea562",
       "name": "E Build Error Record",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3300,
-        300
+        8580,
+        700
       ]
     },
     {
@@ -459,7 +1099,7 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ $json }}",
+        "jsonBody": "={{ $json.error_row }}",
         "options": {
           "timeout": 10000
         }
@@ -478,20 +1118,84 @@
       "maxTries": 2,
       "waitBetweenTries": 1000,
       "position": [
-        3520,
-        300
+        8800,
+        700
       ]
     },
     {
       "parameters": {
-        "jsCode": "// C-24: exactly one terminal audit row per ticket per pass.\nconst done = (name) => { try { return $(name).isExecuted; } catch (error) { return false; } };\nconst pick = (name) => { if (!done(name)) return {}; try { return $(name).first().json || {}; } catch (error) { return {}; } };\nconst intake = pick('H1 Intake Guard');\nconst red = pick('H3 Redact');\nconst scan = pick('H4 Injection Scan + Cap');\nconst cost = pick('H7 Cost Record');\nconst parsed = pick('H8 Parse + Confidence');\nconst decide = pick('H10 Decide (slice)');\nconst err = pick('E Build Error Record');\nlet status = 'review';\nlet stage = 'decide';\nlet issueKey = '';\nif (done('E Build Error Record')) {\n  status = String(err.code || '').indexOf('reject') === 0 ? 'rejected' : 'error';\n  stage = err.stage || 'record';\n} else if (done('H13 Link Record')) {\n  status = 'auto_routed';\n  stage = 'act';\n  issueKey = pick('H12 Jira Create').key || '';\n}\nconst reasons = (decide.reasons || parsed.reasons || []).slice();\nif (err.code) reasons.push(err.code);\nconst called = done('H6 LLM Classify');\nreturn [{ json: { run_id: intake.run_id || '', input_ref: intake.input_ref || '', execution_id: String($execution.id),\n  stage, node: 'H16 Audit Record', ok: status === 'error' ? 0 : 1, status,\n  dedupe_key: intake.dedupe_key || '', content_sha256: intake.content_sha256 || '',\n  category: parsed.category || '', conf_category: parsed.category ? parsed.conf_category : '',\n  priority: parsed.priority || '', conf_priority: parsed.priority ? parsed.conf_priority : '',\n  urgency: parsed.urgency || '', conf_source: parsed.conf_source || '', reasons,\n  pii_counts: red.pii_counts || {}, injection_signals: scan.injection_signals || [],\n  truncated: scan.truncated || 0, issue_key: issueKey, notify_ok: '', capped: 0,\n  tokens_in: called ? Number(cost.tokens_in || 0) : 0, tokens_out: called ? Number(cost.tokens_out || 0) : 0,\n  usd: called ? Number(cost.usd || 0) : 0,\n  duration_ms: intake.started_ms ? Date.now() - Number(intake.started_ms) : '' } }];\n"
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0e25f39f-b948-5971-87e9-d9989c8ca417",
+              "leftValue": "={{ $('E Build Error Record').first(0).json.queue }}",
+              "rightValue": "yes",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "1e23d5d2-4d3c-51ae-b074-544b2c981814",
+      "name": "E Queue?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        9020,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SINK_BASE_URL__/append/review_queue",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('E Build Error Record').first(0).json.review_row }}",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "ce932298-5ceb-563c-aca8-ffbb4f922dbb",
+      "name": "E Review Queue Append",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpHeaderAuth": {
+          "name": "t4-sink-auth"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 1000,
+      "position": [
+        9240,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const done = (name) => { try { return $(name).isExecuted; } catch (error) { return false; } };\n// first(0): the success output. Without a branch index n8n may pick a node's error branch (empty) when both lead here.\nconst pick = (name) => { if (!done(name)) return {}; try { return $(name).first(0).json || {}; } catch (error) { return {}; } };\n// C-24: exactly one terminal audit row per ticket per pass. Status: rejected | duplicate_skip | auto_routed |\n// review | error. A Slack failure is non-fatal: status stays, notify_ok = 0.\nconst appended = (name) => Boolean(pick(name).row);\nconst intake = pick('H1 Intake Guard');\nconst dedupe = pick('H2 Dedupe Check');\nconst red = pick('H3 Redact');\nconst scan = pick('H4 Injection Scan + Cap');\nconst spend = pick('H5 Spend Check');\nconst cost = pick('H7 Cost Record');\nconst parsed = pick('H8 Parse + Confidence');\nconst decide = pick('H10 Decide');\nconst route = pick('H11 Route');\nconst link = pick('H13 Build Link');\nconst err = pick('E Build Error Record');\nconst fatal = done('E Build Error Record') && !err.nonfatal;\nlet reasons = (route.reasons || decide.reasons || parsed.reasons || spend.reasons || []).slice();\nlet status = 'error';\nlet stage = 'record';\nlet issueKey = '';\nif (fatal) {\n  stage = err.stage || 'record';\n  issueKey = link.issue_key || '';\n  if (String(err.code || '').indexOf('reject:') === 0) status = 'rejected';\n  else if (!issueKey && appended('E Review Queue Append')) status = 'review';\n  reasons.push(err.code);\n} else if (dedupe.dedupe_route === 'duplicate') {\n  status = 'duplicate_skip';\n  stage = 'intake';\n  issueKey = dedupe.duplicate_issue_key || '';\n  reasons = ['duplicate:' + dedupe.duplicate_via];\n} else if (appended('H13 Link Record')) {\n  status = link.source === 'H11' ? 'duplicate_skip' : 'auto_routed';\n  stage = 'act';\n  issueKey = link.issue_key || '';\n  if (link.source === 'H11') reasons.push('duplicate:jira_search');\n} else if (appended('H15 Review Queue')) {\n  status = 'review';\n  stage = 'approve';\n}\nlet notify = '';\nif (done('H14 Slack Notify')) notify = pick('H14 Slack Notify').ok === true ? 1 : 0;\nelse if (done('H15s Slack Review Post')) notify = pick('H15s Slack Review Post').ok === true ? 1 : 0;\nconst called = done('H7 Cost Record');\nreturn [{ json: { run_id: intake.run_id || '', input_ref: intake.input_ref || '', execution_id: String($execution.id),\n  stage, node: 'H16 Audit Record', ok: status === 'error' ? 0 : 1, status,\n  dedupe_key: intake.dedupe_key || '', content_sha256: intake.content_sha256 || '',\n  category: parsed.category || '', conf_category: parsed.category ? parsed.conf_category : '',\n  priority: parsed.priority || '', conf_priority: parsed.priority ? parsed.conf_priority : '',\n  urgency: parsed.urgency || '', conf_source: parsed.conf_source || '', reasons,\n  pii_counts: red.pii_counts || {}, injection_signals: scan.injection_signals || [],\n  truncated: scan.truncated || 0, issue_key: issueKey, notify_ok: notify,\n  capped: Number(spend.capped || 0) || Number(route.capped || 0) ? 1 : 0,\n  tokens_in: called ? Number(cost.tokens_in || 0) : 0, tokens_out: called ? Number(cost.tokens_out || 0) : 0,\n  usd: called ? Number(cost.usd || 0) : 0,\n  duration_ms: intake.started_ms ? Date.now() - Number(intake.started_ms) : '' } }];\n"
       },
       "id": "3a513d23-94cf-5162-8ba6-dd46b83d0f29",
       "name": "H16 Audit Record",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3740,
+        9460,
         300
       ]
     },
@@ -522,20 +1226,20 @@
       "maxTries": 2,
       "waitBetweenTries": 1000,
       "position": [
-        3960,
+        9680,
         300
       ]
     },
     {
       "parameters": {
-        "jsCode": "// Webhook reply (responseMode lastNode): reference and status only.\nconst row = $('H16 Audit Record').first().json;\nreturn [{ json: { ticket_ref: row.dedupe_key, status: row.status } }];\n"
+        "jsCode": "// Webhook reply (responseMode lastNode): reference and status only.\nconst row = $('H16 Audit Record').first(0).json;\nreturn [{ json: { ticket_ref: row.dedupe_key, status: row.status } }];\n"
       },
       "id": "8f728f77-96a9-571c-87cf-1fff8beb90af",
       "name": "H16r Respond",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4180,
+        9900,
         300
       ]
     },
@@ -548,8 +1252,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4400,
-        300
+        10120,
+        500
       ]
     }
   ],
@@ -591,7 +1295,7 @@
       "main": [
         [
           {
-            "node": "H3 Redact",
+            "node": "H2 Link Lookup",
             "type": "main",
             "index": 0
           }
@@ -599,6 +1303,71 @@
         [
           {
             "node": "E Build Error Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H2 Link Lookup": {
+      "main": [
+        [
+          {
+            "node": "H2 Content Lookup",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "E Build Error Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H2 Content Lookup": {
+      "main": [
+        [
+          {
+            "node": "H2 Dedupe Check",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "E Build Error Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H2 Dedupe Check": {
+      "main": [
+        [
+          {
+            "node": "H2 New?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H2 New?": {
+      "main": [
+        [
+          {
+            "node": "H3 Redact",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "H16 Audit Record",
             "type": "main",
             "index": 0
           }
@@ -627,7 +1396,7 @@
       "main": [
         [
           {
-            "node": "H6 LLM Classify",
+            "node": "H5 Day Spend",
             "type": "main",
             "index": 0
           }
@@ -635,6 +1404,89 @@
         [
           {
             "node": "E Build Error Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H5 Day Spend": {
+      "main": [
+        [
+          {
+            "node": "H5 Run Spend",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "E Build Error Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H5 Run Spend": {
+      "main": [
+        [
+          {
+            "node": "H5 Rate Count",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "E Build Error Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H5 Rate Count": {
+      "main": [
+        [
+          {
+            "node": "H5 Spend Check",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "E Build Error Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H5 Spend Check": {
+      "main": [
+        [
+          {
+            "node": "H5 Under Cap?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H5 Under Cap?": {
+      "main": [
+        [
+          {
+            "node": "H6 LLM Classify",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "H15 Build Review",
             "type": "main",
             "index": 0
           }
@@ -692,14 +1544,25 @@
       "main": [
         [
           {
-            "node": "H10 Decide (slice)",
+            "node": "H9 Validate",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "H10 Decide (slice)": {
+    "H9 Validate": {
+      "main": [
+        [
+          {
+            "node": "H10 Decide",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H10 Decide": {
       "main": [
         [
           {
@@ -714,6 +1577,89 @@
       "main": [
         [
           {
+            "node": "H11 Create Count",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "H15 Build Review",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H11 Create Count": {
+      "main": [
+        [
+          {
+            "node": "H11 Jira Search",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "E Build Error Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H11 Jira Search": {
+      "main": [
+        [
+          {
+            "node": "H11 Route",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "E Build Error Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H11 Route": {
+      "main": [
+        [
+          {
+            "node": "H11 Found?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H11 Found?": {
+      "main": [
+        [
+          {
+            "node": "H13 Build Link",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "H11 Under Create Cap?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H11 Under Create Cap?": {
+      "main": [
+        [
+          {
             "node": "H12 Build Fields",
             "type": "main",
             "index": 0
@@ -721,7 +1667,7 @@
         ],
         [
           {
-            "node": "H16 Audit Record",
+            "node": "H15 Build Review",
             "type": "main",
             "index": 0
           }
@@ -743,7 +1689,25 @@
       "main": [
         [
           {
-            "node": "H13 Link Record",
+            "node": "H13 Build Link",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "H12r Reconcile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H12r Reconcile": {
+      "main": [
+        [
+          {
+            "node": "H12r Found?",
             "type": "main",
             "index": 0
           }
@@ -757,7 +1721,137 @@
         ]
       ]
     },
+    "H12r Found?": {
+      "main": [
+        [
+          {
+            "node": "H13 Build Link",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "H12b Jira Create (retry once)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H12b Jira Create (retry once)": {
+      "main": [
+        [
+          {
+            "node": "H13 Build Link",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "E Build Error Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H13 Build Link": {
+      "main": [
+        [
+          {
+            "node": "H13 Link Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "H13 Link Record": {
+      "main": [
+        [
+          {
+            "node": "H13 Notify?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "E Build Error Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H13 Notify?": {
+      "main": [
+        [
+          {
+            "node": "H14 Slack Notify",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "H16 Audit Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H14 Slack Notify": {
+      "main": [
+        [
+          {
+            "node": "H16 Audit Record",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "E Build Error Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H15 Build Review": {
+      "main": [
+        [
+          {
+            "node": "H15 Review Queue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H15 Review Queue": {
+      "main": [
+        [
+          {
+            "node": "H15s Slack Review Post",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "E Build Error Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "H15s Slack Review Post": {
       "main": [
         [
           {
@@ -787,6 +1881,42 @@
       ]
     },
     "E Append Error": {
+      "main": [
+        [
+          {
+            "node": "E Queue?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "E Queue?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "E Queue?": {
+      "main": [
+        [
+          {
+            "node": "E Review Queue Append",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "H16 Audit Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "E Review Queue Append": {
       "main": [
         [
           {
@@ -839,7 +1969,7 @@
     "errorWorkflow": "t4ErrorHandler01"
   },
   "active": false,
-  "versionId": "d9d01926-6260-53a8-a502-1be0c6cd885e",
+  "versionId": "9b983c88-69f7-50fd-80d5-54c4d5a32d4d",
   "meta": {
     "templateCredsSetupCompleted": true
   },

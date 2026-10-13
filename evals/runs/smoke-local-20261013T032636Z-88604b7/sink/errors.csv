@@ -1,0 +1,8 @@
+sink_seq,sink_ts,replay_input_id,replay_pass,run_id,input_ref,stage,node,code,message
+7,2026-10-13T03:27:07.918792+00:00,t4-003,A,smoke-local-20261013T032636Z-88604b7,t4-003,act,H12b Jira Create (retry once),error:jira,"503 - ""{\""errorMessages\"":[\""injected fault: service unavailable\""]}"""
+13,2026-10-13T03:27:10.719364+00:00,t4-005,A,smoke-local-20261013T032636Z-88604b7,t4-005,act,H14 Slack Notify,error:slack,"503 - ""{\""ok\"":false,\""error\"":\""injected_fault\""}"""
+21,2026-10-13T03:27:14.928315+00:00,t4-037,A,smoke-local-20261013T032636Z-88604b7,t4-037,act,H13 Link Record,error:sink,"503 - ""{\""error\"":\""injected fault\""}"""
+41,2026-10-13T03:27:24.246026+00:00,t4-193,A,smoke-local-20261013T032636Z-88604b7,t4-193,intake,H1 Intake Guard,reject:body_too_long,intake limit or required field: body_too_long
+44,2026-10-13T03:27:24.754615+00:00,t4-195,A,smoke-local-20261013T032636Z-88604b7,t4-195,intake,H1 Intake Guard,reject:missing_message_id,intake limit or required field: missing_message_id
+57,2026-10-13T03:27:29.487837+00:00,t4-193,B,smoke-local-20261013T032636Z-88604b7,t4-193,intake,H1 Intake Guard,reject:body_too_long,intake limit or required field: body_too_long
+60,2026-10-13T03:27:29.908410+00:00,t4-195,B,smoke-local-20261013T032636Z-88604b7,t4-195,intake,H1 Intake Guard,reject:missing_message_id,intake limit or required field: missing_message_id

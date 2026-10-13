@@ -4,7 +4,8 @@
 
 Checks: phase, split and ticket count; one terminal audit row per ticket per pass; at most one Jira issue per
 dedupe_key; pass B creates no issue (test: and makes no model call); no planted PII in outbound bodies or LLM input;
-ledger rows present; spend within the run cap; slice: confidences come from logprobs. Exit 0 only if all hold.
+ledger rows present; spend within the run cap; slice: confidences come from logprobs; smoke: injection -> review,
+malformed -> rejected, every forced fault fired and left an errors row (or a reconcile link). Exit 0 only if all hold.
 """
 from __future__ import annotations
 
@@ -117,6 +118,56 @@ def cap_problems(run, cost_ledger):
     return ["spend {:.6f} over run_usd_cap {}".format(spent, cap)] if spent > as_float(cap) else []
 
 
+def forced_faults(run):
+    """summary.json `forced_faults` (`id:target:mode[:A|B]`, runner Q-30 (8)) -> [(input_id, pass, target:mode)]."""
+    out = []
+    for spec in run.summary.get("forced_faults") or ():
+        parts = str(spec).split(":")
+        run_pass = parts.pop() if len(parts) >= 4 and parts[-1] in ("A", "B") else "A"
+        out.append((parts[0], run_pass, ":".join(parts[1:])))
+    return out
+
+
+def smoke_problems(run, golds):
+    """GOALS G8: injection -> review, malformed -> rejected, every forced fault fired and left evidence."""
+    problems = []
+    first = run.passes[0] if run.passes else "A"
+    for input_id in run.input_ids:
+        gold = golds.get(input_id) or {}
+        reason = str(gold.get("review_reason") or "")
+        statuses = {p: [r.get("status") for r in run.terminal(input_id, p)] for p in run.passes}
+        rows = run.terminal(input_id, first)
+        if reason == "injection":
+            if statuses.get(first) != ["review"]:
+                problems.append("{} pass {}: injection ticket status {}, want review".format(
+                    input_id, first, statuses.get(first)))
+            if any("auto_routed" in s for s in statuses.values()):
+                problems.append("{}: injection ticket was auto-routed".format(input_id))
+            if rows and not as_list(rows[-1].get("injection_signals")):
+                problems.append("{} pass {}: audit row has no injection_signals".format(input_id, first))
+        # A redacted ticket's audit row carries the counts (C-5); smoke 20261013T032636Z wrote {} for every ticket.
+        if gold.get("pii") and rows and rows[-1].get("status") in ("auto_routed", "review") \
+                and rows[-1].get("pii_counts") in (None, "", "{}"):
+            problems.append("{} pass {}: planted PII but audit pii_counts is empty".format(input_id, first))
+        if reason.startswith("malformed:") and gold.get("expect_outcome") == "rejected":
+            for p, s in statuses.items():
+                if s != ["rejected"]:
+                    problems.append("{} pass {}: malformed ticket status {}, want rejected".format(input_id, p, s))
+    for input_id, run_pass, fault in forced_faults(run):
+        fired = [r for r in run.requests
+                 if r.get("active_input") == input_id and r.get("pass") == run_pass and r.get("fault") == fault]
+        if not fired:
+            problems.append("{} pass {}: forced fault {} never fired".format(input_id, run_pass, fault))
+            continue
+        errors = run.rows("errors", input_id, run_pass)
+        reconciled = fault == "jira:commit_then_504" and any(
+            r.get("created_via") == "search" for r in run.rows("jira_links", input_id, run_pass))
+        if not errors and not reconciled:
+            problems.append("{} pass {}: forced fault {} left no errors row (silent drop)".format(
+                input_id, run_pass, fault))
+    return problems
+
+
 def logprob_problems(run):
     rows = [r for p in run.passes for i in run.input_ids for r in run.terminal(i, p) if r.get("category")]
     bad = [input_of(r) for r in rows if r.get("conf_source") != "logprobs"]
@@ -133,6 +184,8 @@ def check(run, phase, golds, cost_ledger=COST_LEDGER, expect_tickets=None):
         + ledger_problems(run, cost_ledger) + cap_problems(run, cost_ledger)
     if phase == "slice":
         problems += logprob_problems(run)
+    if phase == "smoke":
+        problems += smoke_problems(run, golds)
     return problems
 
 

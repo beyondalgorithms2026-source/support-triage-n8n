@@ -1,0 +1,53 @@
+{
+  "run_id": "smoke-local-20261013T032958Z-88604b7",
+  "phase": "smoke",
+  "split": "dev",
+  "target": "local",
+  "passes": "AB",
+  "input_ids": [
+    "t4-001",
+    "t4-003",
+    "t4-005",
+    "t4-007",
+    "t4-037",
+    "t4-097",
+    "t4-155",
+    "t4-169",
+    "t4-181",
+    "t4-185",
+    "t4-193",
+    "t4-195"
+  ],
+  "tickets": 12,
+  "started": "2026-10-13T03:29:58Z",
+  "ended": "2026-10-13T03:30:47Z",
+  "git_sha": "88604b7",
+  "model": "gpt-4o-mini-2024-07-18",
+  "n8n_version": "2.22.5",
+  "workflow_sha256": "bad988396984e4cf3e07ee56e835301fc52c22031c9d314fcdbfbad520191a14",
+  "handler_sha256": "4f0b80f67de70e317acfddc045acb03c6b35a34c8d42530491c03b0e3631ca65",
+  "thresholds_sha256": null,
+  "prompt_sha256": "1ce794d6648799ca018f85daea64d209243f0d9ebab70aaa637b4f3fc434874c",
+  "config_overrides": [
+    "tau_category={\"access\":0,\"billing\":0,\"bug\":0,\"feature\":0,\"howto\":0,\"other\":0,\"outage\":0,\"privacy\":0}",
+    "tau_priority={\"P1\":0,\"P2\":0,\"P3\":0,\"P4\":0}"
+  ],
+  "forced_faults": [
+    "t4-001:jira:commit_then_504",
+    "t4-003:jira:503",
+    "t4-005:slack:503",
+    "t4-037:sink:jira_links:503"
+  ],
+  "run_usd_cap": 0.25,
+  "max_model_chars": 6000,
+  "llm_price_in_per_mtok": 0.15,
+  "llm_price_out_per_mtok": 0.6,
+  "llm_calls": 9,
+  "tokens_in": 6356,
+  "tokens_out": 129,
+  "usd": 0.0010308000000000001,
+  "capped_inputs": 0,
+  "new_jira_issues_pass_b": 0,
+  "llm_calls_pass_b": 0,
+  "aborted": null
+}

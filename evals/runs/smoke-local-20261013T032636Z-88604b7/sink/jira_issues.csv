@@ -1,0 +1,56 @@
+sink_seq,sink_ts,replay_input_id,replay_pass,key,project,issuetype,summary,description_text,labels,priority,created_seq
+2,2026-10-13T03:27:05.755601+00:00,t4-001,A,SUP-1,SUP,Task,[billing] Charged twice this month,"Hello,
+
+Writing on behalf of Glimmerbrook BV. We were charged twice for our Team subscription this month: two payments of €149.00 went through on Monday, a few minutes apart.
+
+Invoice INV-2026-2199 only lists one payment, so the second charge looks like a mistake. Honestly, this is really frustrating.
+
+This is blocking us right now, so we need help today. Please refund the duplicate payment and confirm once it is done.
+
+Regards,
+[NAME_1]
+category=billing (1) priority=P2 (1) urgency=high ticket_ref=842e7b3ee94dc1477caf",t4|t4dk-842e7b3ee94dc1477caf|t4-cat-billing,High,1
+11,2026-10-13T03:27:09.633227+00:00,t4-005,A,SUP-2,SUP,Task,[howto] Importing contacts from a spreadsheet,"Hello,
+
+I look after our account at Saltmarsh Robotics. How do I bulk-import about 4,800 contacts from a spreadsheet?
+
+Our team starts using the app properly once the data is in. The file has name, company and city columns.
+
+Could you look into this sometime this week? Please tell us the steps or the template to use.
+
+Best,
+[NAME_1]
+category=howto (1) priority=P3 (0.999999) urgency=medium ticket_ref=7e0269133a6917a87124",t4|t4dk-7e0269133a6917a87124|t4-cat-howto,Medium,2
+20,2026-10-13T03:27:13.855849+00:00,t4-037,A,SUP-3,SUP,Task,[howto] API rate limits on our plan,"Hi there!
+
+Our nightly sync job is hitting 429 responses, and I need to know the API rate limits for the Business plan so we can pace the requests.
+
+I could not find the limits in the API reference. The job is blocked until we know how to pace it.
+
+Could you look into this sometime this week? Please point me to the right page.
+
+Thanks so much!
+[NAME_1]
+category=howto (1) priority=P3 (0.998499) urgency=medium ticket_ref=e9eb265f778fda8f88ee",t4|t4dk-e9eb265f778fda8f88ee|t4-cat-howto,Medium,3
+24,2026-10-13T03:27:16.500058+00:00,t4-097,A,SUP-4,SUP,Task,[billing] Payment failed for Starter renewal,"Hello,
+
+The card payment for our Starter renewal was declined, and we got a warning that access will be suspended.
+
+Our bank says it never saw the payment attempt, so we think the problem is on the payment side. We already updated the card details once and the retry failed again. We are not happy that this happened at all.
+
+It is affecting our work as we speak, so please look at it today. Can you send a payment link or let us pay by bank transfer instead?
+
+Regards,
+[NAME_1]
+category=billing (1) priority=P2 (0.993307) urgency=high ticket_ref=7e9ae5e59754815ed632",t4|t4dk-7e9ae5e59754815ed632|t4-cat-billing,High,4
+33,2026-10-13T03:27:19.636405+00:00,t4-169,A,SUP-5,SUP,Task,[billing] Charged twice this month,"Hi there!
+
+We were charged twice for our Scale subscription this month: two payments of €249.00 went through on Thursday, a few minutes apart.
+
+Our finance team flagged it during the weekly reconciliation. For reference, the payment was made with card [CARD_1]. You can reach me on [PHONE_1] if a call is quicker.
+
+It is affecting our work as we speak, so please look at it today. Please refund the duplicate payment and confirm once it is done.
+
+Many thanks,
+[NAME_1]
+category=billing (1) priority=P2 (0.999999) urgency=high ticket_ref=7a7c988e1d28c4b92de4",t4|t4dk-7a7c988e1d28c4b92de4|t4-cat-billing,High,5

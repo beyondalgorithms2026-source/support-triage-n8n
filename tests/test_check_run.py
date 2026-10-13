@@ -103,5 +103,70 @@ class BrokenCopyTest(unittest.TestCase):
         self.assert_fails("over run_usd_cap 0.001")
 
 
+class FakeRun:
+    """STUB in-memory run for smoke_problems: audit/errors/jira_links rows and request-log rows by hand."""
+
+    def __init__(self, audit, requests=(), errors=(), links=(), faults=()):
+        self.passes, self.input_ids = ["A", "B"], sorted({r["replay_input_id"] for r in audit})
+        self.summary = {"forced_faults": list(faults)}
+        self.requests = list(requests)
+        self.tables = {"audit": list(audit), "errors": list(errors), "jira_links": list(links)}
+
+    def rows(self, table, input_id=None, run_pass=None):
+        return [r for r in self.tables[table] if r["replay_input_id"] == input_id and r["replay_pass"] == run_pass]
+
+    def terminal(self, input_id, run_pass):
+        return self.rows("audit", input_id, run_pass)
+
+
+def stub_row(input_id, run_pass, **values):
+    return dict(values, replay_input_id=input_id, replay_pass=run_pass)
+
+
+class SmokeChecksTest(unittest.TestCase):
+    GOLDS = {"STUB-I": {"review_reason": "injection"},
+             "STUB-M": {"review_reason": "malformed:body_too_long", "expect_outcome": "rejected"},
+             "STUB-F": {"review_reason": None}}
+
+    def run_with(self, inj=("review", "duplicate_skip"), mal=("rejected", "rejected"), requests=(), errors=(),
+                 links=(), faults=(), signals='["role_override"]'):
+        audit = [stub_row("STUB-I", p, status=s, injection_signals=signals) for p, s in zip("AB", inj)]
+        audit += [stub_row("STUB-M", p, status=s) for p, s in zip("AB", mal)]
+        audit += [stub_row("STUB-F", p, status="review") for p in "AB"]
+        return check_run.smoke_problems(FakeRun(audit, requests, errors, links, faults), self.GOLDS)
+
+    def test_clean_smoke_holds(self):
+        fired = [{"active_input": "STUB-F", "pass": "A", "fault": "jira:503"}]
+        self.assertEqual(self.run_with(requests=fired, errors=[stub_row("STUB-F", "A", code="error:jira")],
+                                       faults=["STUB-F:jira:503"]), [])
+
+    def test_injection_and_malformed_routes(self):
+        problems = self.run_with(inj=("auto_routed", "duplicate_skip"), mal=("rejected", "error"))
+        self.assertTrue(any("injection ticket status ['auto_routed'], want review" in p for p in problems))
+        self.assertTrue(any("STUB-I: injection ticket was auto-routed" in p for p in problems))
+        self.assertTrue(any("STUB-M pass B: malformed ticket status ['error']" in p for p in problems))
+
+    def test_fault_must_fire_and_leave_evidence(self):
+        self.assertEqual(self.run_with(faults=["STUB-F:sink:jira_links:503"]),
+                         ["STUB-F pass A: forced fault sink:jira_links:503 never fired"])
+        fired = [{"active_input": "STUB-F", "pass": "A", "fault": "slack:503"}]
+        self.assertEqual(self.run_with(requests=fired, faults=["STUB-F:slack:503:A"]),
+                         ["STUB-F pass A: forced fault slack:503 left no errors row (silent drop)"])
+
+    def test_audit_must_record_signals_and_pii_counts(self):
+        self.assertEqual(self.run_with(signals="[]"), ["STUB-I pass A: audit row has no injection_signals"])
+        golds = dict(self.GOLDS, **{"STUB-F": {"pii": [{"type": "card", "value": "4111 1111 1111 1111"}]}})
+        audit = [stub_row("STUB-F", p, status="review", pii_counts="{}") for p in "AB"]
+        self.assertEqual(check_run.smoke_problems(FakeRun(audit), golds),
+                         ["STUB-F pass A: planted PII but audit pii_counts is empty"])
+        audit = [stub_row("STUB-F", p, status="review", pii_counts='{"card":1}') for p in "AB"]
+        self.assertEqual(check_run.smoke_problems(FakeRun(audit), golds), [])
+
+    def test_commit_then_504_reconcile_counts_as_evidence(self):
+        fired = [{"active_input": "STUB-F", "pass": "A", "fault": "jira:commit_then_504"}]
+        links = [stub_row("STUB-F", "A", created_via="search")]
+        self.assertEqual(self.run_with(requests=fired, links=links, faults=["STUB-F:jira:commit_then_504"]), [])
+
+
 if __name__ == "__main__":
     unittest.main()

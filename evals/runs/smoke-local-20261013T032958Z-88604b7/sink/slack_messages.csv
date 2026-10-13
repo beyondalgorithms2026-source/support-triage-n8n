@@ -1,0 +1,6 @@
+sink_seq,sink_ts,replay_input_id,replay_pass,channel,text,unfurl_links
+4,2026-10-13T03:30:17.702764+00:00,t4-001,A,C0T4TRIAGE,"T4 triage: SUP-1 [billing] priority P2, urgency high, ticket_ref 842e7b3ee94dc1477caf",false
+17,2026-10-13T03:30:24.121854+00:00,t4-007,A,C0T4REVIEW,"T4 review: [privacy] priority P2, urgency medium, reasons policy:privacy, ticket_ref 419f2055d9438848c0a8",false
+26,2026-10-13T03:30:28.660585+00:00,t4-097,A,C0T4TRIAGE,"T4 triage: SUP-4 [billing] priority P2, urgency high, ticket_ref 7e9ae5e59754815ed632",false
+30,2026-10-13T03:30:30.222125+00:00,t4-155,A,C0T4REVIEW,"T4 review: [billing] priority P2, urgency medium, reasons injection, ticket_ref a17ea19ce54498b47010",false
+35,2026-10-13T03:30:31.803113+00:00,t4-169,A,C0T4TRIAGE,"T4 triage: SUP-5 [billing] priority P2, urgency high, ticket_ref 7a7c988e1d28c4b92de4",false
