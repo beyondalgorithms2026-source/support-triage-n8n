@@ -24,7 +24,7 @@ blocked). A DONE row is never reopened by the loop.
 | T4-05 | G5 | Sink with Jira and Slack sandbox | DONE | 1 | accept+guard pass (attempt 1, $2.6552134) |
 | T4-06 | G6 | Replay runner | DONE | 1 | accept+guard pass (attempt 1, $3.795506999999999) |
 | T4-07 | G7 | Thin end-to-end slice (live) | DONE | 1 | accept+guard pass (attempt 1, $4.6818740000000005) |
-| T4-08 | G8 | Full controls: validate, decide, idempotency, Slack, queue, error paths | TODO | 0 | — |
+| T4-08 | G8 | Full controls: validate, decide, idempotency, Slack, queue, error paths | TODO | 0 | usage/rate limit at 06:32 IST; waiting |
 | T4-09 | G9 | Dev run and per-class threshold tuning | TODO | 0 | — |
 | T4-10 | G10 | Held-out test run, replay proof, scorecard | TODO | 0 | — |
 | T4-11 | G11 | Attack run | TODO | 0 | — |
@@ -36,4 +36,4 @@ blocked). A DONE row is never reopened by the loop.
 Target: local Docker `n8nio/n8n:2.22.5` (container `n8n`, shared with T2). Sink/sandbox port 8790.
 Model: `gpt-4o-mini-2024-07-18` (ADR-005; logprob check pending, OPEN_QUESTIONS Q-2).
 
-Last updated: 2026-10-12 22:58 UTC (scripts/status.py)
+Last updated: 2026-10-13 01:02 UTC (scripts/status.py)
