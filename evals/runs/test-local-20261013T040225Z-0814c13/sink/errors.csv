@@ -1,0 +1,9 @@
+sink_seq,sink_ts,replay_input_id,replay_pass,run_id,input_ref,stage,node,code,message
+97,2026-10-13T04:03:35.022366+00:00,t4-045,A,test-local-20261013T040225Z-0814c13,t4-045,act,H12b Jira Create (retry once),error:jira,"503 - ""{\""errorMessages\"":[\""injected fault: service unavailable\""]}"""
+126,2026-10-13T04:03:47.209773+00:00,t4-059,A,test-local-20261013T040225Z-0814c13,t4-059,approve,H15s Slack Review Post,error:slack,"503 - ""{\""ok\"":false,\""error\"":\""injected_fault\""}"""
+143,2026-10-13T04:03:54.746190+00:00,t4-068,A,test-local-20261013T040225Z-0814c13,t4-068,approve,H15s Slack Review Post,error:slack,"503 - ""{\""ok\"":false,\""error\"":\""injected_fault\""}"""
+159,2026-10-13T04:04:02.224959+00:00,t4-075,A,test-local-20261013T040225Z-0814c13,t4-075,act,H13 Link Record,error:sink,"503 - ""{\""error\"":\""injected fault\""}"""
+390,2026-10-13T04:05:32.750144+00:00,t4-194,A,test-local-20261013T040225Z-0814c13,t4-194,intake,H1 Intake Guard,reject:empty_content,intake limit or required field: empty_content
+393,2026-10-13T04:05:33.188397+00:00,t4-196,A,test-local-20261013T040225Z-0814c13,t4-196,intake,H1 Intake Guard,reject:too_many_attachments,intake limit or required field: too_many_attachments
+500,2026-10-13T04:06:23.661488+00:00,t4-194,B,test-local-20261013T040225Z-0814c13,t4-194,intake,H1 Intake Guard,reject:empty_content,intake limit or required field: empty_content
+503,2026-10-13T04:06:24.085043+00:00,t4-196,B,test-local-20261013T040225Z-0814c13,t4-196,intake,H1 Intake Guard,reject:too_many_attachments,intake limit or required field: too_many_attachments

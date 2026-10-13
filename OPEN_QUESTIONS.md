@@ -444,3 +444,35 @@ Why: smallest change that makes the GOALS G9 command run, and keeps a dev run th
 Reverse: (1) remove the key and the two H10 lines plus the test (minutes; no re-run, because the sweep ignores
 `threshold` reasons). (2) re-run dev without the override (about $0.01) and re-tune; cost rises after G10 (re-run test).
 Owner answer:
+
+## Q-34 Test run choices GOALS G10 leaves open — L now, M after G13
+Date: 2026-10-13. Goal: G10 (T4-10).
+Decision:
+(1) H2 change before the test run. Gold puts `sink:jira_links:503` on test tickets t4-075 (bug/P3) and t4-100. A
+ticket that auto-routes and then loses its link row ends `error` with an `issue_key` and is not queued (Q-32 (3)).
+Pass B then found no link row and no `auto_routed|review` audit row, so it called the model again before H11 found
+the issue by label. GOALS G10 wants 0 pass-B model calls. `H2 Content Lookup` now also matches `error`, and
+`H2 Dedupe Check` counts an `error` row only when it has an `issue_key` (`duplicate:content`). An `error` row
+without an issue (queue append failed) is processed again. Smoke passed only because the resend t4-181 wrote the
+link row in pass A. The change was made before the test run, from the gold fault list, not from test results.
+Option not taken: queue the ticket after an H13 failure. A reviewer could then open a second issue by hand.
+Option not taken: relax the `check_run` pass-B call check. That weakens the GOALS G10 contract.
+(2) The test run sets `--config-override llm_max_rpm=120` (in memory, in `summary.json`), as the dev run did
+(Q-33 (2)). The runner does not pace tickets; a `capped:llm_rpm` ticket has no prediction, so test numbers and dev
+numbers would not compare. The committed Config keeps 30. G12 runbook must say the rate gate is not exercised here.
+(3) No τ was changed after the test run (I-9). Threshold notes from the test numbers go to G13, not to `0. Config`.
+Run `test-local-20261013T040225Z-0814c13` pass A: 72 review, 20 auto_routed, 5 duplicate_skip, 2 rejected, 1 error
+(audit.csv). `evals/confusion_priority.csv`: 21 gold P3 tickets were predicted P2, and P2 τ is 1.01, so they all go to
+review. The human share is far above the HARNESS_SPEC §2 target. Peak 37 model calls in 60 s (sink ledger), so the
+committed `llm_max_rpm` 30 would have capped tickets. G13 reports these; G12 lists them as limitations.
+(4) `src/score/score.py` `read_csv` reads NUL as U+FFFD. Gold t4-198 (control characters, Q-22) carries NUL into
+`review_queue.csv` (`redacted_body`), and the Python csv module raises on NUL, so the scorer and `check_run` failed.
+The run file is not changed. Open: the sink writes control characters raw into CSV; an operator tool can fail the same
+way, and a sink restart on that folder may fail to reload it (not tested). Not changed here (sink contract, Q-29).
+Why: smallest change that makes the replay of a link-write failure free of model spend, and keeps dev and test
+under the same run settings.
+Reverse: (1) restore the two H2 strings and the E comment in `workflows/t4-triage.json`, drop the two H2 tests in
+`tests/test_workflow.py`, re-run test (about $0.01); pass B will then call the model once per such ticket.
+(2) re-run test without the override (about $0.01) and accept possible `capped:llm_rpm` rows. (4) revert the one
+`read_csv` line and its test; the scorer then fails on this run again.
+Owner answer:

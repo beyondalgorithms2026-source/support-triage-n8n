@@ -1,0 +1,9 @@
+gold,billing,access,bug,outage,howto,feature,privacy,other,no_prediction
+billing,12,0,0,0,0,0,0,0,0
+access,0,12,0,0,0,0,0,0,0
+bug,0,0,11,0,0,0,0,0,0
+outage,0,0,0,13,0,0,0,0,0
+howto,0,0,0,0,11,0,0,0,0
+feature,0,0,0,0,1,11,0,0,0
+privacy,0,0,0,0,0,0,11,0,0
+other,0,0,0,0,0,0,0,11,0

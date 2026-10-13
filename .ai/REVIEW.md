@@ -1,19 +1,20 @@
-# REVIEW — T4-09 (G9) attempt 1
+# REVIEW — T4-10 (G10) attempt 1
 
-- Changed: workflows/t4-triage.json (`tuning_mode` key, H10, Config τ), tests/test_workflow.py, OPEN_QUESTIONS.md (Q-33), evals/thresholds.json, evals/threshold_sweep.csv, evals/runs/dev-local-20261013T034424Z-3accb59/, evals/cost_ledger.csv.
-- Did: G9. The dev run used 100 dev tickets in tuning mode. It made 91 model calls. It capped 0 tickets. The run cost $0.01012185.
-- Did: `tune` wrote 156 sweep rows. `tune --apply` copied τ into `0. Config`. outage, feature, privacy, other and P2 have τ 1.01. global_tau is 0.50.
-- Did-not: src/, workflows/t4-error-handler.json, scripts/, GOALS.md, .ai/STATUS.md. Goals G10–G14.
-- Check: `bash scripts/accept.sh G9` gives ACCEPT PASS [G9]. `bash scripts/guard.sh` gives guard clean. `python3 -m unittest discover -s tests -t .` runs 229 tests, OK.
-- Risk: the dev peak was 28 model calls in 60 s. The committed `llm_max_rpm` is 30. The G10 test run can hit `capped:llm_rpm` (Q-33 (2)).
-- Next: G10 (T4-10).
+- Changed: workflows/t4-triage.json (H2 Content Lookup, H2 Dedupe Check, E comment), src/score/score.py (`read_csv`), tests/test_workflow.py, tests/test_score.py, OPEN_QUESTIONS.md (Q-34), evals/scorecard.csv, evals/confusion_category.csv, evals/confusion_priority.csv, evals/cost_ledger.csv, evals/runs/test-local-20261013T040225Z-0814c13/.
+- Did: G10. The test run used 100 test tickets in passes AB. Pass A made 93 model calls. Pass B made 0 model calls and 0 issues. The run cost $0.0105318.
+- Did: H2 skips an `error` audit row with an issue key. t4-075 was `error` SUP-9 in pass A and `duplicate_skip` SUP-9 in pass B.
+- Did-not: τ values, src/sink/, src/replay/, workflows/t4-error-handler.json, scripts/, GOALS.md, .ai/STATUS.md. Goals G11–G14.
+- Check: `bash scripts/accept.sh G10` gives ACCEPT PASS [G10]. `bash scripts/guard.sh` gives guard clean. `python3 -m unittest discover -s tests -t .` runs 232 tests, OK.
+- Risk: 72 of 100 pass-A tickets went to review. 21 gold P3 tickets were predicted P2. The peak was 37 model calls in 60 s against a committed limit of 30 (Q-34 (3)).
+- Next: G11 (T4-11).
 
 ```mermaid
 flowchart LR
-  C["0. Config tuning_mode=true (in memory)"] --> H["H9 validate"] --> D{"H10 decide: every τ = 0"}
-  D --> R["dev run dev-local-20261013T034424Z-3accb59"]
-  R --> T["tune --run-id: sweep 156 rows"]
-  T --> J["evals/thresholds.json"]
-  J --> A["tune --apply: 0. Config τ"]
-  A --> V["tune --verify + test_config"]
+  W["webhook pass A"] --> H2{"H2 link / content lookup"}
+  H2 -->|new| H6["H6 LLM classify"] --> H10{"H10 decide (tuned τ)"}
+  H10 -->|auto| J["H12 Jira create"] --> L["H13 link record: 503"] --> A["audit: error + issue_key"]
+  H10 -->|review| Q["H15 review queue"]
+  B["webhook pass B"] --> H2
+  H2 -->|error row with issue_key| S["duplicate_skip, 0 model calls"]
+  A --> SC["score: scorecard.csv"]
 ```

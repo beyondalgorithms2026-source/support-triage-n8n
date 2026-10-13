@@ -278,6 +278,13 @@ class MetricsTest(unittest.TestCase):
         self.assertEqual(score.as_list(""), [])
         self.assertEqual(score.priority_code("critical"), "P1")
 
+    def test_read_csv_tolerates_nul(self):
+        # STUB: a control-character body (t4-198) puts NUL into a sink CSV; the csv module alone raises on it.
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "STUB_review_queue.csv"
+            path.write_text('# STUB\nid,redacted_body\n1,"a\x00b\nc"\n', encoding="utf-8")
+            self.assertEqual(score.read_csv(path), [{"id": "1", "redacted_body": "a�b\nc"}])
+
 
 # ---------------------------------------------------------------- report
 class ReportTest(unittest.TestCase):

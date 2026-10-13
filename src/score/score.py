@@ -48,12 +48,13 @@ _LIST_SPLIT = re.compile(r"[|,;\s]+")
 
 # ---------------------------------------------------------------- readers
 def read_csv(path):
-    """Rows of a CSV file; '#' lines before the header (STUB markers) are skipped. Missing file -> []."""
+    """Rows of a CSV file; '#' lines before the header (STUB markers) are skipped. Missing file -> [].
+    The csv module rejects NUL, which a ticket body can carry into the sink (t4-198): it reads as U+FFFD."""
     path = Path(path)
     if not path.exists():
         return []
     with path.open(newline="", encoding="utf-8") as f:
-        lines = f.readlines()
+        lines = [line.replace("\x00", "�") for line in f.readlines()]
     start = 0
     while start < len(lines) and lines[start].startswith("#"):
         start += 1

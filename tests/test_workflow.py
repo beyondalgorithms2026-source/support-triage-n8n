@@ -477,6 +477,31 @@ class ControlNodesTest(unittest.TestCase):
         item.update(extra)
         return item
 
+    # ------------------------------------------------------------ H2 dedupe (C-18 steps 1-2)
+    def dedupe(self, links, same):
+        return self.node("H2 Dedupe Check", {"rows": same}, {
+            "H1 Intake Guard": {"dedupe_key": "stubkey0000000000001"}, "H2 Link Lookup": {"rows": links}})
+
+    def test_h2_content_lookup_matches_error_rows(self):
+        url = self.nodes["H2 Content Lookup"]["parameters"]["url"]
+        self.assertTrue(url.endswith("&status=auto_routed%7Creview%7Cerror"), url)
+
+    def test_dedupe_error_row_counts_only_with_issue_key(self):
+        out = self.dedupe([], [])
+        self.assertEqual((out["dedupe_route"], out["duplicate_via"]), ("new", ""))
+        out = self.dedupe([{"issue_key": "T4-1"}], [])
+        self.assertEqual((out["dedupe_route"], out["duplicate_via"], out["duplicate_issue_key"]),
+                         ("duplicate", "jira_links", "T4-1"))
+        out = self.dedupe([], [{"status": "review", "issue_key": ""}])
+        self.assertEqual((out["dedupe_route"], out["duplicate_via"]), ("duplicate", "content"))
+        # H13 failed after the issue existed (Q-34): the replay skips the model call.
+        out = self.dedupe([], [{"status": "error", "issue_key": "T4-2"}])
+        self.assertEqual((out["dedupe_route"], out["duplicate_via"], out["duplicate_issue_key"]),
+                         ("duplicate", "content", "T4-2"))
+        # An error row without an issue (queue append failed) is processed again.
+        out = self.dedupe([], [{"status": "error", "issue_key": ""}])
+        self.assertEqual(out["dedupe_route"], "new")
+
     # ------------------------------------------------------------ H5 spend gate (C-8)
     def spend(self, day=0.0, run=0.0, count=0, model_text="Subject: x\n\nbody"):
         h4 = dict(self.cfg, run_id="stub-run", model_text=model_text)
