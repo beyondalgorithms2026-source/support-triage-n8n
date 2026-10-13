@@ -513,4 +513,4 @@ Why: the smallest change that runs all 20 attacks under the runner's caps and ke
 I-8 regression.
 Reverse: delete the attack run folder and its cost-ledger row, revert the three source files and `tests/test_attacks.py`
 (about an hour); a re-run costs about $0.03.
-Owner answer:
+Owner answer (2026-10-13): accept. SEC-17 is reported as not_run in G13, with the reason; no re-run.
