@@ -284,7 +284,8 @@ the same definitions.
 **Slack (Web API subset):** `POST /api/chat.postMessage` Bearer bot token, JSON `{channel, text, unfurl_links:false, unfurl_media:false}` → `{"ok":true,"ts":…}`. Fault mode `503`.
 
 Swapping to a real Jira Cloud sandbox site and a real Slack workspace = change `JIRA_BASE_URL` / `SLACK_BASE_URL`
-and the two credentials; no node changes (ADR-003). Not done in this build.
+and the two credentials; no node changes (ADR-003). Owner-run only: `python3 -m src.replay.run run --phase smoke
+--ids … --real` (≤ 3 tickets, `*_REAL_*` names, sandbox credentials restored after; close plan 2026-10-14 §4).
 
 ---
 

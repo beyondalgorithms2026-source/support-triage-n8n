@@ -355,6 +355,37 @@ class ReplayUnitTests(unittest.TestCase):
         self.assertEqual(scrub({"a": [text]})["a"][0], '{"text": "path [REDACTED:T4_WEBHOOK_PATH]"}')
         self.assertEqual(run.trace_events(None, "r", "A", "t4-001", 0.15, 0.6)[0]["error"], "execution_timeout")
 
+    def test_real_mode_swaps_credentials_and_always_restores_sandbox(self):
+        real = dict(ENV, JIRA_REAL_BASE_URL="https://demo.atlassian.example", JIRA_REAL_EMAIL="bot@demo.example",
+                    JIRA_REAL_API_TOKEN="tok-jira-real", SLACK_REAL_BOT_TOKEN="tok-slack-real",
+                    JIRA_REAL_PROJECT_KEY="TRI", SLACK_REAL_CHANNEL_TRIAGE="C1", SLACK_REAL_CHANNEL_REVIEW="C2")
+        fake = type("Fake", (), {"imports": None,
+                                 "import_credentials": lambda self, c: self.imports.append(c)})()
+        fake.imports = []
+
+        def args(phase="smoke", ids=None):
+            return run.build_parser().parse_args(["run", "--phase", phase, "--real"] + (["--ids"] + ids if ids else []))
+        for bad in (args(phase="test", ids=["t4-001"]), args(ids=None),
+                    args(ids=["t4-001", "t4-003", "t4-005", "t4-007"])):
+            with self.assertRaisesRegex(ValueError, "--real needs"):
+                run.run_real(bad, n8n=fake, env=real)
+        with self.assertRaisesRegex(ValueError, "JIRA_REAL_API_TOKEN"):
+            run.run_real(args(ids=["t4-001"]), n8n=fake, env=dict(real, JIRA_REAL_API_TOKEN=""))
+        self.assertEqual(fake.imports, [])
+        seen = {}
+
+        def boom(args, n8n=None, env=None):
+            seen.update(env=env, overrides=args.config_override)
+            raise RuntimeError("n8n down")
+        with mock.patch.object(run, "run_replay", side_effect=boom), self.assertRaises(RuntimeError):
+            run.run_real(args(ids=["t4-001"]), n8n=fake, env=real)
+        self.assertEqual(seen["env"]["JIRA_BASE_URL"], "https://demo.atlassian.example")
+        self.assertEqual(seen["env"]["SLACK_BASE_URL"], "https://slack.com")
+        self.assertIn("jira_project_key=TRI", seen["overrides"])
+        jira = [{c["name"]: c for c in creds}["t4-jira"]["data"]["password"] for creds in fake.imports]
+        self.assertEqual(jira, ["tok-jira-real", ENV["JIRA_SANDBOX_API_TOKEN"]])
+        self.assertNotEqual(real["JIRA_BASE_URL"], seen["env"]["JIRA_BASE_URL"])
+
     def test_setup_builds_five_credentials_in_memory(self):
         fake = type("Fake", (), {"import_credentials": lambda self, c: setattr(self, "creds", c)})()
         self.assertEqual(run.setup(env=ENV, n8n=fake), sorted(run.CREDENTIAL_IDS))

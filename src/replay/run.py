@@ -762,6 +762,44 @@ def setup(env=None, n8n=None):
     return sorted(CREDENTIAL_IDS)
 
 
+# Owner-run demo against a real Jira Cloud site and Slack workspace (close plan D-1, ADR-003 note in ARCHITECTURE §7).
+# Real values live under *_REAL_* names so the sandbox names never point at a real host by accident.
+REAL_ENV = {"JIRA_BASE_URL": "JIRA_REAL_BASE_URL", "JIRA_SANDBOX_EMAIL": "JIRA_REAL_EMAIL",
+            "JIRA_SANDBOX_API_TOKEN": "JIRA_REAL_API_TOKEN", "SLACK_SANDBOX_BOT_TOKEN": "SLACK_REAL_BOT_TOKEN"}
+REAL_CONFIG = {"jira_project_key": "JIRA_REAL_PROJECT_KEY", "slack_channel_triage": "SLACK_REAL_CHANNEL_TRIAGE",
+               "slack_channel_review": "SLACK_REAL_CHANNEL_REVIEW"}
+REAL_MAX_TICKETS = 3
+
+
+def real_env(env):
+    """A copy of env with the real values under the names the workflow and credentials use."""
+    require_env(env, list(REAL_ENV.values()) + list(REAL_CONFIG.values()))
+    out = dict(env)
+    for name, real in REAL_ENV.items():
+        out[name] = env[real]
+    out["SLACK_BASE_URL"] = "https://slack.com"
+    return out
+
+
+def real_overrides(env):
+    return ["{}={}".format(key, env[name]) for key, name in REAL_CONFIG.items()]
+
+
+def run_real(args, n8n=None, env=None):
+    """Smoke run on at most REAL_MAX_TICKETS ids with real credentials; sandbox credentials are restored after."""
+    env = os.environ if env is None else env
+    if args.phase != "smoke" or not args.ids or len(args.ids) > REAL_MAX_TICKETS:
+        raise ValueError("--real needs --phase smoke and 1..{} --ids".format(REAL_MAX_TICKETS))
+    real = real_env(env)
+    args.config_override = list(args.config_override or ()) + real_overrides(env)
+    n8n = n8n or LocalN8n(args.sqlite, env.get("N8N_CONTAINER") or "n8n")
+    n8n.import_credentials(credential_payload(real))
+    try:
+        return run_replay(args, n8n=n8n, env=real)
+    finally:
+        n8n.import_credentials(credential_payload(env))
+
+
 def build_parser():
     parser = argparse.ArgumentParser(prog="python3 -m src.replay.run", description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -786,6 +824,8 @@ def build_parser():
     parser.add_argument("--sink-host", default="0.0.0.0", help="the n8n container reaches the sink on the host")
     parser.add_argument("--sink-port", type=int, default=None, help="default: SINK_PORT or 8790")
     parser.add_argument("--timeout", type=int, default=TIMEOUT_SECONDS, help="seconds per ticket")
+    parser.add_argument("--real", action="store_true",
+                        help="owner-run demo: real Jira/Slack from *_REAL_* names; smoke phase, <= 3 ids")
     return parser
 
 
@@ -801,7 +841,7 @@ def main(argv=None):
             raise ValueError("run needs --phase")
         if args.sink_port is None:
             args.sink_port = int(os.environ.get("SINK_PORT") or "8790")
-        run_dir = run_replay(args)
+        run_dir = run_real(args) if args.real else run_replay(args)
     except (ValueError, RuntimeError) as error:
         print("replay refused: {}".format(error), file=sys.stderr)
         return 2

@@ -24,10 +24,10 @@ Budget: **$4.00 API max today**; estimate shown before any paid run; no overnigh
 
 ## 1. Safety first
 
-- [ ] **1.1 Review G11 work** — AI, 15 min. `git show e6ece8e --stat` + G11 commit; run `bash scripts/accept.sh G11`, `G12`, `G13`, `bash scripts/guard.sh`. Report findings file:line. *Done means:* all four pass, output pasted here.
-- [ ] **1.2 Secret scan, full history** — AI, 15 min. Without new deps (D-2): (a) `git log -p --all` piped through a scratchpad Python scanner using the same patterns as `scripts/guard.sh` / SEC-20 plus generic (`sk-`, `xox[bpa]-`, `ATATT`, `-----BEGIN`, `AKIA`, `ghp_`, high-entropy 32+ chars), and (b) check every `.env` key *name* from `.env` against history (values compared in-process, never printed). (c) `git log --all -- .env` must be empty. *Done means:* 0 hits, or each hit triaged as fake/fixture with file:commit.
+- [x] **1.1 Review G11 work** (2026-10-14: accept G11/G12/G13 PASS; guard FAIL only `outside:t2-head` — the sibling T2 repo HEAD moved since the overnight snapshot, not a T4 file) — AI, 15 min. `git show e6ece8e --stat` + G11 commit; run `bash scripts/accept.sh G11`, `G12`, `G13`, `bash scripts/guard.sh`. Report findings file:line. *Done means:* all four pass, output pasted here.
+- [x] **1.2 Secret scan, full history** (2026-10-14: 20 commits, 0 secrets; 4 hits = localhost URLs + example-domain sandbox email, value-matched without printing) — AI, 15 min. Without new deps (D-2): (a) `git log -p --all` piped through a scratchpad Python scanner using the same patterns as `scripts/guard.sh` / SEC-20 plus generic (`sk-`, `xox[bpa]-`, `ATATT`, `-----BEGIN`, `AKIA`, `ghp_`, high-entropy 32+ chars), and (b) check every `.env` key *name* from `.env` against history (values compared in-process, never printed). (c) `git log --all -- .env` must be empty. *Done means:* 0 hits, or each hit triaged as fake/fixture with file:commit.
 - [ ] **1.2b Optional stronger scan** — Me, 5 min: `brew install gitleaks && gitleaks git .` outside the repo rules. *Done means:* "no leaks found".
-- [ ] **1.3 Create remote** — Me (creates repo, 3 min), AI (pushes after "GO" + clean scan, 2 min).
+- [x] **1.3 Create remote** (2026-10-14: pushed to https://github.com/beyondalgorithms2026-source/support-triage-n8n, public) — Me (creates repo, 3 min), AI (pushes after "GO" + clean scan, 2 min).
   **Recommendation: public** GitHub repo `spanfold/support-triage-n8n`. Why: an Upwork/LinkedIn reviewer will not request access to a private repo; a public repo lets a buyer click from claim to evidence (`eval_report.json`, `SHA256SUMS`) in one minute, which is the whole selling point. Risk is low: data is synthetic, no client code. **Gate:** public only if 1.2 is clean; otherwise private until history is rewritten (rewrite = destructive → asks you).
   *Done means:* `git remote -v` shows origin; `main` pushed; repo page loads logged out.
 
@@ -72,7 +72,7 @@ AI writes these into `evals/findings.md` (owner section) / README / LIMITATIONS 
 - [ ] **2.4 Recommend final cut-offs** — AI proposes, **Me decides**. Expected recommendation: keep committed τ as the published v1 ("conservative start") — yes, 79% to human is defensible **only** when framed as: day-1 shadow mode, 0 unsafe auto-routes, 0 PII leaks, and a written path to ~40–50% once 2–4 weeks of real reviewed tickets re-tune P2 and outage/feature. Not defensible as an end state.
 - [ ] **2.5 Priority honest fix** — macro-F1 0.719. The model over-escalates P3→P2 (21/36). Honest fix, in order: (1) priority rubric in the prompt with 2 examples per level (dev split only); (2) derive priority from category+urgency rules and let the model only flag exceptions; (3) more P2/P3 boundary gold labels — also a gold-label question for you (§3). Not done today unless you choose 2.3b; listed in LIMITATIONS.
 - [ ] **2.6 Failure taxonomy with counts** (test run, from report): schema_miss 0 · misroute_auto **1** (t4-110 feature→howto) · priority_miss_auto **2** (t4-147, t4-192) · unsafe_auto 0 · duplicate_issue 0 · silent_drop 0 · pii_leak 0 · injection_followed 0 · unbounded_spend 0 · retry_storm 0 · audit_gap 0 · notify_gap 0. Plus 1 `error` outcome (t4-075) → investigate in 1.1.
-- [ ] **2.7 G11 findings mapped to OWASP** — table exists: `evals/security_findings.md` (20 rows, 19 defended, SEC-17 not_run). Mapping uses LLM Top 10 **2025** + Agentic Top 10 (ASI). See D-3 for "2026". AI verifies IDs against owasp.org pages (web, $0) — 10 min.
+- [x] **2.7 G11 findings mapped to OWASP** (verified on genai.owasp.org 2026-10-14: LLM list is "OWASP Top 10 for LLM Applications 2025" (no 2026 edition); ASI IDs are "OWASP Top 10 for Agentic Applications for 2026". Repo already uses both names; no edit) — table exists: `evals/security_findings.md` (20 rows, 19 defended, SEC-17 not_run). Mapping uses LLM Top 10 **2025** + Agentic Top 10 (ASI). See D-3 for "2026". AI verifies IDs against owasp.org pages (web, $0) — 10 min.
 - [ ] **2.8 Cost** — test run: **$0.000105/ticket mean, $0.105 per 1,000 tickets** (gpt-4o-mini, model cost only; excludes n8n hosting and build cost). Attack run $0.000219/ticket (larger inputs). Build cost (Claude overnight) reported separately from `logs/`, labelled as one-off.
 - [ ] **2.9 Limitations** — `docs/LIMITATIONS.md` exists; AI adds: auto-route precision breach (0.85 vs 0.95), 79% human, priority over-escalation, n=93 small sample, synthetic data, sandbox-only integration until §4 done, SEC-17 not run, OWASP numbering caveat.
 
@@ -97,30 +97,52 @@ Changed labels → recorded here; relabel is a gold change → requires re-score
 
 ## 4. Real Jira + Slack demo (free tiers) — sandbox stays default
 
-Architecture note: ADR-003 + AGENTS forbid agents calling real Jira/Slack. Real mode is an **owner-run demo** path only. Adding it = small change to sink/workflow credentials (no new dependency; urllib). This touches a frozen contract boundary → **D-1, needs your OK**.
+**Built (AI, 2026-10-14):** `python3 -m src.replay.run run --phase smoke --ids … --real` (owner-only). It maps
+`*_REAL_*` names onto the workflow placeholders and the `t4-jira` / `t4-slack` n8n credentials for that run only,
+caps at 3 tickets, and re-imports the sandbox credentials afterwards even on failure
+(`tests/test_replay.py::test_real_mode_swaps_credentials_and_always_restores_sandbox`). The workflow file is
+unchanged: the demo runs the same JSON that was evaluated and attacked. `scripts/demo_real.py check|count` is the
+owner preflight and the replay proof. Agents never run either (ADR-003).
 
-**Your setup (Me, ~35 min):**
-- [ ] Jira Cloud Free: atlassian.com → Jira free → site `spanfold-demo.atlassian.net` → project **Scrum/Kanban, key `TRI`**. Add labels allowed (default). 8 min.
-- [ ] Jira bot user: use a separate Atlassian account if possible (least privilege: member of TRI only, "Browse projects" + "Create issues" + "Edit issues"; no admin). API token at id.atlassian.com → Security → API tokens, expiry 7 days. 7 min.
-- [ ] Slack free workspace `spanfold-demo`, channels `#triage-alerts`, `#triage-review`. 5 min.
-- [ ] Slack app (api.slack.com/apps → From scratch) → **Incoming Webhooks** on → one webhook per channel. No bot token, no OAuth scopes beyond `incoming-webhook`. 8 min.
-- [ ] Put values in `.env` (gitignored) yourself. **Names only:**
-  `JIRA_BASE_URL`, `JIRA_EMAIL`, `JIRA_API_TOKEN`, `JIRA_PROJECT_KEY`, `SLACK_WEBHOOK_ALERTS`, `SLACK_WEBHOOK_REVIEW`, `T4_SINK_MODE` (`sandbox` | `real`, default `sandbox`).
-  In n8n: create credentials named `t4-jira-demo` (Basic Auth) and `t4-slack-alerts`/`t4-slack-review` (header/URL). Workflow JSON references names only (I-10).
+**Found 2026-10-14 — fix before any replay (Me, 5 min):** `.env` `JIRA_BASE_URL` now holds the real atlassian.net
+URL, so a normal sandbox replay would send the sandbox token to the real site (fails 401, but wrong).
+`JIRA_PROJECT_KEY` holds the 10-character id from the Atlassian Home link you sent: that is an Atlassian *Home* project id, not a Jira key. Jira
+keys look like `TRI` or `SUP`, with no `-1`.
 
-**AI build (~45 min, after D-1):**
-- [ ] Real-mode adapter behind `T4_SINK_MODE=real`; same dedupe key as label `t4-<dedupe_key>`; JQL search before create (C-18).
-- [ ] `scripts/demo_real.sh` (**owner runs it**; agent never does): sends 1 high-confidence ticket → expects 1 TRI issue + 1 `#triage-alerts` message; sends it again → expects 0 new issues, 0 new messages; JQL count by label = 1; exits non-zero otherwise. Prints issue key, never tokens.
-- [ ] Unit tests with a fake HTTP server (no network). Sandbox tests unchanged.
-- [ ] Cost: 2 LLM calls ≈ $0.0003.
-*Done means:* your terminal output shows `issues_created=1 slack_posts=1 replay_new_issues=0`; screenshot saved to `docs/demo/`; token revoked after recording.
+- [ ] **4.1 Fix `.env` (Me, 5 min).** Rename, do not paste anywhere:
+  `JIRA_BASE_URL` → `JIRA_REAL_BASE_URL` · `JIRA_EMAIL` → `JIRA_REAL_EMAIL` · `JIRA_API_TOKEN` → `JIRA_REAL_API_TOKEN` ·
+  `JIRA_PROJECT_KEY` → `JIRA_REAL_PROJECT_KEY` (value = the real key from Jira → Projects → "Key" column).
+  Add back the sandbox line `JIRA_BASE_URL=` + the same value as `SINK_BASE_URL` (the sink serves `/rest/api/3`).
+  Delete `SLACK_WEBHOOK_ALERTS`, `SLACK_WEBHOOK_REVIEW`, `T4_SINK_MODE` (not used: the workflow posts with
+  `chat.postMessage` + bot token, ARCHITECTURE §7; switching to webhooks would change the evaluated workflow).
+- [ ] **4.2 Slack bot token (Me, 5 min).** Your app → OAuth & Permissions → Bot Token Scopes: **`chat:write` only**
+  → Install to workspace → copy `xoxb-…` into `SLACK_REAL_BOT_TOKEN`. In each channel type `/invite @<app>`.
+  Channel IDs (channel name → About → bottom) into `SLACK_REAL_CHANNEL_TRIAGE` (#triage-alerts) and
+  `SLACK_REAL_CHANNEL_REVIEW` (#triage-review). Turn Incoming Webhooks off and revoke the two webhooks.
+- [ ] **4.3 Least privilege, honestly (Me).** Jira **Free** has no custom permission schemes: any user on the site
+  can do what the project allows. Mitigation: a dedicated bot Atlassian account if you have a second email, API
+  token with **expiry ≤ 7 days**, a demo-only project, revoke the token after recording. Slack: `chat:write` only,
+  bot in two channels only. Record this as a limitation, not a control.
+- [ ] **4.4 Preflight (Me, 1 min):** `python3 scripts/demo_real.py check` → expect project key listed, issue type
+  Task, fields summary/description/labels/priority ok, Slack auth ok, `PREFLIGHT PASS`. If `priority` is MISSING:
+  Jira → Project settings → Issue types → Task → add the Priority field.
+- [ ] **4.5 Demo run (Me, 3 min, est. < $0.001):**
+  `python3 -m src.replay.run run --phase smoke --ids t4-173 t4-153 t4-007 --real`
+  Expect: pass A → 1 Jira issue (t4-173, billing/P3, IBAN/email/name redacted), 1 #triage-alerts post, 2
+  #triage-review posts (t4-153 injection, t4-007 privacy policy). Pass B (replay) → 0 new issues, duplicate_skip.
+- [ ] **4.6 Proof (Me, 1 min):** `python3 scripts/demo_real.py count` → `t4 issues: 1 … duplicates: 0`. Run it again
+  after a second `--real` run: still 1. Screenshot Jira + both channels to `docs/demo/`.
+- [ ] **4.7 Restore check (Me):** `python3 -m src.replay.run setup` (re-imports sandbox credentials; the runner
+  already does this, this is the belt-and-braces step). Revoke the Jira token after the Loom.
+*Done means:* `PREFLIGHT PASS`; count shows 1 issue, 0 duplicates after two runs; screenshots saved; sandbox tests
+still 243 OK.
 
 ## 5. G12–G14
 
 - [ ] G12 runbook/limitations — DONE (committed). AI adds §2.9 lines. 10 min.
 - [ ] G13 findings + eval report — DONE. AI fills nothing in "Trace notes (owner)"; **Me** writes 3 lines there (5 min) or leaves placeholder.
-- [ ] **G14 buyer README** — AI, 30 min. ≤200 words, no "plan only", every number from `eval_report.json`, links resolve, Spanfold brand, "synthetic data" in first 3 lines, breaches stated. `bash scripts/accept.sh G14` + guard.
-- [ ] `python3 scripts/status.py set T4-14 DONE …`; update milestone rows M1–M4 in `.ai/STATUS.md`; overwrite `.ai/HANDOFF.md` and `.ai/REVIEW.md` per AGENTS closeout. 10 min.
+- [x] **G14 buyer README** (accept PASS, commit 6f3e76b) — AI, 30 min. ≤200 words, no "plan only", every number from `eval_report.json`, links resolve, Spanfold brand, "synthetic data" in first 3 lines, breaches stated. `bash scripts/accept.sh G14` + guard.
+- [x] `python3 scripts/status.py set G14 DONE …`; update milestone rows M1–M4 in `.ai/STATUS.md`; overwrite `.ai/HANDOFF.md` and `.ai/REVIEW.md` per AGENTS closeout. 10 min.
 - [ ] Commits: `T4-14: Buyer README`, separate `T4-close: …` commits for plan/brand/demo. One goal per commit.
 
 ## 6. Loom script (3–5 min) — AI writes `docs/demo/LOOM_SCRIPT.md`, Me records (30 min incl. retakes)
@@ -154,9 +176,9 @@ Architecture note: ADR-003 + AGENTS forbid agents calling real Jira/Slack. Real 
 
 ## 9. Brand (AI, 10 min)
 
-- [ ] `THIN-LEDGER-v0.1.md:4` owner line → Spanfold. (Allowed in a daytime session; not an overnight-protected file.)
-- [ ] README → Spanfold (in G14).
-- [ ] **LICENSE does not exist** — D-4: create MIT `Copyright (c) 2026 Spanfold`?
+- [x] `THIN-LEDGER-v0.1.md:4` owner line → Spanfold. (Allowed in a daytime session; not an overnight-protected file.)
+- [x] README → Spanfold (in G14).
+- [x] **LICENSE does not exist** → created MIT, Spanfold (D-4) — D-4: create MIT `Copyright (c) 2026 Spanfold`?
 - [ ] Git author name stays "Beyond Algorithms" in history (rewrite = destructive, not proposed). Future commits: optionally `git config user.name Spanfold` — Me decides.
 
 ## Budget estimate (shown before any paid run)
@@ -179,7 +201,11 @@ Architecture note: ADR-003 + AGENTS forbid agents calling real Jira/Slack. Real 
 - **D-6** Repo public (if scan clean). Name?
 
 ## Decision log
-- 2026-10-14 — plan written; state re-verified (§0). Waiting for GO.
+- 2026-10-14 — plan written; state re-verified (§0).
+- 2026-10-14 — GO. D-1 yes, D-2 yes, D-3 true OWASP names, D-4 MIT/Spanfold, D-5 publish 79%, D-6 public if clean.
+- 2026-10-14 — Scan clean → pushed public. Git author email in history reads `…@gmail.com.com` (typo, public); not rewritten (destructive).
+- 2026-10-14 — Sweep: recommend keeping committed τ for v1 (A); scenario D (global category τ 0.5) is the first change to make, needs a dev re-tune + test re-run (~$0.01) and an ADR-001 note. Owner decision.
+- 2026-10-14 — §4: Slack uses chat.postMessage + bot token (not webhooks); owner .env rename required before any replay.
 
 ---
 
