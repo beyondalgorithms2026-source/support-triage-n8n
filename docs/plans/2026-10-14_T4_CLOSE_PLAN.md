@@ -35,8 +35,8 @@ Budget: **$4.00 API max today**; estimate shown before any paid run; no overnigh
 
 AI writes these into `evals/findings.md` (owner section) / README / LIMITATIONS only where numbers already exist in `eval_report.json`; new numbers come from a script (2.3) whose output is committed.
 
-- [ ] **2.1 Problem and buyer** — Head of Support at a 20–200 person SaaS. Every new ticket is read, labelled (category, priority, urgency), and either filed in Jira + announced in Slack, or held for a person. Saves first-touch triage time; never silently guesses.
-- [ ] **2.2 Why ~79% goes to a human** — three causes, all visible in `scorecard.csv` notes `outcome=review/auto_route`:
+- [x] **2.1 Problem and buyer** — Head of Support at a 20–200 person SaaS. Every new ticket is read, labelled (category, priority, urgency), and either filed in Jira + announced in Slack, or held for a person. Saves first-touch triage time; never silently guesses.
+- [x] **2.2 Why ~79% goes to a human** — three causes, all visible in `scorecard.csv` notes `outcome=review/auto_route`:
   1. Policy, not confidence: `privacy`, `other` always review (ADR-002); `outage`, `feature` τ=1.01 (dev split too small to prove ≥0.95 precision, so tuner refused them).
   2. Priority gate: τ_P2 = 1.01 → **every predicted P2 goes to review**. The model predicts P2 for 21 of 36 true-P3 tickets, so most of the review volume is P2 over-calls.
   3. Safety: injection flag, malformed, high urgency. These are intended.
@@ -69,12 +69,12 @@ AI writes these into `evals/findings.md` (owner section) / README / LIMITATIONS 
 
   **Reading the curve:** lowering τ_P2 (B, C, E, F) buys coverage with priority errors (precision 0.94 → 0.74 on dev) and lets one P1 slip through as P2. A single global category τ (D) keeps dev precision at 0.94 while cutting the human share 81% → 62% on dev and 78% → 56% on test (test precision 0.85 → 0.88). Category is not the problem; priority is.
 - [ ] **2.3b (optional, paid)** — re-run test split with new thresholds. Estimate from ledger: test run = $0.0105; dev = $0.0101; attack = $0.0228 → **≈$0.05 total, plus Claude session cost.** Shown to you before running.
-- [ ] **2.4 Recommend final cut-offs** — AI proposes, **Me decides**. Expected recommendation: keep committed τ as the published v1 ("conservative start") — yes, 79% to human is defensible **only** when framed as: day-1 shadow mode, 0 unsafe auto-routes, 0 PII leaks, and a written path to ~40–50% once 2–4 weeks of real reviewed tickets re-tune P2 and outage/feature. Not defensible as an end state.
+- [x] **2.4 Recommend final cut-offs** — AI proposes, **Me decides**. Expected recommendation: keep committed τ as the published v1 ("conservative start") — yes, 79% to human is defensible **only** when framed as: day-1 shadow mode, 0 unsafe auto-routes, 0 PII leaks, and a written path to ~40–50% once 2–4 weeks of real reviewed tickets re-tune P2 and outage/feature. Not defensible as an end state.
 - [ ] **2.5 Priority honest fix** — macro-F1 0.719. The model over-escalates P3→P2 (21/36). Honest fix, in order: (1) priority rubric in the prompt with 2 examples per level (dev split only); (2) derive priority from category+urgency rules and let the model only flag exceptions; (3) more P2/P3 boundary gold labels — also a gold-label question for you (§3). Not done today unless you choose 2.3b; listed in LIMITATIONS.
-- [ ] **2.6 Failure taxonomy with counts** (test run, from report): schema_miss 0 · misroute_auto **1** (t4-110 feature→howto) · priority_miss_auto **2** (t4-147, t4-192) · unsafe_auto 0 · duplicate_issue 0 · silent_drop 0 · pii_leak 0 · injection_followed 0 · unbounded_spend 0 · retry_storm 0 · audit_gap 0 · notify_gap 0. Plus 1 `error` outcome (t4-075) → investigate in 1.1.
+- [x] **2.6 Failure taxonomy with counts** (test run, from report): schema_miss 0 · misroute_auto **1** (t4-110 feature→howto) · priority_miss_auto **2** (t4-147, t4-192) · unsafe_auto 0 · duplicate_issue 0 · silent_drop 0 · pii_leak 0 · injection_followed 0 · unbounded_spend 0 · retry_storm 0 · audit_gap 0 · notify_gap 0. Plus 1 `error` outcome (t4-075) → investigate in 1.1.
 - [x] **2.7 G11 findings mapped to OWASP** (verified on genai.owasp.org 2026-10-14: LLM list is "OWASP Top 10 for LLM Applications 2025" (no 2026 edition); ASI IDs are "OWASP Top 10 for Agentic Applications for 2026". Repo already uses both names; no edit) — table exists: `evals/security_findings.md` (20 rows, 19 defended, SEC-17 not_run). Mapping uses LLM Top 10 **2025** + Agentic Top 10 (ASI). See D-3 for "2026". AI verifies IDs against owasp.org pages (web, $0) — 10 min.
-- [ ] **2.8 Cost** — test run: **$0.000105/ticket mean, $0.105 per 1,000 tickets** (gpt-4o-mini, model cost only; excludes n8n hosting and build cost). Attack run $0.000219/ticket (larger inputs). Build cost (Claude overnight) reported separately from `logs/`, labelled as one-off.
-- [ ] **2.9 Limitations** — `docs/LIMITATIONS.md` exists; AI adds: auto-route precision breach (0.85 vs 0.95), 79% human, priority over-escalation, n=93 small sample, synthetic data, sandbox-only integration until §4 done, SEC-17 not run, OWASP numbering caveat.
+- [x] **2.8 Cost** — test run: **$0.000105/ticket mean, $0.105 per 1,000 tickets** (gpt-4o-mini, model cost only; excludes n8n hosting and build cost). Attack run $0.000219/ticket (larger inputs). Build cost (Claude overnight) reported separately from `logs/`, labelled as one-off.
+- [x] **2.9 Limitations** — `docs/LIMITATIONS.md` exists; AI adds: auto-route precision breach (0.85 vs 0.95), 79% human, priority over-escalation, n=93 small sample, synthetic data, sandbox-only integration until §4 done, SEC-17 not run, OWASP numbering caveat.
 
 ## 3. Your review gates (≤20 min total) — Me
 
@@ -139,13 +139,13 @@ still 243 OK.
 
 ## 5. G12–G14
 
-- [ ] G12 runbook/limitations — DONE (committed). AI adds §2.9 lines. 10 min.
+- [x] G12 runbook/limitations — DONE (committed). AI adds §2.9 lines. 10 min.
 - [ ] G13 findings + eval report — DONE. AI fills nothing in "Trace notes (owner)"; **Me** writes 3 lines there (5 min) or leaves placeholder.
 - [x] **G14 buyer README** (accept PASS, commit 6f3e76b) — AI, 30 min. ≤200 words, no "plan only", every number from `eval_report.json`, links resolve, Spanfold brand, "synthetic data" in first 3 lines, breaches stated. `bash scripts/accept.sh G14` + guard.
 - [x] `python3 scripts/status.py set G14 DONE …`; update milestone rows M1–M4 in `.ai/STATUS.md`; overwrite `.ai/HANDOFF.md` and `.ai/REVIEW.md` per AGENTS closeout. 10 min.
 - [ ] Commits: `T4-14: Buyer README`, separate `T4-close: …` commits for plan/brand/demo. One goal per commit.
 
-## 6. Loom script (3–5 min) — AI writes `docs/demo/LOOM_SCRIPT.md`, Me records (30 min incl. retakes)
+## 6. Loom script (3–5 min) — AI wrote `docs/demo/LOOM_SCRIPT.md` (2026-10-14; final version supersedes the draft table below), Me records (30 min incl. retakes)
 
 | # | Segment (time) | Screen | Setup command | Spoken line (draft) | Fallback |
 |---|---|---|---|---|---|
@@ -160,19 +160,19 @@ still 243 OK.
 | 9 | Scorecard (3:20–4:05) | `evals/findings.md` / sweep table | — | "Category accuracy high; priority weaker — it over-escalates. 79% goes to a person today, by design for week one; here is the trade-off curve. About ten cents per thousand tickets in model cost." | — |
 | 10 | Limits (4:05–4:40) | LIMITATIONS.md | — | "Synthetic data, small sample, pattern-based redaction, one attack not run. Next step: tune on your real tickets." | — |
 
-## 7. Upwork portfolio item — AI drafts `docs/portfolio/UPWORK.md`, Me pastes (10 min)
+## 7. Upwork portfolio item — AI wrote `docs/portfolio/UPWORK.md` + `snapshot.png` 1000×750 (Upwork help: recommended 1000×750, min 400×300, JPG/PNG; checked 2026-10-14). Me pastes (10 min)
 
 - Title (≤70 chars): "AI Support Ticket Triage on n8n — Jira + Slack, With Measured Accuracy"
 - Role: "Solo builder: design, evaluation harness, n8n workflow, security testing"
 - Description: problem → approach → result (numbers from report, incl. 79% human / 0.85 auto precision) → limits (synthetic, not a client deployment).
 - Skills tags (Upwork allows a limited set; verify count): n8n, AI Automation, OpenAI API, Jira, Slack API, Python, LLM Evaluation, Prompt Engineering.
 - Links: GitHub repo, Loom.
-- [ ] **Snapshot image** — AI renders 1 page (HTML → PNG via headless browser pane screenshot; no new dep). **AI checks Upwork's current image rules on upwork.com help pages before sizing** (my memory: thumbnail ~1000×750, 4:3, ≤10 MB JPG/PNG — to be verified, not assumed). 25 min.
+- [x] **Snapshot image** — AI renders 1 page (HTML → PNG via headless browser pane screenshot; no new dep). **AI checks Upwork's current image rules on upwork.com help pages before sizing** (my memory: thumbnail ~1000×750, 4:3, ≤10 MB JPG/PNG — to be verified, not assumed). 25 min.
 
 ## 8. Public profiles — drafts only (AI, 20 min)
 
-- [ ] `docs/portfolio/LINKEDIN_FEATURED.md`: title + 2-line description + link.
-- [ ] `docs/portfolio/spanfold_work_card.html` + copy: self-contained card snippet (title, 1-line result, 3 metric chips, "synthetic data" tag, repo + Loom links). **Site not touched.**
+- [x] `docs/portfolio/LINKEDIN_FEATURED.md`: title + 2-line description + link.
+- [x] `docs/portfolio/spanfold_work_card.html` + copy: self-contained card snippet (title, 1-line result, 3 metric chips, "synthetic data" tag, repo + Loom links). **Site not touched.**
 
 ## 9. Brand (AI, 10 min)
 
@@ -199,6 +199,8 @@ still 243 OK.
 - **D-4** LICENSE = MIT, Spanfold. *Recommend yes.*
 - **D-5** Publish 79% (report) instead of 75%. *Recommend yes.*
 - **D-6** Repo public (if scan clean). Name?
+
+- 2.4 recommendation (2026-10-14): ship v1 on committed τ (79% to human) as a shadow-mode start; next change = scenario D, then priority rubric (2.5).
 
 ## Decision log
 - 2026-10-14 — plan written; state re-verified (§0).

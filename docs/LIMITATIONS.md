@@ -51,9 +51,16 @@ Run folders cited: `slice-local-20261012T225612Z-98461ef`, `smoke-local-20261013
 - Each publish and unpublish restarts the shared `n8n` container, which also holds T2's workflows. Evidence:
   `src/replay/run.py` (`LocalN8n.publish`); Q-15.
 
+- Auto-routed precision on test is 0.85; the target is 0.95. Evidence: `evals/eval_report.json` `metric_status`.
+- A single global category τ simulated on the committed runs cuts the human share (test 78% → 56%) at equal or
+  better precision. It is not adopted: it needs a dev re-tune and a test re-run. Evidence: close plan §2.3.
+
 ## Not built (GOALS § Cut)
 - No reviewer approval webhook. A reviewer acts in Jira by hand.
-- No run against a real Jira Cloud site or a real Slack workspace.
+- All evaluated numbers come from the local Jira and Slack sandbox. An owner-run demo mode (`--real`, ≤ 3 tickets)
+  exists for a real Jira Cloud site and Slack workspace; it is a demo, not an evaluation. Evidence: close plan §4.
+- Jira Cloud Free has no custom permission schemes, so the demo bot cannot be limited to create-only. Mitigation is
+  a demo-only project and a short-lived token. Evidence: close plan §4.3.
 - The IMAP email adapter is documented, not replayed.
 - Synthetic English tickets only: no public dataset, no other language.
 - No semantic duplicate detection: exact message id and exact content hash only.
