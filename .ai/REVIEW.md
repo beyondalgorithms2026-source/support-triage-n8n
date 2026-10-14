@@ -1,18 +1,13 @@
-- Changed: `src/score/report.py`, `tests/test_score.py`, `OPEN_QUESTIONS.md`, `evals/eval_report.json`, `evals/SHA256SUMS`, `evals/security_findings.json`, `evals/security_findings.md`, `evals/findings.md`.
-- Did: G13. The report generator wrote the eval report and the security table. The table has 20 rows with OWASP IDs. `findings.md` has the HARNESS_SPEC §6 headings.
-- Did-not: `evals/runs/*`, workflows, τ, `scripts/`, `README.md`, G14.
-- Check: `bash scripts/accept.sh G13` gave ACCEPT PASS. `bash scripts/guard.sh` gave guard clean. The unit tests gave 242 OK.
-- Risk: The global τ beat the per-class τ on test. ADR-001 has no support from this run (Q-37 (4)).
-- Next: G14.
+- Changed: README.md, .ai/STATUS.md, .ai/REVIEW.md, .ai/HANDOFF.md.
+- Did: G14. The README states the test results from evals/eval_report.json. The README has 200 words or fewer.
+- Did-not: src/, workflows/, evals/, GOALS.md. G1–G13 stay as committed.
+- Check: `bash scripts/accept.sh G14` → ACCEPT PASS. `python3 -m unittest discover -s tests -t .` → 242 tests OK.
+- Risk: Auto-route precision is 0.85. The target is 0.95. The README states this breach.
+- Next: none in GOALS.md. Close plan docs/plans/2026-10-14_T4_CLOSE_PLAN.md §4 (real Jira and Slack demo).
 
 ```mermaid
 flowchart LR
-  T[test run files] --> R[src/score/report.py]
-  A[attack_results.json] --> R
-  H[thresholds.json] --> R
-  R --> E[eval_report.json]
-  R --> S[security_findings.json/.md]
-  R --> X[SHA256SUMS]
-  E --> F[findings.md]
-  S --> F
+  R[evals/eval_report.json] --> M[README.md Results]
+  M --> A[accept.sh G14]
+  A --> S[status.py set G14 DONE]
 ```

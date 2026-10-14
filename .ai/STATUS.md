@@ -7,12 +7,12 @@ blocked). A DONE row is never reopened by the loop.
 
 | Milestone | State | Evidence |
 |---|---|---|
-| M0 Plan + harness spec (T4-00) | Done, awaiting owner acceptance of ADR-001…007 and frozen formats | architecture session 2026-10-12; `bash scripts/accept.sh plan` |
-| M1 Harness + golden set (T4-01…T4-06) | Not started | — |
-| M2 Thin slice + full workflow (T4-07, T4-08) | Not started | — |
-| M3 Tuning, test run, attacks (T4-09…T4-11) | Not started | — |
-| M4 Runbook, findings, eval report, README (T4-12…T4-14) | Not started | — |
-| Public link | Owner gate, out of scope for agents | — |
+| M0 Plan + harness spec (T4-00) | Done; ADR-001…007 owner review in progress (close plan §3) | architecture session 2026-10-12; `bash scripts/accept.sh plan` |
+| M1 Harness + golden set (T4-01…T4-06) | Done | T4-01…T4-06 DONE |
+| M2 Thin slice + full workflow (T4-07, T4-08) | Done | T4-07, T4-08 DONE |
+| M3 Tuning, test run, attacks (T4-09…T4-11) | Done | T4-09…T4-11 DONE |
+| M4 Runbook, findings, eval report, README (T4-12…T4-14) | Done | T4-12…T4-14 DONE |
+| Public link | Owner approved public (D-6) if history scan clean; scan clean 2026-10-14 | docs/plans/2026-10-14_T4_CLOSE_PLAN.md |
 
 <!-- status-table:start -->
 | Task | Goal | Title | State | Attempts | Evidence |
@@ -30,10 +30,10 @@ blocked). A DONE row is never reopened by the loop.
 | T4-11 | G11 | Attack run | DONE | 1 | accept+guard pass (attempt 1, $4.78; closeout by daytime session) |
 | T4-12 | G12 | Runbook and limitations note | DONE | 1 | accept+guard pass (attempt 1, $1.9135027999999998) |
 | T4-13 | G13 | Security findings table and eval report | DONE | 1 | accept+guard pass (attempt 1, $2.2056739999999997) |
-| T4-14 | G14 | Buyer README | TODO | 0 | — |
+| T4-14 | G14 | Buyer README | DONE | 1 | accept pass (daytime session 2026-10-14, $0 API) |
 <!-- status-table:end -->
 
 Target: local Docker `n8nio/n8n:2.22.5` (container `n8n`, shared with T2). Sink/sandbox port 8790.
 Model: `gpt-4o-mini-2024-07-18` (ADR-005; logprob check pending, OPEN_QUESTIONS Q-2).
 
-Last updated: 2026-10-14 05:22 UTC (scripts/status.py)
+Last updated: 2026-10-14 10:42 UTC (scripts/status.py)
