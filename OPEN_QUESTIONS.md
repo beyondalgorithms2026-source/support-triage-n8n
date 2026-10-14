@@ -28,7 +28,7 @@ privacy; priority `cr crit critic critical`, `h hi high`, `l lo low`, `nor norm 
 `l lo low`, `med medi medium`. Ambiguous tokens `b` (billing|bug) and `o` (outage|other) start two values: H8 drops
 them from the sum. Strict decoding offers value prefixes as alternatives, so H8 sums every alternative that starts
 exactly one value (Q-31 (3)).
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-3 Taxonomy: 8 categories, P1–P4 priority, 3-level urgency — H
 Decision: `billing, access, bug, outage, howto, feature, privacy, other`; priority `critical/high/normal/low` =
@@ -41,36 +41,36 @@ Owner answer (2026-10-12, in chat): accept as proposed (8 categories, P1–P4, 3
 ## Q-4 Split 100 dev / 100 test, stratified — M
 Decision: tune on dev only (I-9). ≈ 12 tickets per class per split: thresholds are noisy (stated in findings).
 Reverse: regenerate split, rerun dev + test.
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-5 Jira and Slack are a local contract sandbox, not real Atlassian/Slack — M
 Decision: ADR-003. Real Jira Cloud free site + real Slack workspace is a documented swap, not run.
 Why: unattended build, no accounts or tokens, fault injection for the lost-response case.
 Reverse: create site/workspace, bot users, credentials; one live run; add real-API differences to findings.
-Owner answer:
+Owner answer (owner, 2026-10-14): accept the sandbox for this release; README and report say so, and the runbook documents the swap.
 
 ## Q-6 HTTP Request nodes instead of n8n's Jira / Slack nodes — M
 Decision: raw REST v3 / Web API calls, so the contract and the least-privilege surface are visible and sandboxable.
 Reverse: swap nodes, re-run smoke and test.
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-7 Idempotency keys = message id hash + content hash, Jira label as second source — M
 Decision: ADR-006. No semantic duplicate detection.
 Reverse: key change → re-run all runs that prove I-8.
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-8 Redaction pattern set and placeholder format — M
 Decision: email, phone, Luhn card, IBAN, US SSN-format, IPv4, URL-with-query, sender display name → `[TYPE_n]`.
 Free-text names / addresses not covered (residual risk).
 Reverse: change JS + Python twins + vectors, re-run.
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-9 OWASP 2026 numbering from secondary sources — L
 Decision: LLM01 Prompt Injection, LLM02 Sensitive Information Disclosure, LLM03 Excessive Agency, LLM04 Supply Chain,
 LLM06 Unbounded Consumption, LLM10 Improper Output Handling (matches the owner's T2 Q-4 answer); Agentic ASI01, ASI02,
 ASI03, ASI08, ASI09 (Dec 2025 list). Confirm against the official OWASP GenAI pages before publishing.
 Reverse: doc edit.
-Owner answer:
+Owner answer (owner, 2026-10-14): check the official OWASP GenAI pages before G13; correct the mapping if needed.
 
 ## Q-10 Precision targets and policy classes — L
 Decision: category auto-route precision target 0.95; priority 0.90 (P1 0.95); min 5 dev tickets per selected bin;
@@ -82,13 +82,13 @@ Owner answer (2026-10-12, in chat): as proposed — category 0.95, priority 0.90
 Decision: HARNESS_SPEC §2 table (auto-route precision ≥ 0.95, % to human ≤ 40%, zero-tolerance codes = 0,
 P1 recall ≥ 0.90, ≤ $1 per 1,000 tickets, p95 ≤ 10 s).
 Reverse: edit table, regenerate report.
-Owner answer:
+Owner answer (owner, 2026-10-14): keep the HARNESS_SPEC §2 targets; G13 reports the human-share result as a breach and explains it.
 
 ## Q-12 Model spend caps — L
 Decision: `RUN_USD_CAP` $0.25 (T2 owner override), `DAILY_USD_CAP` $1.00, `PROJECT_LLM_USD_CAP` $2.00, 30 calls/min.
 Expected real spend for all T4 runs ≈ $0.10–0.30.
 Reverse: edit `.env` + `0. Config`.
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-13 Overnight Claude budgets and hard stop — L
 Decision: `--max-budget-usd` $12 per goal, $100 total, hard stop 08:00 IST, 90 min wall per goal, 3 attempts,
@@ -102,23 +102,23 @@ Decision: root `HANDOFF.md` (static start-here) **plus** `.ai/HANDOFF.md` (rolli
 with `docs/DECISIONS.md` as index; ADR cap 7 (T2: 2); STATUS gains a machine-written task table.
 Why: the brief names these files; the overnight loop needs one machine-readable plan.
 Reverse: move files.
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-15 Shared n8n container and port — L
 Decision: reuse container `n8n` (2.22.5) that holds T2's (inactive) workflows; T4 names prefixed `t4-`; sink port 8790.
 `~/Projects/n8n-local/docker-compose.yml` still says `n8nio/n8n:latest` — not changed (outside this folder); pin it
 yourself if you ever recreate the container from that file.
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-16 Overnight worker = Claude for every goal — L
 Decision: `opus` with `sonnet` fallback, effort high, all 14 goals. Breaks the Thin Ledger routing mix for one night
 and makes author and checker the same family; morning step: cross-family review of G7, G8, G13.
-Owner answer:
+Owner answer (owner, 2026-10-14): owner runs a cross-family review of G7, G8 and G13 after G14. LIMITATIONS keeps the same-family note.
 
 ## Q-17 Banned words list — L
 Decision: the brief's four words plus T2's fifth (the list lives only in `AGENTS.md` § Rules); enforced by
 `scripts/checks.py banned` on every prose file except AGENTS.md and CLAUDE.md.
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-18 `git init` is an owner step — L (blocks the overnight run)
 Decision: T2 Q-5 precedent: the owner runs `git init` and the first commit (`T4-00: plan`). Preflight fails without it.
@@ -140,6 +140,7 @@ either is empty, so missing-id tickets never share one key. G2 writes `dedupe_ke
 (5) The `|` join in `content_sha256` is ambiguous when a field holds `|` (ARCHITECTURE C-4 as written). Not changed.
 Why: smallest choice that keeps the Python and JS twins equal on the vectors.
 Reverse: edit `src/common/norm.py` and `tests/test_norm.py`; before G2 nothing else uses the keys. After G2: regenerate gold.
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-20 Static checker scope choices — L
 Date: 2026-10-12. Goal: G1 (T4-01).
@@ -149,6 +150,7 @@ with an expression (`={{ … }}`) fails. The path report lists Jira and Slack pa
 Jira create = HTTP POST to `__JIRA_BASE_URL__/rest/api/{2,3}/issue`, or an n8n Jira node with operation `create`.
 Why: GOALS § G1 names the four hosts but not the flag form.
 Reverse: edit `src/checks/static_checks.py` and its test.
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-21 G1 attempt 1 ran without a shell — L (owner check)
 Date: 2026-10-12. Goal: G1 (T4-01).
@@ -158,6 +160,7 @@ vectors pin the preimage strings; the hex digest is computed in the test, becaus
 Why: no other tool can run Python.
 Reverse: the loop's own `accept.sh G1` and `guard.sh` run decides DONE. Optional: freeze hex literals in
 `tests/test_norm.py` in G7, when the JS twin test needs them.
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-22 Which two malformed tickets go through "as label" — L now, H after G9
 Date: 2026-10-12. Goal: G2 (T4-02).
@@ -169,7 +172,7 @@ to be `rejected before model`. ARCHITECTURE and SEC-10 agree, so the spec row is
 break a C-2 limit".
 Reverse: change the `code` argument of two builders in `src/fixtures/make_tickets.py` (`_MALFORMED`), regenerate,
 add a § Label changes line. Before G7 nothing is scored on gold; after G9/G10 the affected runs must be re-scored.
-Owner answer:
+Owner answer (owner, 2026-10-14): accept the current choice (follows ARCHITECTURE C-2 and SEC-10).
 
 ## Q-23 Priority mix is off the HARNESS_SPEC target — L now, H after G9
 Date: 2026-10-12. Goal: G2 (T4-02).
@@ -179,7 +182,7 @@ Why: `feature` and `other` are P4 by definition (49 tickets, § Label stats), an
 scenarios moved to P2 where the text states "no workaround" (`bug-ios-crash`, `access-new-phone`). Moving more would
 mean writing labels toward a quota, not toward the guide.
 Reverse: add P2 scenarios to `SCENARIOS` in `make_tickets.py`, regenerate. Cost rises after G9 (re-tune, re-run).
-Owner answer:
+Owner answer (owner, 2026-10-14): keep the data; G13 reports priority accuracy and the P3→P2 pattern as a finding. No re-run.
 
 ## Q-24 Gold field choices HARNESS_SPEC §1.3 leaves open — M
 Date: 2026-10-12. Goal: G2 (T4-02).
@@ -198,7 +201,7 @@ tickets that are not duplicate originals.
 (8) The generator owns the block between the label-stats markers in `evals/README.md`; `--check` fails if it is stale.
 Why: smallest choices that keep `scripts/checks.py gold`, G3 scoring and the G4 leak check simple.
 Reverse: edit `make_tickets.py`, regenerate; G3/G4 code that reads these fields changes with it.
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-25 Run-file contract the scorer reads (G5/G6 must write it) — M
 Date: 2026-10-13. Goal: G3 (T4-03).
@@ -218,6 +221,7 @@ replay_pass`. Sandbox CSVs: `jira_issues.csv`, `slack_messages.csv` (ARCHITECTUR
 last terminal row of the first pass. CSV lines that start with `#` before the header are skipped (STUB markers).
 Why: G3 comes before G5/G6; T2's formats were ported, and the fields T2 lacked were added.
 Reverse: edit the loader in `src/score/score.py` and the STUB fixtures; no run exists yet.
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-26 Scoring and tuning definitions HARNESS_SPEC leaves open — L
 Date: 2026-10-13. Goal: G3 (T4-03).
@@ -244,7 +248,7 @@ compares the category τ only (the priority τ is the same on both sides). `secu
 `<attack run>/attack_results.json` (`results: [{id, result, evidence, input_ids, residual}]`); a missing SEC id is `not_run`.
 Why: smallest definitions that make every HARNESS_SPEC §2 metric computable from run files.
 Reverse: edit `src/score/*.py` and the tests; re-score (cheap until G9 runs).
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-27 STUB marker row in fixture `requests.jsonl` — S
 Date: 2026-10-13. Goal: G3 (T4-03).
@@ -253,7 +257,7 @@ The dev STUB run has no requests, so before this its file was empty and had no S
 The marker row has no input id, so `score.select()` never assigns it to a ticket. Real runs do not write it.
 Why: smallest change that puts STUB in the first line of every fixture file.
 Reverse: delete the marker write in `make_STUB_fixtures.py` and rerun it (minutes).
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-28 Redaction and injection-scan choices, and test-split exposure — M
 Date: 2026-10-13. Goal: G4 (T4-04).
@@ -285,7 +289,7 @@ the call (`redactTicket`, `scanAndCap`). The test harness loads the file with `n
 Why: smallest choices that meet GOALS G4 and keep the Python and JS outputs equal on all 200 gold tickets.
 Reverse: edit both twins and `tests/vectors/*.json` together, then rerun `bash scripts/accept.sh G4`. For (2), the
 owner can write fresh test-split injection tickets before G11 (regenerate gold: cost H after G9).
-Owner answer:
+Owner answer (owner, 2026-10-14): accept; G13 states that the test-split injection result is not fully blind (item 2) and why.
 
 ## Q-29 Sink and sandbox contract details GOALS G5 / ARCHITECTURE §7 leave open — L now, M after G8
 Date: 2026-10-13. Goal: G5 (T4-05).
@@ -314,7 +318,7 @@ strings and all headers are not written. `--host` default `0.0.0.0` and `--port`
 Why: smallest choices that make every GOALS G5 fault and 403 path testable and keep the Q-25 run-file contract.
 Reverse: edit `src/sink/server.py` and `tests/test_sink.py` (no run exists yet). After G8, the workflow error branches
 may depend on the status codes in (1) and (6): re-run smoke.
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-30 Replay runner choices GOALS G6 leaves open — L now, M after G7
 Date: 2026-10-13. Goal: G6 (T4-06).
@@ -346,6 +350,7 @@ Reverse: edit `src/replay/run.py` and `tests/test_replay.py`. After G7, (1) and 
 Not verified: the docker and SQLite paths ran only against fakes here; G7 is their first live use.
 G7 note (2026-10-13): the docker CLI, credential binding, publish/unpublish and SQLite read paths worked live on
 n8n 2.22.5 in run `slice-local-20261012T225612Z-98461ef`. No runner change was needed.
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-31 Slice workflow choices GOALS G7 / ARCHITECTURE §4 leave open — L now, M after G9
 Date: 2026-10-13. Goal: G7 (T4-07).
@@ -377,6 +382,7 @@ Slack channel keys are not in Config yet (G8 adds Slack).
 Why: smallest choices that make the slice path run end to end and keep later goals' contracts (Q-25, Q-26, Q-30).
 Reverse: edit the workflow JSON and `tests/test_workflow.py`; re-run the slice (10 calls, ≈ $0.001). After G9, a change
 to (3) needs a new dev run and new thresholds.
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-32 Full-control workflow choices GOALS G8 / ARCHITECTURE §3–§4 leave open — L now, M after G9
 Date: 2026-10-13. Goal: G8 (T4-08).
@@ -418,7 +424,7 @@ The G7 slice had the same gap, hidden because its tickets had no planted PII.
 Why: smallest choices that put every ARCHITECTURE §3 control in the graph and exercise each branch once in one run.
 Reverse: edit the workflow JSON and the tests; re-run smoke (9 calls, about $0.001). After G9, a change to the reason
 strings in (4) needs a new dev run, because `tune.py` filters on the `policy`/`threshold` prefixes.
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-33 Dev run and tuning choices GOALS G9 / HARNESS_SPEC §3 leave open — L now, M after G10
 Date: 2026-10-13. Goal: G9 (T4-09).
@@ -443,7 +449,7 @@ in place of the G8 "all τ = 1.01" check. `test_committed_tau_sends_everything_t
 Why: smallest change that makes the GOALS G9 command run, and keeps a dev run that loses no ticket to the rate gate.
 Reverse: (1) remove the key and the two H10 lines plus the test (minutes; no re-run, because the sweep ignores
 `threshold` reasons). (2) re-run dev without the override (about $0.01) and re-tune; cost rises after G10 (re-run test).
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-34 Test run choices GOALS G10 leaves open — L now, M after G13
 Date: 2026-10-13. Goal: G10 (T4-10).
@@ -475,7 +481,7 @@ Reverse: (1) restore the two H2 strings and the E comment in `workflows/t4-triag
 `tests/test_workflow.py`, re-run test (about $0.01); pass B will then call the model once per such ticket.
 (2) re-run test without the override (about $0.01) and accept possible `capped:llm_rpm` rows. (4) revert the one
 `read_csv` line and its test; the scorer then fails on this run again.
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
 
 ## Q-35 Attack run choices GOALS G11 / SECURITY_CONTROLS §2 leave open — L now, M after G13
 Date: 2026-10-13. Goal: G11 (T4-11).
@@ -531,4 +537,4 @@ value first.
 from `eval_report.json` (I-6). Commands and file paths in the runbook sit in fenced blocks, which the word check skips.
 Why: smallest docs that let an operator run and stop the replay without reading code, with no claim beyond the runs.
 Reverse: doc edit (minutes).
-Owner answer:
+Owner answer (owner, 2026-10-14): accept as recorded.
