@@ -1,0 +1,428 @@
+{
+  "schema_version": "1.0",
+  "evidence_status": "candidate",
+  "configuration": {
+    "model": "gpt-4o-mini-2024-07-18",
+    "prompt_sha256": "1ce794d6648799ca018f85daea64d209243f0d9ebab70aaa637b4f3fc434874c",
+    "workflow_sha256": "407bda79ad31f23197553c0b9fa63c18dbef51cfcd97ab647e375fcdf2b0b502",
+    "thresholds_sha256": "21ac264d1404bbc30a953b6467686b6536c18102e7bb73e06fe1edcd1e68e6d8",
+    "n8n_version": "2.22.5",
+    "generator_version": "1.0",
+    "run_ids": [
+      "test-local-20261013T040225Z-0814c13",
+      "attack-local-20261013T042634Z-c7595e4"
+    ]
+  },
+  "inputs": {
+    "run_id": "test-local-20261013T040225Z-0814c13",
+    "attack_run_id": "attack-local-20261013T042634Z-c7595e4",
+    "runs_dir": "evals/runs",
+    "manifest": "evals/inputs/manifest.csv",
+    "thresholds": "evals/thresholds.json"
+  },
+  "quality": {
+    "n_classified": 93,
+    "category": {
+      "per_class": {
+        "billing": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 12
+        },
+        "access": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 12
+        },
+        "bug": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 11
+        },
+        "outage": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 13
+        },
+        "howto": {
+          "precision": 0.916667,
+          "recall": 1.0,
+          "f1": 0.956522,
+          "support": 11
+        },
+        "feature": {
+          "precision": 1.0,
+          "recall": 0.916667,
+          "f1": 0.956522,
+          "support": 12
+        },
+        "privacy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 11
+        },
+        "other": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 11
+        }
+      },
+      "macro_f1": 0.98913,
+      "confusion": {
+        "billing": {
+          "billing": 12,
+          "access": 0,
+          "bug": 0,
+          "outage": 0,
+          "howto": 0,
+          "feature": 0,
+          "privacy": 0,
+          "other": 0,
+          "no_prediction": 0
+        },
+        "access": {
+          "billing": 0,
+          "access": 12,
+          "bug": 0,
+          "outage": 0,
+          "howto": 0,
+          "feature": 0,
+          "privacy": 0,
+          "other": 0,
+          "no_prediction": 0
+        },
+        "bug": {
+          "billing": 0,
+          "access": 0,
+          "bug": 11,
+          "outage": 0,
+          "howto": 0,
+          "feature": 0,
+          "privacy": 0,
+          "other": 0,
+          "no_prediction": 0
+        },
+        "outage": {
+          "billing": 0,
+          "access": 0,
+          "bug": 0,
+          "outage": 13,
+          "howto": 0,
+          "feature": 0,
+          "privacy": 0,
+          "other": 0,
+          "no_prediction": 0
+        },
+        "howto": {
+          "billing": 0,
+          "access": 0,
+          "bug": 0,
+          "outage": 0,
+          "howto": 11,
+          "feature": 0,
+          "privacy": 0,
+          "other": 0,
+          "no_prediction": 0
+        },
+        "feature": {
+          "billing": 0,
+          "access": 0,
+          "bug": 0,
+          "outage": 0,
+          "howto": 1,
+          "feature": 11,
+          "privacy": 0,
+          "other": 0,
+          "no_prediction": 0
+        },
+        "privacy": {
+          "billing": 0,
+          "access": 0,
+          "bug": 0,
+          "outage": 0,
+          "howto": 0,
+          "feature": 0,
+          "privacy": 11,
+          "other": 0,
+          "no_prediction": 0
+        },
+        "other": {
+          "billing": 0,
+          "access": 0,
+          "bug": 0,
+          "outage": 0,
+          "howto": 0,
+          "feature": 0,
+          "privacy": 0,
+          "other": 11,
+          "no_prediction": 0
+        }
+      }
+    },
+    "priority": {
+      "per_class": {
+        "P1": {
+          "precision": 0.846154,
+          "recall": 0.916667,
+          "f1": 0.88,
+          "support": 12
+        },
+        "P2": {
+          "precision": 0.333333,
+          "recall": 0.846154,
+          "f1": 0.478261,
+          "support": 13
+        },
+        "P3": {
+          "precision": 0.933333,
+          "recall": 0.388889,
+          "f1": 0.54902,
+          "support": 36
+        },
+        "P4": {
+          "precision": 0.96875,
+          "recall": 0.96875,
+          "f1": 0.96875,
+          "support": 32
+        }
+      },
+      "macro_f1": 0.719008,
+      "p1_recall": 0.916667,
+      "confusion": {
+        "P1": {
+          "P1": 11,
+          "P2": 1,
+          "P3": 0,
+          "P4": 0
+        },
+        "P2": {
+          "P1": 2,
+          "P2": 11,
+          "P3": 0,
+          "P4": 0
+        },
+        "P3": {
+          "P1": 0,
+          "P2": 21,
+          "P3": 14,
+          "P4": 1
+        },
+        "P4": {
+          "P1": 0,
+          "P2": 0,
+          "P3": 1,
+          "P4": 31
+        }
+      }
+    },
+    "urgency": {
+      "accuracy": 0.913978,
+      "confusion": {
+        "high": {
+          "high": 22,
+          "medium": 0,
+          "low": 1
+        },
+        "medium": {
+          "high": 2,
+          "medium": 29,
+          "low": 0
+        },
+        "low": {
+          "high": 3,
+          "medium": 2,
+          "low": 34
+        }
+      }
+    }
+  },
+  "routing": {
+    "tickets": 100,
+    "considered": 95,
+    "auto_routed": 20,
+    "human": 75,
+    "coverage": 0.210526,
+    "pct_human": 0.789474,
+    "pct_human_by_category": {
+      "billing": 0.666667,
+      "access": 0.833333,
+      "bug": 0.583333,
+      "outage": 1.0,
+      "howto": 0.272727,
+      "feature": 0.916667,
+      "privacy": 1.0,
+      "other": 1.0
+    },
+    "auto_precision": 0.85,
+    "misroute_auto": 1,
+    "priority_miss_auto": 2,
+    "unsafe_auto": 0,
+    "threshold_comparison": {
+      "source_run_id": "dev-local-20261013T034424Z-3accb59",
+      "targets": {
+        "category": 0.95,
+        "priority": 0.9,
+        "priority_P1": 0.95,
+        "min_selected": 5
+      },
+      "tau_category": {
+        "billing": 0.5,
+        "access": 0.75,
+        "bug": 0.5,
+        "outage": 1.01,
+        "howto": 0.5,
+        "feature": 1.01,
+        "privacy": 1.01,
+        "other": 1.01
+      },
+      "tau_priority": {
+        "P1": 0.95,
+        "P2": 1.01,
+        "P3": 0.65,
+        "P4": 0.5
+      },
+      "global_tau": 0.5,
+      "per_class": {
+        "eligible": 83,
+        "auto_routed": 20,
+        "coverage": 0.240964,
+        "precision": 0.85
+      },
+      "global": {
+        "eligible": 83,
+        "auto_routed": 41,
+        "coverage": 0.493976,
+        "precision": 0.878049
+      }
+    }
+  },
+  "operations": {
+    "max_issues_per_dedupe_key": 1,
+    "new_jira_issues_pass_b": 0,
+    "llm_calls_pass_b": 0,
+    "pii_leaks_by_target": {},
+    "failure_codes": {
+      "schema_miss": 0,
+      "misroute_auto": 1,
+      "priority_miss_auto": 2,
+      "unsafe_auto": 0,
+      "duplicate_issue": 0,
+      "silent_drop": 0,
+      "pii_leak": 0,
+      "injection_followed": 0,
+      "unbounded_spend": 0,
+      "retry_storm": 0,
+      "audit_gap": 0,
+      "notify_gap": 0
+    },
+    "failure_codes_by_bucket": {
+      "duplicate": {
+        "priority_miss_auto": 1
+      },
+      "hard": {
+        "misroute_auto": 1,
+        "priority_miss_auto": 1
+      }
+    },
+    "latency_ms_p50": 1190.0,
+    "latency_ms_p95": 1608.0
+  },
+  "cost": {
+    "usd_run": 0.0105318,
+    "llm_calls": 93,
+    "tokens_in": 64904,
+    "tokens_out": 1327,
+    "usd_per_ticket_mean": 0.000105318,
+    "usd_per_ticket_p95": 0.0001194,
+    "tokens_per_ticket_mean": 662.31,
+    "tokens_per_ticket_p95": 752.0,
+    "usd_per_1k_tickets": 0.105318,
+    "projection_tickets": 1000
+  },
+  "security": {
+    "attack_run_id": "attack-local-20261013T042634Z-c7595e4",
+    "attacks": 20,
+    "by_result": {
+      "defended": 19,
+      "failed": 0,
+      "not_run": 1
+    }
+  },
+  "limitations": [
+    {
+      "statement": "Failure code misroute_auto fired on 1 ticket(s).",
+      "input_ids": [
+        "t4-110"
+      ]
+    },
+    {
+      "statement": "Failure code priority_miss_auto fired on 2 ticket(s).",
+      "input_ids": [
+        "t4-147",
+        "t4-192"
+      ]
+    },
+    {
+      "statement": "Thresholds rest on a small dev split; Wilson lower bounds are reported, not used to choose (HARNESS_SPEC \u00a73).",
+      "input_ids": []
+    }
+  ],
+  "metric_status": {
+    "auto_route_precision": {
+      "value": 0.85,
+      "pass_at": 0.95,
+      "warn_at": 0.9,
+      "status": "breach"
+    },
+    "pct_routed_to_human": {
+      "value": 0.789474,
+      "pass_at": 0.4,
+      "warn_at": 0.6,
+      "status": "breach"
+    },
+    "p1_recall": {
+      "value": 0.916667,
+      "pass_at": 0.9,
+      "warn_at": 0.75,
+      "status": "pass"
+    },
+    "usd_per_1k_tickets": {
+      "value": 0.105318,
+      "pass_at": 1.0,
+      "warn_at": 2.0,
+      "status": "pass"
+    },
+    "latency_ms_p95": {
+      "value": 1608.0,
+      "pass_at": 10000,
+      "warn_at": 20000,
+      "status": "pass"
+    },
+    "unsafe_auto": {
+      "value": 0,
+      "status": "pass"
+    },
+    "duplicate_issue": {
+      "value": 0,
+      "status": "pass"
+    },
+    "pii_leak": {
+      "value": 0,
+      "status": "pass"
+    },
+    "silent_drop": {
+      "value": 0,
+      "status": "pass"
+    },
+    "audit_gap": {
+      "value": 0,
+      "status": "pass"
+    }
+  }
+}

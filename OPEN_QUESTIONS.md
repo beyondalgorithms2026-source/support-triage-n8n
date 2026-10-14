@@ -542,3 +542,22 @@ from `eval_report.json` (I-6). Commands and file paths in the runbook sit in fen
 Why: smallest docs that let an operator run and stop the replay without reading code, with no claim beyond the runs.
 Reverse: doc edit (minutes).
 Owner answer (owner, 2026-10-14): accept as recorded.
+
+## Q-37 Report and findings choices GOALS G13 leaves open — L
+Date: 2026-10-14. Goal: G13 (T4-13).
+Decision:
+(1) `security_findings.md` gains an `OWASP` column, last, so the G3 row prefix stays the same. GOALS G13 lists OWASP
+IDs in the table; the G3 render had no such column.
+(2) The G11 `attack_results.json` differs from Q-26 (7): it has `tickets` (not `input_ids`), `evidence` as a list,
+`reason` on `not_run`, and no `residual`. `report.py` reads `tickets` when `input_ids` is absent. Residual risk comes
+from a fixed per-SEC map `SEC_RESIDUAL` in `report.py`, written from `docs/LIMITATIONS.md`, ARCHITECTURE §11 and
+SECURITY_CONTROLS §3, with no measured values. A `not_run` row puts `Not run: <reason>.` in front. Run files unchanged.
+(3) `eval_report.json` gains fields, so every number in `findings.md` traces to it: `security` (attack counts by result),
+`routing.threshold_comparison` `targets`/`tau_category`/`tau_priority`/`global_tau`, and `pass_at`/`warn_at` on the five
+target rows of `metric_status`. Additive only; `schema_version` stays `1.0`.
+(4) Result to note: on the test split one global category τ (0.50) auto-routed 41 of 83 eligible tickets at precision
+0.878; per-class τ auto-routed 20 at 0.85. `findings.md` says this does not support ADR-001. No τ change (I-9); an ADR
+change needs an architecture session.
+(5) `findings.md` "Trace notes (owner)" is a placeholder. The headline explains the human-share breach (Q-11 answer).
+Why: smallest change that gives the G13 table its OWASP column and a residual per row from the evidence G11 wrote.
+Reverse: revert the `report.py` edits and `test_security_findings_g11_shape`, regenerate (minutes, no model spend).

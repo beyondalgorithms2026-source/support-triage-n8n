@@ -56,6 +56,35 @@ SEC_CATALOGUE = (
     ("SEC-19", "Privilege boundary", "C-17", "LLM06, ASI02, ASI03"),
     ("SEC-20", "Secrets in artifacts", "I-3", "LLM02"),
 )
+# Residual risk per attack when the attack run states none (OPEN_QUESTIONS Q-37). Sources: docs/LIMITATIONS.md,
+# docs/ARCHITECTURE.md §11, docs/SECURITY_CONTROLS.md §3. Design statements only, no measured values.
+SEC_RESIDUAL = {
+    "SEC-01": "C-6 is a pattern scan. An injection that reads as a normal ticket and pushes a plausible label is not "
+              "flagged.",
+    "SEC-02": "Review is forced by the scan flag. An unflagged injection on a class with a τ below 1.01 can auto-route.",
+    "SEC-03": "Quote stripping and the scan are pattern-based. The G4 worker saw the test injection tickets (Q-28 (2)).",
+    "SEC-04": "Attachment content is not read. Only text that a scan pattern matches is flagged.",
+    "SEC-05": "The decode check covers base64 only.",
+    "SEC-06": "Checked against the Slack contract sandbox only, not a real workspace (ADR-003).",
+    "SEC-07": "Checked against the Jira contract sandbox only, not a real Jira site (ADR-003).",
+    "SEC-08": "Redaction is pattern-based. Free-text names other than the sender, street addresses and order numbers "
+              "reach the model. The check covers planted values only.",
+    "SEC-09": "Same redaction limits as SEC-08. The model returns three enums, so it has no free-text field to echo into.",
+    "SEC-10": "n8n execution data keeps the raw body until it is pruned.",
+    "SEC-11": "The sink writes control characters raw into CSV. NUL in review_queue.csv breaks the Python csv module "
+              "(Q-34 (4)).",
+    "SEC-12": "The rate gate ran at the committed value only in the burst segments. Dev, test and the main attack "
+              "segment overrode llm_max_rpm in memory.",
+    "SEC-13": "The daily cap held at a value set in memory for the attack. The committed daily cap was not burst-tested.",
+    "SEC-14": "Lookup then create is not atomic. Replay is sequential, so two deliveries at the same moment were never "
+              "sent.",
+    "SEC-15": "Recovery depends on the Jira label search. Search lag is not tested (SEC-17).",
+    "SEC-16": "The ticket ends error with an issue key and no queue row. Recovery waits for the next delivery.",
+    "SEC-17": "A resend inside the Jira search-lag window may create a second issue.",
+    "SEC-18": "One shared header token. n8n execution data keeps the token until it is pruned.",
+    "SEC-19": "Checked by workflow paths and the sandbox log. Real Jira and Slack credential scopes were not checked.",
+    "SEC-20": "The scan covers fixed patterns and named .env values in five folders. The n8n database is not scanned.",
+}
 _NUMBER = re.compile(r"(?<![\w.-])\$?\d[\d,]*(?:\.\d+)?%?")
 
 
@@ -109,6 +138,8 @@ def threshold_comparison(rows, thresholds):
     tau_priority = thresholds.get("tau_priority") or {}
     return {
         "source_run_id": thresholds.get("source_run_id"),
+        "targets": thresholds.get("targets"), "tau_category": thresholds.get("tau_category"),
+        "tau_priority": tau_priority, "global_tau": thresholds.get("global_tau"),
         "per_class": simulate(rows, lambda c: thresholds["tau_category"].get(c, NEVER), tau_priority),
         "global": simulate(rows, lambda c: thresholds.get("global_tau", NEVER), tau_priority),
     }
@@ -128,7 +159,8 @@ def metric_status(report):
         value = report
         for key in path:
             value = (value or {}).get(key)
-        status[name] = {"value": value, "status": grade(value, pass_at, warn_at, higher)}
+        status[name] = {"value": value, "pass_at": pass_at, "warn_at": warn_at,
+                        "status": grade(value, pass_at, warn_at, higher)}
     for code in ZERO_TOLERANCE:
         n = report["operations"]["failure_codes"][code]
         status[code] = {"value": n, "status": "pass" if n == 0 else "breach"}
@@ -185,6 +217,7 @@ def build_report(run_id, runs_dir=RUNS_DIR, manifest=MANIFEST, thresholds_path=O
             "tokens_per_ticket_p95": costs["tokens_per_ticket_p95"], "usd_per_1k_tickets": costs["usd_per_1k_tickets"],
             "projection_tickets": PROJECTION_TICKETS,
         },
+        "security": security_summary(security_findings(attack_run_id, runs_dir)),
         "limitations": limitations(rows),
     }
     report = rounded(report)
@@ -201,10 +234,19 @@ def security_findings(attack_run_id=None, runs_dir=RUNS_DIR):
     findings = []
     for sec_id, attack, controls, owasp in SEC_CATALOGUE:
         r = results.get(sec_id) or {}
+        residual = r.get("residual") or ("not run" if not r else SEC_RESIDUAL.get(sec_id, "not stated by the attack run"))
+        if r and r.get("result") == "not_run" and r.get("reason"):
+            residual = "Not run: {}. {}".format(r["reason"], residual)
         findings.append({"id": sec_id, "attack": attack, "result": r.get("result", "not_run"), "controls": controls,
-                         "owasp": owasp, "evidence": r.get("evidence", ""), "input_ids": r.get("input_ids", []),
-                         "residual": r.get("residual") or ("not run" if not r else "not stated by the attack run")})
+                         "owasp": owasp, "evidence": r.get("evidence", ""),
+                         "input_ids": r.get("input_ids", r.get("tickets", [])), "residual": residual})
     return {"schema_version": SCHEMA_VERSION, "attack_run_id": attack_run_id, "findings": findings}
+
+
+def security_summary(findings_doc):
+    results = [f["result"] for f in findings_doc["findings"]]
+    return {"attack_run_id": findings_doc["attack_run_id"], "attacks": len(results),
+            "by_result": {k: results.count(k) for k in ("defended", "failed", "not_run")}}
 
 
 def render_findings_md(doc):
@@ -213,10 +255,12 @@ def render_findings_md(doc):
     lines = ["# Security findings", "",
              "Generated by `python3 -m src.score.report` from attack run `{}`. Do not edit by hand.".format(
                  doc["attack_run_id"] or "none"),
-             "Result is filled only from run evidence; `not_run` means no evidence yet.", "",
-             "| ID | Attack | Result | Control | Residual risk |", "|---|---|---|---|---|"]
-    lines += ["| {} | {} | {} | {} | {} |".format(f["id"], cell(f["attack"]), cell(f["result"]), cell(f["controls"]),
-                                                  cell(f["residual"])) for f in doc["findings"]]
+             "Result is filled only from run evidence; `not_run` means no evidence yet. Evidence paths and ticket ids "
+             "per row are in `security_findings.json`.", "",
+             "| ID | Attack | Result | Control | Residual risk | OWASP |", "|---|---|---|---|---|---|"]
+    lines += ["| {} | {} | {} | {} | {} | {} |".format(f["id"], cell(f["attack"]), cell(f["result"]),
+                                                       cell(f["controls"]), cell(f["residual"]), cell(f["owasp"]))
+              for f in doc["findings"]]
     return "\n".join(lines) + "\n"
 
 

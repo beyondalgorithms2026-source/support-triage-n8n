@@ -367,6 +367,24 @@ class ReportTest(unittest.TestCase):
                       md)
         self.assertEqual(self.verify("--verify")[0], 0)
 
+    def test_security_findings_g11_shape(self):
+        runs = copy_runs(self.tmp.name)
+        (runs / TEST_RUN / "attack_results.json").write_text(json.dumps({"results": [
+            {"id": "SEC-15", "result": "defended", "evidence": ["a.csv"], "tickets": ["STUB-08"]},
+            {"id": "SEC-17", "result": "not_run", "evidence": [], "tickets": [], "reason": "fault never fired"}]}),
+            encoding="utf-8")
+        data = self.generate(runs, "--attack-run-id", TEST_RUN)
+        self.assertEqual(data["security"]["by_result"], {"defended": 1, "failed": 0, "not_run": 19})
+        doc = json.loads((self.out / "security_findings.json").read_text(encoding="utf-8"))
+        sec15 = next(f for f in doc["findings"] if f["id"] == "SEC-15")
+        self.assertEqual(sec15["input_ids"], ["STUB-08"])
+        self.assertEqual(sec15["residual"], report.SEC_RESIDUAL["SEC-15"])
+        md = (self.out / "security_findings.md").read_text(encoding="utf-8")
+        self.assertIn("| SEC-17 | Duplicate write: search lag | not_run | C-18 | Not run: fault never fired. ", md)
+        self.assertIn("| ASI08 |\n", md)
+        self.assertIsNone(BANNED.search(md))
+        self.assertEqual(self.verify("--verify")[0], 0)
+
     def test_verify_findings_numbers(self):
         data = self.generate()
         findings = self.out / "findings.md"
