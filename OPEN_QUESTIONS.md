@@ -71,6 +71,10 @@ LLM06 Unbounded Consumption, LLM10 Improper Output Handling (matches the owner's
 ASI03, ASI08, ASI09 (Dec 2025 list). Confirm against the official OWASP GenAI pages before publishing.
 Reverse: doc edit.
 Owner answer (owner, 2026-10-14): check the official OWASP GenAI pages before G13; correct the mapping if needed.
+Checked 2026-10-14 on genai.owasp.org: the published LLM list is 2025, not 2026. Corrected IDs: Excessive Agency
+LLM03→LLM06, Supply Chain LLM04→LLM03, Unbounded Consumption LLM06→LLM10, Improper Output Handling LLM10→LLM05.
+LLM01, LLM02 and the five ASI ids (Agentic Top 10 for 2026, Dec 2025) were correct. Changed: docs/SECURITY_CONTROLS.md,
+src/score/report.py (SEC table).
 
 ## Q-10 Precision targets and policy classes — L
 Decision: category auto-route precision target 0.95; priority 0.90 (P1 0.95); min 5 dev tickets per selected bin;
