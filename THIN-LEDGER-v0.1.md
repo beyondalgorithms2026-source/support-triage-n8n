@@ -1,7 +1,7 @@
 # Thin Ledger v0.1
 ## File-first coding harness for multi-model work
 
-**Owner:** Beyond Algorithms  
+**Owner:** Spanfold  
 **Status:** Living document. Version the file in Git when the rules change.  
 **Audience:** A human starting a project, or the first frontier model asked to design architecture and the repo layout.  
 **Not:** A product to build, an orchestrator, or a replacement for Claude Code / Codex.
